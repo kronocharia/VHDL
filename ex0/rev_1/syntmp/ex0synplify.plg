@@ -1,0 +1,18 @@
+@P:  Worst Slack : -0.298
+@P:  f3_alu|clk - Estimated Frequency : 581.1 MHz
+@P:  f3_alu|clk - Requested Frequency : 702.8 MHz
+@P:  f3_alu|clk - Estimated Period : 1.721
+@P:  f3_alu|clk - Requested Period : 1.423
+@P:  f3_alu|clk - Slack : -0.298
+@P:  Worst Slack(min analysis) : 0.663
+@P:  f3_alu|clk - Estimated Frequency(min analysis) : 581.1 MHz
+@P:  f3_alu|clk - Requested Frequency(min analysis) : 702.8 MHz
+@P:  f3_alu|clk - Estimated Period(min analysis) : 1.721
+@P:  f3_alu|clk - Requested Period(min analysis) : 1.423
+@P:  f3_alu|clk - Slack(min analysis) : -0.298
+@P: f3_alu Part : acx22ihd1000fbga2280std
+@P: f3_alu I/O primitives : 37
+@P: f3_alu I/O Register bits : 0
+@P: f3_alu Register bits (Non I/O) : 16 (0%)
+@P: f3_alu Total Luts : 70 (0%)
+@P:  CPU Time : 0h:00m:01s

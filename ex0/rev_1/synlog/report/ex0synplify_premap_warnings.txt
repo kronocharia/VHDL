@@ -1,0 +1,1 @@
+@W: MT529 :"h:\downloads\ex0\f3_alu_sim_errors.vhd":17:9:17:13|Found inferred clock f3_alu|clk which controls 16 sequential elements including z_int[15:0]. This clock has no specified timing constraint which may prevent conversion of gated or generated clocks and may adversely impact design performance. 

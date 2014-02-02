@@ -1,0 +1,136 @@
+
+
+##### START OF TIMING REPORT #####[
+# Timing Report written on Sat Feb 01 17:37:54 2014
+#
+
+
+Top view:               f3_alu
+Requested Frequency:    702.8 MHz
+Wire load mode:         top
+Paths requested:        5
+Constraint File(s):    
+@N: MT320 |Timing report estimates place and route data. Please look at the place and route timing report for final timing.
+
+@N: MT322 |Clock constraints cover only FF-to-FF paths associated with the clock.
+
+
+
+Performance Summary 
+*******************
+
+
+Worst slack in design: 0.663
+
+                   Requested     Estimated     Requested     Estimated                Clock        Clock                
+Starting Clock     Frequency     Frequency     Period        Period        Slack      Type         Group                
+------------------------------------------------------------------------------------------------------------------------
+f3_alu|clk         702.8 MHz     581.1 MHz     1.423         1.721         -0.298     inferred     Autoconstr_clkgroup_0
+========================================================================================================================
+
+
+
+Clock Relationships
+*******************
+
+Clocks                  |    rise  to  rise   |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
+--------------------------------------------------------------------------------------------------------------
+Starting    Ending      |  constraint  slack  |  constraint  slack  |  constraint  slack  |  constraint  slack
+--------------------------------------------------------------------------------------------------------------
+f3_alu|clk  f3_alu|clk  |  0.000       0.663  |  No paths    -      |  No paths    -      |  No paths    -    
+==============================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+
+Interface Information 
+*********************
+
+No IO constraint found
+
+
+
+====================================
+Detailed Report for Clock: f3_alu|clk
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+             Starting                                     Arrival          
+Instance     Reference      Type     Pin     Net          Time        Slack
+             Clock                                                         
+---------------------------------------------------------------------------
+z_int[0]     f3_alu|clk     DFFC     q       z_int[0]     0.028       0.873
+z_int[1]     f3_alu|clk     DFFC     q       z_int[1]     0.028       0.873
+z_int[2]     f3_alu|clk     DFFC     q       z_int[2]     0.028       0.873
+z_int[3]     f3_alu|clk     DFFC     q       z_int[3]     0.028       0.873
+z_int[4]     f3_alu|clk     DFFC     q       z_int[4]     0.028       0.873
+z_int[5]     f3_alu|clk     DFFC     q       z_int[5]     0.028       0.873
+z_int[6]     f3_alu|clk     DFFC     q       z_int[6]     0.028       0.873
+z_int[7]     f3_alu|clk     DFFC     q       z_int[7]     0.028       0.873
+z_int[8]     f3_alu|clk     DFFC     q       z_int[8]     0.028       0.873
+z_int[9]     f3_alu|clk     DFFC     q       z_int[9]     0.028       0.873
+===========================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+             Starting                                        Required          
+Instance     Reference      Type     Pin     Net             Time         Slack
+             Clock                                                             
+-------------------------------------------------------------------------------
+z_int[0]     f3_alu|clk     DFFC     d       z_intc_12_i     0.021        0.663
+z_int[1]     f3_alu|clk     DFFC     d       z_intc_13_i     0.021        0.663
+z_int[2]     f3_alu|clk     DFFC     d       z_intc_14_i     0.021        0.663
+z_int[3]     f3_alu|clk     DFFC     d       z_intc_i        0.021        0.663
+z_int[4]     f3_alu|clk     DFFC     d       z_intc_0_i      0.021        0.663
+z_int[5]     f3_alu|clk     DFFC     d       z_intc_1_i      0.021        0.663
+z_int[6]     f3_alu|clk     DFFC     d       z_intc_2_i      0.021        0.663
+z_int[7]     f3_alu|clk     DFFC     d       z_intc_3_i      0.021        0.663
+z_int[8]     f3_alu|clk     DFFC     d       z_intc_4_i      0.021        0.663
+z_int[9]     f3_alu|clk     DFFC     d       z_intc_5_i      0.021        0.663
+===============================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+    Propagation time:                        0.684
+    + Clock delay at starting point:         0.000 (ideal)
+    - Requested Period:                      0.000
+    - Hold time:                             0.021
+    - Clock delay at ending point:           0.000 (ideal)
+    = Slack (critical) :                     0.663
+
+    Number of logic level(s):                2
+    Starting point:                          z_int[0] / q
+    Ending point:                            z_int[0] / d
+    The start point is clocked by            f3_alu|clk [rising] on pin ck
+    The end   point is clocked by            f3_alu|clk [rising] on pin ck
+
+Instance / Net              Pin      Pin               Arrival     No. of    
+Name               Type     Name     Dir     Delay     Time        Fan Out(s)
+-----------------------------------------------------------------------------
+z_int[0]           DFFC     q        Out     0.028     0.028       -         
+z_int[0]           Net      -        -       0.188     -           3         
+z_intc_12_0        LUT4     din3     In      -         0.216       -         
+z_intc_12_0        LUT4     dout     Out     0.083     0.299       -         
+z_intc_12_0        Net      -        -       0.151     -           1         
+z_int_RNO[0]       LUT4     din3     In      -         0.450       -         
+z_int_RNO[0]       LUT4     dout     Out     0.083     0.533       -         
+z_intc_12_i        Net      -        -       0.151     -           1         
+z_int[0]           DFFC     d        In      -         0.684       -         
+=============================================================================
+
+
+
+##### END OF TIMING REPORT #####]
+

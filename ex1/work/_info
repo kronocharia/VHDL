@@ -1,0 +1,99 @@
+m255
+K3
+13
+cModel Technology
+dH:\VHDL\ex0
+Edraw_octant
+Z0 w1391361799
+Z1 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+Z2 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z3 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z4 dC:\Users\Administrator\Desktop\VHDL\ex1
+Z5 8C:/Users/Administrator/Desktop/VHDL/ex1/draw_octant.vhd
+Z6 FC:/Users/Administrator/Desktop/VHDL/ex1/draw_octant.vhd
+l0
+L6
+V>WL1_]f@74j9HBzLY7]Fi2
+Z7 OV;C;10.1d;51
+31
+Z8 !s108 1391363162.384000
+Z9 !s90 -reportprogress|300|-work|work|-93|-explicit|-check_synthesis|C:/Users/Administrator/Desktop/VHDL/ex1/draw_octant.vhd|
+Z10 !s107 C:/Users/Administrator/Desktop/VHDL/ex1/draw_octant.vhd|
+Z11 o-work work -93 -explicit -check_synthesis -O0
+Z12 tExplicit 1
+!s100 dJmBVJj6jDQO3hMjcBc]J0
+!i10b 1
+Acomb
+R1
+R2
+R3
+Z13 DEx4 work 11 draw_octant 0 22 >WL1_]f@74j9HBzLY7]Fi2
+l27
+L15
+VENEjK4YSo;5HONoV6=jW50
+R7
+31
+R8
+R9
+R10
+R11
+R12
+!s100 M^zfJ[BkDkGbXPFgVK;Vh1
+!i10b 1
+Edraw_octant_tb
+Z14 w1390656124
+Z15 DPx4 work 12 ex1_data_pak 0 22 PTHZKmWVTkk0IkYU^]6B<3
+R1
+R2
+R3
+R4
+Z16 8C:/Users/Administrator/Desktop/VHDL/ex1/draw_octant_tb.vhd
+Z17 FC:/Users/Administrator/Desktop/VHDL/ex1/draw_octant_tb.vhd
+l0
+L7
+V3oGRmON5lRLfz226CXXD]3
+R7
+31
+Z18 !s108 1391363162.602000
+Z19 !s90 -reportprogress|300|-work|work|-93|-explicit|-check_synthesis|C:/Users/Administrator/Desktop/VHDL/ex1/draw_octant_tb.vhd|
+Z20 !s107 C:/Users/Administrator/Desktop/VHDL/ex1/draw_octant_tb.vhd|
+R11
+R12
+!s100 fmK;jJme3ll7HkaQ?2;e`0
+!i10b 1
+Abehav
+R13
+R15
+R1
+R2
+R3
+DEx4 work 14 draw_octant_tb 0 22 3oGRmON5lRLfz226CXXD]3
+l24
+L10
+V@BbzcZO>YD7HGMFa>n7RR3
+R7
+31
+R18
+R19
+R20
+R11
+R12
+!s100 ]K8HnaI2da4HV8WCY^Xmk1
+!i10b 1
+Pex1_data_pak
+w1372343790
+R4
+8C:/Users/Administrator/Desktop/VHDL/ex1/ex1_data_pak (advanced tests)/ex1_data_pak_advanced_test9.vhd
+FC:/Users/Administrator/Desktop/VHDL/ex1/ex1_data_pak (advanced tests)/ex1_data_pak_advanced_test9.vhd
+l0
+L5
+VLdZXHeE9`HAo0_[ilHVR_0
+!s100 ;8TnNz4dROXlULON^;>aF1
+R7
+32
+!i10b 1
+!s108 1391363233.257000
+!s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Administrator/Desktop/VHDL/ex1/ex1_data_pak (advanced tests)/ex1_data_pak_advanced_test9.vhd|
+!s107 C:/Users/Administrator/Desktop/VHDL/ex1/ex1_data_pak (advanced tests)/ex1_data_pak_advanced_test9.vhd|
+o-work work -2002 -explicit -O0
+R12

@@ -1,0 +1,20 @@
+---------------------------------------
+Resource Usage Report for f3_alu 
+
+Mapping to part: acx22ihd1000fbga2280std
+Cell usage:
+ALU        8 uses
+DFFC         16 uses
+LUT4            70 uses
+
+I/O ports: 37
+I/O primitives: 37
+PADIN          21 uses
+PADOUT         16 uses
+
+I/O Register bits:                  0
+Register bits not including I/Os:   16 (0%)
+
+Mapping Summary:
+Total  LUTs: 70 (0%)
+

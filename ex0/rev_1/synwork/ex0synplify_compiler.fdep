@@ -1,0 +1,28 @@
+%%% protect protected_file
+#defaultlanguage:vhdl
+#OPTIONS:"|-top|f3_alu|-prodtype|synplify_premier|-dw|-primux|-fixsmult|-sdff_counter|-nram|-divnmod|-encrypt|-pro|-lite|-ll|2000|-proto|-ui|-fid2|-ram|-sharing|on|-autosm|-ignore_undefined_lib|-lib|work"
+#CUR:"C:\\synopsys\\fpga_G201209SP1\\bin64\\c_vhdl.exe":1354049230
+#CUR:"C:\\synopsys\\fpga_G201209SP1\\lib\\vhd\\location.map":1354024772
+#CUR:"C:\\synopsys\\fpga_G201209SP1\\lib\\vhd\\std.vhd":1353965844
+#CUR:"C:\\synopsys\\fpga_G201209SP1\\lib\\vhd\\snps_haps_pkg.vhd":1353965844
+#CUR:"C:\\synopsys\\fpga_G201209SP1\\lib\\vhd\\std1164.vhd":1353965844
+#CUR:"C:\\synopsys\\fpga_G201209SP1\\lib\\vhd\\numeric.vhd":1353965842
+#CUR:"C:\\synopsys\\fpga_G201209SP1\\lib\\vhd\\umr_capim.vhd":1353965846
+#CUR:"C:\\synopsys\\fpga_G201209SP1\\lib\\vhd\\arith.vhd":1353965842
+#CUR:"C:\\synopsys\\fpga_G201209SP1\\lib\\vhd\\unsigned.vhd":1353965846
+#CUR:"H:\\downloads\\ex0\\f3_alu_sim_errors.vhd":1391276259
+0 "H:\downloads\ex0\f3_alu_sim_errors.vhd" vhdl
+
+# Dependency Lists (Uses list)
+0 -1
+
+# Dependency Lists (Users Of)
+0 -1
+
+# Design Unit to File Association
+arch work f3_alu rtl 0
+module work f3_alu 0
+
+
+# Configuration files used
+0 -1
