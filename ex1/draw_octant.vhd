@@ -145,16 +145,16 @@ BEGIN
   	END IF;
   	
   	
-  	IF 	disable = '0' AND
- 		resetx = '0' AND
- 		draw = '0' AND
- 		done1 = '1' THEN
-
-  	END IF;
-	
-	IF 	disable = '1' THEN
-
-  	END IF;
+--  	IF 	disable = '0' AND
+-- 		resetx = '0' AND
+-- 		draw = '0' AND
+-- 		done1 = '1' THEN
+--
+--  	END IF;
+--	
+--	IF 	disable = '1' THEN
+--
+--  	END IF;
 	
   
   END PROCESS R1;
