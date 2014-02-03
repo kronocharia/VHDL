@@ -1,0 +1,10 @@
+C:\synopsys\fpga_G201209SP1\bin64\m_generic.exe  -prodtype synplify_premier -encrypt  -pro  -rundir  H:\VHDL\ex0\rev_1  -part ACX22iHD1000  -package FBGA2280  -grade Std   -maxfan 10000 -RWCheckOnRam 0     -pipe   -fixgatedclocks 1 -fixgeneratedclocks 1      -summaryfile H:\VHDL\ex0\rev_1\synlog\report\ex0synplify_fpga_mapper.xml -top_level_module  f3_alu  -flow mapping  -ovma  H:\VHDL\ex0\rev_1\ex0synplify.vma  -autoconstraint  -freq 1.000  H:\VHDL\ex0\rev_1\synwork\ex0synplify_premap.srd  -devicelib  C:\synopsys\fpga_G201209SP1\lib\generic\speedster22i.v  -ologparam  H:\VHDL\ex0\rev_1\syntmp\ex0synplify.plg  -osyn  H:\VHDL\ex0\rev_1\ex0synplify.srm  -prjdir  H:\VHDL\ex0\  -prjname  ex0synplify  -log  H:\VHDL\ex0\rev_1\synlog\ex0synplify_fpga_mapper.srr 
+rc:1 success:1
+H:\VHDL\ex0\rev_1\ex0synplify.vma|o|1391276274|21651
+H:\VHDL\ex0\rev_1\synwork\ex0synplify_premap.srd|i|1391276272|4798
+C:\synopsys\fpga_G201209SP1\lib\generic\speedster22i.v|i|1353965560|52431
+H:\VHDL\ex0\rev_1\syntmp\ex0synplify.plg|o|1391276274|801
+H:\VHDL\ex0\rev_1\ex0synplify.srm|o|1391276274|9826
+H:\VHDL\ex0\rev_1\synlog\ex0synplify_fpga_mapper.srr|o|1391276274|31037
+C:\synopsys\fpga_G201209SP1\bin64\m_generic.exe|i|1354006890|23484416
+C:\synopsys\fpga_G201209SP1\bin\m_generic.exe|i|1354005010|20130816

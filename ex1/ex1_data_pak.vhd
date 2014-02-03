@@ -1,3 +1,6 @@
+-- basic test						  
+-- test a: from (2,3) to (5,3)					   yincr = 0, xincr > yincr
+-- test b: from (5,3) to (9,4) with xbias of 1    (xincr > yincr)
 
 PACKAGE ex1_data_pak IS
     TYPE cyc IS (   reset,  -- reset = '1'

@@ -1,5 +1,0 @@
-@N|Running in 64-bit mode
-@N: CD720 :"C:\synopsys\fpga_G201209SP1\lib\vhd\std.vhd":123:18:123:21|Setting time resolution to ns
-@N:"H:\downloads\ex0\f3_alu_sim_errors.vhd":6:7:6:12|Top entity is set to f3_alu.
-@N: CD630 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":6:7:6:12|Synthesizing work.f3_alu.rtl 
-

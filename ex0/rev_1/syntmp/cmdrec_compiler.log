@@ -1,0 +1,7 @@
+C:\synopsys\fpga_G201209SP1\bin64\c_vhdl.exe  -osyn  H:\VHDL\ex0\rev_1\synwork\ex0synplify_compiler.srs  -top  f3_alu  -prodtype  synplify_premier  -dw  -primux -fixsmult -sdff_counter -nram -divnmod -encrypt  -pro  -dmgen  H:\VHDL\ex0\rev_1\dm  -lite -ll 2000   -proto -ui -fid2 -ram -sharing on     -autosm -ignore_undefined_lib  -lib work H:\downloads\ex0\f3_alu_sim_errors.vhd -loga  H:\VHDL\ex0\rev_1\ex0synplify.srr 
+rc:0 success:1
+H:\VHDL\ex0\rev_1\synwork\ex0synplify_compiler.srs|o|1391276268|2032
+H:\downloads\ex0\f3_alu_sim_errors.vhd|i|1391276259|1443
+H:\VHDL\ex0\rev_1\ex0synplify.srr|o|1391276268|1256
+C:\synopsys\fpga_G201209SP1\bin64\c_vhdl.exe|i|1354049230|5352960
+C:\synopsys\fpga_G201209SP1\bin\c_vhdl.exe|i|1354049054|1896960

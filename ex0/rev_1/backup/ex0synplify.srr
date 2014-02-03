@@ -1,0 +1,72 @@
+#Build: Synplify Premier G-2012.09-SP1 , Build 168R, Nov 26 2012
+#install: C:\synopsys\fpga_G201209SP1
+#OS: Windows 7 6.1
+#Hostname: EEWS506A-043
+
+#Implementation: rev_1
+
+$ Start of Compile
+#Sat Feb 01 17:27:14 2014
+
+Synopsys VHDL Compiler, version comp201209rcp1, Build 124R, built Nov 27 2012
+@N|Running in 64-bit mode
+Copyright (C) 1994-2012 Synopsys, Inc. This software the associated documentation are confidential and proprietary to Synopsys, Inc. Your use or disclosure of this software subject to the terms and conditions of a written license agreement between you, or your company, and Synopsys, Inc.
+
+@N: CD720 :"C:\synopsys\fpga_G201209SP1\lib\vhd\std.vhd":123:18:123:21|Setting time resolution to ns
+@N:"H:\downloads\ex0\f3_alu_sim_errors.vhd":6:7:6:12|Top entity is set to f3_alu.
+VHDL syntax check successful!
+@N: CD630 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":6:7:6:12|Synthesizing work.f3_alu.rtl 
+Post processing for work.f3_alu.rtl
+@W: CL111 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":17:9:17:13|All reachable assignments to z_int(0) assign '0'; register removed by optimization
+@W: CL111 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":17:9:17:13|All reachable assignments to z_int(1) assign '0'; register removed by optimization
+@W: CL111 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":17:9:17:13|All reachable assignments to z_int(2) assign '0'; register removed by optimization
+@W: CL111 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":17:9:17:13|All reachable assignments to z_int(3) assign '0'; register removed by optimization
+@W: CL111 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":17:9:17:13|All reachable assignments to z_int(4) assign '0'; register removed by optimization
+@W: CL111 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":17:9:17:13|All reachable assignments to z_int(5) assign '0'; register removed by optimization
+@W: CL111 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":17:9:17:13|All reachable assignments to z_int(6) assign '0'; register removed by optimization
+@W: CL111 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":17:9:17:13|All reachable assignments to z_int(7) assign '0'; register removed by optimization
+@W: CL111 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":17:9:17:13|All reachable assignments to z_int(8) assign '0'; register removed by optimization
+@W: CL111 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":17:9:17:13|All reachable assignments to z_int(9) assign '0'; register removed by optimization
+@W: CL111 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":17:9:17:13|All reachable assignments to z_int(10) assign '0'; register removed by optimization
+@W: CL111 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":17:9:17:13|All reachable assignments to z_int(11) assign '0'; register removed by optimization
+@W: CL111 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":17:9:17:13|All reachable assignments to z_int(12) assign '0'; register removed by optimization
+@W: CL111 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":17:9:17:13|All reachable assignments to z_int(13) assign '0'; register removed by optimization
+@W: CL111 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":17:9:17:13|All reachable assignments to z_int(14) assign '0'; register removed by optimization
+@W: CL111 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":17:9:17:13|All reachable assignments to z_int(15) assign '0'; register removed by optimization
+@E: CL219 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Multiple non-tristate drivers for net z(15) in f3_alu
+@E: CL219 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Multiple non-tristate drivers for net z(14) in f3_alu
+@E: CL219 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Multiple non-tristate drivers for net z(13) in f3_alu
+@E: CL219 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Multiple non-tristate drivers for net z(12) in f3_alu
+@E: CL219 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Multiple non-tristate drivers for net z(11) in f3_alu
+@E: CL219 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Multiple non-tristate drivers for net z(10) in f3_alu
+@E: CL219 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Multiple non-tristate drivers for net z(9) in f3_alu
+@E: CL219 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Multiple non-tristate drivers for net z(8) in f3_alu
+@E: CL219 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Multiple non-tristate drivers for net z(7) in f3_alu
+@E: CL219 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Multiple non-tristate drivers for net z(6) in f3_alu
+@E: CL219 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Multiple non-tristate drivers for net z(5) in f3_alu
+@E: CL219 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Multiple non-tristate drivers for net z(4) in f3_alu
+@E: CL219 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Multiple non-tristate drivers for net z(3) in f3_alu
+@E: CL219 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Multiple non-tristate drivers for net z(2) in f3_alu
+@E: CL219 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Multiple non-tristate drivers for net z(1) in f3_alu
+@E: CL219 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Multiple non-tristate drivers for net z(0) in f3_alu
+@E: CL229 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Unresolved tristate drivers for net z(0) in f3_alu
+@E: CL229 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Unresolved tristate drivers for net z(1) in f3_alu
+@E: CL229 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Unresolved tristate drivers for net z(2) in f3_alu
+@E: CL229 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Unresolved tristate drivers for net z(3) in f3_alu
+@E: CL229 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Unresolved tristate drivers for net z(4) in f3_alu
+@E: CL229 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Unresolved tristate drivers for net z(5) in f3_alu
+@E: CL229 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Unresolved tristate drivers for net z(6) in f3_alu
+@E: CL229 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Unresolved tristate drivers for net z(7) in f3_alu
+@E: CL229 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Unresolved tristate drivers for net z(8) in f3_alu
+@E: CL229 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Unresolved tristate drivers for net z(9) in f3_alu
+@E: CL229 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Unresolved tristate drivers for net z(10) in f3_alu
+@E: CL229 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Unresolved tristate drivers for net z(11) in f3_alu
+@E: CL229 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Unresolved tristate drivers for net z(12) in f3_alu
+@E: CL229 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Unresolved tristate drivers for net z(13) in f3_alu
+@E: CL229 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Unresolved tristate drivers for net z(14) in f3_alu
+@E: CL229 :"H:\downloads\ex0\f3_alu_sim_errors.vhd":11:4:11:4|Unresolved tristate drivers for net z(15) in f3_alu
+@END
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sat Feb 01 17:27:15 2014
+
+###########################################################]
