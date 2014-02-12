@@ -36,20 +36,20 @@ BEGIN
 	--New Code Start
 	
 	
-	--err1_v := slv(resize(sgn(error),13) + resize(sgn(yincr),13)); --Cast to signed and bit extend and back to slv
+	--Cast to signed and bit extend and back to slv
 	
 	err1_v := slv(resize(sgn(error),13) + sgn(resize(usg(yincr),13)));
 	
 	IF sgn(err1_v) < 0 THEN				--To create the absolute value
-		--err1_v := slv(-1*sgn(err1_v));
+		
 		err1_v := slv(usg(NOT(err1_v))+"0000000000001"); --2's comp flip add1
 	END IF;
 	
-	--err2_v := slv(resize(sgn(error),13) + resize(sgn(yincr),13) - resize(sgn(xincr),13)); --Cast to signed and bit extend
+	 --Cast to signed and bit extend
 	err2_v := slv(resize(sgn(error),13) + sgn(resize(usg(yincr),13)) - sgn(resize(usg(xincr),13)));
 	
 	IF sgn(err2_v) < 0 THEN				-- To create absolute value
-		--err2_v := -1*err2_v;
+		
 		err2_v := slv(usg(NOT(err2_v))+"0000000000001"); --2's complement flip add 1
 	END IF;
 	
@@ -65,7 +65,7 @@ BEGIN
 	err1 <= err1_v;
 	err2 <= err2_v;
 
-		
+	
 	--New code end
   END PROCESS C1; 
 	
