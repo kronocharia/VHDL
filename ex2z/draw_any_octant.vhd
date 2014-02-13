@@ -100,14 +100,14 @@ BEGIN
 
 	C1:PROCESS(xbias, xin, yin, swapxy, negx, negy)
 	BEGIN
-		SWAP1: swap GENERIC MAP(vsize) PORT MAP();
-		INV1: invert GENERIC MAP(vsize) PORT MAP();
-		INV2: invert GENERIC MAP(vsize) PORT MAP();
+		SWAP1: ENTITY swap GENERIC MAP(vsize) PORT MAP();
+		INVERT1: ENTITY invert GENERIC MAP(vsize) PORT MAP();
+		INVERT2: ENTITY invert GENERIC MAP(vsize) PORT MAP();
 		
-		INV3: invert GENERIC MAP(vsize) PORT MAP();
-		INV4: invert GENERIC MAP(vsize) PORT MAP();
-		SWAP2: swap GENERIC MAP(vsize) PORT MAP();
-		
+		INVERT3: ENTITY invert GENERIC MAP(vsize) PORT MAP();
+		INVERT4: ENTITY invert GENERIC MAP(vsize) PORT MAP();
+		SWAP2: ENTITY swap GENERIC MAP(vsize) PORT MAP();
+	
 		
 	END PROCESS C1;
 
