@@ -5,8 +5,9 @@ USE IEEE.numeric_std.ALL;
 
 ENTITY invert IS
 	GENERIC(vsize: NATURAL :=12);
-	PORT(	a,c: IN std_logic;
-			b: OUT std_logic
+	PORT(	c: IN std_logic;
+			a: IN std_logic_vector(vsize-1 DOWNTO 0);
+			b: OUT std_logic(vsize-1 DOWNTO 0)
 	);
 END ENTITY invert;
 
@@ -27,7 +28,7 @@ LIBRARY IEEE;
 
 USE IEEE.std_logic_1164.ALL;
 USE IEEE.numeric_std.ALL;
-USE WORK.invert, WORK.swap;
+
 
 ENTITY swap IS
 	GENERIC(vsize: NATURAL :=12);
@@ -97,7 +98,7 @@ BEGIN
 		swapxy_i <= swapxy;
 	END PROCESS RD;
 
-	C1:PROCESS
+	C1:PROCESS(xbias, xin, yin, swapxy, negx, negy)
 	BEGIN
 		SWAP1: swap GENERIC MAP(vsize) PORT MAP();
 		INV1: invert GENERIC MAP(vsize) PORT MAP();
