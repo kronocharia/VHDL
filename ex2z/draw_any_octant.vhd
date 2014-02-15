@@ -4,7 +4,7 @@ USE IEEE.std_logic_1164.ALL;
 USE IEEE.numeric_std.ALL;
 
 ENTITY invert IS
-	GENERIC(vsize: NATURAL :=12);
+	GENERIC(vsize: INTEGER :=12);
 	PORT(	c: IN std_logic;
 			a: IN std_logic_vector(vsize-1 DOWNTO 0);
 			b: OUT std_logic(vsize-1 DOWNTO 0)
@@ -15,8 +15,9 @@ ARCHITECTURE comb OF invert IS
 	--SIGNAL a_i,b_i;
 	--SIGNAL c_i;
 BEGIN
-	C1:PROCESS(c)
+	C1:PROCESS(c,a)
 	BEGIN
+		b <= a;
 		IF 	c = '1' THEN
 			b <= NOT(a);
 		END IF;
@@ -31,7 +32,7 @@ USE IEEE.numeric_std.ALL;
 
 
 ENTITY swap IS
-	GENERIC(vsize: NATURAL :=12);
+	GENERIC(vsize: INTEGER :=12);
 	PORT(	xin,yin: IN std_logic_vector(vsize-1 DOWNTO 0);
 			xout,yout: OUT std_logic_vector(vsize-1 DOWNTO 0);
 			c: IN std_logic
@@ -40,7 +41,7 @@ END ENTITY swap;
 
 ARCHITECTURE comb OF swap IS
 BEGIN 
-	C1:PROCESS(c)
+	C1:PROCESS(c,xin,yin)
 	BEGIN
 		IF 	c = '1' THEN
 			xout <= yin;
@@ -88,6 +89,7 @@ END ENTITY draw_any_octant;
 ARCHITECTURE comb OF draw_any_octant IS
 
 	SIGNAL clk_i,negx_i,negy_i,swapxy_i : std_logic_vector(vsize-1 DOWNTO 0) ;
+	SIGNAL x
 
 BEGIN
 	RD:PROCESS
@@ -100,13 +102,14 @@ BEGIN
 
 	C1:PROCESS(xbias, xin, yin, swapxy, negx, negy)
 	BEGIN
-		SWAP1: ENTITY swap GENERIC MAP(vsize) PORT MAP();
-		INVERT1: ENTITY invert GENERIC MAP(vsize) PORT MAP();
-		INVERT2: ENTITY invert GENERIC MAP(vsize) PORT MAP();
-		
-		INVERT3: ENTITY invert GENERIC MAP(vsize) PORT MAP();
-		INVERT4: ENTITY invert GENERIC MAP(vsize) PORT MAP();
-		SWAP2: ENTITY swap GENERIC MAP(vsize) PORT MAP();
+		SWAP1: ENTITY swap GENERIC MAP(vsize) PORT MAP( swapxy => c ,xin => , yin =>,  );
+		INVERT1: ENTITY invert GENERIC MAP(vsize) PORT MAP(negx =>c,);
+		INVERT2: ENTITY invert GENERIC MAP(vsize) PORT MAP(negy =>c);
+		DRAW1: ENTITY draw_octant GENERIC MAP(vsize) PORT MAP()
+		INVERT3: ENTITY invert GENERIC MAP(vsize) PORT MAP(negx =>c);
+		INVERT4: ENTITY invert GENERIC MAP(vsize) PORT MAP(negy =>c);
+		SWAP2: ENTITY swap GENERIC MAP(vsize) PORT MAP(swapxy =>c);
+
 	
 		
 	END PROCESS C1;
