@@ -7,7 +7,7 @@ ENTITY invert IS
 	GENERIC(vsize: INTEGER :=12);
 	PORT(	c: IN std_logic;
 			a: IN std_logic_vector(vsize-1 DOWNTO 0);
-			b: OUT std_logic(vsize-1 DOWNTO 0)
+			b: OUT std_logic_vector(vsize-1 DOWNTO 0)
 	);
 END ENTITY invert;
 
@@ -55,7 +55,7 @@ LIBRARY IEEE;
 
 USE IEEE.std_logic_1164.ALL;
 USE IEEE.numeric_std.ALL;
-USE WORK.draw_octant;
+USE WORK.ALL;
 
 ENTITY draw_any_octant IS
 
@@ -79,7 +79,7 @@ ENTITY draw_any_octant IS
   );
   
   PORT(
-    clk, resetx, draw, xbias : IN  std_logic;
+    clk, resetx, draw, xbias,disable : IN  std_logic;
     xin, yin                 : IN  std_logic_vector(vsize-1 DOWNTO 0);
     done                     : OUT std_logic;
     x, y                     : OUT std_logic_vector(vsize-1 DOWNTO 0);
@@ -89,8 +89,8 @@ END ENTITY draw_any_octant;
 
 ARCHITECTURE comb OF draw_any_octant IS
 
-	SIGNAL clk_i,negx_i,negy_i,swapxy_i : std_logic_vector(vsize-1 DOWNTO 0) ;
-	SIGNAL x1,x2,x3,x4,y1,y2,y3,y4 : std_logic(vsize-1 DOWNTO 0);
+	SIGNAL clk_i,negx_i,negy_i,swapxy_i,xbias_i : std_logic ;
+	SIGNAL x1,x2,x3,x4,y1,y2,y3,y4 : std_logic_vector(vsize-1 DOWNTO 0);
 
 BEGIN
 	RD:PROCESS
@@ -101,8 +101,7 @@ BEGIN
 		swapxy_i <= swapxy;
 	END PROCESS RD;
 
-	C1:PROCESS(xbias, xin, yin, swapxy, negx, negy)
-	BEGIN
+
 		SWAP1: ENTITY swap GENERIC MAP(vsize) PORT MAP(
 			c => swapxy , xin => xin, yin =>yin, xout =>x1, yout=>y1 
 			);
@@ -110,11 +109,13 @@ BEGIN
 		INVERTX1: ENTITY invert GENERIC MAP(vsize) PORT MAP(c => negx, a =>x1, b=>x2);
 		INVERTY1: ENTITY invert GENERIC MAP(vsize) PORT MAP(c =>negy, a=>y1, b=>y2);
 		
-		DRAW1: ENTITY draw_octant GENERIC MAP(vsize) PORT MAP( 
+		xbias_i <= xbias XOR swapxy; 
+		
+		DRAW1: ENTITY WORK.draw_octant GENERIC MAP(vsize) PORT MAP( 
 			clk => clk, 
 			resetx=> resetx, 
 			draw=> draw,
-			xbias=> xbias, 
+			xbias=> xbias_i, 
 			disable=> disable, 
 			xin => x2, 
 			yin =>y2, 
@@ -128,10 +129,6 @@ BEGIN
 		SWAP2: ENTITY swap GENERIC MAP(vsize) PORT MAP(
 			c=> swapxy, xin=>x4, yin=>y4, xout=>x, yout=>y
 			);
-
-	
-		
-	END PROCESS C1;
 
 END ARCHITECTURE comb;
 

@@ -1,0 +1,26 @@
+C:/Users/Administrator/Desktop/VHDL/ex2z/ex4_data_pak.vhd {1 {vcom -work work -93 -explicit -check_synthesis C:/Users/Administrator/Desktop/VHDL/ex2z/ex4_data_pak.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Compiling package ex4_data_pak
+
+} {} {}} C:/Users/Administrator/Desktop/VHDL/ex2z/draw_octant.vhd {1 {vcom -work work -93 -explicit -check_synthesis C:/Users/Administrator/Desktop/VHDL/ex2z/draw_octant.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity draw_octant
+-- Compiling architecture comb of draw_octant
+
+} {} {}} C:/Users/Administrator/Desktop/VHDL/ex2z/draw_any_octant_tb_generic.vhd {1 {vcom -work work -93 -explicit -check_synthesis C:/Users/Administrator/Desktop/VHDL/ex2z/draw_any_octant_tb_generic.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package ex4_data_pak
+-- Compiling entity draw_any_octant_tb
+-- Compiling architecture behav of draw_any_octant_tb
+-- Loading entity draw_any_octant
+
+} {} {}}
