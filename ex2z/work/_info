@@ -4,7 +4,7 @@ K3
 cModel Technology
 dC:\Users\Administrator\Desktop\VHDL\ex1
 Edraw_any_octant
-Z0 w1392512915
+Z0 w1392559243
 Z1 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
 Z2 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
 Z3 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
@@ -12,16 +12,16 @@ Z4 dC:\Users\Administrator\Desktop\VHDL\ex2z
 Z5 8C:/Users/Administrator/Desktop/VHDL/ex2z/draw_any_octant.vhd
 Z6 FC:/Users/Administrator/Desktop/VHDL/ex2z/draw_any_octant.vhd
 l0
-L60
+L62
 VKMkQ[mSO4<BiHDW78zWle1
 Z7 OV;C;10.1d;51
 31
-Z8 !s108 1392513067.379000
+Z8 !s108 1392560597.629000
 Z9 !s90 -reportprogress|300|-work|work|-93|-explicit|-check_synthesis|C:/Users/Administrator/Desktop/VHDL/ex2z/draw_any_octant.vhd|
 Z10 !s107 C:/Users/Administrator/Desktop/VHDL/ex2z/draw_any_octant.vhd|
 Z11 o-work work -93 -explicit -check_synthesis -O0
 Z12 tExplicit 1
-!s100 Eakz@kIQcAdncc0b]8?j<0
+!s100 eD00^=N]C06C6GD_4U`l73
 !i10b 1
 Acomb
 Z13 DEx4 work 11 draw_octant 0 22 C[;6HkTc0CRV`CPOQHAAO3
@@ -31,9 +31,9 @@ R1
 R2
 R3
 Z16 DEx4 work 15 draw_any_octant 0 22 KMkQ[mSO4<BiHDW78zWle1
-l95
-L90
-Vhla1bi^Z02H=WV<7o_oP:1
+l97
+L92
+V1g_HA?CMOQ<FZ`ge?5Dc30
 R7
 31
 R8
@@ -41,11 +41,11 @@ R9
 R10
 R11
 R12
-!s100 of1lZE2;TiLT`KdZWWF:U1
+!s100 m@fXF<_QbJAz`jc0_Wk<;1
 !i10b 1
 Edraw_any_octant_tb
-Z17 w1392507028
-Z18 DPx4 work 12 ex4_data_pak 0 22 8U>OF5a7JJg=^bNZ[Feh:0
+Z17 w1392560493
+Z18 DPx4 work 12 ex4_data_pak 0 22 g^i]IzjVHR_^[EB^B2>B91
 R1
 R2
 R3
@@ -57,7 +57,7 @@ L7
 VKB@fdkfSEzWJUOEQ88bO40
 R7
 31
-Z21 !s108 1392513068.693000
+Z21 !s108 1392560617.621000
 Z22 !s90 -reportprogress|300|-work|work|-93|-explicit|-check_synthesis|C:/Users/Administrator/Desktop/VHDL/ex2z/draw_any_octant_tb_generic.vhd|
 Z23 !s107 C:/Users/Administrator/Desktop/VHDL/ex2z/draw_any_octant_tb_generic.vhd|
 R11
@@ -73,7 +73,7 @@ R3
 DEx4 work 18 draw_any_octant_tb 0 22 KB@fdkfSEzWJUOEQ88bO40
 l35
 L10
-VnDB3[[S`CRjSVkd7YZDC80
+VJR9fP7`[=Y:3WiGXZ7[DZ0
 R7
 31
 R21
@@ -81,24 +81,24 @@ R22
 R23
 R11
 R12
-!s100 an_9C_2aE5:?@Q[23INEj0
+!s100 _ORH?@_J^AAH<2L6N1aWd1
 !i10b 1
 Edraw_octant
-R17
+Z24 w1392507028
 R1
 R2
 R3
 R4
-Z24 8C:/Users/Administrator/Desktop/VHDL/ex2z/draw_octant.vhd
-Z25 FC:/Users/Administrator/Desktop/VHDL/ex2z/draw_octant.vhd
+Z25 8C:/Users/Administrator/Desktop/VHDL/ex2z/draw_octant.vhd
+Z26 FC:/Users/Administrator/Desktop/VHDL/ex2z/draw_octant.vhd
 l0
 L10
 VC[;6HkTc0CRV`CPOQHAAO3
 R7
 31
-Z26 !s108 1392513068.815000
-Z27 !s90 -reportprogress|300|-work|work|-93|-explicit|-check_synthesis|C:/Users/Administrator/Desktop/VHDL/ex2z/draw_octant.vhd|
-Z28 !s107 C:/Users/Administrator/Desktop/VHDL/ex2z/draw_octant.vhd|
+Z27 !s108 1392560620.128000
+Z28 !s90 -reportprogress|300|-work|work|-93|-explicit|-check_synthesis|C:/Users/Administrator/Desktop/VHDL/ex2z/draw_octant.vhd|
+Z29 !s107 C:/Users/Administrator/Desktop/VHDL/ex2z/draw_octant.vhd|
 R11
 R12
 !s100 nge@Z5IoKQ=G58dzkAF^`1
@@ -111,34 +111,34 @@ R13
 l56
 L20
 VYi9OmeNjQ9:H`T:miRZCN0
+!s100 c492Ac2]zZB;CkJebodn=1
 R7
 31
-R26
 R27
 R28
+R29
 R11
 R12
-!s100 c492Ac2]zZB;CkJebodn=1
 !i10b 1
 Pex4_data_pak
-R17
+w1392560565
 R4
 8C:/Users/Administrator/Desktop/VHDL/ex2z/ex4_data_pak.vhd
 FC:/Users/Administrator/Desktop/VHDL/ex2z/ex4_data_pak.vhd
 l0
 L2
-V8U>OF5a7JJg=^bNZ[Feh:0
-!s100 LW:J<FG`^J6F;_TI:S[183
+Vg^i]IzjVHR_^[EB^B2>B91
+!s100 :?PbhVK_NhMdmMVglP^[11
 R7
 31
 !i10b 1
-!s108 1392513069.117000
+!s108 1392560620.261000
 !s90 -reportprogress|300|-work|work|-93|-explicit|-check_synthesis|C:/Users/Administrator/Desktop/VHDL/ex2z/ex4_data_pak.vhd|
 !s107 C:/Users/Administrator/Desktop/VHDL/ex2z/ex4_data_pak.vhd|
 R11
 R12
 Einvert
-Z29 w1392512915
+Z30 w1392559243
 R1
 R2
 R3
@@ -175,7 +175,7 @@ R12
 !s100 LndB8EDV4kl@0K0nI?[7h2
 !i10b 1
 Eswap
-R29
+R30
 R1
 R2
 R3
@@ -201,7 +201,7 @@ R3
 R15
 l43
 L42
-VWJ:6C==oQ1W]YlE59QQ6I0
+V8GWohDHB^1Ii[o8@]mVf:3
 R7
 31
 R8
@@ -209,5 +209,5 @@ R9
 R10
 R11
 R12
-!s100 Ym0oeIg91XUhE;>idAhI:1
+!s100 _f8:QbT909QmhWo1Y<o1;0
 !i10b 1

@@ -8,7 +8,7 @@ ENTITY draw_any_octant_tb IS
 END draw_any_octant_tb;
 
 ARCHITECTURE behav OF draw_any_octant_tb IS
-	CONSTANT vsize : NATURAL := 13;
+	CONSTANT vsize : NATURAL := 12;
 
 	SIGNAL clk_gen, clk, resetx_i   : std_logic;
 	SIGNAL draw_i, xbias_i          : std_logic;
