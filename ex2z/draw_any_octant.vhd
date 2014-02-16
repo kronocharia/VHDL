@@ -43,6 +43,8 @@ ARCHITECTURE comb OF swap IS
 BEGIN 
 	C1:PROCESS(c,xin,yin)
 	BEGIN
+		xout <= xin;
+		yout <= yin;
 		IF 	c = '1' THEN
 			xout <= yin;
 			yout <= xin;
@@ -121,13 +123,13 @@ BEGIN
 			yin =>y2, 
 			done => done, 
 			x=>x3, 
-			y=>x4
+			y=>y3
 
 			);
-		INVERTX2: ENTITY invert GENERIC MAP(vsize) PORT MAP(c =>negx, a=>x3, b=>x4 );
-		INVERTY2: ENTITY invert GENERIC MAP(vsize) PORT MAP(c =>negy, a=>y3, b=>y4 );
+		INVERTX2: ENTITY invert GENERIC MAP(vsize) PORT MAP(c =>negx_i, a=>x3, b=>x4 );
+		INVERTY2: ENTITY invert GENERIC MAP(vsize) PORT MAP(c =>negy_i, a=>y3, b=>y4 );
 		SWAP2: ENTITY swap GENERIC MAP(vsize) PORT MAP(
-			c=> swapxy, xin=>x4, yin=>y4, xout=>x, yout=>y
+			c=> swapxy_i, xin=>x4, yin=>y4, xout=>x, yout=>y
 			);
 
 END ARCHITECTURE comb;
