@@ -91,7 +91,7 @@ END ENTITY draw_any_octant;
 
 ARCHITECTURE comb OF draw_any_octant IS
 
-	SIGNAL clk_i,negx_i,negy_i,swapxy_i,xbias_i : std_logic ;
+	SIGNAL negx_i,negy_i,swapxy_i,xbias_i : std_logic ;
 	SIGNAL x1,x2,x3,x4,y1,y2,y3,y4 : std_logic_vector(vsize-1 DOWNTO 0);
 
 BEGIN
@@ -133,4 +133,3 @@ BEGIN
 			);
 
 END ARCHITECTURE comb;
-
