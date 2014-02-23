@@ -12,7 +12,7 @@ ENTITY ram_fsm IS
             addr, data: IN std_logic_vector;
             addr_del, data_del: OUT std_logic_vector
     );
-END ram_fsm;
+
 
 ARCHITECTURE synth OF ram_fsm IS
   TYPE   state_t IS (m3, m2, m1, mx);       --possible states
@@ -30,23 +30,14 @@ BEGIN
             nstate <= mx;
         END IF; 
 
-		vwrite <='0';
-		delay <='0';
-		
         CASE state IS
-            WHEN mx => 	IF start ='1' THEN nstate <= m1; END IF;
-            
-            WHEN m1 => 	IF start ='1' THEN delay <='1'; END IF;
-     					nstate <= m2;    --unconditional transition
-            
-            WHEN m2 => 	IF start ='1' THEN delay <='1'; END IF;
-            			nstate <= m3;    --unconditioanl transition
-            
-            WHEN m3 =>  vwrite <= '1';
-            			IF start = '1' THEN 
+            WHEN mx =>  IF start ='1' THEN nstate <= m1; END IF;
+            WHEN m1 => nstate <= m2;    --unconditional transition
+            WHEN m2 => nstate <= m3;    --unconditioanl transition
+            WHEN m3 =>  IF start = '1' THEN 
                             nstate <= m1;
                         ELSIF start ='0' THEN
-                            nstate <= mx; END IF;
+                            nstate <= mx;
         END CASE;
     END PROCESS STATE_PROC;
 --------------------------------------------------------------------------
@@ -55,7 +46,7 @@ BEGIN
     SS_PROC:                    
     PROCESS
     BEGIN
-        WAIT UNTIL clk'EVENT AND clk = '1';
+        WAIT UNTIL clk'EVENT AND clk = '1'
             state <= nstate;
 
     END PROCESS SS_PROC;
@@ -66,13 +57,19 @@ BEGIN
     DELAY_PROC:
     PROCESS
     BEGIN
-        WAIT UNTIL CLK'EVENT AND clk ='0';
+        WAIT UNTIL CLK'EVENT AND clk ='0'
             addr_del <= addr;
             data_del <= data;
 
     END PROCESS DELAY_PROC;
 
+-------------------------- outputs ---------------------------------------
+    
+    vwrite <= m3;
+
+    delay <= (m1 OR m2) AND start;
 
 
 
 END ARCHITECTURE synth;
+

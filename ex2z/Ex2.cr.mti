@@ -3,11 +3,6 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
 -- Compiling package ex4_data_pak
 
-} {} {}} C:/Users/Administrator/Desktop/VHDL/ex2z/draw_any_octant.vhd {1 {vcom -work work -93 -explicit -check_synthesis C:/Users/Administrator/Desktop/VHDL/ex2z/ex4_data_pak.vhd
-Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
--- Loading package STANDARD
--- Compiling package ex4_data_pak
-
 } {} {}} C:/Users/Administrator/Desktop/VHDL/ex2z/draw_any_octant_tb_generic.vhd {1 {vcom -work work -93 -explicit -check_synthesis C:/Users/Administrator/Desktop/VHDL/ex2z/ex4_data_pak.vhd
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD

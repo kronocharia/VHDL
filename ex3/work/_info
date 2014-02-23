@@ -1,0 +1,116 @@
+m255
+K3
+13
+cModel Technology
+dC:\Users\Administrator\Desktop\VHDL\ex2z
+Eram_fsm
+Z0 w1393172470
+Z1 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z2 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z3 dC:\Users\Administrator\Desktop\VHDL\ex3
+Z4 8C:/Users/Administrator/Desktop/VHDL/ex3/ram_fsm.vhd
+Z5 FC:/Users/Administrator/Desktop/VHDL/ex3/ram_fsm.vhd
+l0
+L6
+V=P;@>SYen`blA5TnkLQK_3
+Z6 OV;C;10.1d;51
+32
+Z7 !s108 1393172474.163000
+Z8 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Administrator/Desktop/VHDL/ex3/ram_fsm.vhd|
+Z9 !s107 C:/Users/Administrator/Desktop/VHDL/ex3/ram_fsm.vhd|
+Z10 o-work work -2002 -explicit -O0
+Z11 tExplicit 1
+!s100 :L3QNm9V<:_[5EaU<lC;_2
+!i10b 1
+Asynth
+R1
+R2
+Z12 DEx4 work 7 ram_fsm 0 22 =P;@>SYen`blA5TnkLQK_3
+l20
+L17
+Vk=haWj;1>A:T4<<PCmZIQ1
+R6
+32
+R7
+R8
+R9
+R10
+R11
+!s100 7;aB8?BRQzY2m5MYbQ1BW0
+!i10b 1
+Eram_fsm_tb
+Z13 w1393170963
+Z14 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+R1
+R2
+R3
+Z15 8C:/Users/Administrator/Desktop/VHDL/ex3/ram_fsm_tb.vhd
+Z16 FC:/Users/Administrator/Desktop/VHDL/ex3/ram_fsm_tb.vhd
+l0
+L7
+VIj`e@gUolg_T2keDM3]QS1
+R6
+32
+Z17 !s108 1393172474.291000
+Z18 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Administrator/Desktop/VHDL/ex3/ram_fsm_tb.vhd|
+Z19 !s107 C:/Users/Administrator/Desktop/VHDL/ex3/ram_fsm_tb.vhd|
+R10
+R11
+!s100 ECDHYI`1KP]QS=jH^zFcD2
+!i10b 1
+Atestbench
+R12
+R14
+R1
+R2
+DEx4 work 10 ram_fsm_tb 0 22 Ij`e@gUolg_T2keDM3]QS1
+l30
+L13
+Vz_OLZgBT9_aYP9OFPO;Xj3
+R6
+32
+R17
+R18
+R19
+R10
+R11
+!s100 d<=672BC?ZYciC5;5j5Ai0
+!i10b 1
+Eram_fsm_wrapper
+R13
+R14
+R1
+R2
+R3
+Z20 8C:/Users/Administrator/Desktop/VHDL/ex3/ram_fsm_wrapper.vhd
+Z21 FC:/Users/Administrator/Desktop/VHDL/ex3/ram_fsm_wrapper.vhd
+l0
+L7
+VQHXX>W=_X[aOjTl@VGVV`0
+!s100 ImE3_e1Z16hlTZnD1FZzE0
+R6
+32
+!i10b 1
+Z22 !s108 1393172474.517000
+Z23 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Administrator/Desktop/VHDL/ex3/ram_fsm_wrapper.vhd|
+Z24 !s107 C:/Users/Administrator/Desktop/VHDL/ex3/ram_fsm_wrapper.vhd|
+R10
+R11
+Awrapper
+R12
+R14
+R1
+R2
+DEx4 work 15 ram_fsm_wrapper 0 22 QHXX>W=_X[aOjTl@VGVV`0
+l24
+L21
+VL8Ji^:hHf7;aI?F1MZ]Tk0
+!s100 7^<d9Jcl2KJ3PDoa]D^Fh2
+R6
+32
+!i10b 1
+R22
+R23
+R24
+R10
+R11
