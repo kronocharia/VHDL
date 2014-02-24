@@ -22,13 +22,11 @@ BEGIN
 ----------------implements the state transition matrix-------------------
 
     STATE_PROC:                  --combinatorial 
-    PROCESS(state, start, reset) 
+    PROCESS(state, start) 
     BEGIN
         nstate <= state;         --default value same as current state
         
-        IF reset = '1' THEN      --reset signal 
-            nstate <= mx;
-        END IF; 
+       
 
 		vwrite <='0';
 		delay <='0';
@@ -57,6 +55,9 @@ BEGIN
     BEGIN
         WAIT UNTIL clk'EVENT AND clk = '1';
             state <= nstate;
+		IF reset = '1' THEN      --reset signal 
+            state <= mx;
+        END IF; 
 
     END PROCESS SS_PROC;
 --------------------------------------------------------------------------
