@@ -21,7 +21,7 @@ Z7 o-work work -93 -explicit -check_synthesis -O0
 Z8 tExplicit 1
 !s100 2`5FRKkBlA:ezG@NY?N^n0
 !i10b 1
-!s108 1393768551.890000
+!s108 1393769467.103000
 !s90 -reportprogress|300|-work|work|-93|-explicit|-check_synthesis|C:/Users/Administrator/Desktop/VHDL/ex4/ex4_data_pak.vhd|
 !s107 C:/Users/Administrator/Desktop/VHDL/ex4/ex4_data_pak.vhd|
 Ppix_cache_pak
@@ -40,7 +40,7 @@ R7
 R8
 !s100 `69D:YFl@jLaNe`3a<oFX2
 !i10b 1
-!s108 1393768552.000000
+!s108 1393769466.912000
 !s90 -reportprogress|300|-work|work|-93|-explicit|-check_synthesis|C:/Users/Administrator/Desktop/VHDL/ex4/pix_cache_pak.vhd|
 !s107 C:/Users/Administrator/Desktop/VHDL/ex4/pix_cache_pak.vhd|
 Ppix_tb_pak
@@ -57,7 +57,7 @@ VVEDdFi>k?89]`m:a91?Bo3
 R6
 31
 b1
-Z11 !s108 1393768552.078000
+Z11 !s108 1393769467.185000
 Z12 !s90 -reportprogress|300|-work|work|-93|-explicit|-check_synthesis|C:/Users/Administrator/Desktop/VHDL/ex4/pix_tb_pak.vhd|
 Z13 !s107 C:/Users/Administrator/Desktop/VHDL/ex4/pix_tb_pak.vhd|
 R7
@@ -82,17 +82,56 @@ R7
 R8
 nbody
 !i10b 1
-Epix_word_cache_tb
-R4
-DPx4 work 12 ex4_data_pak 0 22 ED8LM7jlaCGS4`SoRb9k83
-R14
+Epix_word_cache
+Z15 w1393769461
 R1
-Z15 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+Z16 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
 R2
 R3
 R5
-8C:/Users/Administrator/Desktop/VHDL/ex4/pix_word_cache_tb.vhd
-FC:/Users/Administrator/Desktop/VHDL/ex4/pix_word_cache_tb.vhd
+Z17 8C:/Users/Administrator/Desktop/VHDL/ex4/pix_word_cache.vhd
+Z18 FC:/Users/Administrator/Desktop/VHDL/ex4/pix_word_cache.vhd
+l0
+L9
+VPbkfoR5><[@HaJk2H;>:21
+R6
+31
+Z19 !s108 1393769466.988000
+Z20 !s90 -reportprogress|300|-work|work|-93|-explicit|-check_synthesis|C:/Users/Administrator/Desktop/VHDL/ex4/pix_word_cache.vhd|
+Z21 !s107 C:/Users/Administrator/Desktop/VHDL/ex4/pix_word_cache.vhd|
+R7
+R8
+!s100 fQRTUM4ELSBcV3YV=M8V?1
+!i10b 1
+Apwc
+R1
+R16
+R2
+R3
+Z22 DEx4 work 14 pix_word_cache 0 22 PbkfoR5><[@HaJk2H;>:21
+l31
+L22
+V3kOoZRmM8fndfI3@;b:W30
+R6
+31
+R19
+R20
+R21
+R7
+R8
+!s100 HLcNQR;=EjASfK5<c216Y1
+!i10b 1
+Epix_word_cache_tb
+R4
+Z23 DPx4 work 12 ex4_data_pak 0 22 ED8LM7jlaCGS4`SoRb9k83
+R14
+R1
+R16
+R2
+R3
+R5
+Z24 8C:/Users/Administrator/Desktop/VHDL/ex4/pix_word_cache_tb.vhd
+Z25 FC:/Users/Administrator/Desktop/VHDL/ex4/pix_word_cache_tb.vhd
 l0
 L30
 VnC9fONS3FWH1<C^9m1Mk02
@@ -100,8 +139,29 @@ VnC9fONS3FWH1<C^9m1Mk02
 R6
 31
 !i10b 1
-!s108 1393768552.281000
-!s90 -reportprogress|300|-work|work|-93|-explicit|-check_synthesis|C:/Users/Administrator/Desktop/VHDL/ex4/pix_word_cache_tb.vhd|
-!s107 C:/Users/Administrator/Desktop/VHDL/ex4/pix_word_cache_tb.vhd|
+Z26 !s108 1393769467.321000
+Z27 !s90 -reportprogress|300|-work|work|-93|-explicit|-check_synthesis|C:/Users/Administrator/Desktop/VHDL/ex4/pix_word_cache_tb.vhd|
+Z28 !s107 C:/Users/Administrator/Desktop/VHDL/ex4/pix_word_cache_tb.vhd|
+R7
+R8
+Abehav
+R22
+R23
+R14
+R1
+R16
+R2
+R3
+Z29 DEx4 work 17 pix_word_cache_tb 0 22 nC9fONS3FWH1<C^9m1Mk02
+l92
+L36
+Z30 Vo<1RQzM66W`>45`?AQANK3
+Z31 !s100 1:KZZ<`VWK;5<Ec4LWe]B2
+R6
+31
+!i10b 1
+R26
+R27
+R28
 R7
 R8
