@@ -1,0 +1,107 @@
+m255
+K3
+13
+cModel Technology
+dC:\Users\Administrator\Desktop\VHDL\ex3
+Pex4_data_pak
+Z0 DPx4 work 10 pix_tb_pak 0 22 VEDdFi>k?89]`m:a91?Bo3
+Z1 DPx4 work 13 pix_cache_pak 0 22 FUlAHG]C;kjQIE;L6iCVJ2
+Z2 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z3 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z4 w1393768180
+Z5 dC:\Users\Administrator\Desktop\VHDL\ex4
+8C:/Users/Administrator/Desktop/VHDL/ex4/ex4_data_pak.vhd
+FC:/Users/Administrator/Desktop/VHDL/ex4/ex4_data_pak.vhd
+l0
+L7
+VED8LM7jlaCGS4`SoRb9k83
+Z6 OV;C;10.1d;51
+31
+Z7 o-work work -93 -explicit -check_synthesis -O0
+Z8 tExplicit 1
+!s100 2`5FRKkBlA:ezG@NY?N^n0
+!i10b 1
+!s108 1393768551.890000
+!s90 -reportprogress|300|-work|work|-93|-explicit|-check_synthesis|C:/Users/Administrator/Desktop/VHDL/ex4/ex4_data_pak.vhd|
+!s107 C:/Users/Administrator/Desktop/VHDL/ex4/ex4_data_pak.vhd|
+Ppix_cache_pak
+R2
+R3
+R4
+R5
+8C:/Users/Administrator/Desktop/VHDL/ex4/pix_cache_pak.vhd
+FC:/Users/Administrator/Desktop/VHDL/ex4/pix_cache_pak.vhd
+l0
+L17
+VFUlAHG]C;kjQIE;L6iCVJ2
+R6
+31
+R7
+R8
+!s100 `69D:YFl@jLaNe`3a<oFX2
+!i10b 1
+!s108 1393768552.000000
+!s90 -reportprogress|300|-work|work|-93|-explicit|-check_synthesis|C:/Users/Administrator/Desktop/VHDL/ex4/pix_cache_pak.vhd|
+!s107 C:/Users/Administrator/Desktop/VHDL/ex4/pix_cache_pak.vhd|
+Ppix_tb_pak
+R1
+R2
+R3
+R4
+R5
+Z9 8C:/Users/Administrator/Desktop/VHDL/ex4/pix_tb_pak.vhd
+Z10 FC:/Users/Administrator/Desktop/VHDL/ex4/pix_tb_pak.vhd
+l0
+L5
+VVEDdFi>k?89]`m:a91?Bo3
+R6
+31
+b1
+Z11 !s108 1393768552.078000
+Z12 !s90 -reportprogress|300|-work|work|-93|-explicit|-check_synthesis|C:/Users/Administrator/Desktop/VHDL/ex4/pix_tb_pak.vhd|
+Z13 !s107 C:/Users/Administrator/Desktop/VHDL/ex4/pix_tb_pak.vhd|
+R7
+R8
+!s100 WZ2F[QJa=k?=LGDY[?T0U0
+!i10b 1
+Bbody
+Z14 DPx4 work 10 pix_tb_pak 0 22 VEDdFi>k?89]`m:a91?Bo3
+R1
+R2
+R3
+l0
+L20
+VVCMiEAnD27fY:4Q===N0Y0
+!s100 @^hgT38XfVK17;ARGKHZ?3
+R6
+31
+R11
+R12
+R13
+R7
+R8
+nbody
+!i10b 1
+Epix_word_cache_tb
+R4
+DPx4 work 12 ex4_data_pak 0 22 ED8LM7jlaCGS4`SoRb9k83
+R14
+R1
+Z15 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+R2
+R3
+R5
+8C:/Users/Administrator/Desktop/VHDL/ex4/pix_word_cache_tb.vhd
+FC:/Users/Administrator/Desktop/VHDL/ex4/pix_word_cache_tb.vhd
+l0
+L30
+VnC9fONS3FWH1<C^9m1Mk02
+!s100 IAm8`D6@@]MX@O74Q_7:O2
+R6
+31
+!i10b 1
+!s108 1393768552.281000
+!s90 -reportprogress|300|-work|work|-93|-explicit|-check_synthesis|C:/Users/Administrator/Desktop/VHDL/ex4/pix_word_cache_tb.vhd|
+!s107 C:/Users/Administrator/Desktop/VHDL/ex4/pix_word_cache_tb.vhd|
+R7
+R8

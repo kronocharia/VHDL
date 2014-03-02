@@ -1,0 +1,29 @@
+C:/Users/Administrator/Desktop/VHDL/ex3/ram_fsm_tb.vhd {1 {vcom -work work -2002 -explicit C:/Users/Administrator/Desktop/VHDL/ex3/ram_fsm_tb.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity ram_fsm_tb
+-- Compiling architecture testbench of ram_fsm_tb
+-- Loading entity ram_fsm
+
+} {} {}} C:/Users/Administrator/Desktop/VHDL/ex3/ram_fsm.vhd {1 {vcom -work work -2002 -explicit C:/Users/Administrator/Desktop/VHDL/ex3/ram_fsm.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity ram_fsm
+-- Compiling architecture synth of ram_fsm
+
+} {} {}} C:/Users/Administrator/Desktop/VHDL/ex3/ram_fsm_wrapper.vhd {1 {vcom -work work -2002 -explicit C:/Users/Administrator/Desktop/VHDL/ex3/ram_fsm_wrapper.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity ram_fsm_wrapper
+-- Compiling architecture wrapper of ram_fsm_wrapper
+-- Loading entity ram_fsm
+
+} {} {}}
