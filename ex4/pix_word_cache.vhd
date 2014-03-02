@@ -31,9 +31,11 @@ ARCHITECTURE pwc of pix_word_cache IS
     BEGIN
 
 --------Combinatorial process handling change block in diagram
-        Change: PROCESS(wen_all, dout1, pixopin) 
+        Change: PROCESS(dout1, pixopin) 
         BEGIN
-            IF wen_all = '0' THEN
+            
+			--din1 <= dout1;
+			--IF wen_all = '0' THEN
                 
                 IF pixopin = same THEN
                     din1 <= dout1;
@@ -57,7 +59,9 @@ ARCHITECTURE pwc of pix_word_cache IS
                         WHEN OTHERS => NULL;
                     END CASE;
                 END IF;
-            END IF;
+            --ELSE
+            	--din1 <= dout1;
+            --END IF;
 
         END PROCESS Change;
 
@@ -108,5 +112,4 @@ ARCHITECTURE pwc of pix_word_cache IS
     store <= store_ram;  --write out to main memory
 
     END pwc;
-
 
