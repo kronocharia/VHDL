@@ -1,0 +1,50 @@
+C:/Users/Administrator/Desktop/VHDL/ex4/ex4_data_pak.vhd {1 {vcom -work work -93 -explicit -check_synthesis C:/Users/Administrator/Desktop/VHDL/ex4/ex4_data_pak.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package pix_cache_pak
+-- Loading package pix_tb_pak
+-- Compiling package ex4_data_pak
+
+} {} {}} C:/Users/Administrator/Desktop/VHDL/ex4/pix_tb_pak.vhd {1 {vcom -work work -93 -explicit -check_synthesis C:/Users/Administrator/Desktop/VHDL/ex4/pix_tb_pak.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package pix_cache_pak
+-- Compiling package pix_tb_pak
+-- Compiling package body pix_tb_pak
+-- Loading package pix_tb_pak
+
+} {} {}} C:/Users/Administrator/Desktop/VHDL/ex4/pix_word_cache.vhd {1 {vcom -work work -93 -explicit -check_synthesis C:/Users/Administrator/Desktop/VHDL/ex4/pix_word_cache.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package pix_cache_pak
+-- Compiling entity pix_word_cache
+-- Compiling architecture pwc of pix_word_cache
+
+} {} {}} C:/Users/Administrator/Desktop/VHDL/ex4/pix_cache_pak.vhd {1 {vcom -work work -93 -explicit -check_synthesis C:/Users/Administrator/Desktop/VHDL/ex4/pix_cache_pak.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling package pix_cache_pak
+
+} {} {}} C:/Users/Administrator/Desktop/VHDL/ex4/pix_word_cache_tb.vhd {1 {vcom -work work -93 -explicit -check_synthesis C:/Users/Administrator/Desktop/VHDL/ex4/pix_word_cache_tb.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package pix_cache_pak
+-- Loading package pix_tb_pak
+-- Loading package ex4_data_pak
+-- Compiling entity pix_word_cache_tb
+-- Compiling architecture behav of pix_word_cache_tb
+-- Loading entity pix_word_cache
+
+} {} {}}

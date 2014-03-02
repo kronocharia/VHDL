@@ -19,15 +19,12 @@ ENTITY pix_word_cache IS
 
 END pix_word_cache;
 
-ARCHITECTURE pwc of pix_word_cache IS:
+ARCHITECTURE pwc of pix_word_cache IS
 
 ---------------Internal Wires--------------------
 
     SIGNAL din1, dout1      : pixop_t;
     SIGNAL store_ram        : store_t;
-    SIGNAL wen_all, wen1    : std_logic;
-    SIGNAL addr1            : std_logic_vector(3 DOWNTO 0);
-
 
 ---------------Behavioural-------------------
 
@@ -76,24 +73,28 @@ ARCHITECTURE pwc of pix_word_cache IS:
         BEGIN
             WAIT UNTIL clk'EVENT AND clk='1';
             
-            IF wen_all ='1' THEN
-                store_ram <= (OTHERS => same);
+            IF wen_all ='1' THEN 
+              store_ram <= (OTHERS => same);
             END IF;
-
-            IF pw = '1' THEN
-                store_ram(to_integer(unsigned(pixnum))) <= pixopin;
+            
+            IF pw = '1' AND wen_all = '1' THEN
+              store_ram(to_integer(unsigned(pixnum))) <= pixopin;
+            END IF;
+            
+            IF pw = '1' AND wen_all = '0' THEN
+              store_ram(to_integer(unsigned(pixnum))) <= din1;
             END IF;
 
             IF reset = '1' THEN --synchr reset
-                store_ram <= (OTHERS => same);
+              store_ram <= (OTHERS => same);
             END IF;
-
+            
         END PROCESS PWRITE;
 
 --------Computing is_same output----------------------
         ALL_SAME: PROCESS(store_ram)
         BEGIN
-            is_same = '1'; --default case
+            is_same <= '1'; --default case
             
             FOR i IN store_ram'RANGE LOOP   --if any of them arent, set to 0
                 IF store_ram(i) /= same THEN 

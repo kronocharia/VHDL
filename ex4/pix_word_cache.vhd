@@ -73,18 +73,24 @@ ARCHITECTURE pwc of pix_word_cache IS
         BEGIN
             WAIT UNTIL clk'EVENT AND clk='1';
             
-            IF wen_all ='1' THEN
-                store_ram <= (OTHERS => same);
+            IF wen_all ='1' THEN 
+              store_ram <= (OTHERS => same);
             END IF;
-
-            IF pw = '1' THEN
-                store_ram(to_integer(unsigned(pixnum))) <= pixopin;
+            
+            IF pw = '1' AND wen_all = '1' THEN --override the pixnum value if pw =1
+              store_ram(to_integer(unsigned(pixnum))) <= pixopin;
+            END IF;
+            
+            
+            
+            IF pw = '1' AND wen_all = '0' THEN --wen-all = 0
+              store_ram(to_integer(unsigned(pixnum))) <= din1;
             END IF;
 
             IF reset = '1' THEN --synchr reset
-                store_ram <= (OTHERS => same);
+              store_ram <= (OTHERS => same);
             END IF;
-
+            
         END PROCESS PWRITE;
 
 --------Computing is_same output----------------------
