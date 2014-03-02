@@ -60,12 +60,9 @@ ARCHITECTURE pwc of pix_word_cache IS
 
         END PROCESS Change;
 
---------Combinatorial ram read process for pix_word_cache------------
-        PREAD: PROCESS(pixnum,store_ram)
-        BEGIN
-            dout1 <= store_ram(to_integer(unsigned(pixnum))); --access ram location pixnum
-        END PROCESS PREAD;
+--------Combinatorial ram read for pix_word_cache------------
 
+        dout1 <= store_ram(to_integer(unsigned(pixnum))); --access ram location pixnum
 
 --------Clocked ram write process for pix_word_cache-------------
         PWRITE: PROCESS
