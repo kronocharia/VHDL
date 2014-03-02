@@ -64,7 +64,7 @@ ARCHITECTURE pwc of pix_word_cache IS
 --------Combinatorial ram read process for pix_word_cache------------
         PREAD: PROCESS(pixnum,store_ram)
         BEGIN
-            dout1 <= store_ram(to_integer(unsigned(pixnum))); -- access ram location pixnum
+            dout1 <= store_ram(to_integer(unsigned(pixnum))); --access ram location pixnum
         END PROCESS PREAD;
 
 
@@ -72,22 +72,25 @@ ARCHITECTURE pwc of pix_word_cache IS
         PWRITE: PROCESS
         BEGIN
             WAIT UNTIL clk'EVENT AND clk='1';
-            
+
+            -----wen_all psuedo reset
             IF wen_all ='1' THEN 
               store_ram <= (OTHERS => same);
             END IF;
             
-            IF pw = '1' AND wen_all = '1' THEN --override the pixnum value if pw =1
+            ----override the pixnum addr location if pw =1
+            IF pw = '1' AND wen_all = '1' THEN 
               store_ram(to_integer(unsigned(pixnum))) <= pixopin;
             END IF;
             
             
-            
-            IF pw = '1' AND wen_all = '0' THEN --wen-all = 0
+            ------single write
+            IF pw = '1' AND wen_all = '0' THEN 
               store_ram(to_integer(unsigned(pixnum))) <= din1;
             END IF;
 
-            IF reset = '1' THEN --synchr reset
+            -----synchr reset
+            IF reset = '1' THEN
               store_ram <= (OTHERS => same);
             END IF;
             
