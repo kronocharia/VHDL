@@ -73,25 +73,20 @@ ARCHITECTURE pwc of pix_word_cache IS
         BEGIN
             WAIT UNTIL clk'EVENT AND clk='1';
 
-            -----wen_all psuedo reset
-            IF wen_all ='1' THEN 
+            -----wen_all or synch reset
+            IF wen_all ='1' OR reset='1' THEN 
               store_ram <= (OTHERS => same);
             END IF;
             
-            ----override the pixnum addr location if pw =1
-            IF pw = '1' AND wen_all = '1' THEN 
+            --if not a reset, verride the pixnum addr location if pw =1
+            IF pw = '1' AND wen_all = '1' AND reset ='0' THEN 
               store_ram(to_integer(unsigned(pixnum))) <= pixopin;
             END IF;
             
             
-            ------single write
-            IF pw = '1' AND wen_all = '0' THEN 
+            --if not a reset, single write 
+            IF pw = '1' AND wen_all = '0' AND reset ='0' THEN 
               store_ram(to_integer(unsigned(pixnum))) <= din1;
-            END IF;
-
-            -----synchr reset
-            IF reset = '1' THEN
-              store_ram <= (OTHERS => same);
             END IF;
             
         END PROCESS PWRITE;
