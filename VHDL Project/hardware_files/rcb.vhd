@@ -2,8 +2,9 @@ LIBRARY ieee;
 USE IEEE.std_logic_1164.ALL;
 USE IEEE.numeric_std.ALL;
 USE work.project_pack.ALL;
-USE WORK.ram_fsm.ALL;
-USE WORK.pix_word_cache.ALL;
+USE WORK.ram_fsm;
+USE WORK.pix_word_cache;
+USE WORK.pix_cache_pak.ALL;
 
 ENTITY rcb IS
 	GENERIC(vsize : INTEGER := 6);
@@ -69,9 +70,6 @@ ram_state_machine: ENTITY WORK.ram_fsm PORT MAP(
 	--output std_logc_vector
 	addr_del => ram_addr_del,
 	data_del => ram_data_del
-
-
-
 	);
 
 px_cache: ENTITY WORK.pix_word_cache PORT MAP(
@@ -96,6 +94,12 @@ px_cache: ENTITY WORK.pix_word_cache PORT MAP(
 	is_same => pxcache_is_same
 
 	);
+
+
+
+
+
+
 
 
 
