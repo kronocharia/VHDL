@@ -43,12 +43,80 @@ ARCHITECTURE rtl1 OF rcb IS
 	SIGNAL pxcache_wen_all, pxcache_reset, pxcache_pw 			: std_logic;
 	SIGNAL pxcache_is_same										: std_logic;
 	SIGNAL pxcache_pixopin 										: pixop_t;
-	SIGNAL pxcache_pixnum										: std_logic_vector(3 DOWNTO 0)
+	SIGNAL pxcache_pixnum										: std_logic_vector(3 DOWNTO 0);
 	SIGNAL pxcache_store										: store_t;
 
+--
+--VSIZE is 6 ish...
+
+	SIGNAL curr_vram_word										: std_logic_vector(15 DOWNTO 0);
 
 
 BEGIN
+
+
+-- return the RamWord address as a 8 bit vector
+FUNCTION getRamWord( x : std_logic_vector(vsize-1 DOWNTO 0); y :std_logic_vector(vsize-1 DOWNTO 0)) RETURN std_logic_vector IS
+  
+  VARIABLE xVal, yVal		: integer;
+  VARIABLE wordAddress		: std_logic_vector(7 DOWNTO 0);
+BEGIN
+	
+	xVal := to_integer(x(VSIZE-1 DOWNTO 2));
+	yVal := to_integer(y(VSIZE-1 DOWNTO 2));
+
+	wordAddress := to_unsigned(xVal+ 16*yVal);
+
+	RETURN wordAddress;
+END;
+
+-- return the ramBit addr as a 4bit address vector
+FUNCTION getRamBit(  x : std_logic_vector(vsize-1 DOWNTO 0); y :std_logic_vector(vsize-1 DOWNTO 0)) RETURN std_logic_vector IS
+  
+  VARIABLE xVal, yVal	: integer
+  VARIABLE bitAddress 	: std_logic_vector(3 DOWNTO 0)
+
+BEGIN
+	
+	xVal := to_integer(x(1 DOWNTO 0));
+	yVal := to_integer(y(1 DOWNTO 0));
+
+	wordAddress := to_unsigned(xVal + 4*yVal);
+
+	RETURN bitAddress;
+END;
+
+
+
+
+--get new command
+--if start cmd then... otherwise loop and wait for start
+--after n waits, write cache to memory
+
+--check if in cache range
+
+if ( curr_vram_word != getRamWord(dbb_bus.X, dbb_bus.Y) ) THEN
+	--flush current contents into memory
+		--pass curr_vram word to vaddr
+		--pass current cache content to vdin
+		--make vwrite high
+
+	--pull new word from memory to cache
+		--getRamWord(dbb...) to vaddr
+		--vdout to pxcache
+		--read
+
+--feed in the addr to write to the cache
+pxcache_pixnum <= getRamBit(dbb_bus.X, dbb_bus.Y);
+
+--write the new location as required
+--if draw, then single pixel
+--if clear then a massive square paint from current pen loc to specified location
+
+
+
+
+
 
 
 ram_state_machine: ENTITY WORK.ram_fsm PORT MAP(
@@ -94,8 +162,6 @@ px_cache: ENTITY WORK.pix_word_cache PORT MAP(
 	is_same => pxcache_is_same
 
 	);
-
-
 
 
 
