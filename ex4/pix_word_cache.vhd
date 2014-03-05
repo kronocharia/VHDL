@@ -36,17 +36,14 @@ ARCHITECTURE pwc of pix_word_cache IS
  
 			IF pixopin = same THEN
 				din1 <= dout1;
-			END IF;
 
-			IF pixopin = black THEN
+			ELSIF pixopin = black THEN
 				din1 <= black;
-			END IF;
 
-			IF pixopin = white THEN
+			ELSIF pixopin = white THEN
 				din1 <= white;
-			END IF;
 
-			IF pixopin = invert THEN
+			ELSIF pixopin = invert THEN
 
 				CASE dout1 IS
 					WHEN same   => din1 <= invert;
@@ -54,7 +51,10 @@ ARCHITECTURE pwc of pix_word_cache IS
 					WHEN white  => din1 <= black;
 					WHEN invert => din1 <= same;
 					WHEN OTHERS => NULL;
-				END CASE;
+						END CASE;
+			ELSE
+				null;
+				
 			END IF;
 
 
