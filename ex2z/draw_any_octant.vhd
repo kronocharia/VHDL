@@ -114,7 +114,7 @@ BEGIN
 		xbias_i <= xbias XOR swapxy; 
 		
 		DRAW1: ENTITY WORK.draw_octant GENERIC MAP(vsize) PORT MAP( 
-			clk => clk, 
+			clk => clk, 				-- lhs  draw1 port => rhs is external signal connecting
 			resetx=> resetx, 
 			draw=> draw,
 			xbias=> xbias_i, 
