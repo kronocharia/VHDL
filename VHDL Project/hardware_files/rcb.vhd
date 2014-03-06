@@ -2,9 +2,10 @@ LIBRARY ieee;
 USE IEEE.std_logic_1164.ALL;
 USE IEEE.numeric_std.ALL;
 USE work.project_pack.ALL;
+USE WORK.pix_cache_pak.ALL;
+USE WORK.helper_funcs.ALL
 USE WORK.ram_fsm;
 USE WORK.pix_word_cache;
-USE WORK.pix_cache_pak.ALL;
 
 ENTITY rcb IS
 	GENERIC(vsize : INTEGER := 6);
@@ -51,40 +52,13 @@ ARCHITECTURE rtl1 OF rcb IS
 
 	SIGNAL curr_vram_word										: std_logic_vector(15 DOWNTO 0);
 
+--RCB state machine signals
+	TYPE state_type IS (s_idle, s_draw, s_clear);
+	SIGNAL state, next_state									: state_type;
+	SIGNAL idle_write 											: std_logic;
 
 BEGIN
 
-
--- return the RamWord address as a 8 bit vector
-FUNCTION getRamWord( x : std_logic_vector(vsize-1 DOWNTO 0); y :std_logic_vector(vsize-1 DOWNTO 0)) RETURN std_logic_vector IS
-  
-  VARIABLE xVal, yVal		: integer;
-  VARIABLE wordAddress		: std_logic_vector(7 DOWNTO 0);
-BEGIN
-	
-	xVal := to_integer(x(VSIZE-1 DOWNTO 2));
-	yVal := to_integer(y(VSIZE-1 DOWNTO 2));
-
-	wordAddress := to_unsigned(xVal+ 16*yVal);
-
-	RETURN wordAddress;
-END;
-
--- return the ramBit addr as a 4bit address vector
-FUNCTION getRamBit(  x : std_logic_vector(vsize-1 DOWNTO 0); y :std_logic_vector(vsize-1 DOWNTO 0)) RETURN std_logic_vector IS
-  
-  VARIABLE xVal, yVal	: integer
-  VARIABLE bitAddress 	: std_logic_vector(3 DOWNTO 0)
-
-BEGIN
-	
-	xVal := to_integer(x(1 DOWNTO 0));
-	yVal := to_integer(y(1 DOWNTO 0));
-
-	wordAddress := to_unsigned(xVal + 4*yVal);
-
-	RETURN bitAddress;
-END;
 
 
 
@@ -115,10 +89,71 @@ pxcache_pixnum <= getRamBit(dbb_bus.X, dbb_bus.Y);
 
 
 
+---------------------state transition matrix-----------------------
 
+state_transition: PROCESS(state, dbb.start_cmd)	--combinatorial
+BEGIN
 
+	VARIABLE idleCounter : INTEGER := 0; --idling loop counter to flush cache
 
+	next_state <= state; 	--default to current state
 
+	--default output conditions
+	idle_Write = '0'
+
+	--transitions
+	CASE state IS
+		WHEN s_idle => 	IF (dbb_bus.start_cmd) THEN 
+							--instruction decode
+							
+							-- RCB CMD
+							-- 000 move
+							-- 001 draw white			'-01' if white
+							-- 010 draw black			'-10' if black
+							-- 011 draw invert			'-11' if invert
+							-- 100 unused				'0--' if draw
+							-- 101 clear white			'1--' if clear
+							-- 110 clear black			'000' if move
+							-- 111 clear invert			
+
+							IF (dbb_bus.rcb_cmd(2) = '0') THEN --draw command issued (or move)
+								next_state <= s_draw;
+							
+							ELSIF (dbb_bus.rcb_cmd(2) = '1') THEN --clear command issued
+								next_state <= s_clear;
+
+							END IF;
+
+						ELSIF (idleCounter = 10) THEN
+							idle_write <= '1'
+							--writeout the cache
+							--probably no change so can use same?
+							--set wen_all to 1
+							--set pw to 0
+							next_state <= s_idle;
+						;
+
+						ELSIF THEN
+							--increment loop counter
+							idleCounter := idleCounter + 1;
+							next_state <= s_idle;
+
+						END IF;
+
+		WHEN s_draw => IF THEN; END IF;
+
+		WHEN s_clear => IF THEN; END IF;
+
+	END CASE;
+
+	--register storing current word to detect if out of range
+	current_word_register: PROCESS 
+	BEGIN
+		WAIT UNTIL clk'EVENT AND clk ='1';
+		curr_vram_word <= ram_addr; --join this to one of the addresses
+	END PROCESS mem_word_register;			
+
+---------------------------- structural -----------------------------------------
 ram_state_machine: ENTITY WORK.ram_fsm PORT MAP(
 
 	--inputs std_logic 	  "entity port => external signal"
@@ -164,7 +199,11 @@ px_cache: ENTITY WORK.pix_word_cache PORT MAP(
 	);
 
 
+vaddr <= ram_addr; --joining external ram to the ram interface fsm
 
+
+vdin  <= pxcache_store; --writing out to memory
+--new_pxcache_store <= vdout; -- read in new memory 
 
 
 
