@@ -3,12 +3,13 @@ USE IEEE.std_logic_1164.ALL;
 USE IEEE.numeric_std.ALL;
 USE work.project_pack.ALL;
 USE WORK.pix_cache_pak.ALL;
-USE WORK.helper_funcs.ALL
+USE WORK.helper_funcs.ALL;
 USE WORK.ram_fsm;
 USE WORK.pix_word_cache;
 
 ENTITY rcb IS
-	GENERIC(vsize : INTEGER := 6, N: INTEGER := 10);
+	GENERIC(	vsize : INTEGER := 6;
+			 	N: INTEGER := 10);
 	PORT(
 		clk          : IN  std_logic;
 		reset        : IN  std_logic;
@@ -38,7 +39,8 @@ ARCHITECTURE rtl1 OF rcb IS
 
 --For interfacing with ram block
     SIGNAL ram_start, ram_delay, ram_vwrite						: std_logic;
-    SIGNAL ram_addr, ram_data, ram_addr_del, ram_data_del		: std_logic_vector;
+    SIGNAL ram_addr, ram_addr_del								: std_logic_vector(7 DOWNTO 0);
+    SIGNAL ram_data, ram_data_del								: std_logic_vector(15 DOWNTO 0);
 
 --For interfacing with pixel cache
 	SIGNAL pxcache_wen_all, pxcache_reset, pxcache_pw 			: std_logic;
@@ -50,7 +52,6 @@ ARCHITECTURE rtl1 OF rcb IS
 --
 --VSIZE is 6 ish...
 
-	SIGNAL curr_vram_word										: std_logic_vector(15 DOWNTO 0);
 
 --RCB state machine signals
 	TYPE state_type IS (s_error,s_idle, s_draw, s_clear);
@@ -69,7 +70,7 @@ BEGIN
 
 --check if in cache range
 
-if ( curr_vram_word != getRamWord(dbb_bus.X, dbb_bus.Y) ) THEN
+--if ( curr_vram_word != getRamWord(dbb_bus.X, dbb_bus.Y) ) THEN
 	--flush current contents into memory
 		--pass curr_vram word to vaddr
 		--pass current cache content to vdin
@@ -81,7 +82,7 @@ if ( curr_vram_word != getRamWord(dbb_bus.X, dbb_bus.Y) ) THEN
 		--read
 
 --feed in the addr to write to the cache
-pxcache_pixnum <= getRamBit(dbb_bus.X, dbb_bus.Y);
+--pxcache_pixnum <= getRamBit(dbb_bus.X, dbb_bus.Y);
 
 --write the new location as required
 --if draw, then single pixel
@@ -89,21 +90,22 @@ pxcache_pixnum <= getRamBit(dbb_bus.X, dbb_bus.Y);
 
 
 
----------------------state transition matrix-----------------------
+---------------------state transition matrix----------------------- 
 
-	state_transition: PROCESS(state, dbb.start_cmd)	--combinatorial
+	state_transition: PROCESS(state, dbb_bus.startcmd)	--combinatorial
+	VARIABLE idleCounter : INTEGER := 0; --idling loop counter to flush cache
+	
 	BEGIN
 
-		VARIABLE idleCounter : INTEGER := 0; --idling loop counter to flush cache
-
+	
 		next_state <= state; 	--default to current state
 
 		--default output conditions
-		idle_Write = '0'
+		idle_Write <= '0';
 
 		--transitions
 		CASE state IS
-			WHEN s_idle => 	IF (dbb_bus.start_cmd) THEN 
+			WHEN s_idle => 	IF (dbb_bus.startcmd) THEN 
 								--instruction decode
 								
 								-- RCB CMD
@@ -128,15 +130,15 @@ pxcache_pixnum <= getRamBit(dbb_bus.X, dbb_bus.Y);
 								END IF;
 
 							ELSIF (idleCounter = N) THEN
-								idle_write <= '1'
+								idle_write <= '1';
 								--writeout the cache
 								--probably no change so can use same?
 								--set wen_all to 1
 								--set pw to 0
 								next_state <= s_idle;
-							;
+							
 
-							ELSIF (dbb_bus.start_cmd ='0')
+							ELSIF (dbb_bus.startcmd ='0') THEN
 								--increment loop counter
 								idleCounter := idleCounter + 1;
 								next_state <= s_idle;
@@ -186,25 +188,25 @@ pxcache_pixnum <= getRamBit(dbb_bus.X, dbb_bus.Y);
 	current_word_register: PROCESS 
 	BEGIN
 		WAIT UNTIL clk'EVENT AND clk ='1';
-		IF (change_curr_word) --enable for register
+		IF (change_curr_word='1') THEN --enable for register
 			curr_vram_word <= vram_waddr; --join this to one of the addresses
 		END IF;
-	END PROCESS mem_word_register;		
+	END PROCESS current_word_register;		
 ------------------------------------------------------------------------------
 
 	draw_px: PROCESS(state, draw_flag, move_flag)
 	BEGIN
 		pxcache_pw <='1';	--enable the px cache
-		vram_waddr <= getRamWord(dbb_bus.X, dbb_bus.Y) 
+		vram_waddr <= getRamWord(dbb_bus.X, dbb_bus.Y); 
 
 		IF (unsigned(vram_waddr) = unsigned(curr_vram_word)) THEN
 			--cachehit
-			
+			null;
 		ELSE 
 			--do ram flush IF vram not busy and update curr_addr register witn en
 			--wen_all =1 , pw=1, move contents into second register
-
-
+		END IF;
+	END PROCESS draw_px;
 ---------------------------- structural -----------------------------------------
 ram_state_machine: ENTITY WORK.ram_fsm PORT MAP(
 
@@ -254,10 +256,10 @@ px_cache: ENTITY WORK.pix_word_cache PORT MAP(
 vaddr <= ram_addr; --joining external ram to the ram interface fsm
 
 
-vdin  <= pxcache_store; --writing out to memory
+
 --new_pxcache_store <= vdout; -- read in new memory 
 
-
+dbb_rcbclear <= '0';
 
 
 END rtl1;      
