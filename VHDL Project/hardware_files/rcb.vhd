@@ -53,15 +53,15 @@ ARCHITECTURE rtl1 OF rcb IS
 	SIGNAL curr_vram_word										: std_logic_vector(15 DOWNTO 0);
 
 --RCB state machine signals
-	TYPE state_type IS (s_idle, s_draw, s_clear);
+	TYPE state_type IS (s_error,s_idle, s_draw, s_clear);
 	SIGNAL state, next_state									: state_type;
-	SIGNAL idle_write 											: std_logic;
+	SIGNAL idle_write,draw_flag,move_flag						: std_logic;
+
+--draw_px process signals
+	SIGNAL vram_waddr,curr_vram_word							: std_logic_vector(7 DOWNTO 0);
+	SIGNAL change_curr_word										: std_logic;
 
 BEGIN
-
-
-
-
 
 --get new command
 --if start cmd then... otherwise loop and wait for start
@@ -91,68 +91,119 @@ pxcache_pixnum <= getRamBit(dbb_bus.X, dbb_bus.Y);
 
 ---------------------state transition matrix-----------------------
 
-state_transition: PROCESS(state, dbb.start_cmd)	--combinatorial
-BEGIN
+	state_transition: PROCESS(state, dbb.start_cmd)	--combinatorial
+	BEGIN
 
-	VARIABLE idleCounter : INTEGER := 0; --idling loop counter to flush cache
+		VARIABLE idleCounter : INTEGER := 0; --idling loop counter to flush cache
 
-	next_state <= state; 	--default to current state
+		next_state <= state; 	--default to current state
 
-	--default output conditions
-	idle_Write = '0'
+		--default output conditions
+		idle_Write = '0'
 
-	--transitions
-	CASE state IS
-		WHEN s_idle => 	IF (dbb_bus.start_cmd) THEN 
-							--instruction decode
-							
-							-- RCB CMD
-							-- 000 move
-							-- 001 draw white			'-01' if white
-							-- 010 draw black			'-10' if black
-							-- 011 draw invert			'-11' if invert
-							-- 100 unused				'0--' if draw
-							-- 101 clear white			'1--' if clear
-							-- 110 clear black			'000' if move
-							-- 111 clear invert			
+		--transitions
+		CASE state IS
+			WHEN s_idle => 	IF (dbb_bus.start_cmd) THEN 
+								--instruction decode
+								
+								-- RCB CMD
+								-- 000 move
+								-- 001 draw white			'-01' if white
+								-- 010 draw black			'-10' if black
+								-- 011 draw invert			'-11' if invert
+								-- 100 unused				'0--' if draw
+								-- 101 clear white			'1--' if clear
+								-- 110 clear black			'000' if move
+								-- 111 clear invert			
 
-							IF (dbb_bus.rcb_cmd(2) = '0') THEN --draw command issued (or move)
-								next_state <= s_draw;
-							
-							ELSIF (dbb_bus.rcb_cmd(2) = '1') THEN --clear command issued
-								next_state <= s_clear;
+								IF (dbb_bus.rcb_cmd(2) = '0') THEN --draw command issued (or move)
+									next_state <= s_draw;
+								
+								ELSIF (dbb_bus.rcb_cmd(2) = '1') THEN --clear command issued
+									next_state <= s_clear;
+
+								ELSE
+									next_state <= s_error;
+									
+								END IF;
+
+							ELSIF (idleCounter = N) THEN
+								idle_write <= '1'
+								--writeout the cache
+								--probably no change so can use same?
+								--set wen_all to 1
+								--set pw to 0
+								next_state <= s_idle;
+							;
+
+							ELSIF (dbb_bus.start_cmd ='0')
+								--increment loop counter
+								idleCounter := idleCounter + 1;
+								next_state <= s_idle;
+
+							ELSE 
+								next_state <= s_error;
 
 							END IF;
 
-						ELSIF (idleCounter = N) THEN
-							idle_write <= '1'
-							--writeout the cache
-							--probably no change so can use same?
-							--set wen_all to 1
-							--set pw to 0
-							next_state <= s_idle;
-						;
+			WHEN s_draw =>  IF (dbb_bus.rcb_cmd = "000") THEN
+								move_flag <='1';
+						    ELSE
+						    	draw_flag <='1'; 	
+							END IF;
 
-						ELSIF THEN
-							--increment loop counter
-							idleCounter := idleCounter + 1;
-							next_state <= s_idle;
+							IF (draw_flag='1') THEN   --while drawing stay in draw state
+								next_state <= s_draw;
 
-						END IF;
+							ELSIF (draw_flag='0') THEN --if finished draw go to idle state
+								next_state <= s_idle;
+							
+							ELSE
+								next_state <= s_error;
+							END IF;
 
-		WHEN s_draw => IF THEN; END IF;
 
-		
-		WHEN s_clear => next_state <=s_idle; --to be implemented later
+			
+			WHEN s_clear => next_state <=s_idle; --to be implemented later
 
-	END CASE;
+			WHEN s_error => next_state <= s_error; --reset moves state to idle
 
-	--register storing current word to detect if out of range
+		END CASE;
+	END PROCESS state_transition;
+--------------------------------------------------------------------------
+----------------------------state register--------------------------------
+	state_reg: PROCESS
+	BEGIN
+		WAIT UNTIL clk'EVENT AND clk = '1';
+			state <= next_state;
+		IF reset = '1' THEN
+			state <= s_idle;
+		END IF;
+	END PROCESS state_reg;
+-----------------------------------------------------------------------
+
+-------register storing current word to detect if out of range--------------
 	current_word_register: PROCESS 
 	BEGIN
 		WAIT UNTIL clk'EVENT AND clk ='1';
-		curr_vram_word <= ram_addr; --join this to one of the addresses
-	END PROCESS mem_word_register;			
+		IF (change_curr_word) --enable for register
+			curr_vram_word <= vram_waddr; --join this to one of the addresses
+		END IF;
+	END PROCESS mem_word_register;		
+------------------------------------------------------------------------------
+
+	draw_px: PROCESS(state, draw_flag, move_flag)
+	BEGIN
+		pxcache_pw <='1';	--enable the px cache
+		vram_waddr <= getRamWord(dbb_bus.X, dbb_bus.Y) 
+
+		IF (unsigned(vram_waddr) = unsigned(curr_vram_word)) THEN
+			--cachehit
+			
+		ELSE 
+			--do ram flush IF vram not busy and update curr_addr register witn en
+			--wen_all =1 , pw=1, move contents into second register
+
 
 ---------------------------- structural -----------------------------------------
 ram_state_machine: ENTITY WORK.ram_fsm PORT MAP(
