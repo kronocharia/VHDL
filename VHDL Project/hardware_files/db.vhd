@@ -130,13 +130,12 @@ begin
     state <= nstate;
   end process db_fsm_clocked;
   
-  db_fsm_comb: process(state, command, dav, dao_done, dbb_delaycmd) -- driven list: nstate, db_finish, hdb_busy, dao_draw, dao_reset
+  db_fsm_comb: process(state, command, dav, dao_done, dbb_delaycmd) -- drives nstate, hdb_busy, dao_draw, dao_reset
   begin
     nstate <= state; --default, stay in current state
     case state is
       when idle =>
         -- outputs for idle state
-        db_finish <= '1';
         hdb_busy <= '0';
         dao_draw <= '0';
         dao_reset <= '0';
@@ -152,7 +151,6 @@ begin
         end if;        
       when draw_reset =>
         --outputs for draw_reset state
-        db_finish <= '0';
         hdb_busy <= '1';
         dao_draw <= '0';
         dao_reset <= '1';
@@ -160,7 +158,6 @@ begin
         nstate <= draw_start;
       when draw_start =>
         --outputs for draw_start state
-        db_finish <= '0';
         hdb_busy <= '1';
         dao_draw <= '1';
         dao_reset <= '0';
@@ -168,7 +165,6 @@ begin
         nstate <= drawing;
       when drawing =>
         --outputs for drawing state
-        db_finish <= '0';
         hdb_busy <= '1';
         dao_draw <= '0';
         dao_reset <= '0';        
@@ -178,7 +174,6 @@ begin
         end if;
       when clear_screen =>
         --outputs for clear_screen state
-        db_finish <= '0';
         hdb_busy <= '1';
         dao_draw <= '0';
         dao_reset <= '0';
@@ -188,7 +183,6 @@ begin
         end if;
       when move_pen =>
         --outputs for move_pen state
-        db_finish <= '0';
         hdb_busy <= '1';
         dao_draw <= '0';
         dao_reset <= '0';
@@ -245,4 +239,10 @@ begin
       when others => dbb_bus.rcb_cmd <= "100"; -- invalid command
     end case;
   end process send_rcb_inputs;
+
+  finished: process(state, dav) -- drives db_finish
+    if state = idle and dav = '0' then db_finish = '1';
+    else db_finish = '0';
+    end if;
+  end process finished;
 end rtl;      
