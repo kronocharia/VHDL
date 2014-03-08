@@ -56,11 +56,15 @@ ARCHITECTURE rtl1 OF rcb IS
 --RCB state machine signals
 	TYPE state_type IS (s_error,s_idle, s_draw, s_clear);
 	SIGNAL state, next_state									: state_type;
-	SIGNAL idle_write,draw_flag,move_flag						: std_logic;
+	SIGNAL idle_write,draw_trig,move_trig						: std_logic;
+	SIGNAL draw_done, move_done									: std_logic;
 
 --draw_px process signals
 	SIGNAL vram_waddr,curr_vram_word							: std_logic_vector(7 DOWNTO 0);
 	SIGNAL change_curr_word										: std_logic;
+
+--trigger the cache flush
+	SIGNAL flush_trig,flush_done								: std_logic;
 
 BEGIN
 
@@ -105,9 +109,9 @@ BEGIN
 
 		--transitions
 		CASE state IS
-			WHEN s_idle => 	IF (dbb_bus.startcmd) THEN 
+			WHEN s_idle => 	IF (dbb_bus.startcmd='1') THEN 
 								--instruction decode
-								
+												
 								-- RCB CMD
 								-- 000 move
 								-- 001 draw white			'-01' if white
@@ -145,23 +149,25 @@ BEGIN
 
 							ELSE 
 								next_state <= s_error;
+								assert false report "ERROR in rcb, state_transition - when s_idle ";
 
 							END IF;
 
 			WHEN s_draw =>  IF (dbb_bus.rcb_cmd = "000") THEN
-								move_flag <='1';
+								move_trig <='1';
 						    ELSE
-						    	draw_flag <='1'; 	
+						    	draw_trig <='1'; 	
 							END IF;
 
-							IF (draw_flag='1') THEN   --while drawing stay in draw state
+							IF (draw_trig='1') THEN   --while drawing stay in draw state
 								next_state <= s_draw;
 
-							ELSIF (draw_flag='0') THEN --if finished draw go to idle state
+							ELSIF (draw_trig='0') THEN --if finished draw go to idle state
 								next_state <= s_idle;
 							
 							ELSE
 								next_state <= s_error;
+								assert false report "ERROR in rcb, state_transition - when s_draw ";
 							END IF;
 
 
@@ -180,6 +186,13 @@ BEGIN
 			state <= next_state;
 		IF reset = '1' THEN
 			state <= s_idle;
+			draw_trig <='0';
+			draw_done <='0';
+			move_trig <='0';
+			move_done <='0';
+			flush_trig <='0';
+			flush_done <='0';
+
 		END IF;
 	END PROCESS state_reg;
 -----------------------------------------------------------------------
@@ -194,19 +207,73 @@ BEGIN
 	END PROCESS current_word_register;		
 ------------------------------------------------------------------------------
 
-	draw_px: PROCESS(state, draw_flag, move_flag)
+--------combinatorial process handling the draw connecting to pxwordcache--------
+	draw_px: PROCESS(state, draw_trig, move_trig)
 	BEGIN
-		pxcache_pw <='1';	--enable the px cache
-		vram_waddr <= getRamWord(dbb_bus.X, dbb_bus.Y); 
 
+	IF (draw_trig ='1' OR move_trig ='1') THEN
+		
+		--unset the trigger flags
+		draw_trig <= '0';
+		move_trig <= '0';
+
+		
+		vram_waddr <= getRamWord(dbb_bus.X, dbb_bus.Y); 
+	
+		
+		IF (draw_trig ='1') THEN
+			--instruction decode
+			IF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "01") THEN
+				pxcache_pixopin <= white;
+			
+			ELSIF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "10") THEN
+				pxcache_pixopin <= black;
+
+			ELSIF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "11") THEN
+				pxcache_pixopin <= invert;
+			ELSE
+				assert false report "ERROR in rcb, draw_px instruction decode";
+			END IF;
+
+			pxcache_pw <='1';	--enable the px cache for writing
+
+		END IF;
+		
+		IF (move_trig ='1') THEN
+			null;
+		END IF;
+
+
+		--compute cache bit addresses and bit numbers from x,y
+		pxcache_pixnum <= getRamBit(dbb_bus.X, dbb_bus.Y);
+		
+
+		--check if the x,y is in the current cache word
 		IF (unsigned(vram_waddr) = unsigned(curr_vram_word)) THEN
 			--cachehit
-			null;
+			pxcache_wen_all <= '0';
+			pxcache_pw <= '1';
+			
+			
 		ELSE 
 			--do ram flush IF vram not busy and update curr_addr register witn en
 			--wen_all =1 , pw=1, move contents into second register
+
+			flush_trig <='1';
+
+			--if vram not busy
+
+			pxcache_wen_all <= '1';
+			
+
+
 		END IF;
+	END IF;
 	END PROCESS draw_px;
+
+
+
+---------------------------------------------------------------------------------	
 ---------------------------- structural -----------------------------------------
 ram_state_machine: ENTITY WORK.ram_fsm PORT MAP(
 
