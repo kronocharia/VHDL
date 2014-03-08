@@ -39,9 +39,9 @@ architecture rtl of db is
   constant clearscreen_op  : opcode_t := "10";
   
   type pentype_t is array (1 downto 0) of std_logic;
-  constant white  : pentype_t := "01";
-  constant black  : pentype_t := "10";
-  constant invert : pentype_t := "11";
+  constant white  : opcode_t := "01";
+  constant black  : opcode_t := "10";
+  constant invert : opcode_t := "11";
   
   type command_t is record
     op   : opcode_t;

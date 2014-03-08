@@ -39,7 +39,7 @@ BEGIN
 			-- bus to RCB
 			dbb_bus.x            => dbb.X,
 			dbb_bus.y            => dbb.Y,
-			dbb_bus.rcb_cmd       => dbb.rcb_cmd,
+			dbb_bus.rcbcmd       => dbb.rcb_cmd,
 			dbb_bus.startcmd     => dbb.startcmd,
 			dbb_delaycmd => dbb_delaycmd,
 			dbb_rcbclear => dbb_rcbclear,
