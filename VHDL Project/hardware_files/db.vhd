@@ -128,7 +128,7 @@ begin
     state <= nstate;
   end process db_fsm_clocked;
   
-  db_fsm_comb: process(state, command, dav, dao_done) -- driven list: nstate, db_finish, hdb_busy, dao_start, dao_reset
+  db_fsm_comb: process(state, command, dav, dao_done, dbb_delaycmd) -- driven list: nstate, db_finish, hdb_busy, dao_start, dao_reset
   begin
     nstate <= state; --default, stay in current state
     case state is
@@ -171,19 +171,29 @@ begin
         dao_start <= '0';
         dao_reset <= '0';        
         --compute next state
-        if dao_done <= '0' then nstate <= drawing;
+        if dao_done <= '0' or dbb_delaycmd = '1' then nstate <= drawing;
         else nstate <= idle;
         end if;
-      when clear_screen => null;
-      --outputs for clear_screen state
-      --compute next state
+      when clear_screen =>
+        --outputs for clear_screen state
+        db_finish <= '0';
+        hdb_busy <= '1';
+        dao_start <= '0';
+        dao_reset <= '0';
+        --compute next state
+        if dbb_delaycmd = '1' then nstate <= clear_screen;
+        else nstate <= idle;
+        end if;
       when move_pen =>
         --outputs for move_pen state
         db_finish <= '0';
         hdb_busy <= '1';
         dao_start <= '0';
         dao_reset <= '0';
-      --compute next state
+        --compute next state
+        if dbb_delaycmd = '1' then nstate <= move_pen;
+        else nstate <= idle;
+        end if;
       when others => nstate <= idle; -- reset undefined states to idle state
     end case;
   end process db_fsm_comb;
