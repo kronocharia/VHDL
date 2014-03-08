@@ -12,3 +12,4 @@ PACKAGE project_pack IS
 		startcmd : std_logic;
 	END RECORD;
 
+END PACKAGE project_pack;

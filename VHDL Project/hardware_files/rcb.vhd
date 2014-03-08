@@ -8,7 +8,7 @@ USE WORK.ram_fsm;
 USE WORK.pix_word_cache;
 
 ENTITY rcb IS
-	GENERIC(vsize : INTEGER := 6);
+	GENERIC(vsize : INTEGER := 6, N: INTEGER := 10);
 	PORT(
 		clk          : IN  std_logic;
 		reset        : IN  std_logic;
@@ -124,7 +124,7 @@ BEGIN
 
 							END IF;
 
-						ELSIF (idleCounter = 10) THEN
+						ELSIF (idleCounter = N) THEN
 							idle_write <= '1'
 							--writeout the cache
 							--probably no change so can use same?
@@ -142,7 +142,8 @@ BEGIN
 
 		WHEN s_draw => IF THEN; END IF;
 
-		WHEN s_clear => IF THEN; END IF;
+		
+		WHEN s_clear => next_state <=s_idle; --to be implemented later
 
 	END CASE;
 
