@@ -27,10 +27,11 @@ end db;
 
 architecture rtl of db is
   signal dao_draw, dao_xbias, dao_done, dao_swap, dao_negx, dao_negy, dao_disable, dao_reset : std_logic;
-  signal dao_xin, dao_yin, dao_xout, dao_yout, pen_x, pen_y: std_logic_vector(vsize-1 downto 0);
+  signal dao_xin, dao_yin, dao_xout, dao_yout: std_logic_vector(vsize downto 0);
+  signal pen_x, pen_y: std_logic_vector(vsize-1 downto 0);
   signal previous_command : std_logic_vector(2*vsize+3 downto 0);
   
-  type state_t is (idle, draw_reset, draw_start, send_command);
+  type state_t is (idle, draw_reset, draw_start, send_command, send_command);
   signal state, nstate : state_t;
   
   type opcode_t is array (1 downto 0) of std_logic;
@@ -163,14 +164,14 @@ begin
         dao_draw <= '1';
         dao_reset <= '0';
         --compute next state
-        nstate <= drawing;
+        nstate <= send_command;
       when send_command =>
-        --outputs for drawing state
+        --outputs for send_command state
         hdb_busy <= '1';
         dao_draw <= '0';
         dao_reset <= '0';        
         --compute next state
-        if (command.op = drawline_op and dao_done = '0') or dbb_delaycmd = '1' then nstate <= drawing;
+        if (command.op = drawline_op and dao_done = '0') or dbb_delaycmd = '1' then nstate <= send_command;
         else nstate <= idle;
         end if;
       when others => nstate <= idle; -- reset undefined states to idle state
@@ -213,8 +214,9 @@ begin
   end process send_rcb_inputs;
 
   finished: process(state, dav) -- drives db_finish
-    if state = idle and dav = '0' then db_finish = '1';
-    else db_finish = '0';
+  	BEGIN
+    if state = idle and dav = '0' then db_finish <= '1';
+    else db_finish <= '0';
     end if;
   end process finished;
 end rtl;      

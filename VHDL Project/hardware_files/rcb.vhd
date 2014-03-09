@@ -58,14 +58,14 @@ ARCHITECTURE rtl1 OF rcb IS
 	SIGNAL state, next_state									: state_type;
 	SIGNAL idle_counter_trig,draw_trig,move_trig				: std_logic;
 	SIGNAL fetch_draw_flag,fetch_draw_trig						: std_logic;
-	SIGNAL draw_done, move_done									: std_logic;
+	--SIGNAL draw_done, move_done									: std_logic;
 
 --draw_px process signals
 	SIGNAL vram_waddr,curr_vram_word							: std_logic_vector(7 DOWNTO 0);
 	SIGNAL change_curr_word										: std_logic;
 
 --trigger the cache flush
-	SIGNAL flush_trig,flush_done								: std_logic;
+	SIGNAL flush_trig											: std_logic;
 --waiting for ram_fsm to complete
 	SIGNAL vram_done											: std_logic;
 
@@ -238,8 +238,16 @@ BEGIN
 				fetch_draw_flag <= '0'; END IF;
 			
 			state <= next_state;
-		IF reset = '1' THEN
-			state <= s_idle;
+
+			IF (next_state = s_idle) THEN
+				rcb_finish <= '1';
+			ELSE 
+				rcb_finish <= '0';
+			END IF;
+
+
+			IF reset = '1' THEN
+				state <= s_idle;
 			
 		END IF;
 
@@ -273,12 +281,7 @@ END PROCESS idle_counter_proc;
 	BEGIN
 
 	IF (draw_trig ='1' OR move_trig ='1') THEN
-		
-		--unset the trigger flags
-		draw_trig <= '0';
-		move_trig <= '0';
-
-		
+				
 		--store vram word address of the current command
 		vram_waddr <= getRamWord(dbb_bus.X, dbb_bus.Y); 
 	
@@ -316,7 +319,7 @@ END PROCESS idle_counter_proc;
 
 -----------------fetch from vram and draw  processs----------------------------
 	--code duplication, temporary solutionn
-	fetch_draw : PROCESS(state, fetch_draw_trig, dbb_bus)
+	fetch_draw : PROCESS(fetch_draw_trig, dbb_bus)
 	BEGIN
 	IF (fetch_draw_trig = '1') THEN
 
@@ -337,6 +340,8 @@ END PROCESS idle_counter_proc;
 		pxcache_pixnum <= getRamBit(dbb_bus.X, dbb_bus.Y);
 		pxcache_wen_all <= '1'; --to zero out the other cache bits
 		pxcache_pw <='1';	--enable the px cache for writing single px
+		change_curr_word <='1'; --enable the register holding the current word to update
+
 
 	END IF;
 	END PROCESS fetch_draw;
@@ -344,7 +349,7 @@ END PROCESS idle_counter_proc;
 -------------------------------------------------------------------------------	
 
 ------------------ flush cache out to vram-------------------------------------
-	flush_cache : PROCESS(state,flush_trig,dbb_bus, curr_vram_word) 	
+	flush_cache : PROCESS(flush_trig,dbb_bus, curr_vram_word, ram_delay) 	
 	BEGIN
 	IF flush_trig = '1' THEN	
 
@@ -406,12 +411,11 @@ px_cache: ENTITY pix_word_cache PORT MAP(
 
 	);
 
-------------------external connections----------------------
+------------------external connections and signal stuff----------------------
 
 vaddr <= ram_addr; --joining external ram to the ram interface fsm
 ram_data <= vdout; --joins vram output to ram data in
-
-
+vwrite <= ram_vwrite;
 
 --clear not implemented yet
 dbb_rcbclear <= '0';
