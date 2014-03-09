@@ -30,7 +30,7 @@ architecture rtl of db is
   signal dao_xin, dao_yin, dao_xout, dao_yout, pen_x, pen_y: std_logic_vector(vsize-1 downto 0);
   signal previous_command : std_logic_vector(2*vsize+3 downto 0);
   
-  type state_t is (idle, draw_reset, draw_start, drawing, clear_screen, move_pen);
+  type state_t is (idle, draw_reset, draw_start, send_command);
   signal state, nstate : state_t;
   
   type opcode_t is array (1 downto 0) of std_logic;
@@ -93,8 +93,8 @@ begin
     variable dy: signed(vsize downto 0);
     variable zero : std_logic_vector(vsize downto 0) := (others =>'0');
   begin
-		dx := signed(resize(unsigned(command.x), vsize+1)) - signed(resize(unsigned(prev_command.x), vsize+1));
-		dy := signed(resize(unsigned(command.y), vsize+1)) - signed(resize(unsigned(prev_command.y), vsize+1));
+    dx := signed(resize(unsigned(command.x), vsize+1)) - signed(resize(unsigned(prev_command.x), vsize+1));
+    dy := signed(resize(unsigned(command.y), vsize+1)) - signed(resize(unsigned(prev_command.y), vsize+1));
     -- set negx if dx is negative
     if dx >= 0 then
       dao_negx <= '0';
@@ -113,6 +113,7 @@ begin
     else
       dao_swap <= '0';
     end if;
+    -- 
     if state = draw_reset then
       dao_xin <= zero;
       dao_yin <= zero;
@@ -143,9 +144,9 @@ begin
         if dav = '1' then
           --read command and decide which state to go to.
           case command_in.op is
-            when movepen_op => nstate <= move_pen;
+            when movepen_op => nstate <= send_command;
             when drawline_op => nstate <= draw_reset;
-            when clearscreen_op => nstate <= clear_screen;
+            when clearscreen_op => nstate <= send_command;
             when others => null;
           end case;
         end if;        
@@ -163,31 +164,13 @@ begin
         dao_reset <= '0';
         --compute next state
         nstate <= drawing;
-      when drawing =>
+      when send_command =>
         --outputs for drawing state
         hdb_busy <= '1';
         dao_draw <= '0';
         dao_reset <= '0';        
         --compute next state
-        if dao_done <= '0' or dbb_delaycmd = '1' then nstate <= drawing;
-        else nstate <= idle;
-        end if;
-      when clear_screen =>
-        --outputs for clear_screen state
-        hdb_busy <= '1';
-        dao_draw <= '0';
-        dao_reset <= '0';
-        --compute next state
-        if dbb_delaycmd = '1' then nstate <= clear_screen;
-        else nstate <= idle;
-        end if;
-      when move_pen =>
-        --outputs for move_pen state
-        hdb_busy <= '1';
-        dao_draw <= '0';
-        dao_reset <= '0';
-        --compute next state
-        if dbb_delaycmd = '1' then nstate <= move_pen;
+        if (command.op = drawline_op and dao_done = '0') or dbb_delaycmd = '1' then nstate <= drawing;
         else nstate <= idle;
         end if;
       when others => nstate <= idle; -- reset undefined states to idle state
@@ -197,33 +180,22 @@ begin
   send_rcb_inputs: process(state, prev_command, command, dao_xout, dao_yout) --drives dbb_bus
     variable undefined : std_logic_vector(vsize-1 downto 0) := (others =>'X');
   begin
-    case state is
-      when idle =>
-        dbb_bus.X <= undefined;
-        dbb_bus.Y <= undefined;
-        dbb_bus.startcmd <= '0';
-      when draw_reset =>
-        dbb_bus.X <= undefined;
-        dbb_bus.Y <= undefined;
-        dbb_bus.startcmd <= '0';
-      when draw_start =>
-        dbb_bus.X <= undefined;
-        dbb_bus.Y <= undefined;
-        dbb_bus.startcmd <= '0';
-      when drawing =>
+    if state = send_command then
+      if command.op = drawline_op then
         -- hopefully stays within the bounds of unsigned(vsize) (ie inside the canvas), else outer resize will truncate information
         dbb_bus.X <= std_logic_vector(resize(unsigned(signed(resize(unsigned(prev_command.x), vsize+1)) + signed(dao_xout)), vsize));
         dbb_bus.Y <= std_logic_vector(resize(unsigned(signed(resize(unsigned(prev_command.y), vsize+1)) + signed(dao_yout)), vsize));
-        dbb_bus.startcmd <= '1';                      
-      when move_pen =>
+        dbb_bus.startcmd <= '1';
+      else
         dbb_bus.X <= command.x;
         dbb_bus.Y <= command.y;
         dbb_bus.startcmd <= '1';                       
-      when clear_screen =>
-        dbb_bus.X <= command.x;
-        dbb_bus.Y <= command.y;
-        dbb_bus.startcmd <= '1';                           
-    end case;
+      end if;
+    else
+      dbb_bus.X <= undefined;
+      dbb_bus.Y <= undefined;
+      dbb_bus.startcmd <= '0';
+    end if;
 
     -- encode operation
     case command.pen is
