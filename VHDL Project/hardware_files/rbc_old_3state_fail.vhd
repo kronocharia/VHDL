@@ -54,10 +54,9 @@ ARCHITECTURE rtl1 OF rcb IS
 
 
 --RCB state machine signals
-	TYPE state_type IS (s_error,s_idle, s_rangecheck, s_draw, s_clear, s_flush,s_fetchdraw);
+	TYPE state_type IS (s_error,s_idle, s_draw, s_clear);
 	SIGNAL state, next_state									: state_type;
-	SIGNAL idle_counter_trig,draw_trig,move_trig				: std_logic;
-	SIGNAL fetch_draw_flag,fetch_draw_trig						: std_logic;
+	SIGNAL idle_write,draw_trig,move_trig						: std_logic;
 	SIGNAL draw_done, move_done									: std_logic;
 
 --draw_px process signals
@@ -102,140 +101,101 @@ BEGIN
 	
 	BEGIN
 
-		next_state <= s_error; 	--default to error state
-		
-		--control signal default assignments
-		idle_counter_trig <= '0';
-		draw_trig <= '0';
-		move_trig <= '0';	
-		fetch_draw_trig <= '0';	
-		
+	
+		next_state <= state; 	--default to current state
+
+		--default output conditions
+		idle_Write <= '0';
+
 		--transitions
 		CASE state IS
-			WHEN s_idle => 	
+			WHEN s_idle => 	IF (dbb_bus.startcmd='1') THEN 
+								--instruction decode
+												
+								-- RCB CMD
+								-- 000 move
+								-- 001 draw white			'-01' if white
+								-- 010 draw black			'-10' if black
+								-- 011 draw invert			'-11' if invert
+								-- 100 unused				'0--' if draw
+								-- 101 clear white			'1--' if clear
+								-- 110 clear black			'000' if move
+								-- 111 clear invert			
 
-					IF (dbb_bus.startcmd='1') THEN 
-						next_state <= s_rangecheck;
+								IF (dbb_bus.rcb_cmd(2) = '0') THEN --draw command issued (or move)
+									next_state <= s_draw;
+								
+								ELSIF (dbb_bus.rcb_cmd(2) = '1') THEN --clear command issued
+									next_state <= s_clear;
 
-					ELSIF (idleCounter = N) THEN
-						next_state <= s_flush;	--flush cache
-					
-					ELSIF (dbb_bus.startcmd ='0') THEN
-						--increment loop counter
-						idle_counter_trig <= '1';
-						next_state <= s_idle;
+								ELSE
+									next_state <= s_error;
+									
+								END IF;
 
-					ELSE 
-						next_state <= s_error;
-						assert false report "ERROR in rcb, state_transition - when s_idle ";
-					END IF;
-
-
-			WHEN s_rangecheck =>
-
-					IF ( cachehit ) THEN
-						
-
-						--instruction decode
-										
-						-- RCB CMD
-						-- 000 move
-						-- 001 draw white			'-01' if white
-						-- 010 draw black			'-10' if black
-						-- 011 draw invert			'-11' if invert
-						-- 100 unused				'0--' if draw
-						-- 101 clear white			'1--' if clear
-						-- 110 clear black			'000' if move
-						-- 111 clear invert			
-
-						IF (dbb_bus.rcb_cmd(2) = '0') THEN --draw command issued (or move)
-							next_state <= s_draw;
-						
-						ELSIF (dbb_bus.rcb_cmd(2) = '1') THEN --clear command issued
-							next_state <= s_clear;
-
-						ELSE
-							next_state <= s_error;
-							assert false report "ERROR in rcb, when s_rangecheck, instruction decode ";
+							ELSIF (idleCounter = N) THEN
+								idle_write <= '1';
+								--writeout the cache
+								--probably no change so can use same?
+								--set wen_all to 1
+								--set pw to 0
+								next_state <= s_idle;
 							
-						END IF;
 
-					ELSE 
-					 	next_state <= 's_flush';
+							ELSIF (dbb_bus.startcmd ='0') THEN
+								--increment loop counter
+								idleCounter := idleCounter + 1;
+								next_state <= s_idle;
 
-			WHEN s_draw =>  
+							ELSE 
+								next_state <= s_error;
+								assert false report "ERROR in rcb, state_transition - when s_idle ";
 
-					IF (dbb_bus.rcb_cmd = "000") THEN
-						move_trig <='1';
-				    ELSE
-				    	draw_trig <='1'; 	
-					END IF;
+							END IF;
 
-					IF (draw_trig='1') THEN   --while drawing stay in draw state
-						next_state <= s_draw;
+			WHEN s_draw =>  IF (dbb_bus.rcb_cmd = "000") THEN
+								move_trig <='1';
+						    ELSE
+						    	draw_trig <='1'; 	
+							END IF;
 
-					ELSIF (draw_trig='0') THEN --if finished draw go to idle state
-						next_state <= s_idle;
-					
-					ELSE
-						next_state <= s_error;
-						assert false report "ERROR in rcb, state_transition - when s_draw ";
-					END IF;
+							IF (draw_trig='1') THEN   --while drawing stay in draw state
+								next_state <= s_draw;
+
+							ELSIF (draw_trig='0') THEN --if finished draw go to idle state
+								next_state <= s_idle;
+							
+							ELSE
+								next_state <= s_error;
+								assert false report "ERROR in rcb, state_transition - when s_draw ";
+							END IF;
 
 
 			
 			WHEN s_clear => next_state <=s_idle; --to be implemented later
 
-			WHEN s_flush => 
-			
-					flush_trig <= '1';
-					IF (fetch_draw_flag ='1') THEN
-						next_state <= s_fetchdraw;
-					ELSE
-						next_state <= s_idle;
-					END IF;
-
-			WHEN s_fetchdraw => ;
-
-			WHEN s_error => assert false report "Congrats, you managed to go to the error state, fix me";
-							next_state <= s_error; -- only reset moves state to idle
+			WHEN s_error => next_state <= s_error; --reset moves state to idle
 
 		END CASE;
 	END PROCESS state_transition;
--------------------------------------------------------------------------------
-----------------------------fsm_clocked_process--------------------------------
-	fsm_clocked_process: PROCESS
+--------------------------------------------------------------------------
+----------------------------state register--------------------------------
+	state_reg: PROCESS
 	BEGIN
 		WAIT UNTIL clk'EVENT AND clk = '1';
-			
-			--registering this signal
-			IF (state = s_rangecheck)
-				fetch_draw_flag <= '1';
-			ELSE
-				fetch_draw_flag <= '0';
-
 			state <= next_state;
 		IF reset = '1' THEN
 			state <= s_idle;
-			
+			draw_trig <='0';
+			draw_done <='0';
+			move_trig <='0';
+			move_done <='0';
+			flush_trig <='0';
+			flush_done <='0';
+
 		END IF;
-
-
-
-	END PROCESS fsm_clocked_process;
------------------------------------------------------------------------------
-------------------------idle counter reset-----------------------------------
-idle_counter: PROCESS
-variable idleCount : INTEGER :=0;
-BEGIN
-    WAIT UNTIL clk'EVENT AND clk= '1';
-
-    IF (idle_counter_trig ='1') THEN
-        idleCount := idleCount + 1;
-    END IF;
-
-END PROCESS idle_counter;
-
+	END PROCESS state_reg;
+-----------------------------------------------------------------------
 
 -------register storing current word to detect if out of range--------------
 	current_word_register: PROCESS 
