@@ -71,7 +71,7 @@ ARCHITECTURE rtl1 OF rcb IS
 
 	--hardcoded width to handle N up to 256
 	SIGNAL idle_counter 										: std_logic_vector(7 DOWNTO 0);
-	SIGNAL one_vector             								: std_logic_vector(7 DOWNTO 0);
+	SIGNAL one_vector             : std_logic_vector(7 DOWNTO 0);
 
 
 BEGIN
@@ -252,7 +252,7 @@ BEGIN
     WAIT UNTIL clk'EVENT AND clk= '1';
     one_vector <= "00000001";
     IF (idle_counter_trig ='1') THEN
-        idle_counter  <= std_logic_vector(unsigned(unsigned(one_vector)+ unsigned(idle_counter)));
+        idle_counter  <= std_logic_vector(unsigned'(one_vector+idle_counter));
     END IF;
     
 END PROCESS idle_counter_proc;
