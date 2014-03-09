@@ -54,7 +54,7 @@ ARCHITECTURE rtl1 OF rcb IS
 
 
 --RCB state machine signals
-	TYPE state_type IS (s_error,s_idle, s_rangecheck, s_draw, s_clear, s_flush,s_fetchdraw);
+	TYPE state_type IS (s_error,s_idle, s_rangecheck, s_draw, s_clear, s_flush, s_waitram,s_fetchdraw);
 	SIGNAL state, next_state									: state_type;
 	SIGNAL idle_counter_trig,draw_trig,move_trig				: std_logic;
 	SIGNAL fetch_draw_flag,fetch_draw_trig						: std_logic;
@@ -66,6 +66,8 @@ ARCHITECTURE rtl1 OF rcb IS
 
 --trigger the cache flush
 	SIGNAL flush_trig,flush_done								: std_logic;
+--waiting for ram_fsm to complete
+	SIGNAL vram_done											: std_logic;
 
 BEGIN
 
@@ -118,7 +120,7 @@ BEGIN
 						next_state <= s_rangecheck;
 
 					ELSIF (idleCounter = N) THEN
-						next_state <= s_flush;	--flush cache
+						next_state <= s_flush;	
 					
 					ELSIF (dbb_bus.startcmd ='0') THEN
 						--increment loop counter
@@ -132,12 +134,10 @@ BEGIN
 
 
 			WHEN s_rangecheck =>
-
-					IF ( cachehit ) THEN
+					--check if command targets pixel in loaded word
+					IF ( getRamWord(dbb_bus.X, dbb_bus.Y) = curr_vram_word ) THEN
 						
-
-						--instruction decode
-										
+						--instruction decode		
 						-- RCB CMD
 						-- 000 move
 						-- 001 draw white			'-01' if white
@@ -161,9 +161,11 @@ BEGIN
 						END IF;
 
 					ELSE 
-					 	next_state <= 's_flush';
+					 	next_state <= s_flush;
+					END IF;
 
 			WHEN s_draw =>  
+					--write to single pixel in cache
 
 					IF (dbb_bus.rcb_cmd = "000") THEN
 						move_trig <='1';
@@ -187,18 +189,50 @@ BEGIN
 			WHEN s_clear => next_state <=s_idle; --to be implemented later
 
 			WHEN s_flush => 
-			
+					--write cache to vram
 					flush_trig <= '1';
-					IF (fetch_draw_flag ='1') THEN
-						next_state <= s_fetchdraw;
+					
+					IF vram_done = '1' THEN
+						
+						IF (fetch_draw_flag ='1') THEN
+							next_state <= s_fetchdraw;
+						ELSE
+							next_state <= s_idle;
+						END IF;
+
+					ELSIF vram_done ='0' THEN
+						next_state <= s_waitram;
 					ELSE
-						next_state <= s_idle;
+						next_state <=s_error;
+						assert false report "ERROR in rcb, state_transition - when s_flush ";
 					END IF;
 
-			WHEN s_fetchdraw => ;
+			WHEN s_waitram =>
+					--stall the fsm
+					IF vram_done = '1' THEN
+						
+						IF (fetch_draw_flag ='1') THEN
+							next_state <= s_fetchdraw;
+						ELSE
+							next_state <= s_idle;
+						END IF;
 
-			WHEN s_error => assert false report "Congrats, you managed to go to the error state, fix me";
-							next_state <= s_error; -- only reset moves state to idle
+					ELSIF vram_done ='0' THEN
+						next_state <= s_waitram;
+					ELSE 
+						next_state <= s_error;
+						assert false report "ERROR in rcb, state_transition - when s_waitram ";
+					END IF;
+
+			WHEN s_fetchdraw => 
+
+					fetch_draw_trig <= '1';
+					next_state <= s_idle;
+					
+
+			WHEN s_error => 
+					assert false report "Congrats, you managed to go to the error state, fix me";
+					next_state <= s_error; -- only reset moves state to idle
 
 		END CASE;
 	END PROCESS state_transition;
@@ -209,17 +243,17 @@ BEGIN
 		WAIT UNTIL clk'EVENT AND clk = '1';
 			
 			--registering this signal
-			IF (state = s_rangecheck)
-				fetch_draw_flag <= '1';
-			ELSE
-				fetch_draw_flag <= '0';
+			IF (state = s_rangecheck) THEN
+				fetch_draw_flag <= '1'; END IF;
 
+			IF (state = s_fetchdraw) THEN --deasserts when in fetch state
+				fetch_draw_flag <= '0'; END IF;
+			
 			state <= next_state;
 		IF reset = '1' THEN
 			state <= s_idle;
 			
 		END IF;
-
 
 
 	END PROCESS fsm_clocked_process;
