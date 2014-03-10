@@ -1,6 +1,9 @@
-
 .DS_Store
-
 ex2z/.DS_Store
-
 ex2z/.DS_Store
+rev_2/
+*.bak
+VHDL Project/hardware_files/work
+*.cr.mti
+*.mpf
+VHDL Project/hardware_files/transcript
