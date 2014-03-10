@@ -27,7 +27,7 @@ end db;
 
 architecture rtl of db is
   signal dao_draw, dao_xbias, dao_done, dao_swap, dao_negx, dao_negy, dao_disable, dao_reset : std_logic;
-  signal dao_xin, dao_yin, dao_xout, dao_yout: std_logic_vector(vsize downto 0);
+  signal dao_xin, dao_yin, dao_xout, dao_yout: std_logic_vector(vsize-1 downto 0);
   signal pen_x, pen_y: std_logic_vector(vsize-1 downto 0);
   signal previous_command : std_logic_vector(2*vsize+3 downto 0);
   
