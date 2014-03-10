@@ -12,7 +12,7 @@ ENTITY ram_fsm IS
 
             addr : IN std_logic_vector;
             data : IN std_logic_vector(15 DOWNTO 0); --changedd from unbounded to hardcoded size
-            cache_d : IN store_t;
+            cache_d : IN pixop_t;
             addr_del, data_del: OUT std_logic_vector
     );
 END ram_fsm;
