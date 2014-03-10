@@ -1,0 +1,15 @@
+@W: CG296 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\db.vhd":91:18:91:24|Incomplete sensitivity list - assuming completeness
+@W: CG290 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\db.vhd":118:7:118:11|Referenced variable state is not in sensitivity list
+@W: CD604 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\db.vhd":177:6:177:19|OTHERS clause is not synthesized 
+@W: CD638 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\db.vhd":31:9:31:13|Signal pen_x is undriven 
+@W: CD638 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\db.vhd":31:16:31:20|Signal pen_y is undriven 
+@W: CD638 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\db.vhd":32:9:32:24|Signal previous_command is undriven 
+@W: CD638 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\draw_any_octant.vhd":40:27:40:29|Signal x03 is undriven 
+@W: CD638 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\draw_any_octant.vhd":40:52:40:54|Signal yo3 is undriven 
+@W: CL240 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\db.vhd":29:19:29:27|dao_xbias is not assigned a value (floating) -- simulation mismatch possible. 
+@W: CL169 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\db.vhd":52:30:52:41|Pruning register prev_command.op(1 downto 0)  
+@W: CL169 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\db.vhd":52:30:52:41|Pruning register prev_command.pen(1 downto 0)  
+@W: CL167 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\db.vhd":63:14:63:36|Input xbias of instance dao is floating
+@W: CL159 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\db.vhd":11:4:11:8|Input reset is unused
+@W: CL159 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\db.vhd":21:4:21:15|Input dbb_rcbclear is unused
+

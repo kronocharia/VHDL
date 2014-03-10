@@ -1,0 +1,10 @@
+C:\synopsys\fpga_G201209SP1\bin64\m_generic.exe  -prodtype synplify_pro -encrypt  -pro  -rundir  H:\Desktop\GitHub\VHDL\rev_1  -part ACX22iHD1000  -package FBGA2280  -grade Std   -maxfan 10000 -RWCheckOnRam 0     -pipe   -fixgatedclocks 1 -fixgeneratedclocks 1     -summaryfile H:\Desktop\GitHub\VHDL\rev_1\synlog\report\config_pack_fpga_mapper.xml -flow mapping  -ovma  H:\Desktop\GitHub\VHDL\rev_1\proj_1.vma  -autoconstraint  -freq 1.000  H:\Desktop\GitHub\VHDL\rev_1\synwork\config_pack_premap.srd  -devicelib  C:\synopsys\fpga_G201209SP1\lib\generic\speedster22i.v  -ologparam  H:\Desktop\GitHub\VHDL\rev_1\syntmp\config_pack.plg  -osyn  H:\Desktop\GitHub\VHDL\rev_1\config_pack.srm  -prjdir  H:\Desktop\GitHub\VHDL\  -prjname  proj_1  -log  H:\Desktop\GitHub\VHDL\rev_1\synlog\config_pack_fpga_mapper.srr 
+rc:1 success:1
+H:\Desktop\GitHub\VHDL\rev_1\proj_1.vma|o|1394458801|85177
+H:\Desktop\GitHub\VHDL\rev_1\synwork\config_pack_premap.srd|i|1394458796|14033
+C:\synopsys\fpga_G201209SP1\lib\generic\speedster22i.v|i|1353965560|52431
+H:\Desktop\GitHub\VHDL\rev_1\syntmp\config_pack.plg|o|1394458801|742
+H:\Desktop\GitHub\VHDL\rev_1\config_pack.srm|o|1394458800|38860
+H:\Desktop\GitHub\VHDL\rev_1\synlog\config_pack_fpga_mapper.srr|o|1394458801|39909
+C:\synopsys\fpga_G201209SP1\bin64\m_generic.exe|i|1354006890|23484416
+C:\synopsys\fpga_G201209SP1\bin\m_generic.exe|i|1354005010|20130816

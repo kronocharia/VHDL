@@ -1,0 +1,18 @@
+@P:  Worst Slack : -0.743
+@P:  db|clk - Estimated Frequency : 193.1 MHz
+@P:  db|clk - Requested Frequency : 225.4 MHz
+@P:  db|clk - Estimated Period : 5.179
+@P:  db|clk - Requested Period : 4.436
+@P:  db|clk - Slack : -0.743
+@P:  Worst Slack(min analysis) : 0.195
+@P:  db|clk - Estimated Frequency(min analysis) : 193.1 MHz
+@P:  db|clk - Requested Frequency(min analysis) : 225.4 MHz
+@P:  db|clk - Estimated Period(min analysis) : 5.179
+@P:  db|clk - Requested Period(min analysis) : 4.436
+@P:  db|clk - Slack(min analysis) : -0.743
+@P: db Part : acx22ihd1000fbga2280std
+@P: db I/O primitives : 37
+@P: db I/O Register bits : 0
+@P: db Register bits (Non I/O) : 85 (0%)
+@P: db Total Luts : 207 (0%)
+@P:  CPU Time : 0h:00m:03s

@@ -1,0 +1,22 @@
+---------------------------------------
+Resource Usage Report for db 
+
+Mapping to part: acx22ihd1000fbga2280std
+Cell usage:
+ALU        51 uses
+DFF        7 uses
+DFFE         59 uses
+DFFC         19 uses
+LUT4            207 uses
+
+I/O ports: 39
+I/O primitives: 37
+PADIN          19 uses
+PADOUT         18 uses
+
+I/O Register bits:                  0
+Register bits not including I/Os:   85 (0%)
+
+Mapping Summary:
+Total  LUTs: 207 (0%)
+

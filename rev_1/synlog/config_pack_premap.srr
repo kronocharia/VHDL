@@ -1,0 +1,44 @@
+Synopsys Achronix Technology Pre-mapping, Version maprc, Build 1352R, Built Nov 27 2012 10:01:01
+Copyright (C) 1994-2012, Synopsys, Inc. This software the associated documentation are confidential and proprietary to Synopsys, Inc. Your use or disclosure of this software subject to the terms and conditions of a written license agreement between you, or your company, and Synopsys, Inc.
+Product Version G-2012.09-SP1 
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 91MB peak: 92MB)
+
+@L: H:\Desktop\GitHub\VHDL\rev_1\config_pack_scck.rpt 
+Printing clock  summary report in "H:\Desktop\GitHub\VHDL\rev_1\config_pack_scck.rpt" file 
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled 
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 92MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 92MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 93MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 95MB)
+
+
+
+Clock Summary
+**************
+
+Start      Requested     Requested     Clock        Clock                
+Clock      Frequency     Period        Type         Group                
+-------------------------------------------------------------------------
+db|clk     188.4 MHz     5.309         inferred     Autoconstr_clkgroup_0
+=========================================================================
+
+@W: MT529 :"h:\desktop\github\vhdl\vhdl project\hardware_files\draw_octant.vhd":23:13:23:14|Found inferred clock db|clk which controls 82 sequential elements including dao.d1.y1[6:0]. This clock has no specified timing constraint which may prevent conversion of gated or generated clocks and may adversely impact design performance. 
+
+syn_allowed_resources : blockrams=1026  set on top level netlist db
+Finished Pre Mapping Phase.Pre-mapping successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 56MB peak: 121MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Mon Mar 10 13:39:56 2014
+
+###########################################################]

@@ -1,0 +1,18 @@
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled 
+@N: MT206 |Auto Constrain mode is enabled
+@N: FX404 :"h:\desktop\github\vhdl\vhdl project\hardware_files\db.vhd":185:6:185:7|Found addmux in view:work.db(rtl) inst send_rcb_inputs\.dbb_bus\.Y_3[5:0] from un55_state[2:7] 
+@N: FX404 :"h:\desktop\github\vhdl\vhdl project\hardware_files\db.vhd":185:6:185:7|Found addmux in view:work.db(rtl) inst send_rcb_inputs\.dbb_bus\.X_3[5:0] from un42_state[2:7] 
+@N: FX404 :"h:\desktop\github\vhdl\vhdl project\hardware_files\draw_octant.vhd":24:16:24:20|Found addmux in view:work.draw_octant(comb) inst yincr_0[6:0] from R1\.yincr_2[6:0] 
+@N: FX404 :"h:\desktop\github\vhdl\vhdl project\hardware_files\draw_octant.vhd":24:9:24:13|Found addmux in view:work.draw_octant(comb) inst xincr_0[6:0] from R1\.xincr_3[6:0] 
+@N: FX271 :"h:\desktop\github\vhdl\vhdl project\hardware_files\draw_octant.vhd":24:9:24:13|Instance "dao.d1.xincr[0]" with 4 loads replicated 1 times to improve timing 
+@N: FX271 :"h:\desktop\github\vhdl\vhdl project\hardware_files\draw_octant.vhd":24:16:24:20|Instance "dao.d1.yincr[0]" with 6 loads replicated 1 times to improve timing 
+@N: FX271 :"h:\desktop\github\vhdl\vhdl project\hardware_files\draw_octant.vhd":24:16:24:20|Instance "dao.d1.yincr[1]" with 6 loads replicated 1 times to improve timing 
+@N: FX271 :"h:\desktop\github\vhdl\vhdl project\hardware_files\draw_octant.vhd":80:4:80:5|Instance "dao.d1.un1_disable_1_i_a3" with 30 loads replicated 1 times to improve timing 
+@N: FX164 |The option to pack flops in the IOB has not been specified 
+@N: BW103 |Synopsys Constraint File time units using default value of 1ns 
+@N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
+@N: MT320 |Timing report estimates place and route data. Please look at the place and route timing report for final timing.
+@N: MT322 |Clock constraints cover only FF-to-FF paths associated with the clock.
+@N: MT320 |Timing report estimates place and route data. Please look at the place and route timing report for final timing.
+@N: MT322 |Clock constraints cover only FF-to-FF paths associated with the clock.

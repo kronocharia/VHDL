@@ -1,0 +1,1 @@
+@W: MT529 :"h:\desktop\github\vhdl\vhdl project\hardware_files\draw_octant.vhd":23:13:23:14|Found inferred clock db|clk which controls 82 sequential elements including dao.d1.y1[6:0]. This clock has no specified timing constraint which may prevent conversion of gated or generated clocks and may adversely impact design performance. 
