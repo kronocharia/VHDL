@@ -5,6 +5,12 @@
 \author{Jake Humphrey}
 \begin{document}
 \maketitle
+\section{Overview}
+The Draw Block recieves draw commands from the host processor and
+re-encodes them for the RAM control block (RCB). In the case of a draw
+line command, it first uses the \verb|draw_any_octant| entity to
+convert the line into a stream of pixels, before sending individual
+draw commands to the RCB for each pixel.
 \section{Finite State Machine}
 \begin{center}
   \begin{tikzpicture}[scale=0.2]
