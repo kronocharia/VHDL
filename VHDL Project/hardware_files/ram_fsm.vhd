@@ -92,7 +92,7 @@ BEGIN
     BEGIN
         WAIT UNTIL CLK'EVENT AND clk ='0';
             addr_del <= addr;
-            data_del <= data;
+            data_del <= data_merged;
 
     END PROCESS DELAY_PROC;
 

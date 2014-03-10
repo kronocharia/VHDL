@@ -63,7 +63,7 @@ ARCHITECTURE rtl1 OF rcb IS
     SIGNAL ram_data, ram_data_del								: std_logic_vector(15 DOWNTO 0);
 
 --For interfacing with pixel cache
-	SIGNAL pxcache_wen_all, pxcache_reset, pxcache_pw 			: std_logic;
+	SIGNAL pxcache_wen_all, pxcache_pw 							: std_logic;
 	SIGNAL pxcache_is_same										: std_logic;
 	SIGNAL pxcache_pixopin 										: pixop_t;
 	SIGNAL pxcache_pixnum										: std_logic_vector(3 DOWNTO 0);
@@ -355,6 +355,14 @@ END PROCESS idle_counter_proc;
 			--just need to load the new word if that happens
 			--upstream should be saving the previous x,y for 
 		END IF;
+	
+	ELSE
+	   pxcache_pixopin <= same;
+	   pxcache_pixnum  <= "0000"; --hardcoded this needs to change this is very bad <-----
+	   pxcache_wen_all <='-';
+	   pxcache_pw <= '-';
+	   change_curr_word <='-';
+	    	
 
 	END IF;
 
@@ -405,7 +413,10 @@ END PROCESS idle_counter_proc;
 			--need to modify RAM fsm to take in second input frm cache, and 
 			--merge changes with vdout to put on vdin by another truth table
 		END IF;
-
+  ELSE
+    ram_addr <= curr_vram_word; --dont care 
+    ram_start <= '0'; --dont start the fsm
+  
    END IF;
    END PROCESS flush_cache;
 ---------------------------------------------------------------------------------	

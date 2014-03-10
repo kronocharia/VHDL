@@ -34,7 +34,7 @@ BEGIN
             WHEN white  => data_merged(i) <= '0';
             WHEN black  => data_merged(i) <= '1';
             WHEN invert => data_merged(i) <= NOT data(i);
-            --WHEN OTHERS => NULL;
+            WHEN OTHERS => NULL;
         END CASE;
     END LOOP;
     END PROCESS MERGE_PROC;

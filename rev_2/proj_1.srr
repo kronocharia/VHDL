@@ -1,12 +1,12 @@
 #Build: Synplify Pro G-2012.09-SP1 , Build 168R, Nov 26 2012
 #install: C:\synopsys\fpga_G201209SP1
 #OS: Windows 7 6.1
-#Hostname: EEWS303A-031
+#Hostname: EEWS506A-027
 
 #Implementation: rev_2
 
 $ Start of Compile
-#Mon Mar 10 11:36:37 2014
+#Mon Mar 10 23:49:15 2014
 
 Synopsys VHDL Compiler, version comp201209rcp1, Build 124R, built Nov 27 2012
 @N|Running in 64-bit mode
@@ -31,14 +31,6 @@ Post processing for work.pix_word_cache.pwc
 @N: CD233 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":21:17:21:18|Using sequential encoding for type state_t
 Post processing for work.ram_fsm.synth
 Post processing for work.rcb.rtl1
-@W: CL117 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":303:1:303:2|Latch generated from process for signal pxcache_pixopin(1 downto 0); possible missing assignment in an if or case statement.
-@W: CL117 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":303:1:303:2|Latch generated from process for signal pxcache_wen_all; possible missing assignment in an if or case statement.
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":303:1:303:2|All reachable assignments to pxcache_pw assign '1'; register removed by optimization
-@W: CL117 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":303:1:303:2|Latch generated from process for signal vram_waddr(7 downto 0); possible missing assignment in an if or case statement.
-@W: CL117 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":303:1:303:2|Latch generated from process for signal pxcache_pixnum(3 downto 0); possible missing assignment in an if or case statement.
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":303:1:303:2|All reachable assignments to change_curr_word assign '1'; register removed by optimization
-@W: CL117 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":398:1:398:2|Latch generated from process for signal ram_addr(7 downto 0); possible missing assignment in an if or case statement.
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":398:1:398:2|All reachable assignments to ram_start assign '1'; register removed by optimization
 @W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":94:8:94:17|All reachable assignments to one_vector(0) assign '1'; register removed by optimization
 @W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":94:8:94:17|All reachable assignments to one_vector(1) assign '0'; register removed by optimization
 @W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":94:8:94:17|All reachable assignments to one_vector(2) assign '0'; register removed by optimization
@@ -54,7 +46,6 @@ State machine has 4 reachable states with original encodings of:
    01
    10
    11
-@W: CL159 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":15:12:15:18|Input cache_d is unused
 @N: CL201 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":78:8:78:12|Trying to extract state machine for register state
 Extracted state machine for register state
 State machine has 7 reachable states with original encodings of:
@@ -68,7 +59,7 @@ State machine has 7 reachable states with original encodings of:
 @W: CL238 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":122:2:122:5|Latch state_transition.assert_sig0 enable evaluates to constant 0, optimized
 @END
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Mon Mar 10 11:36:38 2014
+# Mon Mar 10 23:49:16 2014
 
 ###########################################################]
 Premap Report
@@ -84,10 +75,10 @@ Printing clock  summary report in "H:\Desktop\GitHub\VHDL\rev_2\proj_1_scck.rpt"
 @N: MF248 |Running in 64-bit mode.
 @N: MF666 |Clock conversion enabled 
 
-Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 92MB)
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 93MB)
 
 
-Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 92MB)
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 93MB)
 
 
 Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 93MB)
@@ -95,8 +86,115 @@ Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00
 
 Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 95MB)
 
-@E: FX713 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":303:1:303:2|Achronix doesn't support latch for vram_waddr[7:0].
+Warning: Found 1 combinational loops!
+@W: BN137 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":414:1:414:2|Found combinational loop during mapping at net ram_start
+1) instance ram_start (view:work.rcb(rtl1)), output net "ram_start" in work.rcb(rtl1)
+    net        ram_state_machine.start
+    input  pin ram_state_machine.delay/A[0]
+    instance   ram_state_machine.delay (cell mux)
+    output pin ram_state_machine.delay/OUT[0]
+    net        ram_delay
+    input  pin ram_delay_inv/I[0]
+    instance   ram_delay_inv (cell inv)
+    output pin ram_delay_inv/OUT[0]
+    net        ram_delay_inv
+    input  pin ram_start/B[0]
+    instance   ram_start (cell mux)
+    output pin ram_start/OUT[0]
+    net        ram_start
+End of loops
+
+
+Clock Summary
+**************
+
+Start       Requested     Requested     Clock        Clock                
+Clock       Frequency     Period        Type         Group                
+--------------------------------------------------------------------------
+rcb|clk     4.2 MHz       240.663       inferred     Autoconstr_clkgroup_0
+==========================================================================
+
+@W: MT529 :"h:\desktop\github\vhdl\vhdl project\hardware_files\ram_fsm.vhd":16:22:16:29|Found inferred clock rcb|clk which controls 85 sequential elements including ram_state_machine.data_del[15:0]. This clock has no specified timing constraint which may prevent conversion of gated or generated clocks and may adversely impact design performance. 
+
+syn_allowed_resources : blockrams=1026  set on top level netlist rcb
+Finished Pre Mapping Phase.Pre-mapping successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 56MB peak: 121MB)
+
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Mon Mar 10 11:36:40 2014
+# Mon Mar 10 23:49:18 2014
+
+###########################################################]
+Map & Optimize Report
+
+Synopsys Achronix Technology Mapper, Version maprc, Build 1352R, Built Nov 27 2012 10:01:01
+Copyright (C) 1994-2012, Synopsys, Inc. This software the associated documentation are confidential and proprietary to Synopsys, Inc. Your use or disclosure of this software subject to the terms and conditions of a written license agreement between you, or your company, and Synopsys, Inc.
+Product Version G-2012.09-SP1 
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 91MB peak: 92MB)
+
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled 
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 91MB peak: 92MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 91MB peak: 92MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 92MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 94MB)
+
+
+
+Starting Optimization and Mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 118MB peak: 121MB)
+
+
+Available hyper_sources - for debug and ip models
+	None Found
+
+Warning: Found 1 combinational loops!
+@W: BN137 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":414:1:414:2|Found combinational loop during mapping at net ram_start
+1) instance ram_start (view:work.rcb(rtl1)), output net "ram_start" in work.rcb(rtl1)
+    net        ram_state_machine.start
+    input  pin ram_state_machine.delay/I[0]
+    instance   ram_state_machine.delay (cell and)
+    output pin ram_state_machine.delay/OUT
+    net        ram_delay
+    input  pin ram_delay_inv/I[0]
+    instance   ram_delay_inv (cell inv)
+    output pin ram_delay_inv/OUT[0]
+    net        ram_delay_inv
+    input  pin ram_start/I[0]
+    instance   ram_start (cell and)
+    output pin ram_start/OUT
+    net        ram_start
+End of loops
+@N: MT206 |Auto Constrain mode is enabled
+
+Finished RTL optimizations (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 118MB peak: 121MB)
+
+Encoding state machine state[0:6] (view:work.rcb(rtl1))
+original code -> new code
+   00000010 -> 0000001
+   00000100 -> 0000010
+   00001000 -> 0000100
+   00010000 -> 0001000
+   00100000 -> 0010000
+   01000000 -> 0100000
+   10000000 -> 1000000
+@N:"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":93:8:93:19|Found counter in view:work.rcb(rtl1) inst idle_counter[7:0]
+Loop detected across counter idle_counter[7:0] - No Carry Save Implementation. 
+Encoding state machine state[0:3] (view:work.ram_fsm(synth))
+original code -> new code
+   00 -> 00
+   01 -> 01
+   10 -> 10
+   11 -> 11
+@E: BN242 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":30:7:30:9|Achronix does not allow combinational loops.
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Mon Mar 10 23:49:19 2014
 
 ###########################################################]

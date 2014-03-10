@@ -1,7 +1,7 @@
 # Synospys Constraint Checker(syntax only), version maprc, Build 1352R, built Nov 27 2012
 # Copyright (C) 1994-2012, Synopsys, Inc. This software the associated documentation are confidential and proprietary to Synopsys, Inc. Your use or disclosure of this software subject to the terms and conditions of a written license agreement between you, or your company, and Synopsys, Inc.
 
-# Written on Mon Mar 10 11:36:40 2014
+# Written on Mon Mar 10 23:49:18 2014
 
 
 ##### DESIGN INFO #######################################################
@@ -16,3 +16,13 @@ Constraint File(s):      (none)
 
 No issues found in constraint syntax.
 
+
+
+Clock Summary
+**************
+
+Start       Requested     Requested     Clock        Clock                
+Clock       Frequency     Period        Type         Group                
+--------------------------------------------------------------------------
+rcb|clk     4.2 MHz       240.663       inferred     Autoconstr_clkgroup_0
+==========================================================================

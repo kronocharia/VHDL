@@ -297,8 +297,16 @@ END PROCESS idle_counter_proc;
 ------------------------------------------------------------------------------
 
 --------combinatorial process handling the draw connecting to pxwordcache--------
-	draw_px: PROCESS(draw_trig, move_trig, dbb_bus, fetch_draw_trig)
+	draw_px: PROCESS(draw_trig, move_trig, dbb_bus, fetch_draw_trig,curr_vram_word)
 	BEGIN
+
+	pxcache_pixopin <= same;
+	pxcache_pixnum  <= "0000"; --hardcoded this needs to change this is very bad <-----
+	pxcache_wen_all <='-';
+	pxcache_pw <= '-';
+	change_curr_word <='-';
+	
+	vram_waddr <= curr_vram_word;
 
 	IF (draw_trig ='1' OR move_trig ='1') THEN
 				
@@ -355,6 +363,10 @@ END PROCESS idle_counter_proc;
 			--just need to load the new word if that happens
 			--upstream should be saving the previous x,y for 
 		END IF;
+	
+
+	  
+	    	
 
 	END IF;
 
@@ -393,19 +405,27 @@ END PROCESS idle_counter_proc;
 -------------------------------------------------------------------------------	
 
 ------------------ flush cache out to vram-------------------------------------
-	flush_cache : PROCESS(flush_trig,dbb_bus, curr_vram_word, ram_delay) 	
+	flush_cache : PROCESS(flush_trig, curr_vram_word, ram_delay) 	
 	BEGIN
+	
+	ram_addr <= curr_vram_word; --dont care 
+    ram_start <= '0'; --dont start the fsm
+	
 	IF flush_trig = '1' THEN	
 
+		
 		--if vram not busy
 		IF (ram_delay = '0') THEN
 			ram_addr <= curr_vram_word;
 			ram_start <= '1'; --enable vram interfacing
-
-			--need to modify RAM fsm to take in second input frm cache, and 
+		ELSE
+			ram_addr <= curr_vram_word; --dont care 
+    		ram_start <= '0'; --dont start the fsm
 			--merge changes with vdout to put on vdin by another truth table
 		END IF;
 
+    
+  
    END IF;
    END PROCESS flush_cache;
 ---------------------------------------------------------------------------------	

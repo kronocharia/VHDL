@@ -1,11 +1,3 @@
-@W: CL117 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":303:1:303:2|Latch generated from process for signal pxcache_pixopin(1 downto 0); possible missing assignment in an if or case statement.
-@W: CL117 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":303:1:303:2|Latch generated from process for signal pxcache_wen_all; possible missing assignment in an if or case statement.
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":303:1:303:2|All reachable assignments to pxcache_pw assign '1'; register removed by optimization
-@W: CL117 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":303:1:303:2|Latch generated from process for signal vram_waddr(7 downto 0); possible missing assignment in an if or case statement.
-@W: CL117 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":303:1:303:2|Latch generated from process for signal pxcache_pixnum(3 downto 0); possible missing assignment in an if or case statement.
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":303:1:303:2|All reachable assignments to change_curr_word assign '1'; register removed by optimization
-@W: CL117 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":398:1:398:2|Latch generated from process for signal ram_addr(7 downto 0); possible missing assignment in an if or case statement.
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":398:1:398:2|All reachable assignments to ram_start assign '1'; register removed by optimization
 @W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":94:8:94:17|All reachable assignments to one_vector(0) assign '1'; register removed by optimization
 @W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":94:8:94:17|All reachable assignments to one_vector(1) assign '0'; register removed by optimization
 @W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":94:8:94:17|All reachable assignments to one_vector(2) assign '0'; register removed by optimization
@@ -14,6 +6,5 @@
 @W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":94:8:94:17|All reachable assignments to one_vector(5) assign '0'; register removed by optimization
 @W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":94:8:94:17|All reachable assignments to one_vector(6) assign '0'; register removed by optimization
 @W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":94:8:94:17|All reachable assignments to one_vector(7) assign '0'; register removed by optimization
-@W: CL159 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":15:12:15:18|Input cache_d is unused
 @W: CL238 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":122:2:122:5|Latch state_transition.assert_sig0 enable evaluates to constant 0, optimized
 
