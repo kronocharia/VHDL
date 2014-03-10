@@ -1,0 +1,27 @@
+Synopsys Achronix Technology Pre-mapping, Version maprc, Build 1352R, Built Nov 27 2012 10:01:01
+Copyright (C) 1994-2012, Synopsys, Inc. This software the associated documentation are confidential and proprietary to Synopsys, Inc. Your use or disclosure of this software subject to the terms and conditions of a written license agreement between you, or your company, and Synopsys, Inc.
+Product Version G-2012.09-SP1 
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 91MB peak: 92MB)
+
+@L: H:\Desktop\GitHub\VHDL\rev_2\proj_1_scck.rpt 
+Printing clock  summary report in "H:\Desktop\GitHub\VHDL\rev_2\proj_1_scck.rpt" file 
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled 
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 92MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 92MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 93MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 95MB)
+
+@E: FX713 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":398:1:398:2|Achronix doesn't support latch for vaddr[7:0].
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Mon Mar 10 11:31:01 2014
+
+###########################################################]

@@ -1,3 +1,23 @@
+
+------------------------mux2to1---------------------------
+LIBRARY ieee;
+USE IEEE.std_logic_1164.ALL;
+
+ENTITY mux2 IS
+	PORT (i0,i1,sel: IN std_logic;
+			m: OUT std_logic);
+END mux2;
+
+ARCHITECTURE dflow OF mux2 IS
+	SIGNAL x,y :std_logic;
+BEGIN
+	x <= i1 AND sel;
+	y <= i0 AND NOT sel;
+	m <= x or y;
+END dflow;
+
+
+------------------------------main entity---------------
 LIBRARY ieee;
 USE IEEE.std_logic_1164.ALL;
 USE IEEE.numeric_std.ALL;
@@ -58,20 +78,20 @@ ARCHITECTURE rtl1 OF rcb IS
 	SIGNAL state, next_state									: state_type;
 	SIGNAL idle_counter_trig,draw_trig,move_trig				: std_logic;
 	SIGNAL fetch_draw_flag,fetch_draw_trig						: std_logic;
-	SIGNAL draw_done, move_done									: std_logic;
+	--SIGNAL draw_done, move_done									: std_logic;
 
 --draw_px process signals
 	SIGNAL vram_waddr,curr_vram_word							: std_logic_vector(7 DOWNTO 0);
 	SIGNAL change_curr_word										: std_logic;
 
 --trigger the cache flush
-	SIGNAL flush_trig,flush_done								: std_logic;
+	SIGNAL flush_trig											: std_logic;
 --waiting for ram_fsm to complete
 	SIGNAL vram_done											: std_logic;
 
 	--hardcoded width to handle N up to 256
 	SIGNAL idle_counter 										: std_logic_vector(7 DOWNTO 0);
-	SIGNAL one_vector             : std_logic_vector(7 DOWNTO 0);
+	SIGNAL one_vector             								: std_logic_vector(7 DOWNTO 0);
 
 
 BEGIN
@@ -238,8 +258,16 @@ BEGIN
 				fetch_draw_flag <= '0'; END IF;
 			
 			state <= next_state;
-		IF reset = '1' THEN
-			state <= s_idle;
+
+			IF (next_state = s_idle) THEN
+				rcb_finish <= '1';
+			ELSE 
+				rcb_finish <= '0';
+			END IF;
+
+
+			IF reset = '1' THEN
+				state <= s_idle;
 			
 		END IF;
 
@@ -252,7 +280,7 @@ BEGIN
     WAIT UNTIL clk'EVENT AND clk= '1';
     one_vector <= "00000001";
     IF (idle_counter_trig ='1') THEN
-        idle_counter  <= std_logic_vector(unsigned'(one_vector+idle_counter));
+        idle_counter  <= std_logic_vector(unsigned(unsigned(one_vector)+ unsigned(idle_counter)));
     END IF;
     
 END PROCESS idle_counter_proc;
@@ -269,16 +297,11 @@ END PROCESS idle_counter_proc;
 ------------------------------------------------------------------------------
 
 --------combinatorial process handling the draw connecting to pxwordcache--------
-	draw_px: PROCESS(draw_trig, move_trig, dbb_bus)
+	draw_px: PROCESS(draw_trig, move_trig, dbb_bus, fetch_draw_trig)
 	BEGIN
 
 	IF (draw_trig ='1' OR move_trig ='1') THEN
-		
-		--unset the trigger flags
-		draw_trig <= '0';
-		move_trig <= '0';
-
-		
+				
 		--store vram word address of the current command
 		vram_waddr <= getRamWord(dbb_bus.X, dbb_bus.Y); 
 	
@@ -301,6 +324,30 @@ END PROCESS idle_counter_proc;
 			pxcache_pixnum <= getRamBit(dbb_bus.X, dbb_bus.Y);
 			pxcache_wen_all <= '0'; --for writing single px
 			pxcache_pw <='1';	--enable the px cache for writing single px
+
+		ELSE IF (fetch_draw_trig='1') THEN
+
+		--instruction decode
+			IF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "01") THEN
+				pxcache_pixopin <= white;
+			
+			ELSIF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "10") THEN
+				pxcache_pixopin <= black;
+
+			ELSIF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "11") THEN
+				pxcache_pixopin <= invert;
+			ELSE
+				assert false report "ERROR in rcb, draw_px instruction decode";
+			END IF;
+
+			--compute cache bit addresses and bit numbers from x,y
+			pxcache_pixnum <= getRamBit(dbb_bus.X, dbb_bus.Y);
+			pxcache_wen_all <= '1'; --for clear cache
+			pxcache_pw <='1';	--enable the px cache for writing single px
+			change_curr_word <='1'; --enable the register holding the current word to update
+
+
+
 		END IF;
 		
 		IF (move_trig ='1') THEN
@@ -316,35 +363,37 @@ END PROCESS idle_counter_proc;
 
 -----------------fetch from vram and draw  processs----------------------------
 	--code duplication, temporary solutionn
-	fetch_draw : PROCESS(state, fetch_draw_trig, dbb_bus)
-	BEGIN
-	IF (fetch_draw_trig = '1') THEN
+	-- fetch_draw : PROCESS(fetch_draw_trig, dbb_bus)
+	-- BEGIN
+	-- IF (fetch_draw_trig = '1') THEN
 
-		--draw instruction decode
-		IF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "01") THEN
-				pxcache_pixopin <= white;
+	-- 	--draw instruction decode
+	-- 	IF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "01") THEN
+	-- 			pxcache_pixopin <= white;
 			
-		ELSIF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "10") THEN
-			pxcache_pixopin <= black;
+	-- 	ELSIF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "10") THEN
+	-- 		pxcache_pixopin <= black;
 
-		ELSIF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "11") THEN
-			pxcache_pixopin <= invert;
-		ELSE
-			assert false report "ERROR in rcb, draw_px instruction decode";
-		END IF;
+	-- 	ELSIF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "11") THEN
+	-- 		pxcache_pixopin <= invert;
+	-- 	ELSE
+	-- 		assert false report "ERROR in rcb, draw_px instruction decode";
+	-- 	END IF;
 
-		--compute cache bit addresses and bit numbers from x,y
-		pxcache_pixnum <= getRamBit(dbb_bus.X, dbb_bus.Y);
-		pxcache_wen_all <= '1'; --to zero out the other cache bits
-		pxcache_pw <='1';	--enable the px cache for writing single px
+	-- 	--compute cache bit addresses and bit numbers from x,y
+	-- 	pxcache_pixnum <= getRamBit(dbb_bus.X, dbb_bus.Y);
+	-- 	pxcache_wen_all <= '1'; --to zero out the other cache bits
+	-- 	pxcache_pw <='1';	--enable the px cache for writing single px
+	-- 	change_curr_word <='1'; --enable the register holding the current word to update
 
-	END IF;
-	END PROCESS fetch_draw;
+
+	-- END IF;
+	-- END PROCESS fetch_draw;
 
 -------------------------------------------------------------------------------	
 
 ------------------ flush cache out to vram-------------------------------------
-	flush_cache : PROCESS(state,flush_trig,dbb_bus, curr_vram_word) 	
+	flush_cache : PROCESS(flush_trig,dbb_bus, curr_vram_word, ram_delay) 	
 	BEGIN
 	IF flush_trig = '1' THEN	
 
@@ -361,6 +410,8 @@ END PROCESS idle_counter_proc;
    END PROCESS flush_cache;
 ---------------------------------------------------------------------------------	
 
+
+---------------------------------------------------------------------------------
 ---------------------------- structural -----------------------------------------
 ram_state_machine: ENTITY ram_fsm PORT MAP(
 
@@ -372,6 +423,7 @@ ram_state_machine: ENTITY ram_fsm PORT MAP(
 	--input std_logic_vector
 	addr 	 => ram_addr,
 	data 	 => ram_data,
+	cache_d  => pxcache_store,
 
 
 	--output std_logic
@@ -406,12 +458,11 @@ px_cache: ENTITY pix_word_cache PORT MAP(
 
 	);
 
-------------------external connections----------------------
+------------------external connections and signal stuff----------------------
 
 vaddr <= ram_addr; --joining external ram to the ram interface fsm
 ram_data <= vdout; --joins vram output to ram data in
-
-
+vwrite <= ram_vwrite;
 
 --clear not implemented yet
 dbb_rcbclear <= '0';

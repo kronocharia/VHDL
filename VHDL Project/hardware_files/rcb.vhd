@@ -1,3 +1,23 @@
+
+------------------------mux2to1---------------------------
+LIBRARY ieee;
+USE IEEE.std_logic_1164.ALL;
+
+ENTITY mux2 IS
+	PORT (i0,i1,sel: IN std_logic;
+			m: OUT std_logic);
+END mux2;
+
+ARCHITECTURE dflow OF mux2 IS
+	SIGNAL x,y :std_logic;
+BEGIN
+	x <= i1 AND sel;
+	y <= i0 AND NOT sel;
+	m <= x or y;
+END dflow;
+
+
+------------------------------main entity---------------
 LIBRARY ieee;
 USE IEEE.std_logic_1164.ALL;
 USE IEEE.numeric_std.ALL;
@@ -277,7 +297,7 @@ END PROCESS idle_counter_proc;
 ------------------------------------------------------------------------------
 
 --------combinatorial process handling the draw connecting to pxwordcache--------
-	draw_px: PROCESS(draw_trig, move_trig, dbb_bus)
+	draw_px: PROCESS(draw_trig, move_trig, dbb_bus, fetch_draw_trig)
 	BEGIN
 
 	IF (draw_trig ='1' OR move_trig ='1') THEN
@@ -304,6 +324,30 @@ END PROCESS idle_counter_proc;
 			pxcache_pixnum <= getRamBit(dbb_bus.X, dbb_bus.Y);
 			pxcache_wen_all <= '0'; --for writing single px
 			pxcache_pw <='1';	--enable the px cache for writing single px
+
+		ELSIF (fetch_draw_trig='1') THEN
+
+		--instruction decode
+			IF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "01") THEN
+				pxcache_pixopin <= white;
+			
+			ELSIF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "10") THEN
+				pxcache_pixopin <= black;
+
+			ELSIF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "11") THEN
+				pxcache_pixopin <= invert;
+			ELSE
+				assert false report "ERROR in rcb, draw_px instruction decode";
+			END IF;
+
+			--compute cache bit addresses and bit numbers from x,y
+			pxcache_pixnum <= getRamBit(dbb_bus.X, dbb_bus.Y);
+			pxcache_wen_all <= '1'; --for clear cache
+			pxcache_pw <='1';	--enable the px cache for writing single px
+			change_curr_word <='1'; --enable the register holding the current word to update
+
+
+
 		END IF;
 		
 		IF (move_trig ='1') THEN
@@ -319,32 +363,32 @@ END PROCESS idle_counter_proc;
 
 -----------------fetch from vram and draw  processs----------------------------
 	--code duplication, temporary solutionn
-	fetch_draw : PROCESS(fetch_draw_trig, dbb_bus)
-	BEGIN
-	IF (fetch_draw_trig = '1') THEN
+	-- fetch_draw : PROCESS(fetch_draw_trig, dbb_bus)
+	-- BEGIN
+	-- IF (fetch_draw_trig = '1') THEN
 
-		--draw instruction decode
-		IF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "01") THEN
-				pxcache_pixopin <= white;
+	-- 	--draw instruction decode
+	-- 	IF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "01") THEN
+	-- 			pxcache_pixopin <= white;
 			
-		ELSIF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "10") THEN
-			pxcache_pixopin <= black;
+	-- 	ELSIF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "10") THEN
+	-- 		pxcache_pixopin <= black;
 
-		ELSIF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "11") THEN
-			pxcache_pixopin <= invert;
-		ELSE
-			assert false report "ERROR in rcb, draw_px instruction decode";
-		END IF;
+	-- 	ELSIF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "11") THEN
+	-- 		pxcache_pixopin <= invert;
+	-- 	ELSE
+	-- 		assert false report "ERROR in rcb, draw_px instruction decode";
+	-- 	END IF;
 
-		--compute cache bit addresses and bit numbers from x,y
-		pxcache_pixnum <= getRamBit(dbb_bus.X, dbb_bus.Y);
-		pxcache_wen_all <= '1'; --to zero out the other cache bits
-		pxcache_pw <='1';	--enable the px cache for writing single px
-		change_curr_word <='1'; --enable the register holding the current word to update
+	-- 	--compute cache bit addresses and bit numbers from x,y
+	-- 	pxcache_pixnum <= getRamBit(dbb_bus.X, dbb_bus.Y);
+	-- 	pxcache_wen_all <= '1'; --to zero out the other cache bits
+	-- 	pxcache_pw <='1';	--enable the px cache for writing single px
+	-- 	change_curr_word <='1'; --enable the register holding the current word to update
 
 
-	END IF;
-	END PROCESS fetch_draw;
+	-- END IF;
+	-- END PROCESS fetch_draw;
 
 -------------------------------------------------------------------------------	
 
@@ -366,6 +410,8 @@ END PROCESS idle_counter_proc;
    END PROCESS flush_cache;
 ---------------------------------------------------------------------------------	
 
+
+---------------------------------------------------------------------------------
 ---------------------------- structural -----------------------------------------
 ram_state_machine: ENTITY ram_fsm PORT MAP(
 

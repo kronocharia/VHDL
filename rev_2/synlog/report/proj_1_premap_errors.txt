@@ -1,0 +1,1 @@
+@E: FX713 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":398:1:398:2|Achronix doesn't support latch for vaddr[7:0].

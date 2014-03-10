@@ -1,0 +1,12 @@
+C:\synopsys\fpga_G201209SP1\bin64\m_generic.exe  -prodtype synplify_pro -encrypt  -pro  -rundir  H:\Desktop\GitHub\VHDL\rev_2  -part ACX22iHD1000  -package FBGA2280  -grade Std   -maxfan 10000 -RWCheckOnRam 0     -pipe   -fixgatedclocks 1 -fixgeneratedclocks 1     -summaryfile H:\Desktop\GitHub\VHDL\rev_2\synlog\report\proj_1_premap.xml -top_level_module  rcb  -ovma  H:\Desktop\GitHub\VHDL\rev_2\proj_1.vma  -conchk_prepass  H:\Desktop\GitHub\VHDL\rev_2\proj_1_cck_prepass.rpt  -autoconstraint  -freq 1.000  H:\Desktop\GitHub\VHDL\rev_2\synwork\proj_1_compiler.srs  -flow prepass  -gcc_prepass  -osrd  H:\Desktop\GitHub\VHDL\rev_2\synwork\proj_1_premap.srd  -devicelib  C:\synopsys\fpga_G201209SP1\lib\generic\speedster22i.v  -ologparam  H:\Desktop\GitHub\VHDL\rev_2\syntmp\proj_1.plg  -osyn  H:\Desktop\GitHub\VHDL\rev_2\synwork\proj_1_premap.srd  -prjdir  H:\Desktop\GitHub\VHDL\  -prjname  "rcb synth"  -log  H:\Desktop\GitHub\VHDL\rev_2\synlog\proj_1_premap.srr 
+rc:2 success:0
+H:\Desktop\GitHub\VHDL\rev_2\proj_1.vma|o|0|0
+H:\Desktop\GitHub\VHDL\rev_2\proj_1_cck_prepass.rpt|o|0|0
+H:\Desktop\GitHub\VHDL\rev_2\synwork\proj_1_compiler.srs|i|1394451057|10768
+H:\Desktop\GitHub\VHDL\rev_2\synwork\proj_1_premap.srd|o|0|0
+C:\synopsys\fpga_G201209SP1\lib\generic\speedster22i.v|i|1353965560|52431
+H:\Desktop\GitHub\VHDL\rev_2\syntmp\proj_1.plg|o|0|0
+H:\Desktop\GitHub\VHDL\rev_2\synwork\proj_1_premap.srd|o|0|0
+H:\Desktop\GitHub\VHDL\rev_2\synlog\proj_1_premap.srr|o|0|0
+C:\synopsys\fpga_G201209SP1\bin64\m_generic.exe|i|1354006890|23484416
+C:\synopsys\fpga_G201209SP1\bin\m_generic.exe|i|1354005010|20130816

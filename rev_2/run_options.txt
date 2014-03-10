@@ -1,8 +1,6 @@
 #--  Synopsys, Inc.
 #--  Version G-2012.09-SP1 
 #--  Project file H:\Desktop\GitHub\VHDL\rev_2\run_options.txt
-#--  Written on Mon Mar 10 11:08:22 2014
-
 
 #project files
 add_file -vhdl -lib work "H:/Desktop/GitHub/VHDL/ex4/pix_cache_pak.vhd"
