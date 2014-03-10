@@ -325,7 +325,7 @@ END PROCESS idle_counter_proc;
 			pxcache_wen_all <= '0'; --for writing single px
 			pxcache_pw <='1';	--enable the px cache for writing single px
 
-		ELSE IF (fetch_draw_trig='1') THEN
+		ELSIF (fetch_draw_trig='1') THEN
 
 		--instruction decode
 			IF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "01") THEN
@@ -440,7 +440,7 @@ px_cache: ENTITY pix_word_cache PORT MAP(
 	--inputs std_logic
 	clk		=> clk,
 	wen_all => pxcache_wen_all, 
-	reset	=> pxcache_reset,
+	reset	=> reset,
 	pw 		=> pxcache_pw,
 
 	--inputs pixop_t
@@ -459,7 +459,8 @@ px_cache: ENTITY pix_word_cache PORT MAP(
 	);
 
 ------------------external connections and signal stuff----------------------
-
+vram_done <= ram_delay;
+vdin <= ram_data_del;
 vaddr <= ram_addr; --joining external ram to the ram interface fsm
 ram_data <= vdout; --joins vram output to ram data in
 vwrite <= ram_vwrite;

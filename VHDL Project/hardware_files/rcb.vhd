@@ -63,7 +63,7 @@ ARCHITECTURE rtl1 OF rcb IS
     SIGNAL ram_data, ram_data_del								: std_logic_vector(15 DOWNTO 0);
 
 --For interfacing with pixel cache
-	SIGNAL pxcache_wen_all, pxcache_reset, pxcache_pw 			: std_logic;
+	SIGNAL pxcache_wen_all, pxcache_pw 			: std_logic;
 	SIGNAL pxcache_is_same										: std_logic;
 	SIGNAL pxcache_pixopin 										: pixop_t;
 	SIGNAL pxcache_pixnum										: std_logic_vector(3 DOWNTO 0);
@@ -440,7 +440,7 @@ px_cache: ENTITY pix_word_cache PORT MAP(
 	--inputs std_logic
 	clk		=> clk,
 	wen_all => pxcache_wen_all, 
-	reset	=> pxcache_reset,
+	reset	=> reset,
 	pw 		=> pxcache_pw,
 
 	--inputs pixop_t
@@ -459,7 +459,8 @@ px_cache: ENTITY pix_word_cache PORT MAP(
 	);
 
 ------------------external connections and signal stuff----------------------
-
+vram_done <= ram_delay;
+vdin <= ram_data_del;
 vaddr <= ram_addr; --joining external ram to the ram interface fsm
 ram_data <= vdout; --joins vram output to ram data in
 vwrite <= ram_vwrite;

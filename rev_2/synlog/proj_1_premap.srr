@@ -20,8 +20,8 @@ Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00
 
 Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 95MB)
 
-@E: FX713 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":398:1:398:2|Achronix doesn't support latch for vaddr[7:0].
+@E: FX713 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":303:1:303:2|Achronix doesn't support latch for vram_waddr[7:0].
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Mon Mar 10 11:31:01 2014
+# Mon Mar 10 11:36:40 2014
 
 ###########################################################]

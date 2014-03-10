@@ -6,7 +6,7 @@
 #Implementation: rev_2
 
 $ Start of Compile
-#Mon Mar 10 11:30:57 2014
+#Mon Mar 10 11:36:37 2014
 
 Synopsys VHDL Compiler, version comp201209rcp1, Build 124R, built Nov 27 2012
 @N|Running in 64-bit mode
@@ -25,18 +25,12 @@ VHDL syntax check successful!
 File H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd changed - recompiling
 @N: CD630 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":30:7:30:9|Synthesizing work.rcb.rtl1 
 @N: CD231 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":77:17:77:18|Using onehot encoding for type state_type (s_error="10000000")
-@W: CD638 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":66:25:66:37|Signal pxcache_reset is undriven 
-@W: CD638 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":90:8:90:16|Signal vram_done is undriven 
 @N: CD630 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\pix_word_cache.vhd":9:7:9:20|Synthesizing work.pix_word_cache.pwc 
 Post processing for work.pix_word_cache.pwc
 @N: CD630 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":7:7:7:13|Synthesizing work.ram_fsm.synth 
 @N: CD233 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":21:17:21:18|Using sequential encoding for type state_t
 Post processing for work.ram_fsm.synth
 Post processing for work.rcb.rtl1
-@W: CL240 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":90:8:90:16|vram_done is not assigned a value (floating) -- simulation mismatch possible. 
-@W: CL240 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":66:25:66:37|pxcache_reset is not assigned a value (floating) -- simulation mismatch possible. 
-@W: CL240 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":44:2:44:5|vdin is not assigned a value (floating) -- simulation mismatch possible. 
-@W: CL167 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":438:17:438:35|Input reset of instance px_cache is floating
 @W: CL117 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":303:1:303:2|Latch generated from process for signal pxcache_pixopin(1 downto 0); possible missing assignment in an if or case statement.
 @W: CL117 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":303:1:303:2|Latch generated from process for signal pxcache_wen_all; possible missing assignment in an if or case statement.
 @W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":303:1:303:2|All reachable assignments to pxcache_pw assign '1'; register removed by optimization
@@ -53,7 +47,6 @@ Post processing for work.rcb.rtl1
 @W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":94:8:94:17|All reachable assignments to one_vector(5) assign '0'; register removed by optimization
 @W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":94:8:94:17|All reachable assignments to one_vector(6) assign '0'; register removed by optimization
 @W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":94:8:94:17|All reachable assignments to one_vector(7) assign '0'; register removed by optimization
-@W: CL169 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":80:8:80:22|Pruning register fetch_draw_flag  
 @N: CL201 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":22:9:22:13|Trying to extract state machine for register state
 Extracted state machine for register state
 State machine has 4 reachable states with original encodings of:
@@ -64,16 +57,18 @@ State machine has 4 reachable states with original encodings of:
 @W: CL159 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":15:12:15:18|Input cache_d is unused
 @N: CL201 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":78:8:78:12|Trying to extract state machine for register state
 Extracted state machine for register state
-State machine has 5 reachable states with original encodings of:
+State machine has 7 reachable states with original encodings of:
    00000010
    00000100
    00001000
    00010000
    00100000
+   01000000
+   10000000
 @W: CL238 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":122:2:122:5|Latch state_transition.assert_sig0 enable evaluates to constant 0, optimized
 @END
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Mon Mar 10 11:30:57 2014
+# Mon Mar 10 11:36:38 2014
 
 ###########################################################]
 Premap Report
@@ -100,8 +95,8 @@ Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00
 
 Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 95MB)
 
-@E: FX713 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":398:1:398:2|Achronix doesn't support latch for vaddr[7:0].
+@E: FX713 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":303:1:303:2|Achronix doesn't support latch for vram_waddr[7:0].
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Mon Mar 10 11:31:01 2014
+# Mon Mar 10 11:36:40 2014
 
 ###########################################################]
