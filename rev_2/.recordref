@@ -1,0 +1,4 @@
+rcb port dbb_bus.X[5:0] dbb_bus[5:0]
+rcb port dbb_bus.Y[5:0] dbb_bus[11:6]
+rcb port dbb_bus.rcb_cmd[2:0] dbb_bus[14:12]
+rcb port dbb_bus.startcmd dbb_bus[15]

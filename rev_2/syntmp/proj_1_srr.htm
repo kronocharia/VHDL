@@ -1,0 +1,89 @@
+<html><body><samp><pre>
+<!@TC:1394449702>
+#Build: Synplify Pro G-2012.09-SP1 , Build 168R, Nov 26 2012
+#install: C:\synopsys\fpga_G201209SP1
+#OS: Windows 7 6.1
+#Hostname: EEWS303A-031
+
+#Implementation: rev_2
+
+<a name=compilerReport1>$ Start of Compile</a>
+#Mon Mar 10 11:08:22 2014
+
+Synopsys VHDL Compiler, version comp201209rcp1, Build 124R, built Nov 27 2012
+@N: : <!@TM:1394449703> | Running in 64-bit mode 
+Copyright (C) 1994-2012 Synopsys, Inc. This software the associated documentation are confidential and proprietary to Synopsys, Inc. Your use or disclosure of this software subject to the terms and conditions of a written license agreement between you, or your company, and Synopsys, Inc.
+
+@N:<a href="@N:CD720:@XP_HELP">CD720</a> : <a href="C:\synopsys\fpga_G201209SP1\lib\vhd\std.vhd:123:18:123:22:@N:CD720:@XP_MSG">std.vhd(123)</a><!@TM:1394449703> | Setting time resolution to ns
+@N: : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:10:7:10:10:@N::@XP_MSG">rcb.vhd(10)</a><!@TM:1394449703> | Top entity is set to rcb.
+VHDL syntax check successful!
+@N:<a href="@N:CD630:@XP_HELP">CD630</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:10:7:10:10:@N:CD630:@XP_MSG">rcb.vhd(10)</a><!@TM:1394449703> | Synthesizing work.rcb.rtl1 
+@N:<a href="@N:CD231:@XP_HELP">CD231</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:57:17:57:19:@N:CD231:@XP_MSG">rcb.vhd(57)</a><!@TM:1394449703> | Using onehot encoding for type state_type (s_error="10000000")
+<font color=#A52A2A>@W:<a href="@W:CD638:@XP_HELP">CD638</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:46:25:46:38:@W:CD638:@XP_MSG">rcb.vhd(46)</a><!@TM:1394449703> | Signal pxcache_reset is undriven </font>
+<font color=#A52A2A>@W:<a href="@W:CD638:@XP_HELP">CD638</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:70:8:70:17:@W:CD638:@XP_MSG">rcb.vhd(70)</a><!@TM:1394449703> | Signal vram_done is undriven </font>
+@N:<a href="@N:CD630:@XP_HELP">CD630</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\pix_word_cache.vhd:9:7:9:21:@N:CD630:@XP_MSG">pix_word_cache.vhd(9)</a><!@TM:1394449703> | Synthesizing work.pix_word_cache.pwc 
+Post processing for work.pix_word_cache.pwc
+@N:<a href="@N:CD630:@XP_HELP">CD630</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd:7:7:7:14:@N:CD630:@XP_MSG">ram_fsm.vhd(7)</a><!@TM:1394449703> | Synthesizing work.ram_fsm.synth 
+@N:<a href="@N:CD233:@XP_HELP">CD233</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd:21:17:21:19:@N:CD233:@XP_MSG">ram_fsm.vhd(21)</a><!@TM:1394449703> | Using sequential encoding for type state_t
+Post processing for work.ram_fsm.synth
+Post processing for work.rcb.rtl1
+<font color=#A52A2A>@W:<a href="@W:CL240:@XP_HELP">CL240</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:70:8:70:17:@W:CL240:@XP_MSG">rcb.vhd(70)</a><!@TM:1394449703> | vram_done is not assigned a value (floating) -- simulation mismatch possible. </font>
+<font color=#A52A2A>@W:<a href="@W:CL240:@XP_HELP">CL240</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:46:25:46:38:@W:CL240:@XP_MSG">rcb.vhd(46)</a><!@TM:1394449703> | pxcache_reset is not assigned a value (floating) -- simulation mismatch possible. </font>
+<font color=#A52A2A>@W:<a href="@W:CL240:@XP_HELP">CL240</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:24:2:24:6:@W:CL240:@XP_MSG">rcb.vhd(24)</a><!@TM:1394449703> | vdin is not assigned a value (floating) -- simulation mismatch possible. </font>
+<font color=#A52A2A>@W:<a href="@W:CL167:@XP_HELP">CL167</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:392:17:392:36:@W:CL167:@XP_MSG">rcb.vhd(392)</a><!@TM:1394449703> | Input reset of instance px_cache is floating</font>
+<font color=#A52A2A>@W:<a href="@W:CL117:@XP_HELP">CL117</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:283:1:283:3:@W:CL117:@XP_MSG">rcb.vhd(283)</a><!@TM:1394449703> | Latch generated from process for signal draw_px.pxcache_pixopin(1 downto 0); possible missing assignment in an if or case statement.</font>
+<font color=#A52A2A>@W:<a href="@W:CL117:@XP_HELP">CL117</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:324:1:324:3:@W:CL117:@XP_MSG">rcb.vhd(324)</a><!@TM:1394449703> | Latch generated from process for signal fetch_draw.pxcache_pixopin(1 downto 0); possible missing assignment in an if or case statement.</font>
+<font color=#A52A2A>@W:<a href="@W:CL117:@XP_HELP">CL117</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:283:1:283:3:@W:CL117:@XP_MSG">rcb.vhd(283)</a><!@TM:1394449703> | Latch generated from process for signal draw_px.pxcache_pixnum(3 downto 0); possible missing assignment in an if or case statement.</font>
+<font color=#A52A2A>@W:<a href="@W:CL117:@XP_HELP">CL117</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:283:1:283:3:@W:CL117:@XP_MSG">rcb.vhd(283)</a><!@TM:1394449703> | Latch generated from process for signal vram_waddr(7 downto 0); possible missing assignment in an if or case statement.</font>
+<font color=#A52A2A>@W:<a href="@W:CL117:@XP_HELP">CL117</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:324:1:324:3:@W:CL117:@XP_MSG">rcb.vhd(324)</a><!@TM:1394449703> | Latch generated from process for signal fetch_draw.pxcache_pixnum(3 downto 0); possible missing assignment in an if or case statement.</font>
+<font color=#A52A2A>@W:<a href="@W:CL117:@XP_HELP">CL117</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:283:1:283:3:@W:CL117:@XP_MSG">rcb.vhd(283)</a><!@TM:1394449703> | Latch generated from process for signal draw_px.pxcache_wen_all; possible missing assignment in an if or case statement.</font>
+<font color=#A52A2A>@W:<a href="@W:CL117:@XP_HELP">CL117</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:283:1:283:3:@W:CL117:@XP_MSG">rcb.vhd(283)</a><!@TM:1394449703> | Latch generated from process for signal draw_px.pxcache_pw; possible missing assignment in an if or case statement.</font>
+<font color=#A52A2A>@W:<a href="@W:CL117:@XP_HELP">CL117</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:354:1:354:3:@W:CL117:@XP_MSG">rcb.vhd(354)</a><!@TM:1394449703> | Latch generated from process for signal ram_addr(7 downto 0); possible missing assignment in an if or case statement.</font>
+<font color=#A52A2A>@W:<a href="@W:CL111:@XP_HELP">CL111</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:354:1:354:3:@W:CL111:@XP_MSG">rcb.vhd(354)</a><!@TM:1394449703> | All reachable assignments to ram_start assign '1'; register removed by optimization</font>
+<font color=#A52A2A>@W:<a href="@W:CL111:@XP_HELP">CL111</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:74:8:74:18:@W:CL111:@XP_MSG">rcb.vhd(74)</a><!@TM:1394449703> | All reachable assignments to one_vector(0) assign '1'; register removed by optimization</font>
+<font color=#A52A2A>@W:<a href="@W:CL111:@XP_HELP">CL111</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:74:8:74:18:@W:CL111:@XP_MSG">rcb.vhd(74)</a><!@TM:1394449703> | All reachable assignments to one_vector(1) assign '0'; register removed by optimization</font>
+<font color=#A52A2A>@W:<a href="@W:CL111:@XP_HELP">CL111</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:74:8:74:18:@W:CL111:@XP_MSG">rcb.vhd(74)</a><!@TM:1394449703> | All reachable assignments to one_vector(2) assign '0'; register removed by optimization</font>
+<font color=#A52A2A>@W:<a href="@W:CL111:@XP_HELP">CL111</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:74:8:74:18:@W:CL111:@XP_MSG">rcb.vhd(74)</a><!@TM:1394449703> | All reachable assignments to one_vector(3) assign '0'; register removed by optimization</font>
+<font color=#A52A2A>@W:<a href="@W:CL111:@XP_HELP">CL111</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:74:8:74:18:@W:CL111:@XP_MSG">rcb.vhd(74)</a><!@TM:1394449703> | All reachable assignments to one_vector(4) assign '0'; register removed by optimization</font>
+<font color=#A52A2A>@W:<a href="@W:CL111:@XP_HELP">CL111</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:74:8:74:18:@W:CL111:@XP_MSG">rcb.vhd(74)</a><!@TM:1394449703> | All reachable assignments to one_vector(5) assign '0'; register removed by optimization</font>
+<font color=#A52A2A>@W:<a href="@W:CL111:@XP_HELP">CL111</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:74:8:74:18:@W:CL111:@XP_MSG">rcb.vhd(74)</a><!@TM:1394449703> | All reachable assignments to one_vector(6) assign '0'; register removed by optimization</font>
+<font color=#A52A2A>@W:<a href="@W:CL111:@XP_HELP">CL111</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:74:8:74:18:@W:CL111:@XP_MSG">rcb.vhd(74)</a><!@TM:1394449703> | All reachable assignments to one_vector(7) assign '0'; register removed by optimization</font>
+<font color=#A52A2A>@W:<a href="@W:CL111:@XP_HELP">CL111</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:324:1:324:3:@W:CL111:@XP_MSG">rcb.vhd(324)</a><!@TM:1394449703> | All reachable assignments to fetch_draw.pxcache_wen_all assign '1'; register removed by optimization</font>
+<font color=#A52A2A>@W:<a href="@W:CL111:@XP_HELP">CL111</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:324:1:324:3:@W:CL111:@XP_MSG">rcb.vhd(324)</a><!@TM:1394449703> | All reachable assignments to fetch_draw.pxcache_pw assign '1'; register removed by optimization</font>
+<font color=#A52A2A>@W:<a href="@W:CL111:@XP_HELP">CL111</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:324:1:324:3:@W:CL111:@XP_MSG">rcb.vhd(324)</a><!@TM:1394449703> | All reachable assignments to change_curr_word assign '1'; register removed by optimization</font>
+<font color=#A52A2A>@W:<a href="@W:CL169:@XP_HELP">CL169</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:60:8:60:23:@W:CL169:@XP_MSG">rcb.vhd(60)</a><!@TM:1394449703> | Pruning register fetch_draw_flag  </font>
+@N:<a href="@N:CL201:@XP_HELP">CL201</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd:22:9:22:14:@N:CL201:@XP_MSG">ram_fsm.vhd(22)</a><!@TM:1394449703> | Trying to extract state machine for register state
+Extracted state machine for register state
+State machine has 4 reachable states with original encodings of:
+   00
+   01
+   10
+   11
+<font color=#A52A2A>@W:<a href="@W:CL159:@XP_HELP">CL159</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd:15:12:15:19:@W:CL159:@XP_MSG">ram_fsm.vhd(15)</a><!@TM:1394449703> | Input cache_d is unused</font>
+@N:<a href="@N:CL201:@XP_HELP">CL201</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:58:8:58:13:@N:CL201:@XP_MSG">rcb.vhd(58)</a><!@TM:1394449703> | Trying to extract state machine for register state
+Extracted state machine for register state
+State machine has 5 reachable states with original encodings of:
+   00000010
+   00000100
+   00001000
+   00010000
+   00100000
+<font color=#A52A2A>@W:<a href="@W:CL238:@XP_HELP">CL238</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:102:2:102:6:@W:CL238:@XP_MSG">rcb.vhd(102)</a><!@TM:1394449703> | Latch state_transition.assert_sig0 enable evaluates to constant 0, optimized</font>
+<font color=#A52A2A>@W:<a href="@W:CL238:@XP_HELP">CL238</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:324:1:324:3:@W:CL238:@XP_MSG">rcb.vhd(324)</a><!@TM:1394449703> | Latch fetch_draw.pxcache_pixnum(3 downto 0) enable evaluates to constant 0, optimized</font>
+<font color=#A52A2A>@W:<a href="@W:CL238:@XP_HELP">CL238</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:324:1:324:3:@W:CL238:@XP_MSG">rcb.vhd(324)</a><!@TM:1394449703> | Latch fetch_draw.assert_sig2 enable evaluates to constant 0, optimized</font>
+<font color=#A52A2A>@W:<a href="@W:CL238:@XP_HELP">CL238</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:324:1:324:3:@W:CL238:@XP_MSG">rcb.vhd(324)</a><!@TM:1394449703> | Latch fetch_draw.pxcache_pixopin(1 downto 0) enable evaluates to constant 0, optimized</font>
+<a name=error2><font color=red>@E:<a href="@E:CL219:@XP_HELP">CL219</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:49:8:49:22:@E:CL219:@XP_MSG">rcb.vhd(49)</a><!@TM:1394449703> | Multiple non-tristate drivers for net pxcache_pixnum(3 downto 0) in rcb</font>
+<a name=error3><font color=red>@E:<a href="@E:CL219:@XP_HELP">CL219</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:48:8:48:23:@E:CL219:@XP_MSG">rcb.vhd(48)</a><!@TM:1394449703> | Multiple non-tristate drivers for net pxcache_pixopin(1 downto 0) in rcb</font>
+<a name=error4><font color=red>@E:<a href="@E:CL219:@XP_HELP">CL219</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:46:8:46:23:@E:CL219:@XP_MSG">rcb.vhd(46)</a><!@TM:1394449703> | Multiple non-tristate drivers for net pxcache_wen_all in rcb</font>
+<a name=error5><font color=red>@E:<a href="@E:CL219:@XP_HELP">CL219</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:46:40:46:50:@E:CL219:@XP_MSG">rcb.vhd(46)</a><!@TM:1394449703> | Multiple non-tristate drivers for net pxcache_pw in rcb</font>
+<a name=error6><font color=red>@E:<a href="@E:CL229:@XP_HELP">CL229</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:46:40:46:50:@E:CL229:@XP_MSG">rcb.vhd(46)</a><!@TM:1394449703> | Unresolved tristate drivers for net pxcache_pw in rcb</font>
+<a name=error7><font color=red>@E:<a href="@E:CL229:@XP_HELP">CL229</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:46:8:46:23:@E:CL229:@XP_MSG">rcb.vhd(46)</a><!@TM:1394449703> | Unresolved tristate drivers for net pxcache_wen_all in rcb</font>
+<a name=error8><font color=red>@E:<a href="@E:CL229:@XP_HELP">CL229</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:48:8:48:23:@E:CL229:@XP_MSG">rcb.vhd(48)</a><!@TM:1394449703> | Unresolved tristate drivers for net pxcache_pixopin(1 downto 0) in rcb</font>
+<a name=error9><font color=red>@E:<a href="@E:CL229:@XP_HELP">CL229</a> : <a href="H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd:49:8:49:22:@E:CL229:@XP_MSG">rcb.vhd(49)</a><!@TM:1394449703> | Unresolved tristate drivers for net pxcache_pixnum(3 downto 0) in rcb</font>
+@END
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Mon Mar 10 11:08:23 2014
+
+###########################################################]
+
+</pre></samp></body></html>

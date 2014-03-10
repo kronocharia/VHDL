@@ -1,0 +1,33 @@
+@W: CD638 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":46:25:46:37|Signal pxcache_reset is undriven 
+@W: CD638 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":70:8:70:16|Signal vram_done is undriven 
+@W: CL240 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":70:8:70:16|vram_done is not assigned a value (floating) -- simulation mismatch possible. 
+@W: CL240 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":46:25:46:37|pxcache_reset is not assigned a value (floating) -- simulation mismatch possible. 
+@W: CL240 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":24:2:24:5|vdin is not assigned a value (floating) -- simulation mismatch possible. 
+@W: CL167 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":392:17:392:35|Input reset of instance px_cache is floating
+@W: CL117 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":283:1:283:2|Latch generated from process for signal draw_px.pxcache_pixopin(1 downto 0); possible missing assignment in an if or case statement.
+@W: CL117 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":324:1:324:2|Latch generated from process for signal fetch_draw.pxcache_pixopin(1 downto 0); possible missing assignment in an if or case statement.
+@W: CL117 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":283:1:283:2|Latch generated from process for signal draw_px.pxcache_pixnum(3 downto 0); possible missing assignment in an if or case statement.
+@W: CL117 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":283:1:283:2|Latch generated from process for signal vram_waddr(7 downto 0); possible missing assignment in an if or case statement.
+@W: CL117 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":324:1:324:2|Latch generated from process for signal fetch_draw.pxcache_pixnum(3 downto 0); possible missing assignment in an if or case statement.
+@W: CL117 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":283:1:283:2|Latch generated from process for signal draw_px.pxcache_wen_all; possible missing assignment in an if or case statement.
+@W: CL117 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":283:1:283:2|Latch generated from process for signal draw_px.pxcache_pw; possible missing assignment in an if or case statement.
+@W: CL117 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":354:1:354:2|Latch generated from process for signal ram_addr(7 downto 0); possible missing assignment in an if or case statement.
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":354:1:354:2|All reachable assignments to ram_start assign '1'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":74:8:74:17|All reachable assignments to one_vector(0) assign '1'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":74:8:74:17|All reachable assignments to one_vector(1) assign '0'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":74:8:74:17|All reachable assignments to one_vector(2) assign '0'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":74:8:74:17|All reachable assignments to one_vector(3) assign '0'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":74:8:74:17|All reachable assignments to one_vector(4) assign '0'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":74:8:74:17|All reachable assignments to one_vector(5) assign '0'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":74:8:74:17|All reachable assignments to one_vector(6) assign '0'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":74:8:74:17|All reachable assignments to one_vector(7) assign '0'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":324:1:324:2|All reachable assignments to fetch_draw.pxcache_wen_all assign '1'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":324:1:324:2|All reachable assignments to fetch_draw.pxcache_pw assign '1'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":324:1:324:2|All reachable assignments to change_curr_word assign '1'; register removed by optimization
+@W: CL169 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":60:8:60:22|Pruning register fetch_draw_flag  
+@W: CL159 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":15:12:15:18|Input cache_d is unused
+@W: CL238 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":102:2:102:5|Latch state_transition.assert_sig0 enable evaluates to constant 0, optimized
+@W: CL238 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":324:1:324:2|Latch fetch_draw.pxcache_pixnum(3 downto 0) enable evaluates to constant 0, optimized
+@W: CL238 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":324:1:324:2|Latch fetch_draw.assert_sig2 enable evaluates to constant 0, optimized
+@W: CL238 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":324:1:324:2|Latch fetch_draw.pxcache_pixopin(1 downto 0) enable evaluates to constant 0, optimized
+

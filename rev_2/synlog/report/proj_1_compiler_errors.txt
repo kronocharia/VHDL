@@ -1,0 +1,9 @@
+@E: CL219 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":49:8:49:21|Multiple non-tristate drivers for net pxcache_pixnum(3 downto 0) in rcb
+@E: CL219 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":48:8:48:22|Multiple non-tristate drivers for net pxcache_pixopin(1 downto 0) in rcb
+@E: CL219 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":46:8:46:22|Multiple non-tristate drivers for net pxcache_wen_all in rcb
+@E: CL219 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":46:40:46:49|Multiple non-tristate drivers for net pxcache_pw in rcb
+@E: CL229 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":46:40:46:49|Unresolved tristate drivers for net pxcache_pw in rcb
+@E: CL229 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":46:8:46:22|Unresolved tristate drivers for net pxcache_wen_all in rcb
+@E: CL229 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":48:8:48:22|Unresolved tristate drivers for net pxcache_pixopin(1 downto 0) in rcb
+@E: CL229 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":49:8:49:21|Unresolved tristate drivers for net pxcache_pixnum(3 downto 0) in rcb
+
