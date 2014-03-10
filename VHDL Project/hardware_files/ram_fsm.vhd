@@ -9,7 +9,7 @@ ENTITY ram_fsm IS
             clk, reset, start: IN std_logic;
             delay,vwrite: OUT std_logic;
 
-            addr, data: IN std_logic_vector;
+            addr, data, cache_d IN std_logic_vector;
             addr_del, data_del: OUT std_logic_vector
     );
 END ram_fsm;
@@ -17,7 +17,27 @@ END ram_fsm;
 ARCHITECTURE synth OF ram_fsm IS
   TYPE   state_t IS (m3, m2, m1, mx);       --possible states
   SIGNAL state, nstate : state_t;           --current state and next state
+  SIGNAL data_merged: std_logic_vector;
 BEGIN
+
+----------------implements merge of cache changes and vram data---------
+
+    MERGE_PROC:
+    PROCESS(cache_d,data)
+    BEGIN
+    FOR i IN cache_d'RANGE LOOP
+        CASE cache_d(i) IS
+            WHEN same   => data_merged(i) <= data(i);
+            WHEN white  => data_merged(i) <= '0';
+            WHEN black  => data_merged(i) <= '1';
+            WHEN invert => data_merged(i) <= NOT data(i);
+            WHEN OTHERS => NULL;
+        END CASE;
+    END LOOP;
+    END PROCESS MERGE_PROC;
+
+
+------------------------------------------------------------------------
 
 ----------------implements the state transition matrix-------------------
 

@@ -377,6 +377,7 @@ ram_state_machine: ENTITY ram_fsm PORT MAP(
 	--input std_logic_vector
 	addr 	 => ram_addr,
 	data 	 => ram_data,
+	cache_d  => pxcache_store,
 
 
 	--output std_logic
