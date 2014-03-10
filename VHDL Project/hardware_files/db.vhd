@@ -31,7 +31,7 @@ architecture rtl of db is
   signal pen_x, pen_y: std_logic_vector(vsize-1 downto 0);
   signal previous_command : std_logic_vector(2*vsize+3 downto 0);
   
-  type state_t is (idle, draw_reset, draw_start, send_command, send_command);
+  type state_t is (idle, draw_reset, draw_start, send_command);
   signal state, nstate : state_t;
   
   type opcode_t is array (1 downto 0) of std_logic;
@@ -60,7 +60,7 @@ begin
   -- disable dao when rcb not ready
   dao_disable <= dbb_delaycmd;
   
-  dao: entity draw_any_octant generic map(vsize+1) port map(
+  dao: entity draw_any_octant generic map(vsize) port map(
     clk => clk,
     resetx => dao_reset,
     draw => dao_draw,
@@ -92,7 +92,7 @@ begin
                                                  -- xin, yin, xbias
     variable dx: signed(vsize downto 0);
     variable dy: signed(vsize downto 0);
-    variable zero : std_logic_vector(vsize downto 0) := (others =>'0');
+    --variable zero : std_logic_vector(vsize-1 downto 0) := (others =>'0');
   begin
     dx := signed(resize(unsigned(command.x), vsize+1)) - signed(resize(unsigned(prev_command.x), vsize+1));
     dy := signed(resize(unsigned(command.y), vsize+1)) - signed(resize(unsigned(prev_command.y), vsize+1));
@@ -116,11 +116,11 @@ begin
     end if;
     -- 
     if state = draw_reset then
-      dao_xin <= zero;
-      dao_yin <= zero;
+      dao_xin <= prev_command.x;
+      dao_yin <= prev_command.y;
     else
-      dao_xin <= std_logic_vector(dx);
-      dao_yin <= std_logic_vector(dy);
+      dao_xin <= command.x;
+      dao_yin <= command.y;
     end if;
     dao_xbias <= 'X'; --God knows
   end process set_dao_inputs;
@@ -183,9 +183,8 @@ begin
   begin
     if state = send_command then
       if command.op = drawline_op then
-        -- hopefully stays within the bounds of unsigned(vsize) (ie inside the canvas), else outer resize will truncate information
-        dbb_bus.X <= std_logic_vector(resize(unsigned(signed(resize(unsigned(prev_command.x), vsize+1)) + signed(dao_xout)), vsize));
-        dbb_bus.Y <= std_logic_vector(resize(unsigned(signed(resize(unsigned(prev_command.y), vsize+1)) + signed(dao_yout)), vsize));
+        dbb_bus.x <= dao_xout;
+        dbb_bus.y <= dao_yout;
         dbb_bus.startcmd <= '1';
       else
         dbb_bus.X <= command.x;

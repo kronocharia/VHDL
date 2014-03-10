@@ -27,10 +27,11 @@ end db;
 
 architecture rtl of db is
   signal dao_draw, dao_xbias, dao_done, dao_swap, dao_negx, dao_negy, dao_disable, dao_reset : std_logic;
-  signal dao_xin, dao_yin, dao_xout, dao_yout, pen_x, pen_y: std_logic_vector(vsize-1 downto 0);
+  signal dao_xin, dao_yin, dao_xout, dao_yout: std_logic_vector(vsize downto 0);
+  signal pen_x, pen_y: std_logic_vector(vsize-1 downto 0);
   signal previous_command : std_logic_vector(2*vsize+3 downto 0);
   
-  type state_t is (idle, draw_reset, draw_start, drawing, clear_screen, move_pen);
+  type state_t is (idle, draw_reset, draw_start, send_command, send_command);
   signal state, nstate : state_t;
   
   type opcode_t is array (1 downto 0) of std_logic;
@@ -39,9 +40,9 @@ architecture rtl of db is
   constant clearscreen_op  : opcode_t := "10";
   
   type pentype_t is array (1 downto 0) of std_logic;
-  constant white  : opcode_t := "01";
-  constant black  : opcode_t := "10";
-  constant invert : opcode_t := "11";
+  constant white  : pentype_t := "01";
+  constant black  : pentype_t := "10";
+  constant invert : pentype_t := "11";
   
   type command_t is record
     op   : opcode_t;
@@ -59,7 +60,7 @@ begin
   -- disable dao when rcb not ready
   dao_disable <= dbb_delaycmd;
   
-  dao: entity draw_any_octant generic map(vsize+1) port map(
+  dao: entity draw_any_octant generic map(vsize) port map(
     clk => clk,
     resetx => dao_reset,
     draw => dao_draw,
@@ -91,10 +92,10 @@ begin
                                                  -- xin, yin, xbias
     variable dx: signed(vsize downto 0);
     variable dy: signed(vsize downto 0);
-    variable zero : std_logic_vector(vsize downto 0) := (others =>'0');
+    --variable zero : std_logic_vector(vsize-1 downto 0) := (others =>'0');
   begin
-		dx := signed(resize(unsigned(command.x), vsize+1)) - signed(resize(unsigned(prev_command.x), vsize+1));
-		dy := signed(resize(unsigned(command.y), vsize+1)) - signed(resize(unsigned(prev_command.y), vsize+1));
+    dx := signed(resize(unsigned(command.x), vsize+1)) - signed(resize(unsigned(prev_command.x), vsize+1));
+    dy := signed(resize(unsigned(command.y), vsize+1)) - signed(resize(unsigned(prev_command.y), vsize+1));
     -- set negx if dx is negative
     if dx >= 0 then
       dao_negx <= '0';
@@ -113,12 +114,13 @@ begin
     else
       dao_swap <= '0';
     end if;
+    -- 
     if state = draw_reset then
-      dao_xin <= zero;
-      dao_yin <= zero;
+      dao_xin <= prev_command.x;
+      dao_yin <= prev_command.y;
     else
-      dao_xin <= std_logic_vector(dx);
-      dao_yin <= std_logic_vector(dy);
+      dao_xin <= command.x;
+      dao_yin <= command.y;
     end if;
     dao_xbias <= 'X'; --God knows
   end process set_dao_inputs;
@@ -130,13 +132,12 @@ begin
     state <= nstate;
   end process db_fsm_clocked;
   
-  db_fsm_comb: process(state, command, dav, dao_done, dbb_delaycmd) -- driven list: nstate, db_finish, hdb_busy, dao_draw, dao_reset
+  db_fsm_comb: process(state, command, dav, dao_done, dbb_delaycmd) -- drives nstate, hdb_busy, dao_draw, dao_reset
   begin
     nstate <= state; --default, stay in current state
     case state is
       when idle =>
         -- outputs for idle state
-        db_finish <= '1';
         hdb_busy <= '0';
         dao_draw <= '0';
         dao_reset <= '0';
@@ -144,15 +145,14 @@ begin
         if dav = '1' then
           --read command and decide which state to go to.
           case command_in.op is
-            when movepen_op => nstate <= move_pen;
+            when movepen_op => nstate <= send_command;
             when drawline_op => nstate <= draw_reset;
-            when clearscreen_op => nstate <= clear_screen;
+            when clearscreen_op => nstate <= send_command;
             when others => null;
           end case;
         end if;        
       when draw_reset =>
         --outputs for draw_reset state
-        db_finish <= '0';
         hdb_busy <= '1';
         dao_draw <= '0';
         dao_reset <= '1';
@@ -160,40 +160,18 @@ begin
         nstate <= draw_start;
       when draw_start =>
         --outputs for draw_start state
-        db_finish <= '0';
         hdb_busy <= '1';
         dao_draw <= '1';
         dao_reset <= '0';
         --compute next state
-        nstate <= drawing;
-      when drawing =>
-        --outputs for drawing state
-        db_finish <= '0';
+        nstate <= send_command;
+      when send_command =>
+        --outputs for send_command state
         hdb_busy <= '1';
         dao_draw <= '0';
         dao_reset <= '0';        
         --compute next state
-        if dao_done <= '0' or dbb_delaycmd = '1' then nstate <= drawing;
-        else nstate <= idle;
-        end if;
-      when clear_screen =>
-        --outputs for clear_screen state
-        db_finish <= '0';
-        hdb_busy <= '1';
-        dao_draw <= '0';
-        dao_reset <= '0';
-        --compute next state
-        if dbb_delaycmd = '1' then nstate <= clear_screen;
-        else nstate <= idle;
-        end if;
-      when move_pen =>
-        --outputs for move_pen state
-        db_finish <= '0';
-        hdb_busy <= '1';
-        dao_draw <= '0';
-        dao_reset <= '0';
-        --compute next state
-        if dbb_delaycmd = '1' then nstate <= move_pen;
+        if (command.op = drawline_op and dao_done = '0') or dbb_delaycmd = '1' then nstate <= send_command;
         else nstate <= idle;
         end if;
       when others => nstate <= idle; -- reset undefined states to idle state
@@ -203,33 +181,21 @@ begin
   send_rcb_inputs: process(state, prev_command, command, dao_xout, dao_yout) --drives dbb_bus
     variable undefined : std_logic_vector(vsize-1 downto 0) := (others =>'X');
   begin
-    case state is
-      when idle =>
-        dbb_bus.X <= undefined;
-        dbb_bus.Y <= undefined;
-        dbb_bus.startcmd <= '0';
-      when draw_reset =>
-        dbb_bus.X <= undefined;
-        dbb_bus.Y <= undefined;
-        dbb_bus.startcmd <= '0';
-      when draw_start =>
-        dbb_bus.X <= undefined;
-        dbb_bus.Y <= undefined;
-        dbb_bus.startcmd <= '0';
-      when drawing =>
-        -- hopefully stays within the bounds of unsigned(vsize) (ie inside the canvas), else outer resize will truncate information
-        dbb_bus.X <= std_logic_vector(resize(unsigned(signed(resize(unsigned(prev_command.x), vsize+1)) + signed(dao_xout)), vsize));
-        dbb_bus.Y <= std_logic_vector(resize(unsigned(signed(resize(unsigned(prev_command.y), vsize+1)) + signed(dao_yout)), vsize));
-        dbb_bus.startcmd <= '1';                      
-      when move_pen =>
+    if state = send_command then
+      if command.op = drawline_op then
+        dbb_bus.x <= dao_xout;
+        dbb_bus.y <= dao_yout;
+        dbb_bus.startcmd <= '1';
+      else
         dbb_bus.X <= command.x;
         dbb_bus.Y <= command.y;
         dbb_bus.startcmd <= '1';                       
-      when clear_screen =>
-        dbb_bus.X <= command.x;
-        dbb_bus.Y <= command.y;
-        dbb_bus.startcmd <= '1';                           
-    end case;
+      end if;
+    else
+      dbb_bus.X <= undefined;
+      dbb_bus.Y <= undefined;
+      dbb_bus.startcmd <= '0';
+    end if;
 
     -- encode operation
     case command.pen is
@@ -245,4 +211,11 @@ begin
       when others => dbb_bus.rcb_cmd <= "100"; -- invalid command
     end case;
   end process send_rcb_inputs;
-end rtl;      
+
+  finished: process(state, dav) -- drives db_finish
+  begin
+    if state = idle and dav = '0' then db_finish <= '1';
+    else db_finish <= '0';
+    end if;
+  end process finished;
+end rtl;
