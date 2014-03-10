@@ -63,7 +63,7 @@ ARCHITECTURE rtl1 OF rcb IS
     SIGNAL ram_data, ram_data_del								: std_logic_vector(15 DOWNTO 0);
 
 --For interfacing with pixel cache
-	SIGNAL pxcache_wen_all, pxcache_pw 			: std_logic;
+	SIGNAL pxcache_wen_all, pxcache_pw 							: std_logic;
 	SIGNAL pxcache_is_same										: std_logic;
 	SIGNAL pxcache_pixopin 										: pixop_t;
 	SIGNAL pxcache_pixnum										: std_logic_vector(3 DOWNTO 0);

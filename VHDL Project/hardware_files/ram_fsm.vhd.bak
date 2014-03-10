@@ -12,7 +12,7 @@ ENTITY ram_fsm IS
 
             addr : IN std_logic_vector;
             data : IN std_logic_vector(15 DOWNTO 0); --changedd from unbounded to hardcoded size
-            cache_d : IN pixop_t;
+            cache_d : IN store_t;
             addr_del, data_del: OUT std_logic_vector
     );
 END ram_fsm;
@@ -34,7 +34,7 @@ BEGIN
             WHEN white  => data_merged(i) <= '0';
             WHEN black  => data_merged(i) <= '1';
             WHEN invert => data_merged(i) <= NOT data(i);
-            WHEN OTHERS => NULL;
+            --WHEN OTHERS => NULL;
         END CASE;
     END LOOP;
     END PROCESS MERGE_PROC;
