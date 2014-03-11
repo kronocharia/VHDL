@@ -411,18 +411,13 @@ END PROCESS idle_counter_proc;
 	ram_addr <= curr_vram_word; --dont care 
     ram_start <= '0'; --dont start the fsm
 	
-	IF flush_trig = '1' THEN	
-
-		
+	IF (flush_trig = '1' AND ram_delay = '0') THEN	
 		--if vram not busy
-		IF (ram_delay = '0') THEN
-			ram_addr <= curr_vram_word;
-			ram_start <= '1'; --enable vram interfacing
-		ELSE
-			ram_addr <= curr_vram_word; --dont care 
-    		ram_start <= '0'; --dont start the fsm
-			--merge changes with vdout to put on vdin by another truth table
-		END IF;
+
+		ram_addr <= curr_vram_word;
+		ram_start <= '1'; --enable vram interfacing
+
+	END IF;
 
     
   
