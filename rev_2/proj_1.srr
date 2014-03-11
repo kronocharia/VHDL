@@ -6,7 +6,7 @@
 #Implementation: rev_2
 
 $ Start of Compile
-#Mon Mar 10 23:49:15 2014
+#Mon Mar 10 23:54:43 2014
 
 Synopsys VHDL Compiler, version comp201209rcp1, Build 124R, built Nov 27 2012
 @N|Running in 64-bit mode
@@ -59,7 +59,7 @@ State machine has 7 reachable states with original encodings of:
 @W: CL238 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":122:2:122:5|Latch state_transition.assert_sig0 enable evaluates to constant 0, optimized
 @END
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Mon Mar 10 23:49:16 2014
+# Mon Mar 10 23:54:44 2014
 
 ###########################################################]
 Premap Report
@@ -122,7 +122,7 @@ Finished Pre Mapping Phase.Pre-mapping successful!
 At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 56MB peak: 121MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Mon Mar 10 23:49:18 2014
+# Mon Mar 10 23:54:46 2014
 
 ###########################################################]
 Map & Optimize Report
@@ -195,6 +195,6 @@ original code -> new code
    11 -> 11
 @E: BN242 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":30:7:30:9|Achronix does not allow combinational loops.
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Mon Mar 10 23:49:19 2014
+# Mon Mar 10 23:54:48 2014
 
 ###########################################################]
