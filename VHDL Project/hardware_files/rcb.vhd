@@ -72,6 +72,8 @@ ARCHITECTURE rtl1 OF rcb IS
 --
 --VSIZE is 6 ish...
 
+--Buffer the input command
+	SIGNAL dbb_busReg											: db_2_rcb;
 
 --RCB state machine signals
 	TYPE state_type IS (s_error,s_idle, s_rangecheck, s_draw, s_clear, s_flush, s_waitram,s_fetchdraw);
@@ -96,13 +98,20 @@ ARCHITECTURE rtl1 OF rcb IS
 
 BEGIN
 
-
---if clear then a massive square paint from current pen loc to specified location
-
+---------------------register the instruction----------------------
+	instruction_register: PROCESS
+	BEGIN
+	
+ 	WAIT UNTIL clk'EVENT AND clk = '1';
+ 	IF (state = s_idle) THEN
+	 	dbb_busReg <= dbb_bus;
+ 	END IF;
+	
+	END PROCESS instruction_register;
 
 ---------------------state transition matrix----------------------- 
 
-	state_transition: PROCESS(state, dbb_bus.startcmd, curr_vram_word, draw_trig,vram_done,fetch_draw_flag, idle_counter)	
+	state_transition: PROCESS(state, dbb_busReg.startcmd, curr_vram_word, draw_trig,vram_done,fetch_draw_flag, idle_counter)	
 	--idle counter variable	declared in package
 	
 	BEGIN
@@ -124,13 +133,13 @@ BEGIN
 
 					dbb_delaycmd <='0'; --im free, tell me to do stuff
 
-					IF (dbb_bus.startcmd='1') THEN 
+					IF (dbb_busReg.startcmd='1') THEN 
 						next_state <= s_rangecheck;
 
 					ELSIF (to_integer(unsigned(idle_counter)) = N) THEN
 						next_state <= s_flush;	
 					
-					ELSIF (dbb_bus.startcmd ='0') THEN
+					ELSIF (dbb_busReg.startcmd ='0') THEN
 						--increment loop counter
 						idle_counter_trig <= '1';
 						next_state <= s_idle;
@@ -143,7 +152,7 @@ BEGIN
 
 			WHEN s_rangecheck =>
 					--check if command targets pixel in loaded word
-					IF ( getRamWord(dbb_bus.X, dbb_bus.Y) = curr_vram_word ) THEN
+					IF ( getRamWord(dbb_busReg.X, dbb_busReg.Y) = curr_vram_word ) THEN
 						
 						--instruction decode		
 						-- RCB CMD
@@ -156,10 +165,10 @@ BEGIN
 						-- 110 clear black			'000' if move
 						-- 111 clear invert			
 
-						IF (dbb_bus.rcb_cmd(2) = '0') THEN --draw command issued (or move)
+						IF (dbb_busReg.rcb_cmd(2) = '0') THEN --draw command issued (or move)
 							next_state <= s_draw;
 						
-						ELSIF (dbb_bus.rcb_cmd(2) = '1') THEN --clear command issued
+						ELSIF (dbb_busReg.rcb_cmd(2) = '1') THEN --clear command issued
 							next_state <= s_clear;
 
 						ELSE
@@ -175,7 +184,7 @@ BEGIN
 			WHEN s_draw =>  
 					--write to single pixel in cache
 
-					IF (dbb_bus.rcb_cmd = "000") THEN
+					IF (dbb_busReg.rcb_cmd = "000") THEN
 						move_trig <='1';
 				    ELSE
 				    	draw_trig <='1'; 	
@@ -200,15 +209,15 @@ BEGIN
 					--write cache to vram
 					flush_trig <= '1';
 					
-					IF vram_done = '1' THEN
+					--IF vram_done = '1' THEN
 						
-						IF (fetch_draw_flag ='1') THEN
-							next_state <= s_fetchdraw;
-						ELSE
-							next_state <= s_idle;
-						END IF;
+					--	IF (fetch_draw_flag ='1') THEN
+					--		next_state <= s_fetchdraw;
+					--	ELSE
+					--		next_state <= s_idle;
+					--	END IF;
 
-					ELSIF vram_done ='0' THEN
+					IF vram_done ='0' THEN
 						next_state <= s_waitram;
 					ELSE
 						next_state <=s_error;
@@ -279,8 +288,12 @@ idle_counter_proc: PROCESS
 BEGIN
     WAIT UNTIL clk'EVENT AND clk= '1';
     one_vector <= "00000001";
-    IF (idle_counter_trig ='1') THEN
+    IF (idle_counter_trig ='1' AND reset = '0') THEN
         idle_counter  <= std_logic_vector(unsigned(unsigned(one_vector)+ unsigned(idle_counter)));
+    END IF;
+
+    IF (reset = '1') THEN
+    	idle_counter <= "00000000";
     END IF;
     
 END PROCESS idle_counter_proc;
@@ -290,14 +303,19 @@ END PROCESS idle_counter_proc;
 	current_word_register: PROCESS 
 	BEGIN
 		WAIT UNTIL clk'EVENT AND clk ='1';
-		IF (change_curr_word='1') THEN --enable for register
+		IF (change_curr_word='1' AND reset ='0') THEN --enable for register
 			curr_vram_word <= vram_waddr; --join this to one of the addresses
 		END IF;
+
+		IF (reset = '1') THEN
+    	curr_vram_word <= "00000000";
+    	END IF;
+		
 	END PROCESS current_word_register;		
 ------------------------------------------------------------------------------
 
 --------combinatorial process handling the draw connecting to pxwordcache--------
-	draw_px: PROCESS(draw_trig, move_trig, dbb_bus, fetch_draw_trig,curr_vram_word)
+	draw_px: PROCESS(draw_trig, move_trig, dbb_busReg, fetch_draw_trig,curr_vram_word)
 	BEGIN
 
 	pxcache_pixopin <= same;
@@ -311,45 +329,45 @@ END PROCESS idle_counter_proc;
 	IF (draw_trig ='1' OR move_trig ='1') THEN
 				
 		--store vram word address of the current command
-		vram_waddr <= getRamWord(dbb_bus.X, dbb_bus.Y); 
+		vram_waddr <= getRamWord(dbb_busReg.X, dbb_busReg.Y); 
 	
 		--if it was a draw command
 		IF (draw_trig ='1') THEN
 			--instruction decode
-			IF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "01") THEN
+			IF (dbb_busReg.rcb_cmd(1 DOWNTO 0) = "01") THEN
 				pxcache_pixopin <= white;
 			
-			ELSIF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "10") THEN
+			ELSIF (dbb_busReg.rcb_cmd(1 DOWNTO 0) = "10") THEN
 				pxcache_pixopin <= black;
 
-			ELSIF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "11") THEN
+			ELSIF (dbb_busReg.rcb_cmd(1 DOWNTO 0) = "11") THEN
 				pxcache_pixopin <= invert;
 			ELSE
 				assert false report "ERROR in rcb, draw_px instruction decode";
 			END IF;
 
 			--compute cache bit addresses and bit numbers from x,y
-			pxcache_pixnum <= getRamBit(dbb_bus.X, dbb_bus.Y);
+			pxcache_pixnum <= getRamBit(dbb_busReg.X, dbb_busReg.Y);
 			pxcache_wen_all <= '0'; --for writing single px
 			pxcache_pw <='1';	--enable the px cache for writing single px
 
 		ELSIF (fetch_draw_trig='1') THEN
 
 		--instruction decode
-			IF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "01") THEN
+			IF (dbb_busReg.rcb_cmd(1 DOWNTO 0) = "01") THEN
 				pxcache_pixopin <= white;
 			
-			ELSIF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "10") THEN
+			ELSIF (dbb_busReg.rcb_cmd(1 DOWNTO 0) = "10") THEN
 				pxcache_pixopin <= black;
 
-			ELSIF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "11") THEN
+			ELSIF (dbb_busReg.rcb_cmd(1 DOWNTO 0) = "11") THEN
 				pxcache_pixopin <= invert;
 			ELSE
 				assert false report "ERROR in rcb, draw_px instruction decode";
 			END IF;
 
 			--compute cache bit addresses and bit numbers from x,y
-			pxcache_pixnum <= getRamBit(dbb_bus.X, dbb_bus.Y);
+			pxcache_pixnum <= getRamBit(dbb_busReg.X, dbb_busReg.Y);
 			pxcache_wen_all <= '1'; --for clear cache
 			pxcache_pw <='1';	--enable the px cache for writing single px
 			change_curr_word <='1'; --enable the register holding the current word to update
@@ -372,56 +390,23 @@ END PROCESS idle_counter_proc;
 
 	END PROCESS draw_px;
 
-
------------------fetch from vram and draw  processs----------------------------
-	--code duplication, temporary solutionn
-	-- fetch_draw : PROCESS(fetch_draw_trig, dbb_bus)
-	-- BEGIN
-	-- IF (fetch_draw_trig = '1') THEN
-
-	-- 	--draw instruction decode
-	-- 	IF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "01") THEN
-	-- 			pxcache_pixopin <= white;
-			
-	-- 	ELSIF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "10") THEN
-	-- 		pxcache_pixopin <= black;
-
-	-- 	ELSIF (dbb_bus.rcb_cmd(1 DOWNTO 0) = "11") THEN
-	-- 		pxcache_pixopin <= invert;
-	-- 	ELSE
-	-- 		assert false report "ERROR in rcb, draw_px instruction decode";
-	-- 	END IF;
-
-	-- 	--compute cache bit addresses and bit numbers from x,y
-	-- 	pxcache_pixnum <= getRamBit(dbb_bus.X, dbb_bus.Y);
-	-- 	pxcache_wen_all <= '1'; --to zero out the other cache bits
-	-- 	pxcache_pw <='1';	--enable the px cache for writing single px
-	-- 	change_curr_word <='1'; --enable the register holding the current word to update
-
-
-	-- END IF;
-	-- END PROCESS fetch_draw;
-
 -------------------------------------------------------------------------------	
 
 ------------------ flush cache out to vram-------------------------------------
-	flush_cache : PROCESS(flush_trig, curr_vram_word, ram_delay) 	
+	flush_cache : PROCESS(flush_trig, curr_vram_word) 	
 	BEGIN
 	
 	ram_addr <= curr_vram_word; --dont care 
     ram_start <= '0'; --dont start the fsm
 	
-	IF (flush_trig = '1' AND ram_delay = '0') THEN	
-		--if vram not busy
-
+	IF (flush_trig ='1') THEN
 		ram_addr <= curr_vram_word;
-		ram_start <= '1'; --enable vram interfacing
+		ram_start <='1';
+	
 
 	END IF;
 
     
-  
-   END IF;
    END PROCESS flush_cache;
 ---------------------------------------------------------------------------------	
 

@@ -9,10 +9,10 @@ Printing clock  summary report in "H:\Desktop\GitHub\VHDL\rev_2\proj_1_scck.rpt"
 @N: MF248 |Running in 64-bit mode.
 @N: MF666 |Clock conversion enabled 
 
-Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 93MB)
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 92MB)
 
 
-Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 93MB)
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 92MB)
 
 
 Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 93MB)
@@ -20,23 +20,6 @@ Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00
 
 Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 95MB)
 
-Warning: Found 1 combinational loops!
-@W: BN137 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":414:1:414:2|Found combinational loop during mapping at net ram_start
-1) instance ram_start (view:work.rcb(rtl1)), output net "ram_start" in work.rcb(rtl1)
-    net        ram_state_machine.start
-    input  pin ram_state_machine.delay/A[0]
-    instance   ram_state_machine.delay (cell mux)
-    output pin ram_state_machine.delay/OUT[0]
-    net        ram_delay
-    input  pin ram_delay_inv/I[0]
-    instance   ram_delay_inv (cell inv)
-    output pin ram_delay_inv/OUT[0]
-    net        ram_delay_inv
-    input  pin ram_start/B[0]
-    instance   ram_start (cell mux)
-    output pin ram_start/OUT[0]
-    net        ram_start
-End of loops
 
 
 Clock Summary
@@ -48,7 +31,7 @@ Clock       Frequency     Period        Type         Group
 rcb|clk     4.2 MHz       240.663       inferred     Autoconstr_clkgroup_0
 ==========================================================================
 
-@W: MT529 :"h:\desktop\github\vhdl\vhdl project\hardware_files\ram_fsm.vhd":16:22:16:29|Found inferred clock rcb|clk which controls 85 sequential elements including ram_state_machine.data_del[15:0]. This clock has no specified timing constraint which may prevent conversion of gated or generated clocks and may adversely impact design performance. 
+@W: MT529 :"h:\desktop\github\vhdl\vhdl project\hardware_files\ram_fsm.vhd":16:22:16:29|Found inferred clock rcb|clk which controls 102 sequential elements including ram_state_machine.data_del[15:0]. This clock has no specified timing constraint which may prevent conversion of gated or generated clocks and may adversely impact design performance. 
 
 syn_allowed_resources : blockrams=1026  set on top level netlist rcb
 Finished Pre Mapping Phase.Pre-mapping successful!
@@ -56,6 +39,6 @@ Finished Pre Mapping Phase.Pre-mapping successful!
 At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 56MB peak: 121MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Mon Mar 10 23:54:46 2014
+# Wed Mar 12 23:11:56 2014
 
 ###########################################################]
