@@ -58,7 +58,7 @@ ARCHITECTURE rtl1 OF rcb IS
 
 
 --For interfacing with ram block
-    SIGNAL ram_start, ram_delay, ram_vwrite						: std_logic;
+    SIGNAL ram_start, ram_delay, ram_vwrite, ram_done						: std_logic;
     SIGNAL ram_addr, ram_addr_del								: std_logic_vector(7 DOWNTO 0);
     SIGNAL ram_data, ram_data_del								: std_logic_vector(15 DOWNTO 0);
 
@@ -111,7 +111,7 @@ BEGIN
 
 ---------------------state transition matrix----------------------- 
 
-	state_transition: PROCESS(state, dbb_busReg.startcmd, curr_vram_word, draw_trig,vram_done,fetch_draw_flag, idle_counter)	
+	state_transition: PROCESS(state, pxcache_pixopin,dbb_bus,dbb_busReg.startcmd, curr_vram_word, draw_trig,vram_done,fetch_draw_flag, idle_counter)	
 	--idle counter variable	declared in package
 	
 	BEGIN
@@ -127,30 +127,30 @@ BEGIN
 
 		dbb_delaycmd <='1'; --always busy unless in idle state
 		
-		--transitions
+		--transitions 
 		CASE state IS
-			WHEN s_idle => 	
+			WHEN s_idle => 	report "State = Idle" severity note;
 
 					dbb_delaycmd <='0'; --im free, tell me to do stuff
 
-					IF (dbb_busReg.startcmd='1') THEN 
+					IF (dbb_bus.startcmd='1') THEN 
+						 report "Received Start cmd" severity note;
 						next_state <= s_rangecheck;
 
 					ELSIF (to_integer(unsigned(idle_counter)) = N) THEN
 						next_state <= s_flush;	
 					
-					ELSIF (dbb_busReg.startcmd ='0') THEN
+					ELSE 
 						--increment loop counter
 						idle_counter_trig <= '1';
 						next_state <= s_idle;
+						assert false report "Going Back to idle";
 
-					ELSE 
-						next_state <= s_error;
-						assert false report "ERROR in rcb, state_transition - when s_idle ";
 					END IF;
 
 
 			WHEN s_rangecheck =>
+			   	report "State = rangecheck" severity note;
 					--check if command targets pixel in loaded word
 					IF ( getRamWord(dbb_busReg.X, dbb_busReg.Y) = curr_vram_word ) THEN
 						
@@ -182,6 +182,7 @@ BEGIN
 					END IF;
 
 			WHEN s_draw =>  
+			  report "State = draw" severity note;
 					--write to single pixel in cache
 
 					IF (dbb_busReg.rcb_cmd = "000") THEN
@@ -190,16 +191,17 @@ BEGIN
 				    	draw_trig <='1'; 	
 					END IF;
 
-					IF (draw_trig='1') THEN   --while drawing stay in draw state
-						next_state <= s_draw;
+					--IF (draw_trig='1') THEN   --while drawing stay in draw state
+						--next_state <= s_draw;
 
-					ELSIF (draw_trig='0') THEN --if finished draw go to idle state
-						next_state <= s_idle;
+					--ELSIF (draw_trig='0') THEN --if finished draw go to idle state
+						--next_state <= s_idle;
 					
-					ELSE
-						next_state <= s_error;
-						assert false report "ERROR in rcb, state_transition - when s_draw ";
-					END IF;
+					--ELSE
+					next_state <= s_idle;
+						--next_state <= s_error;
+					--	assert false report "ERROR in rcb, state_transition - when s_draw ";
+					--END IF;
 
 
 			
@@ -219,6 +221,7 @@ BEGIN
 
 					IF vram_done ='0' THEN
 						next_state <= s_waitram;
+					
 					ELSE
 						next_state <=s_error;
 						assert false report "ERROR in rcb, state_transition - when s_flush ";
@@ -248,7 +251,7 @@ BEGIN
 					
 
 			WHEN s_error => 
-					assert false report "Congrats, you managed to go to the error state, fix me";
+					assert false report "Congrats, you're in the error state, fix me";
 					next_state <= s_error; -- only reset moves state to idle
 
 		END CASE;
@@ -317,12 +320,12 @@ END PROCESS idle_counter_proc;
 --------combinatorial process handling the draw connecting to pxwordcache--------
 	draw_px: PROCESS(draw_trig, move_trig, dbb_busReg, fetch_draw_trig,curr_vram_word)
 	BEGIN
-
+  report "Beginnn draw processrun" severity note;
 	pxcache_pixopin <= same;
 	pxcache_pixnum  <= "0000"; --hardcoded this needs to change this is very bad <-----
-	pxcache_wen_all <='-';
-	pxcache_pw <= '-';
-	change_curr_word <='-';
+	pxcache_wen_all <='0';
+	pxcache_pw <= '0';
+	change_curr_word <='0';
 	
 	vram_waddr <= curr_vram_word;
 
@@ -381,13 +384,10 @@ END PROCESS idle_counter_proc;
 			--just need to load the new word if that happens
 			--upstream should be saving the previous x,y for 
 		END IF;
-	
-
-	  
-	    	
+	 	
 
 	END IF;
-
+  report "Ending draw processrun" severity note;
 	END PROCESS draw_px;
 
 -------------------------------------------------------------------------------	
@@ -429,6 +429,7 @@ ram_state_machine: ENTITY ram_fsm PORT MAP(
 	--output std_logic
 	delay 	 => ram_delay,	
 	vwrite 	 => ram_vwrite,
+	done     => ram_done,
 
 	--output std_logc_vector
 	addr_del => ram_addr_del,
@@ -459,7 +460,7 @@ px_cache: ENTITY pix_word_cache PORT MAP(
 	);
 
 ------------------external connections and signal stuff----------------------
-vram_done <= ram_delay;
+vram_done <= ram_done;
 vdin <= ram_data_del;
 vaddr <= ram_addr; --joining external ram to the ram interface fsm
 ram_data <= vdout; --joins vram output to ram data in

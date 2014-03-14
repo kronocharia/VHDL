@@ -8,7 +8,7 @@ ENTITY ram_fsm IS
 
     PORT(
             clk, reset, start: IN std_logic;
-            delay,vwrite: OUT std_logic;
+            delay,vwrite,done: OUT std_logic;
 
             addr : IN std_logic_vector;
             data : IN std_logic_vector(15 DOWNTO 0); --changedd from unbounded to hardcoded size
@@ -55,15 +55,18 @@ BEGIN
 		delay <='0';
 		
         CASE state IS
-            WHEN mx => 	IF start ='1' THEN nstate <= m1; END IF;
+            WHEN mx => 
+                      	IF start ='1' THEN nstate <= m1; END IF;
             
-            WHEN m1 => 	IF start ='1' THEN delay <='1'; END IF;
-     					nstate <= m2;    --unconditional transition
+            WHEN m1 => 
+                       IF start ='1' THEN delay <='1'; END IF;
+     					              nstate <= m2;    --unconditional transition
             
-            WHEN m2 => 	IF start ='1' THEN delay <='1'; END IF;
-            			nstate <= m3;    --unconditioanl transition
+            WHEN m2 => 	
+                        IF start ='1' THEN delay <='1'; END IF;
+            			         nstate <= m3;    --unconditioanl transition
             
-            WHEN m3 =>  vwrite <= '1';
+            WHEN m3 =>  vwrite <= '1'; 
             			IF start = '1' THEN 
                             nstate <= m1;
                         ELSIF start ='0' THEN
@@ -77,6 +80,13 @@ BEGIN
     PROCESS
     BEGIN
         WAIT UNTIL clk'EVENT AND clk = '1';
+            CASE nstate IS
+              WHEN mx => done = '1';
+              WHEN m1 => done = '0';
+              WHEN m2 => done = '0';
+              WHEN m3 => done = '1';
+            END CASE;
+            
             state <= nstate;
 		IF reset = '1' THEN      --reset signal 
             state <= mx;
@@ -92,7 +102,7 @@ BEGIN
     BEGIN
         WAIT UNTIL CLK'EVENT AND clk ='0';
             addr_del <= addr;
-            data_del <= data;
+            data_del <= data_merged;
 
     END PROCESS DELAY_PROC;
 

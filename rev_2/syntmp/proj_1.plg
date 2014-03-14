@@ -1,18 +1,19 @@
-@P:  Worst Slack : -0.791
-@P:  rcb|clk - Estimated Frequency : 382.3 MHz
-@P:  rcb|clk - Requested Frequency : 547.9 MHz
-@P:  rcb|clk - Estimated Period : 2.616
-@P:  rcb|clk - Requested Period : 1.825
-@P:  rcb|clk - Slack : -0.791
-@P:  Worst Slack(min analysis) : 0.179
-@P:  rcb|clk - Estimated Frequency(min analysis) : 382.3 MHz
-@P:  rcb|clk - Requested Frequency(min analysis) : 547.9 MHz
-@P:  rcb|clk - Estimated Period(min analysis) : 2.616
-@P:  rcb|clk - Requested Period(min analysis) : 1.825
-@P:  rcb|clk - Slack(min analysis) : -0.791
-@P: rcb Part : acx22ihd1000fbga2280std
-@P: rcb I/O primitives : 62
-@P: rcb I/O Register bits : 0
-@P: rcb Register bits (Non I/O) : 97 (0%)
-@P: rcb Total Luts : 173 (0%)
+@P:  Part : ep2c5qc208-6
+@P:  Worst Slack : -0.747
+@P:  rcb|clk - Estimated Frequency : 200.8 MHz
+@P:  rcb|clk - Requested Frequency : 236.2 MHz
+@P:  rcb|clk - Estimated Period : 4.981
+@P:  rcb|clk - Requested Period : 4.234
+@P:  rcb|clk - Slack : -0.747
+@P:  Worst Slack(min analysis) : 0.375
+@P:  rcb|clk - Estimated Frequency(min analysis) : 200.8 MHz
+@P:  rcb|clk - Requested Frequency(min analysis) : 236.2 MHz
+@P:  rcb|clk - Estimated Period(min analysis) : 4.981
+@P:  rcb|clk - Requested Period(min analysis) : 4.234
+@P:  rcb|clk - Slack(min analysis) : -0.747
+@P: rcb Part : ep2c5qc208-6
+@P: rcb I/O ATOMs : 62
+@P: rcb Total LUTs : 100 
+@P: rcb Register bits : 82
+@P: rcb DSP Blocks : 0 (0 nine-bit DSP elements)
 @P:  CPU Time : 0h:00m:02s

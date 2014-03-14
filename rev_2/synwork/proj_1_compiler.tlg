@@ -1,11 +1,14 @@
 @N: CD630 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":30:7:30:9|Synthesizing work.rcb.rtl1 
 @N: CD231 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":79:17:79:18|Using onehot encoding for type state_type (s_error="10000000")
+@W: CD434 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":114:34:114:48|Signal pxcache_pixopin in the sensitivity list is not used in the process
+@W: CD434 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":114:58:114:67|Signal dbb_busreg.startcmd in the sensitivity list is not used in the process
 @N: CD630 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\pix_word_cache.vhd":9:7:9:20|Synthesizing work.pix_word_cache.pwc 
 Post processing for work.pix_word_cache.pwc
 @N: CD630 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":7:7:7:13|Synthesizing work.ram_fsm.synth 
 @N: CD233 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":21:17:21:18|Using sequential encoding for type state_t
 Post processing for work.ram_fsm.synth
 Post processing for work.rcb.rtl1
+@W: CL169 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":76:8:76:17|Pruning register dbb_busReg.startcmd  
 @W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":96:8:96:17|All reachable assignments to one_vector(0) assign '1'; register removed by optimization
 @W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":96:8:96:17|All reachable assignments to one_vector(1) assign '0'; register removed by optimization
 @W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":96:8:96:17|All reachable assignments to one_vector(2) assign '0'; register removed by optimization
@@ -14,6 +17,14 @@ Post processing for work.rcb.rtl1
 @W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":96:8:96:17|All reachable assignments to one_vector(5) assign '0'; register removed by optimization
 @W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":96:8:96:17|All reachable assignments to one_vector(6) assign '0'; register removed by optimization
 @W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":96:8:96:17|All reachable assignments to one_vector(7) assign '0'; register removed by optimization
+@W: CL189 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":86:19:86:32|Register bit curr_vram_word(0) is always 0, optimizing ...
+@W: CL189 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":86:19:86:32|Register bit curr_vram_word(1) is always 0, optimizing ...
+@W: CL189 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":86:19:86:32|Register bit curr_vram_word(2) is always 0, optimizing ...
+@W: CL189 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":86:19:86:32|Register bit curr_vram_word(3) is always 0, optimizing ...
+@W: CL189 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":86:19:86:32|Register bit curr_vram_word(4) is always 0, optimizing ...
+@W: CL189 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":86:19:86:32|Register bit curr_vram_word(5) is always 0, optimizing ...
+@W: CL189 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":86:19:86:32|Register bit curr_vram_word(6) is always 0, optimizing ...
+@W: CL189 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":86:19:86:32|Register bit curr_vram_word(7) is always 0, optimizing ...
 @N: CL201 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":22:9:22:13|Trying to extract state machine for register state
 Extracted state machine for register state
 State machine has 4 reachable states with original encodings of:

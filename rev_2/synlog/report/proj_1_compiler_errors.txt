@@ -1,3 +1,3 @@
-@E: CL219 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":95:8:95:19|Multiple non-tristate drivers for net idle_counter(7 downto 0) in rcb
-@E: CL229 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":95:8:95:19|Unresolved tristate drivers for net idle_counter(7 downto 0) in rcb
+@E: CD200 :"H:\Desktop\GitHub\VHDL\VHDL Project\behav_files\db_behav.vhd":49:2:49:8|Misspelled variable, signal or procedure name?
+@E|Parse errors encountered - exiting
 
