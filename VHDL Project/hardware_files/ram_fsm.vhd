@@ -72,21 +72,28 @@ BEGIN
                         ELSIF start ='0' THEN
                             nstate <= mx; END IF;
         END CASE;
+        
+        
     END PROCESS STATE_PROC;
 --------------------------------------------------------------------------
- 
+  DONE_SIGNAL: 
+  PROCESS --(nstate)
+  BEGIN
+    WAIT UNTIL clk'EVENT AND clk = '1';
+    --sets the done signal
+        CASE nstate IS
+            WHEN mx => done <= '0';
+            WHEN m1 => done <= '0';
+            WHEN m2 => done <= '1';
+            WHEN m3 => done <= '0';
+        END CASE;
+  END PROCESS DONE_SIGNAL;
 ---------------------------state register---------------------------------
     SS_PROC:                    
     PROCESS
     BEGIN
         WAIT UNTIL clk'EVENT AND clk = '1';
-            CASE nstate IS
-              WHEN mx => done <= '1';
-              WHEN m1 => done <= '0';
-              WHEN m2 => done <= '0';
-              WHEN m3 => done <= '1';
-            END CASE;
-            
+                        
             state <= nstate;
 		IF reset = '1' THEN      --reset signal 
             state <= mx;

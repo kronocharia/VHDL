@@ -1,3 +1,5 @@
-@E: CD200 :"H:\Desktop\GitHub\VHDL\VHDL Project\behav_files\db_behav.vhd":49:2:49:8|Misspelled variable, signal or procedure name?
+@E: CG103 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":222:26:222:29|Expecting expression
+@E: CD632 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":416:34:416:37|duplicate entity name ram_fsm
+@E: CD632 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":439:32:439:35|duplicate entity name pix_word_cache
 @E|Parse errors encountered - exiting
 
