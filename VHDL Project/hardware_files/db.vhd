@@ -241,12 +241,14 @@ begin
   update_penpos: process -- dives penx, peny
   begin
     wait until clk'event and clk='1';
-    if state = idle and command_in.op = movepen_op then
-      penx <= command_in.x;
-      peny <= command_in.y;
-    end if;
     if reset = '1' then
       penx <= (others => '0');
       peny <= (others => '0');
+    elsif state = idle and dav = '1' and command_in.op = movepen_op then
+      penx <= command_in.x;
+      peny <= command_in.y;
+    elsif state = draw_line and dao_done = '1' then
+      penx <= command.x;
+      peny <= command.y;
     end if;
 end rtl;
