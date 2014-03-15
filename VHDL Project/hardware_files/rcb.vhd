@@ -307,7 +307,7 @@ END PROCESS idle_counter_proc;
 	BEGIN
 		WAIT UNTIL clk'EVENT AND clk ='1';
 		IF (change_curr_word='1' AND reset ='0') THEN --enable for register
-			curr_vram_word <= vram_waddr; --join this to one of the addresses
+			curr_vram_word <= getRamWord(dbb_busReg.X, dbb_busReg.Y; 
 		END IF;
 
 		IF (reset = '1') THEN
