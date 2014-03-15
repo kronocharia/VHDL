@@ -49,7 +49,7 @@ architecture rtl of db is
     x, y : std_logic_vector(vsize-1 downto 0);
     pen  : pentype_t;
   end record;
-  signal command_in, command, prev_command : command_t;
+  signal command_in, command: command_t;
 begin
   -- decoding command
   command_in.op  <= opcode_t(hdb(2*vsize+3 downto 2*vsize+2));
@@ -76,7 +76,13 @@ begin
     disable => dao_disable
     );
   
-  read_new_command: process 
+  read_new_command: process
+    constant reset_command: command_t := (
+      op  => (others => '0'),
+      x   => (others => '0'),
+      y   => (others => '0'),
+      pen => (others => '0')
+      );
   begin
     wait until clk'event and clk='1';
     if state = idle and dav = '1' then
@@ -84,8 +90,10 @@ begin
       command.x   <= hdb(2*vsize+1 downto vsize+2);
       command.y   <= hdb(vsize+1 downto 2);
       command.pen <= pentype_t(hdb(1 downto 0));
-      prev_command <= command;
     end if;
+    if reset = '1' then
+      command <= reset_command;
+    end if;  
   end process read_new_command;
 
   block_host:process(state) --drives hdb_busy
@@ -95,14 +103,14 @@ begin
     end if;
   end process block_host;
   
-  set_dao_inputs: process(command, prev_command, state) -- drives negx, negy, swapxy,
-                                                 -- xin, yin, xbias, draw, reset
+  set_dao_inputs: process(command, state) -- drives negx, negy, swapxy,
+                                          -- xin, yin, xbias, draw, reset
     variable dx: signed(vsize downto 0);
     variable dy: signed(vsize downto 0);
     --variable zero : std_logic_vector(vsize-1 downto 0) := (others =>'0');
   begin
-    dx := signed(resize(unsigned(command.x), vsize+1)) - signed(resize(unsigned(prev_command.x), vsize+1));
-    dy := signed(resize(unsigned(command.y), vsize+1)) - signed(resize(unsigned(prev_command.y), vsize+1));
+    dx := signed(resize(unsigned(command.x), vsize+1)) - signed(resize(unsigned(penx), vsize+1));
+    dy := signed(resize(unsigned(command.y), vsize+1)) - signed(resize(unsigned(peny), vsize+1));
     -- set negx if dx is negative
     if dx >= 0 then
       dao_negx <= '0';
@@ -146,6 +154,7 @@ begin
     wait until clk'event and clk='1';
     -- go to next state
     state <= nstate;
+    if reset = '1' then state <= idle; end if;
   end process db_fsm_clocked;
   
   db_fsm_comb: process(state, command_in, dav, dao_done, dbb_delaycmd) -- drives nstate
@@ -235,5 +244,9 @@ begin
     if state = idle and command_in.op = movepen_op then
       penx <= command_in.x;
       peny <= command_in.y;
+    end if;
+    if reset = '1' then
+      penx <= (others => '0');
+      peny <= (others => '0');
     end if;
 end rtl;
