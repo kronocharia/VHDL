@@ -28,10 +28,10 @@ end db;
 architecture rtl of db is
   signal dao_draw, dao_xbias, dao_done, dao_swap, dao_negx, dao_negy, dao_disable, dao_reset : std_logic;
   signal dao_xin, dao_yin, dao_xout, dao_yout: std_logic_vector(vsize-1 downto 0);
-  signal pen_x, pen_y: std_logic_vector(vsize-1 downto 0);
+  signal penx, peny: std_logic_vector(vsize-1 downto 0);
   signal previous_command : std_logic_vector(2*vsize+3 downto 0);
   
-  type state_t is (idle, draw_reset, draw_start, send_command);
+  type state_t is (draw_reset, draw_start, draw_line, idle, clear_start, clear_end);
   signal state, nstate : state_t;
   
   type opcode_t is array (1 downto 0) of std_logic;
@@ -87,9 +87,16 @@ begin
       prev_command <= command;
     end if;
   end process read_new_command;
+
+  block_host:process(state) --drives hdb_busy
+  begin
+    if state = idle then hdb_busy <= '0';
+    else hdb_busy <= '1';
+    end if;
+  end process block_host;
   
-  set_dao_inputs: process(command, prev_command) -- drives negx, negy, swapxy,
-                                                 -- xin, yin, xbias
+  set_dao_inputs: process(command, prev_command, state) -- drives negx, negy, swapxy,
+                                                 -- xin, yin, xbias, draw, reset
     variable dx: signed(vsize downto 0);
     variable dy: signed(vsize downto 0);
     --variable zero : std_logic_vector(vsize-1 downto 0) := (others =>'0');
@@ -114,15 +121,24 @@ begin
     else
       dao_swap <= '0';
     end if;
-    -- 
+    -- set x and y inputs
     if state = draw_reset then
-      dao_xin <= prev_command.x;
-      dao_yin <= prev_command.y;
+      dao_xin <= penx;
+      dao_yin <= peny;
     else
       dao_xin <= command.x;
       dao_yin <= command.y;
     end if;
-    dao_xbias <= 'X'; --God knows
+    --set draw input
+    if state = draw_start then dao_draw <= '1';
+    else dao_draw <= '0';
+    end if;
+    --set reset input
+    if state = draw_reset then dao_reset <= '1';
+    else dao_reset <= '0';
+    end if;
+    -- set xbias
+    dao_xbias <= '1'; --Tom Clarke knows
   end process set_dao_inputs;
   
   db_fsm_clocked: process
@@ -132,69 +148,63 @@ begin
     state <= nstate;
   end process db_fsm_clocked;
   
-  db_fsm_comb: process(state, command, dav, dao_done, dbb_delaycmd) -- drives nstate, hdb_busy, dao_draw, dao_reset
+  db_fsm_comb: process(state, command_in, dav, dao_done, dbb_delaycmd) -- drives nstate
   begin
     nstate <= state; --default, stay in current state
     case state is
+      
       when idle =>
-        -- outputs for idle state
-        hdb_busy <= '0';
-        dao_draw <= '0';
-        dao_reset <= '0';
-        --compute next state
         if dav = '1' then
           --read command and decide which state to go to.
           case command_in.op is
-            when movepen_op => nstate <= send_command;
+            when movepen_op => null;
             when drawline_op => nstate <= draw_reset;
-            when clearscreen_op => nstate <= send_command;
-            when others => null;
+            when clearscreen_op => nstate <= clear_start;
+            when others => null; --invalid command---do nothing
           end case;
-        end if;        
+        end if;
+        
       when draw_reset =>
-        --outputs for draw_reset state
-        hdb_busy <= '1';
-        dao_draw <= '0';
-        dao_reset <= '1';
-        --compute next state
         nstate <= draw_start;
+        
       when draw_start =>
-        --outputs for draw_start state
-        hdb_busy <= '1';
-        dao_draw <= '1';
-        dao_reset <= '0';
-        --compute next state
-        nstate <= send_command;
-      when send_command =>
-        --outputs for send_command state
-        hdb_busy <= '1';
-        dao_draw <= '0';
-        dao_reset <= '0';        
-        --compute next state
-        if (command.op = drawline_op and dao_done = '0') or dbb_delaycmd = '1' then nstate <= send_command;
+        nstate <= draw_line;
+        
+      when draw_line =>
+        if dao_done = '0' or dbb_delaycmd = '1' then nstate <= draw_line;
         else nstate <= idle;
         end if;
+        
+      when clear_start =>
+        if dbb_delaycmd = '0' then nstate <= clear_end; end if;
+        
+      when clear_end =>
+        if dbb_delaycmd = '0' then nstate <= idle; end if;
+        
       when others => nstate <= idle; -- reset undefined states to idle state
     end case;
   end process db_fsm_comb;
 
   send_rcb_inputs: process(state, prev_command, command, dao_xout, dao_yout) --drives dbb_bus
-    variable undefined : std_logic_vector(vsize-1 downto 0) := (others =>'X');
+    variable default : std_logic_vector(vsize-1 downto 0) := (others =>'-');
   begin
-    if state = send_command then
-      if command.op = drawline_op then
+    case state is
+      when draw_line =>
         dbb_bus.x <= dao_xout;
         dbb_bus.y <= dao_yout;
         dbb_bus.startcmd <= '1';
-      else
+      when clear_start =>
+        dbb_bus.X <= penx;
+        dbb_bus.Y <= peny;
+        dbb_bus.startcmd <= '1';
+      when clear_end =>
         dbb_bus.X <= command.x;
         dbb_bus.Y <= command.y;
-        dbb_bus.startcmd <= '1';                       
-      end if;
-    else
-      dbb_bus.X <= undefined;
-      dbb_bus.Y <= undefined;
-      dbb_bus.startcmd <= '0';
+        dbb_bus.startcmd <= '1';
+      when others => --idle, draw_reset, draw_start have no output
+        dbb_bus.X <= default;
+        dbb_bus.Y <= default;
+        dbb_bus.startcmd <= '0';
     end if;
 
     -- encode operation
@@ -218,4 +228,12 @@ begin
     else db_finish <= '0';
     end if;
   end process finished;
+
+  update_penpos: process -- dives penx, peny
+  begin
+    wait until clk'event and clk='1';
+    if state = idle and command_in.op = movepen_op then
+      penx <= command_in.x;
+      peny <= command_in.y;
+    end if;
 end rtl;
