@@ -67,13 +67,13 @@ ARCHITECTURE rtl1 OF rcb IS
 	SIGNAL pxcache_is_same										: std_logic;
 	SIGNAL pxcache_pixopin 										: pixop_t;
 	SIGNAL pxcache_pixnum										: std_logic_vector(3 DOWNTO 0);
-	SIGNAL pxcache_store, pxcache_store_i,pxcache_store_ii							: store_t;
+	SIGNAL pxcache_store										: store_t;
 
 --
 --VSIZE is 6 ish...
 
 --Buffer the input command
-	SIGNAL dbb_busReg,dbb_bus_prev										: db_2_rcb;
+	SIGNAL dbb_busReg											: db_2_rcb;
 
 --RCB state machine signals
 	TYPE state_type IS (s_error,s_idle, s_rangecheck, s_draw, s_clear, s_flush, s_waitram,s_fetchdraw);
@@ -105,7 +105,6 @@ BEGIN
 	
  	WAIT UNTIL clk'EVENT AND clk = '1';
  	IF (state = s_idle) THEN
- 		dbb_bus_prev <= dbb_busReg;
 	 	dbb_busReg <= dbb_bus;
  	END IF;
 	
@@ -223,15 +222,13 @@ BEGIN
 					--		next_state <= s_idle;
 					--	END IF;
 
-					--IF vram_done ='0' THEN
-					--	next_state <= s_waitram;
-				
-					next_state <= s_fetchdraw;
-
-				--	ELSE
-				--		next_state <=s_error;
-				--		assert false report "ERROR in rcb, state_transition - when s_flush " severity failure;
-					--END IF;
+					IF vram_done ='0' THEN
+						next_state <= s_waitram;
+					
+					ELSE
+						next_state <=s_error;
+						assert false report "ERROR in rcb, state_transition - when s_flush " severity failure;
+					END IF;
 
 			WHEN s_waitram =>
 					--stall the fsm
@@ -321,22 +318,6 @@ END PROCESS idle_counter_proc;
     	END IF;
 		
 	END PROCESS current_word_register;		
-------------------------------------------------------------------------------
------------------------pxcache register---------------------------------------
-	cache_d_register: PROCESS 
-	BEGIN
-		WAIT UNTIL clk'EVENT AND clk ='1';
-		pxcache_store_ii <= pxcache_store_i;
-		pxcache_store_i <= pxcache_store;
-
-		IF (reset = '1') THEN
-    	pxcache_store_i <= pxcache_store;
-    	pxcache_store_ii <= pxcache_store;
-    	END IF;
-		
-	END PROCESS cache_d_register;
-
-
 ------------------------------------------------------------------------------
 
 --------combinatorial process handling the draw connecting to pxwordcache--------
@@ -437,10 +418,7 @@ END PROCESS idle_counter_proc;
     
    END PROCESS flush_cache;
 ---------------------------------------------------------------------------------	
------------------ reset the flush buffer-----------------------------------------
 
-
--------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------
 ---------------------------- structural -----------------------------------------
