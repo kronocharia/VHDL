@@ -111,7 +111,7 @@ BEGIN
 
 ---------------------state transition matrix----------------------- 
 
-	state_transition: PROCESS(state, pxcache_pixopin,dbb_bus,dbb_busReg.startcmd, curr_vram_word, draw_trig,vram_done,fetch_draw_flag, idle_counter)	
+	state_transition: PROCESS(state,dbb_bus, curr_vram_word, draw_trig,vram_done,fetch_draw_flag, idle_counter)	
 	--idle counter variable	declared in package
 	
 	BEGIN
@@ -130,7 +130,7 @@ BEGIN
 		--transitions 
 		CASE state IS
 			WHEN s_idle => 	report "State = Idle" severity note;
-
+          assert (dbb_bus.startcmd='1') report "start command low";
 					dbb_delaycmd <='0'; --im free, tell me to do stuff
 
 					IF (dbb_bus.startcmd='1') THEN 
@@ -230,12 +230,12 @@ BEGIN
 			WHEN s_waitram =>
 					--stall the fsm
 					IF vram_done = '1' THEN
-						
-						IF (fetch_draw_flag ='1') THEN
+						--hacky fix
+						--IF (fetch_draw_flag ='1') THEN
 							next_state <= s_fetchdraw;
-						ELSE
-							next_state <= s_idle;
-						END IF;
+						--ELSE
+					--		next_state <= s_idle;
+					--	END IF;
 
 					ELSIF vram_done ='0' THEN
 						next_state <= s_waitram;
@@ -307,7 +307,7 @@ END PROCESS idle_counter_proc;
 	BEGIN
 		WAIT UNTIL clk'EVENT AND clk ='1';
 		IF (change_curr_word='1' AND reset ='0') THEN --enable for register
-			curr_vram_word <= getRamWord(dbb_busReg.X, dbb_busReg.Y; 
+			curr_vram_word <= getRamWord(dbb_busReg.X, dbb_busReg.Y); 
 		END IF;
 
 		IF (reset = '1') THEN
@@ -361,29 +361,34 @@ END PROCESS idle_counter_proc;
 		END IF;
       
 	ELSIF (fetch_draw_trig='1') THEN
+		IF (fetch_draw_flag ='1') THEN
+		--instruction decode
+			IF (dbb_busReg.rcb_cmd(1 DOWNTO 0) = "01") THEN
+				pxcache_pixopin <= white;
+			
+			ELSIF (dbb_busReg.rcb_cmd(1 DOWNTO 0) = "10") THEN
+				pxcache_pixopin <= black;
 
-	--instruction decode
-		IF (dbb_busReg.rcb_cmd(1 DOWNTO 0) = "01") THEN
-			pxcache_pixopin <= white;
-		
-		ELSIF (dbb_busReg.rcb_cmd(1 DOWNTO 0) = "10") THEN
-			pxcache_pixopin <= black;
+			ELSIF (dbb_busReg.rcb_cmd(1 DOWNTO 0) = "11") THEN
+				pxcache_pixopin <= invert;
+			ELSE
+				assert false report "ERROR in rcb, draw_px instruction decode";
+			END IF;
 
-		ELSIF (dbb_busReg.rcb_cmd(1 DOWNTO 0) = "11") THEN
-			pxcache_pixopin <= invert;
-		ELSE
-			assert false report "ERROR in rcb, draw_px instruction decode";
+			--compute cache bit addresses and bit numbers from x,y
+			pxcache_pixnum <= getRamBit(dbb_busReg.X, dbb_busReg.Y);
+			pxcache_wen_all <= '1'; --for clear cache
+			pxcache_pw <='1';	--enable the px cache for writing single px
+			change_curr_word <='1'; --enable the register holding the current word to update
+		ELSE --hacky fix
+			report "Doing Idle Flush" severity note;
+			pxcache_wen_all <= '1';
+			pxcache_pw <= '0';
+			change_curr_word <= '0';
+			pxcache_pixnum <="0000"; --but we dont really care about this one as its not used
+
+
 		END IF;
-
-		--compute cache bit addresses and bit numbers from x,y
-		pxcache_pixnum <= getRamBit(dbb_busReg.X, dbb_busReg.Y);
-		pxcache_wen_all <= '1'; --for clear cache
-		pxcache_pw <='1';	--enable the px cache for writing single px
-		change_curr_word <='1'; --enable the register holding the current word to update
-
-
-
-		--END IF;
 		
 	 	
 
