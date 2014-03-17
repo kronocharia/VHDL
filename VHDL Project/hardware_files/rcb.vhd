@@ -111,7 +111,7 @@ BEGIN
 
 ---------------------state transition matrix----------------------- 
 
-	state_transition: PROCESS(state, pxcache_pixopin,dbb_bus,dbb_busReg.startcmd, curr_vram_word, draw_trig,vram_done,fetch_draw_flag, idle_counter)	
+	state_transition: PROCESS(state,dbb_bus, curr_vram_word, draw_trig,vram_done,fetch_draw_flag, idle_counter)	
 	--idle counter variable	declared in package
 	
 	BEGIN
@@ -307,7 +307,7 @@ END PROCESS idle_counter_proc;
 	BEGIN
 		WAIT UNTIL clk'EVENT AND clk ='1';
 		IF (change_curr_word='1' AND reset ='0') THEN --enable for register
-			curr_vram_word <= getRamWord(dbb_busReg.X, dbb_busReg.Y; 
+			curr_vram_word <= getRamWord(dbb_busReg.X, dbb_busReg.Y); 
 		END IF;
 
 		IF (reset = '1') THEN

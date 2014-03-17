@@ -307,7 +307,7 @@ END PROCESS idle_counter_proc;
 	BEGIN
 		WAIT UNTIL clk'EVENT AND clk ='1';
 		IF (change_curr_word='1' AND reset ='0') THEN --enable for register
-			curr_vram_word <= vram_waddr; --join this to one of the addresses
+			curr_vram_word <= getRamWord(dbb_busReg.X, dbb_busReg.Y; 
 		END IF;
 
 		IF (reset = '1') THEN
@@ -335,29 +335,8 @@ END PROCESS idle_counter_proc;
 		vram_waddr <= getRamWord(dbb_busReg.X, dbb_busReg.Y); 
 	
 		--if it was a draw command
-		--IF (draw_trig ='1') THEN
+		IF (draw_trig ='1') THEN
 			--instruction decode
-			IF (dbb_busReg.rcb_cmd(1 DOWNTO 0) = "01") THEN
-				pxcache_pixopin <= white;
-			
-			ELSIF (dbb_busReg.rcb_cmd(1 DOWNTO 0) = "10") THEN
-				pxcache_pixopin <= black;
-
-			ELSIF (dbb_busReg.rcb_cmd(1 DOWNTO 0) = "11") THEN
-				pxcache_pixopin <= invert;
-			ELSE
-				assert false report "ERROR in rcb, draw_px instruction decode";
-			--END IF;
-
-			--compute cache bit addresses and bit numbers from x,y
-			pxcache_pixnum <= getRamBit(dbb_busReg.X, dbb_busReg.Y);
-			pxcache_wen_all <= '0'; --for writing single px
-			pxcache_pw <='1';	--enable the px cache for writing single px
-    --ELSIF (move_trig = '1') THEN
-      
-		ELSIF (fetch_draw_trig='1') THEN
-
-		--instruction decode
 			IF (dbb_busReg.rcb_cmd(1 DOWNTO 0) = "01") THEN
 				pxcache_pixopin <= white;
 			
@@ -372,19 +351,40 @@ END PROCESS idle_counter_proc;
 
 			--compute cache bit addresses and bit numbers from x,y
 			pxcache_pixnum <= getRamBit(dbb_busReg.X, dbb_busReg.Y);
-			pxcache_wen_all <= '1'; --for clear cache
+			pxcache_wen_all <= '0'; --for writing single px
 			pxcache_pw <='1';	--enable the px cache for writing single px
-			change_curr_word <='1'; --enable the register holding the current word to update
-
-
-
+    	ELSE --move command
+    		pxcache_pixopin <= same;
+    		pxcache_pixnum <= getRamBit(dbb_busReg.X, dbb_busReg.Y);
+			pxcache_wen_all <= '0'; --for writing single px
+			pxcache_pw <='0';	--DONT WRITE
 		END IF;
+      
+	ELSIF (fetch_draw_trig='1') THEN
+
+	--instruction decode
+		IF (dbb_busReg.rcb_cmd(1 DOWNTO 0) = "01") THEN
+			pxcache_pixopin <= white;
 		
-		IF (move_trig ='1') THEN
-			null;
-			--just need to load the new word if that happens
-			--upstream should be saving the previous x,y for 
+		ELSIF (dbb_busReg.rcb_cmd(1 DOWNTO 0) = "10") THEN
+			pxcache_pixopin <= black;
+
+		ELSIF (dbb_busReg.rcb_cmd(1 DOWNTO 0) = "11") THEN
+			pxcache_pixopin <= invert;
+		ELSE
+			assert false report "ERROR in rcb, draw_px instruction decode";
 		END IF;
+
+		--compute cache bit addresses and bit numbers from x,y
+		pxcache_pixnum <= getRamBit(dbb_busReg.X, dbb_busReg.Y);
+		pxcache_wen_all <= '1'; --for clear cache
+		pxcache_pw <='1';	--enable the px cache for writing single px
+		change_curr_word <='1'; --enable the register holding the current word to update
+
+
+
+		--END IF;
+		
 	 	
 
 	END IF;

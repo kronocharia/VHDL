@@ -1,5 +1,5 @@
-@E: CG103 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":222:26:222:29|Expecting expression
-@E: CD632 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":416:34:416:37|duplicate entity name ram_fsm
-@E: CD632 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":439:32:439:35|duplicate entity name pix_word_cache
+@E: CS187 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":114:41:114:54|Expecting )
+@E: CD632 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":417:34:417:37|duplicate entity name ram_fsm
+@E: CD632 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":440:32:440:35|duplicate entity name pix_word_cache
 @E|Parse errors encountered - exiting
 
