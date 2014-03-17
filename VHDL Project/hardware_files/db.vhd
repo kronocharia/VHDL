@@ -103,7 +103,7 @@ begin
     end if;
   end process block_host;
   
-  set_dao_inputs: process(command, state) -- drives negx, negy, swapxy,
+  set_dao_inputs: process(command, state, penx, peny) -- drives negx, negy, swapxy,
                                           -- xin, yin, xbias, draw, reset
     variable dx: signed(vsize downto 0);
     variable dy: signed(vsize downto 0);
@@ -194,7 +194,7 @@ begin
     end case;
   end process db_fsm_comb;
 
-  send_rcb_inputs: process(state, prev_command, command, dao_xout, dao_yout) --drives dbb_bus
+  send_rcb_inputs: process(state, command, dao_xout, dao_yout, penx, peny) --drives dbb_bus
     variable default : std_logic_vector(vsize-1 downto 0) := (others =>'-');
   begin
     case state is
@@ -214,7 +214,7 @@ begin
         dbb_bus.X <= default;
         dbb_bus.Y <= default;
         dbb_bus.startcmd <= '0';
-    end if;
+    end case;
 
     -- encode operation
     case command.pen is
@@ -251,4 +251,5 @@ begin
       penx <= command.x;
       peny <= command.y;
     end if;
+  end process update_penpos;
 end rtl;
