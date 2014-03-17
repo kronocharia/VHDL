@@ -67,7 +67,7 @@ ARCHITECTURE rtl1 OF rcb IS
 	SIGNAL pxcache_is_same										: std_logic;
 	SIGNAL pxcache_pixopin 										: pixop_t;
 	SIGNAL pxcache_pixnum										: std_logic_vector(3 DOWNTO 0);
-	SIGNAL pxcache_store										: store_t;
+	SIGNAL pxcache_store,pxcache_store_del						: store_t;
 
 --
 --VSIZE is 6 ish...
@@ -303,6 +303,21 @@ BEGIN
     END IF;
     
 END PROCESS idle_counter_proc;
+-----------------------------------------------------------------------------
+-----------------------pxcache_store delay-----------------------------------
+pxcache_store_reg: PROCESS
+BEGIN
+    WAIT UNTIL clk'EVENT AND clk= '1';
+   	
+   	pxcache_store_del <= pxcache_store;
+
+    IF (reset = '1') THEN
+    	pxcache_store_del <= pxcache_store;
+    
+    END IF;
+    
+END PROCESS pxcache_store_reg;
+
 
 
 -------register storing current word to detect if out of range--------------
@@ -471,7 +486,7 @@ px_cache: ENTITY pix_word_cache PORT MAP(
 ------------------external connections and signal stuff----------------------
 vram_done <= ram_done;
 vdin <= ram_data_del;
-vaddr <= ram_addr; --joining external ram to the ram interface fsm
+vaddr <= ram_addr_del; --joining external ram to the ram interface fsm
 --ram_data <= vdout; --joins vram output to ram data in
 vwrite <= ram_vwrite;
 
