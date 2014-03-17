@@ -269,7 +269,7 @@ BEGIN
 			IF (state = s_rangecheck) THEN
 				fetch_draw_flag <= '1'; END IF;
 
-			IF (state = s_fetchdraw) THEN --deasserts when in fetch state
+			IF (state = s_fetchdraw OR state = s_idle) THEN --deasserts when in fetch state
 				fetch_draw_flag <= '0'; END IF;
 			
 			state <= next_state;
