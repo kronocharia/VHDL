@@ -67,7 +67,7 @@ ARCHITECTURE rtl1 OF rcb IS
 	SIGNAL pxcache_is_same										: std_logic;
 	SIGNAL pxcache_pixopin 										: pixop_t;
 	SIGNAL pxcache_pixnum										: std_logic_vector(3 DOWNTO 0);
-	SIGNAL pxcache_store										: store_t;
+	SIGNAL pxcache_store,pxcache_store_del						: store_t;
 
 --
 --VSIZE is 6 ish...
@@ -90,6 +90,7 @@ ARCHITECTURE rtl1 OF rcb IS
 	SIGNAL flush_trig											: std_logic;
 --waiting for ram_fsm to complete
 	SIGNAL vram_done											: std_logic;
+	SIGNAL reset_idle_count										: std_logic;
 
 	--hardcoded width to handle N up to 256
 	SIGNAL idle_counter 										: std_logic_vector(7 DOWNTO 0);
@@ -111,7 +112,7 @@ BEGIN
 
 ---------------------state transition matrix----------------------- 
 
-	state_transition: PROCESS(state, pxcache_pixopin,dbb_bus,dbb_busReg.startcmd, curr_vram_word, draw_trig,vram_done,fetch_draw_flag, idle_counter)	
+	state_transition: PROCESS(state,dbb_bus, curr_vram_word, draw_trig,vram_done,fetch_draw_flag, idle_counter)	
 	--idle counter variable	declared in package
 	
 	BEGIN
@@ -124,13 +125,14 @@ BEGIN
 		move_trig <= '0';	
 		flush_trig <= '0';
 		fetch_draw_trig <= '0';	
+		reset_idle_count <= '0';
 
 		dbb_delaycmd <='1'; --always busy unless in idle state
 		
 		--transitions 
 		CASE state IS
 			WHEN s_idle => 	report "State = Idle" severity note;
-
+         -- assert (dbb_bus.startcmd='1') report "start command low";
 					dbb_delaycmd <='0'; --im free, tell me to do stuff
 
 					IF (dbb_bus.startcmd='1') THEN 
@@ -139,6 +141,7 @@ BEGIN
 
 					ELSIF (to_integer(unsigned(idle_counter)) = N) THEN
 						next_state <= s_flush;	
+						reset_idle_count <='1';
 					
 					ELSE 
 						--increment loop counter
@@ -230,12 +233,12 @@ BEGIN
 			WHEN s_waitram =>
 					--stall the fsm
 					IF vram_done = '1' THEN
-						
-						IF (fetch_draw_flag ='1') THEN
+						--hacky fix
+						--IF (fetch_draw_flag ='1') THEN
 							next_state <= s_fetchdraw;
-						ELSE
-							next_state <= s_idle;
-						END IF;
+						--ELSE
+					--		next_state <= s_idle;
+					--	END IF;
 
 					ELSIF vram_done ='0' THEN
 						next_state <= s_waitram;
@@ -295,11 +298,26 @@ BEGIN
         idle_counter  <= std_logic_vector(unsigned(unsigned(one_vector)+ unsigned(idle_counter)));
     END IF;
 
-    IF (reset = '1') THEN
+    IF (reset = '1' OR reset_idle_count ='1') THEN
     	idle_counter <= "00000000";
     END IF;
     
 END PROCESS idle_counter_proc;
+-----------------------------------------------------------------------------
+-----------------------pxcache_store delay-----------------------------------
+pxcache_store_reg: PROCESS
+BEGIN
+    WAIT UNTIL clk'EVENT AND clk= '1';
+   	
+   	pxcache_store_del <= pxcache_store;
+
+    IF (reset = '1') THEN
+    	pxcache_store_del <= pxcache_store;
+    
+    END IF;
+    
+END PROCESS pxcache_store_reg;
+
 
 
 -------register storing current word to detect if out of range--------------
@@ -307,7 +325,7 @@ END PROCESS idle_counter_proc;
 	BEGIN
 		WAIT UNTIL clk'EVENT AND clk ='1';
 		IF (change_curr_word='1' AND reset ='0') THEN --enable for register
-			curr_vram_word <= getRamWord(dbb_busReg.X, dbb_busReg.Y; 
+			curr_vram_word <= getRamWord(dbb_busReg.X, dbb_busReg.Y); 
 		END IF;
 
 		IF (reset = '1') THEN
@@ -361,29 +379,34 @@ END PROCESS idle_counter_proc;
 		END IF;
       
 	ELSIF (fetch_draw_trig='1') THEN
+		IF (fetch_draw_flag ='1') THEN
+		--instruction decode
+			IF (dbb_busReg.rcb_cmd(1 DOWNTO 0) = "01") THEN
+				pxcache_pixopin <= white;
+			
+			ELSIF (dbb_busReg.rcb_cmd(1 DOWNTO 0) = "10") THEN
+				pxcache_pixopin <= black;
 
-	--instruction decode
-		IF (dbb_busReg.rcb_cmd(1 DOWNTO 0) = "01") THEN
-			pxcache_pixopin <= white;
-		
-		ELSIF (dbb_busReg.rcb_cmd(1 DOWNTO 0) = "10") THEN
-			pxcache_pixopin <= black;
+			ELSIF (dbb_busReg.rcb_cmd(1 DOWNTO 0) = "11") THEN
+				pxcache_pixopin <= invert;
+			ELSE
+				assert false report "ERROR in rcb, draw_px instruction decode";
+			END IF;
 
-		ELSIF (dbb_busReg.rcb_cmd(1 DOWNTO 0) = "11") THEN
-			pxcache_pixopin <= invert;
-		ELSE
-			assert false report "ERROR in rcb, draw_px instruction decode";
+			--compute cache bit addresses and bit numbers from x,y
+			pxcache_pixnum <= getRamBit(dbb_busReg.X, dbb_busReg.Y);
+			pxcache_wen_all <= '1'; --for clear cache
+			pxcache_pw <='1';	--enable the px cache for writing single px
+			change_curr_word <='1'; --enable the register holding the current word to update
+		ELSE --hacky fix
+			report "Doing Idle Flush" severity note;
+			pxcache_wen_all <= '1';
+			pxcache_pw <= '0';
+			change_curr_word <= '0';
+			pxcache_pixnum <="0000"; --but we dont really care about this one as its not used
+
+
 		END IF;
-
-		--compute cache bit addresses and bit numbers from x,y
-		pxcache_pixnum <= getRamBit(dbb_busReg.X, dbb_busReg.Y);
-		pxcache_wen_all <= '1'; --for clear cache
-		pxcache_pw <='1';	--enable the px cache for writing single px
-		change_curr_word <='1'; --enable the register holding the current word to update
-
-
-
-		--END IF;
 		
 	 	
 
@@ -397,7 +420,7 @@ END PROCESS idle_counter_proc;
 	flush_cache : PROCESS(flush_trig, curr_vram_word) 	
 	BEGIN
 	
-	ram_addr <= curr_vram_word; --dont care 
+	ram_addr <= ("00000002"); --dont care 
     ram_start <= '0'; --dont start the fsm
 	
 	IF (flush_trig ='1') THEN
@@ -423,8 +446,8 @@ ram_state_machine: ENTITY ram_fsm PORT MAP(
 
 	--input std_logic_vector
 	addr 	 => ram_addr,
-	data 	 => ram_data,
-	cache_d  => pxcache_store,
+	data 	 => vdout,
+	cache_d  => pxcache_store_del,
 
 
 	--output std_logic
@@ -463,8 +486,8 @@ px_cache: ENTITY pix_word_cache PORT MAP(
 ------------------external connections and signal stuff----------------------
 vram_done <= ram_done;
 vdin <= ram_data_del;
-vaddr <= ram_addr; --joining external ram to the ram interface fsm
-ram_data <= vdout; --joins vram output to ram data in
+vaddr <= ram_addr_del; --joining external ram to the ram interface fsm
+--ram_data <= vdout; --joins vram output to ram data in
 vwrite <= ram_vwrite;
 
 --clear not implemented yet

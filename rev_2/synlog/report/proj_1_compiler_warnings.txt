@@ -1,10 +1,12 @@
+@W: CD434 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":115:78:115:92|Signal fetch_draw_flag in the sensitivity list is not used in the process
+@W: CD638 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":63:11:63:18|Signal ram_data is undriven 
 @W: CL169 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":76:8:76:17|Pruning register dbb_busReg.startcmd  
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":96:8:96:17|All reachable assignments to one_vector(0) assign '1'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":96:8:96:17|All reachable assignments to one_vector(1) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":96:8:96:17|All reachable assignments to one_vector(2) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":96:8:96:17|All reachable assignments to one_vector(3) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":96:8:96:17|All reachable assignments to one_vector(4) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":96:8:96:17|All reachable assignments to one_vector(5) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":96:8:96:17|All reachable assignments to one_vector(6) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":96:8:96:17|All reachable assignments to one_vector(7) assign '0'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":97:8:97:17|All reachable assignments to one_vector(0) assign '1'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":97:8:97:17|All reachable assignments to one_vector(1) assign '0'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":97:8:97:17|All reachable assignments to one_vector(2) assign '0'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":97:8:97:17|All reachable assignments to one_vector(3) assign '0'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":97:8:97:17|All reachable assignments to one_vector(4) assign '0'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":97:8:97:17|All reachable assignments to one_vector(5) assign '0'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":97:8:97:17|All reachable assignments to one_vector(6) assign '0'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":97:8:97:17|All reachable assignments to one_vector(7) assign '0'; register removed by optimization
 
