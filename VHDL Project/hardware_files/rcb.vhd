@@ -78,16 +78,13 @@ ARCHITECTURE rtl1 OF rcb IS
 --RCB state machine signals
     TYPE state_type IS (s_error,s_idle, s_rangecheck, s_draw, s_clear, s_flush, s_waitram,s_fetchdraw);
     SIGNAL state, next_state , prev_state                       : state_type;
-    SIGNAL idle_counter_trig,draw_trig,move_trig                : std_logic;
-    SIGNAL fetch_draw_flag,fetch_draw_trig                      : std_logic;
-    --SIGNAL draw_done, move_done                                   : std_logic;
 
 --draw_px process signals
     SIGNAL vram_waddr,curr_vram_word,prev_vram_word             : std_logic_vector(7 DOWNTO 0);
     SIGNAL change_curr_word                                     : std_logic;
 
 --trigger the cache flush
-    SIGNAL flush_trig, pxcache_stash                            : std_logic;
+    SIGNAL pxcache_stash                                        : std_logic;
 --waiting for ram_fsm to complete
     SIGNAL vram_done                                            : std_logic;
     SIGNAL reset_idle_count                                     : std_logic;
@@ -126,14 +123,6 @@ BEGIN
 
         next_state <= s_error;  --default to error state
         
-        --control signal default assignments
-        idle_counter_trig <= '0';
-        draw_trig <= '0';
-        move_trig <= '0';   
-        flush_trig <= '0';
-        fetch_draw_trig <= '0'; 
-        reset_idle_count <= '0';
-
         dbb_delaycmd <='1'; --always busy unless in idle state
         
         --transitions 
@@ -144,22 +133,76 @@ BEGIN
 
                 CASE concatIdle IS
                     WHEN "10" => --ready and draw
+                        
+                        reset_idle_count <= '0';    --disable
+                        idle_counter_trig <= '0';   --disable
+                        
+                        pxcache_pixopin <= same;    --dont care
+                        pxcache_pixnum <= "0000";   --dont care
+                        pxcache_wen_all <= '0';     --disable
+                        pxcache_pw <='0';           --dont write
+                        pxcache_stash <= '0';       --disable
+                        change_curr_word <='0';     --disable
+                        vram_waddr <= getRamWord(dbb_busReg.X, dbb_busReg.Y); 
+
+                        ram_addr <= prev_vram_word; --dont care
+                        ram_start <='0';            --disable
+
                         next_state <= s_draw; report "Received Start cmd and draw" severity note;
-						
-						reset_idle_count <= '0';
-						idle_counter_trig <= '0';
+                    
                     WHEN "11" => --ready and clear
+                        
+                        reset_idle_count <= '0';    --disable
+                        idle_counter_trig <= '0';   --disable
+                        
+                        pxcache_pixopin <= same;    --dont care
+                        pxcache_pixnum <= "0000";   --dont care
+                        pxcache_wen_all <= '0';     --disable
+                        pxcache_pw <='0';           --dont write
+                        pxcache_stash <= '0';       --disable
+                        change_curr_word <='0';     --disable
+                        vram_waddr <= getRamWord(dbb_busReg.X, dbb_busReg.Y); 
+
+                        ram_addr <= prev_vram_word; --disable
+                        ram_start <='0';            --disable
+
+
                         next_state <= s_clear; report "Received Start cmd and clear" severity note;
-						
-						reset_idle_count <= '0';
-						idle_counter_trig <= '0';
+                    
                     WHEN others => --Idle
                         IF (to_integer(unsigned(idle_counter)) = N) THEN
-                            next_state <= s_flush;      --time to flush
-                            reset_idle_count <= '1'; report "Begining idle flush" severity note;
+                            reset_idle_count <= '1'; report "Beginning idle flush" severity note; ---<<<<
+                            idle_counter_trig <= '0';   --disable  
+                            
+                            pxcache_pixopin <= same;    --dont care
+                            pxcache_pixnum <= "0000";   --dont care
+                            pxcache_wen_all <= '0';     --disable
+                            pxcache_pw <='0';           --dont write
+                            pxcache_stash <= '1';       --ENABLE!! <<<<<
+                            change_curr_word <='1';     --ENABLE!! <<<<<
+                            vram_waddr <= getRamWord(dbb_busReg.X, dbb_busReg.Y); 
+
+                            ram_addr <= prev_vram_word; --dont care
+                            ram_start <='0';            --dont care
+                            
+                            next_state <= s_flush;      --time to flush <<<<
                         ELSE                            --increase idleCount
-                            idle_counter_trig <= '1';    report "Going back to idle" severity note;
-                            next_state <= s_idle; END IF;
+                            reset_idle_count <='0';     --disable     
+                            idle_counter_trig <= '1';    report "Going back to idle" severity note; --<<<<
+
+                            
+                            pxcache_pixopin <= same;    --dont care
+                            pxcache_pixnum <= "0000";   --dont care
+                            pxcache_wen_all <= '0';     --disable
+                            pxcache_pw <='0';           --dont write
+                            pxcache_stash <= '0';       --disable
+                            change_curr_word <='0';     --disable
+                            vram_waddr <= getRamWord(dbb_busReg.X, dbb_busReg.Y); 
+
+                            ram_addr <= prev_vram_word; --dont care
+                            ram_start <='0';            --disable
+                            
+                            next_state <= s_idle; END IF; --RETURN TO IDLE <<<<<
                 END CASE;
 
 
@@ -179,7 +222,7 @@ BEGIN
               report "State = draw" severity note;
 
                 
-                IF ( getRamWord(dbb_busReg.X, dbb_busReg.Y) = curr_vram_word ) THEN
+                IF ( getRamWord(dbb_busReg.X, dbb_busReg.Y) = curr_vram_word ) THEN      
                     inRange := '1';
                 ELSE
                     inRange := '0';
@@ -187,44 +230,56 @@ BEGIN
                 concatDraw := inRange & dbb_busReg.rcb_cmd(1 DOWNTO 0); --|inrange|pxopin|
 
                 CASE concatDraw IS 
-                    WHEN "101" | "110" | "111" => --draw single
-						reset_idle_count <= '0';
-						idle_counter_trig <= '0';					
+                    WHEN "101" | "110" | "111" => --draw single 
+						reset_idle_count <= '0';  --disable
+						idle_counter_trig <= '0'; --disable					
 					
-                        pxcache_pixopin <= pixop_t(dbb_busReg.rcb_cmd(1 DOWNTO 0));
-                        pxcache_pixnum <= getRamBit(dbb_busReg.X, dbb_busReg.Y);
-                        pxcache_wen_all <= '0'; 
-                        pxcache_pw <='1';   --enable the px cache for writing single px
-						pxcache_stash <= '0'; 
-						change_curr_word <= '0';
-						vram_waddr <= getRamWord(dbb_busReg.X, dbb_busReg.Y); --dont care
-						next_state <= s_idle;
+                        pxcache_pixopin <= pixop_t(dbb_busReg.rcb_cmd(1 DOWNTO 0)); --SET VALUE <<<<<
+                        pxcache_pixnum <= getRamBit(dbb_busReg.X, dbb_busReg.Y);    --SET VALUE <<<<<
+                        pxcache_wen_all <= '0';                                     --disable
+                        pxcache_pw <='1';   --enable the px cache for writing singl --SET VALUE <<<<<
+						pxcache_stash <= '0';                                       --disable
+						change_curr_word <= '0';                                    --disable
+						vram_waddr <= getRamWord(dbb_busReg.X, dbb_busReg.Y);       --dont care
+                        
+                        ram_addr <= prev_vram_word; --dont care
+                        ram_start <='0';            --disable
+
+						next_state <= s_idle;       --RETURN TO IDLE <<<<< 
+
                     WHEN "100" => --movepen
 						reset_idle_count <= '0';
 						idle_counter_trig <= '0';
 					
-                        pxcache_pixopin <= same;
-                        pxcache_pixnum <= "0000";
-                        pxcache_wen_all <= '0'; --for writing single px
-                        pxcache_pw <='0';   --DONT WRITE
-						pxcache_stash <= '0';
-						change_curr_word <= '0';
+                        pxcache_pixopin <= same;        --dont care
+                        pxcache_pixnum <= "0000";       --dont care
+                        pxcache_wen_all <= '0';         --disable                 
+                        pxcache_pw <='0';               --disable
+						pxcache_stash <= '0';           --disable
+						change_curr_word <= '0';        --disbale  
 						vram_waddr <= getRamWord(dbb_busReg.X, dbb_busReg.Y); --dont care
-						next_state <= s_idle;
+
+                        ram_addr <= prev_vram_word;     --dont care
+                        ram_start <='0';                --disable
+
+						next_state <= s_idle;           --RETURN TO IDLE <<<<<
 
                     WHEN "000"| "001" | "010" | "011" => --out of range draw single or move
 						reset_idle_count <= '0';
 						idle_counter_trig <= '0';
 							
-						pxcache_pixopin <= same; --dont care
-						pxcache_pixnum <= "0000"; --dont care
-						pxcache_wen_all <= '0';
-						pxcache_pw <='0'; --dont write
-						 --load new word
-						pxcache_stash <= '1';
-                        change_curr_word <='1';
+						pxcache_pixopin <= same;          --dont care
+						pxcache_pixnum <= "0000";         --dont care
+						pxcache_wen_all <= '0';           --disable
+						pxcache_pw <='0';                 --disable
+						pxcache_stash <= '1';             --load new word <<<<<
+                        change_curr_word <='1';           --ENABLE!!      <<<<<
                         vram_waddr <= getRamWord(dbb_busReg.X, dbb_busReg.Y); 
-                        next_state <= s_flush;
+
+                        ram_addr <= prev_vram_word;       --dont care
+                        ram_start <='0';                  --disable
+
+                        next_state <= s_flush;            --ENABLE FLUSH <<<<<
 
                     WHEN others => next_state <= s_error; 
                     assert false report "ERROR in rcb, when concatDraw " severity failure;
@@ -252,21 +307,23 @@ BEGIN
                 --END CASE;
 
                 IF vram_done = '0' THEN
-                    next_state <= s_flush; --loop here till done
-					
-					reset_idle_count <= '0';
-					idle_counter_trig <= '0';
-					
-					ram_addr <= prev_vram_word; 
-					ram_start <='0';           
+
+					reset_idle_count <= '0';      --disable
+					idle_counter_trig <= '0';     --disable
 		
-					pxcache_pixopin <= same; --dont care
-					pxcache_pixnum <= "0000"; --dont care
-					pxcache_wen_all <= '0';
-					pxcache_pw <='0'; --dont write
-					pxcache_stash <= '0';
-					change_curr_word <='0';
+					pxcache_pixopin <= same;      --dont care
+					pxcache_pixnum <= "0000";     --dont care
+					pxcache_wen_all <= '0';       --disable
+					pxcache_pw <='0';             --disable
+					pxcache_stash <= '0';         --disable
+					change_curr_word <='0';       --disable
 					vram_waddr <= getRamWord(dbb_busReg.X, dbb_busReg.Y); 
+
+                    ram_addr <= prev_vram_word;   --dont care
+                    ram_start <='0';              --disable
+                    
+                    next_state <= s_flush; --loop here till done <<<<
+                    
 
 
                 ELSE
@@ -275,37 +332,38 @@ BEGIN
                         WHEN "0000" | "0001" | "0010" | "0011" | "0100" => --its an idle flush or out of range move (last pattern)
 							reset_idle_count <= '0';
 							idle_counter_trig <= '0';
-                            
-                            ram_addr <= prev_vram_word;
-                            ram_start <='1';
-                            next_state <= s_idle;
 							
 							pxcache_pixopin <= same; --dont care
-							pxcache_pixnum <="0000"; --but we dont really care about this one as its not used
-                            pxcache_wen_all <= '1'; --pseudo reset cache
-                            pxcache_pw <= '0'; --dont write single
-							pxcache_stash <= '0';
-							change_curr_word <='0';
+							pxcache_pixnum <="0000"; --dont care
+                            pxcache_wen_all <= '1';  --pseudo reset cache <<<<<
+                            pxcache_pw <= '0';       --disbale
+							pxcache_stash <= '0';    --disable
+							change_curr_word <='0';  --disable
 							vram_waddr <= getRamWord(dbb_busReg.X, dbb_busReg.Y); 
 
+                            ram_addr <= prev_vram_word; 
+                            ram_start <='1';            --ENABLE RAM!! <<<<
+
+                            next_state <= s_idle;       --and go back to IDLE<<<<
                            
 
                         WHEN "0101" | "0110" | "0111" => --out of range draw
-							reset_idle_count <= '0';
-							idle_counter_trig <= '0';
 							
-                            ram_addr <= prev_vram_word;
-                            ram_start <='1';
-                            next_state <= s_idle;
-                            
-							pxcache_pixopin <= same; --dont care
+                            reset_idle_count <= '0';     --disable
+							idle_counter_trig <= '0';    --disable
+							
+							pxcache_pixopin <= same;     --dont care
 							pxcache_pixnum <= getRamBit(dbb_busReg.X, dbb_busReg.Y);
-                            pxcache_wen_all <= '1'; --for clear cache
-                            pxcache_pw <='1';   --enable the px cache for writing single px
-                            pxcache_stash <= '0';
-							change_curr_word <='0';
+                            pxcache_wen_all <= '1';      --ENABLE CACHE CLEAR <<<<<
+                            pxcache_pw <='1';            --ENABLE SINGLE WRITE <<<<
+                            pxcache_stash <= '0';        --dont care
+							change_curr_word <='0';      --dont care
 							vram_waddr <= getRamWord(dbb_busReg.X, dbb_busReg.Y); 
 
+                            ram_addr <= prev_vram_word;  
+                            ram_start <='1';              --ENABLE VRAM WRITE
+
+                            next_state <= s_idle;         --and go back to IDLE
 
                         --WHEN "1001" | "1010" | "1011" => --its a clear of some colour 
                         --    next_state <= s_idle;
@@ -319,22 +377,23 @@ BEGIN
                 END IF;
 
             WHEN s_error => 
+
+					reset_idle_count <= '0';   --disable
+					idle_counter_trig <= '0';  --disable
+					    
+	       			pxcache_pixopin <= same;   --dont care
+					pxcache_pixnum <= "0000";  --dont care
+					pxcache_wen_all <= '0';    --disable
+					pxcache_pw <='0';          --disable
+					pxcache_stash <= '0';      --disable
+					change_curr_word <='0';    --disable
+					vram_waddr <= getRamWord(dbb_busReg.X, dbb_busReg.Y); 
+
+                    ram_addr <= prev_vram_word; --dont care
+                    ram_start <='0';            --disable
+
                     assert false report "Congrats, you're in the error state, fix me" ;
                     next_state <= s_error; -- only reset moves state to idle
-					
-					reset_idle_count <= '0';
-					idle_counter_trig <= '0';
-					
-					ram_addr <= prev_vram_word;
-					ram_start <='0';            
-		
-					pxcache_pixopin <= same; --dont care
-					pxcache_pixnum <= "0000"; --dont care
-					pxcache_wen_all <= '0';
-					pxcache_pw <='0'; --dont write
-					pxcache_stash <= '0';
-					change_curr_word <='0';
-					vram_waddr <= getRamWord(dbb_busReg.X, dbb_busReg.Y); 
 
 					
 			WHEN others => 
