@@ -90,9 +90,9 @@ BEGIN
     WAIT UNTIL clk'EVENT AND clk = '1';
     --sets the done signal
         CASE nstate IS
-            WHEN mx => done <= '0';
-            WHEN m1 => done <= '0';
-            WHEN m2 => done <= '1';
+            WHEN mx => done <= '1';
+            WHEN m1 => done <= '1';
+            WHEN m2 => done <= '0';
             WHEN m3 => done <= '0';
             --WHEN m4 => done <= '0';
         END CASE;
