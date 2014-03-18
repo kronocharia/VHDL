@@ -57,7 +57,7 @@ ARCHITECTURE rtl1 OF rcb IS
     SIGNAL prev_dbb_bus                                         :db_2_rcb;
 
 --RCB state machine signals
-    TYPE state_type IS (s_error,s_idle, s_rangecheck, s_draw, s_clear, s_flush, s_waitram,s_fetchdraw);
+    TYPE state_type IS (s_error,s_idle,s_draw, s_clear, s_flush, s_waitram);
     SIGNAL state, next_state , prev_state, prev_2state          : state_type;
 
 --draw_px process signals
@@ -103,7 +103,6 @@ BEGIN
 
         next_state <= s_error;  --default to error state
 
-        reset_idle_count <= '0';   --disable
         idle_counter_trig <= '0';  --disable
             
         pxcache_pixopin <= same;   --dont care
@@ -130,10 +129,14 @@ BEGIN
                 CASE concatIdle IS
                     WHEN "10" => --ready and draw
                         --dbb_delaycmd <= '1';
+
+                        reset_idle_count <= '1';   --disable
                         next_state <= s_draw; report "Received Start cmd and draw" severity note;
                     
                     WHEN "11" => --ready and clear
                        -- dbb_delaycmd <= '1';
+
+                        reset_idle_count <= '1';   --disable
                         next_state <= s_clear; report "Received Start cmd and clear" severity note;
                     
                     WHEN others => --Idle
@@ -146,6 +149,8 @@ BEGIN
                             next_state <= s_flush;      --time to flush <<<<
                         
                         ELSE                            --increase idleCount
+
+                            reset_idle_count <= '0';   --disable
                             idle_counter_trig <= '1';    report "Going back to idle" severity note; --<<<< 
                            -- dbb_delaycmd <='0'; --always busy unless in idle state
                             next_state <= s_idle; END IF; --RETURN TO IDLE <<<<<
@@ -165,7 +170,9 @@ BEGIN
 
 
             WHEN s_draw =>  
-              report "State = draw" severity note;
+
+                reset_idle_count <= '1';  
+                report "State = draw" severity note;
                -- assert false report "breakpoint in when s_draw" severity failure;
                 
                 IF ( getRamWord(dbb_bus.X, dbb_bus.Y) = curr_vram_word ) THEN      
@@ -204,11 +211,16 @@ BEGIN
                 END CASE;
               
 
-            WHEN s_waitram => next_state <= s_flush;
+            WHEN s_waitram => next_state <= s_flush; 
+            reset_idle_count <= '1'; 
 
             WHEN s_clear => next_state <=s_idle; --to be implemented later
 
+                reset_idle_count <= '1';   --disable
+
             WHEN s_flush => 
+
+            reset_idle_count <= '1';   --disable
             change_curr_word <='1';
                CASE prev_2state IS
                     WHEN s_idle => prevState := "00";
@@ -256,11 +268,14 @@ BEGIN
 
             WHEN s_error => 
 
+                    reset_idle_count <= '1';   --disable
                     assert false report "Congrats, you're in the error state, fix me" ;
                     next_state <= s_error; -- only reset moves state to idle
 
                     
             WHEN others => 
+
+                    reset_idle_count <= '1';   --disable
                     assert false report "RCB Unspecified FSM transition " severity failure;
                     next_state <= s_error;
 
@@ -271,6 +286,7 @@ BEGIN
             dbb_delaycmd <= '0';
         -- ELSIF (next_state = s_draw OR state = s_draw OR state = s_flush OR next_state = s_draw) THEN
         ELSIF   ((next_state = s_draw) OR 
+                (next_state = s_waitram) OR
                 (next_state = s_flush) OR 
                 (next_state = s_clear)) THEN
             dbb_delaycmd <= '1';

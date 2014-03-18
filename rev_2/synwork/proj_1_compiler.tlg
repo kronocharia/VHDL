@@ -1,6 +1,7 @@
 @N: CD630 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":12:7:12:9|Synthesizing work.rcb.rtl1 
-@N: CD231 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":60:20:60:21|Using onehot encoding for type state_type (s_error="10000000")
-@W: CD604 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":201:20:201:33|OTHERS clause is not synthesized 
+@N: CD231 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":60:20:60:21|Using onehot encoding for type state_type (s_error="100000")
+@W: CD604 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":208:20:208:33|OTHERS clause is not synthesized 
+@W: CD604 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":276:12:276:25|OTHERS clause is not synthesized 
 @W: CD638 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":64:11:64:20|Signal vram_waddr is undriven 
 @N: CD630 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\pix_word_cache.vhd":9:7:9:20|Synthesizing work.pix_word_cache.pwc 
 Post processing for work.pix_word_cache.pwc
@@ -27,19 +28,16 @@ State machine has 4 reachable states with original encodings of:
    01
    10
    11
-@W: CL279 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":61:43:61:53|Pruning register bits 0 to 2 of prev_2state(0 to 7)  
-@W: CL260 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":61:43:61:53|Pruning register bit 5 of prev_2state(0 to 7)  
-@W: CL260 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":61:43:61:53|Pruning register bit 7 of prev_2state(0 to 7)  
-@W: CL279 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":61:31:61:40|Pruning register bits 0 to 1 of prev_state(0 to 7)  
-@W: CL260 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":61:31:61:40|Pruning register bit 5 of prev_state(0 to 7)  
-@W: CL260 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":61:31:61:40|Pruning register bit 7 of prev_state(0 to 7)  
+@W: CL279 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":61:43:61:53|Pruning register bits 0 to 1 of prev_2state(0 to 5)  
+@W: CL260 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":61:43:61:53|Pruning register bit 5 of prev_2state(0 to 5)  
+@W: CL260 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":61:31:61:40|Pruning register bit 0 of prev_state(0 to 5)  
+@W: CL260 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":61:31:61:40|Pruning register bit 5 of prev_state(0 to 5)  
 @N: CL201 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":61:11:61:15|Trying to extract state machine for register state
 Extracted state machine for register state
 State machine has 6 reachable states with original encodings of:
-   00000001
-   00000010
-   00001000
-   00010000
-   00100000
-   01000000
-@W: CL238 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":124:8:124:11|Latch state_transition.assert_sig2 enable evaluates to constant 0, optimized
+   000001
+   000010
+   000100
+   001000
+   010000
+   100000

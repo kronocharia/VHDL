@@ -33,7 +33,7 @@ BEGIN
     FOR i IN cache_d'RANGE LOOP
         
         data_merged(i) <= data(i);
-        IF (state = mx) THEN
+        --IF (state = mx) THEN
         --IF (TRUE) THEN
         CASE cache_d(i) IS
             WHEN same   => data_merged(i) <= data(i);
@@ -42,7 +42,7 @@ BEGIN
             WHEN invert => data_merged(i) <= NOT data(i);
             WHEN OTHERS => NULL;
         END CASE;
-        --END IF;
+        END IF;
         
     END LOOP;
     END PROCESS MERGE_PROC;
