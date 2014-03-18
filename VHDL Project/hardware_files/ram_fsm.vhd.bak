@@ -26,13 +26,13 @@ BEGIN
 ----------------implements merge of cache changes and vram data---------
 
     MERGE_PROC:
-    PROCESS(cache_d,data,state)
+    PROCESS(cache_d,data)
     BEGIN  
     FOR i IN cache_d'RANGE LOOP
         
         data_merged(i) <= data(i);
         
-        IF (TRUE) THEN
+        --IF (TRUE) THEN
         CASE cache_d(i) IS
             WHEN same   => data_merged(i) <= data(i);
             WHEN white  => data_merged(i) <= '0';
@@ -40,7 +40,7 @@ BEGIN
             WHEN invert => data_merged(i) <= NOT data(i);
             WHEN OTHERS => NULL;
         END CASE;
-        END IF;
+       -- END IF;
         
     END LOOP;
     END PROCESS MERGE_PROC;
@@ -90,9 +90,9 @@ BEGIN
     WAIT UNTIL clk'EVENT AND clk = '1';
     --sets the done signal
         CASE nstate IS
-            WHEN mx => done <= '0';
-            WHEN m1 => done <= '0';
-            WHEN m2 => done <= '1';
+            WHEN mx => done <= '1';
+            WHEN m1 => done <= '1';
+            WHEN m2 => done <= '0';
             WHEN m3 => done <= '0';
             --WHEN m4 => done <= '0';
         END CASE;
@@ -117,8 +117,11 @@ BEGIN
     PROCESS
     BEGIN
         WAIT UNTIL CLK'EVENT AND clk ='0';
+
+        IF (state = m1 OR state mx) THEN
             addr_del <= addr;
             data_del <= data_merged;
+      END IF;
 
     END PROCESS DELAY_PROC;
 

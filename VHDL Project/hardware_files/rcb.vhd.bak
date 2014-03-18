@@ -42,7 +42,7 @@ ARCHITECTURE rtl1 OF rcb IS
 --For interfacing with ram block
     SIGNAL ram_start, ram_delay, ram_vwrite, ram_done           : std_logic;
     SIGNAL ram_addr, ram_addr_del                               : std_logic_vector(7 DOWNTO 0);
-    SIGNAL ram_data, ram_data_del                               : std_logic_vector(15 DOWNTO 0);
+    SIGNAL ram_data_del                               : std_logic_vector(15 DOWNTO 0);
 
 --For interfacing with pixel cache
     SIGNAL pxcache_wen_all, pxcache_pw                          : std_logic;
@@ -53,9 +53,8 @@ ARCHITECTURE rtl1 OF rcb IS
 
 --
 --VSIZE is 6 ish...
-
---Buffer the input command
-    SIGNAL dbb_busReg,dbb_busReg1,dbb_busReg2                                   : db_2_rcb;
+    
+    SIGNAL prev_dbb_bus                                         :db_2_rcb;
 
 --RCB state machine signals
     TYPE state_type IS (s_error,s_idle, s_rangecheck, s_draw, s_clear, s_flush, s_waitram,s_fetchdraw);
@@ -84,15 +83,15 @@ BEGIN
     
     -- WAIT UNTIL clk'EVENT AND clk = '1';
     -- IF (state = s_idle) THEN
-    --     dbb_busReg <= dbb_bus;
+    --      <= dbb_bus;
     -- END IF;
     
     -- END PROCESS instruction_register;
 
 ---------------------state transition matrix----------------------- 
 
-    state_transition: PROCESS(state,dbb_bus, curr_vram_word,vram_done,idle_counter,
-                                dbb_busReg, prev_state,prev_vram_word) 
+    state_transition: PROCESS(state,dbb_bus, curr_vram_word,next_state, vram_done,idle_counter,
+                                 prev_state,prev_vram_word,reset) 
     --idle counter variable declared in package
     variable prevState: std_logic_vector(1 DOWNTO 0);  
     variable concatDraw: std_logic_vector(2 DOWNTO 0);                  
@@ -113,41 +112,41 @@ BEGIN
         pxcache_pw <='0';          --disable
         pxcache_stash <= '0';      --disable
         change_curr_word <='0';    --disable
-        vram_waddr <= getRamWord(dbb_bus.X, dbb_bus.Y); --stay same
+        --vram_waddr <= getRamWord(dbb_bus.X, dbb_bus.Y); --stay same
 
         ram_addr <= prev_vram_word; --dont care
-        ram_start <='0';            --disable
-
+        ram_start <='0';            --disable       
         
-        dbb_delaycmd <='1'; --always busy unless in idle state
+        --dbb_delaycmd <='1'; --always busy unless in idle state
         
         --transitions 
         CASE state IS
             WHEN s_idle =>  report "State = Idle" severity note;
-               dbb_delaycmd <= '1';
+           -- dbb_delaycmd <= '0';
 
                 concatIdle := dbb_bus.startcmd & dbb_bus.rcb_cmd(2);
 
                 CASE concatIdle IS
                     WHEN "10" => --ready and draw
-                        
+                        --dbb_delaycmd <= '1';
                         next_state <= s_draw; report "Received Start cmd and draw" severity note;
                     
                     WHEN "11" => --ready and clear
-
+                       -- dbb_delaycmd <= '1';
                         next_state <= s_clear; report "Received Start cmd and clear" severity note;
                     
                     WHEN others => --Idle
+                       -- dbb_delaycmd <= '1';
                         IF (to_integer(unsigned(idle_counter)) = N) THEN
                             reset_idle_count <= '1'; report "Beginning idle flush" severity note; ---<<<<
                             pxcache_stash <= '1';       --ENABLE!! <<<<<
-                            change_curr_word <='1';     --ENABLE!! <<<<<
+                            --change_curr_word <='1';     --ENABLE!! <<<<<
 
                             next_state <= s_flush;      --time to flush <<<<
                         
                         ELSE                            --increase idleCount
                             idle_counter_trig <= '1';    report "Going back to idle" severity note; --<<<< 
-                            dbb_delaycmd <='0'; --always busy unless in idle state
+                           -- dbb_delaycmd <='0'; --always busy unless in idle state
                             next_state <= s_idle; END IF; --RETURN TO IDLE <<<<<
                 END CASE;
 
@@ -182,17 +181,17 @@ BEGIN
                         pxcache_pixnum <= getRamBit(dbb_bus.X, dbb_bus.Y);    --SET VALUE <<<<<
                         pxcache_pw <='1';   --enable the px cache for writing singl --SET VALUE <<<<<
 
-                        dbb_delaycmd <='0';
+                       -- dbb_delaycmd <='0';
                         next_state <= s_idle;       --RETURN TO IDLE <<<<< 
 
                     WHEN "100" => --movepen
-                        dbb_delaycmd <='0';
+                      --  dbb_delaycmd <='0';
                         next_state <= s_idle;           --RETURN TO IDLE <<<<<
 
                     WHEN "000"| "001" | "010" | "011" => --out of range draw single or move
    
                         pxcache_stash <= '1';             --load new word <<<<<
-                        change_curr_word <='1';           --ENABLE!!      <<<<<
+                        --change_curr_word <='1';           --ENABLE!!      <<<<<
 
                         next_state <= s_flush;            --ENABLE FLUSH <<<<<
 
@@ -206,7 +205,7 @@ BEGIN
             WHEN s_clear => next_state <=s_idle; --to be implemented later
 
             WHEN s_flush => 
-
+            change_curr_word <='1';
                CASE prev_state IS
                     WHEN s_idle => prevState := "00";
                     WHEN s_draw => prevState := "01";
@@ -228,17 +227,18 @@ BEGIN
                             pxcache_wen_all <= '1';  --pseudo reset cache <<<<<
                             ram_start <='1';            --ENABLE RAM!! <<<<
 
-                            dbb_delaycmd = '0';
+                            --dbb_delaycmd <= '0';
                             next_state <= s_idle;       --and go back to IDLE<<<<
                            
 
                         WHEN "0101" | "0110" | "0111" => --out of range draw
+                            pxcache_pxopin <= pixop_t(dbb_bus.rcb_cmd(1 DOWNTO 0)); --<<<<<
                             pxcache_wen_all <= '1';      --ENABLE CACHE CLEAR <<<<<
                             pxcache_pw <='1';            --ENABLE SINGLE WRITE <<<<
                             ram_start <='1';             --ENABLE VRAM WRITE
-                            dbb_delaycmd= '0';
+                            --dbb_delaycmd <= '0';
                             next_state <= s_idle;        --and go back to IDLE
-
+                          
                         WHEN "1001" | "1010" | "1011" => --its a clear of some colour 
                             next_state <= s_idle;
 
@@ -258,25 +258,38 @@ BEGIN
                     next_state <= s_error;
 
         END CASE;
+
+
+        IF (reset=  '1') THEN
+            dbb_delaycmd <= '0';
+        -- ELSIF (next_state = s_draw OR state = s_draw OR state = s_flush OR next_state = s_draw) THEN
+        ELSIF   ((next_state = s_draw) OR 
+                (next_state = s_flush) OR 
+                (next_state = s_clear)) THEN
+            dbb_delaycmd <= '1';
+        ELSE
+            dbb_delaycmd <= '0'; END IF;
+
+
     END PROCESS state_transition;
 -------------------------------------------------------------------------------
+
+--delaycmd--
+--delaycmd_clocked: PROCESS
+ --BEGIN
+   -- WAIT UNTIL clk'EVENT AND clk = '1';
+            -------delaycmd------
+          
+--END PROCESS delaycmd_clocked;
+------------
 ----------------------------fsm_clocked_process--------------------------------
     fsm_clocked_process: PROCESS
     BEGIN
         WAIT UNTIL clk'EVENT AND clk = '1';
 
-            -------instruction register------
-            IF (next_state = s_idle) THEN
-                dbb_busReg2<= dbb_busReg1;
-                dbb_busReg1 <= dbb_bus;
-            END IF;
-            IF (next_state = s_draw OR next_state = s_flush) THEN
-                dbb_busReg <= dbb_busReg2;
-            END IF;
-            IF ( reset = '1') THEN
-                dbb_busReg2 <= dbb_bus;
-                dbb_busReg <= dbb_bus;
-            END IF;
+            -------previous command--------
+            prev_dbb_bus <= dbb_bus;
+            -------------------------------          
             ---------store states----------          
             prev_state <= state;
             state <= next_state;
@@ -316,7 +329,7 @@ BEGIN
             -----current and previous word addresses----
             IF (change_curr_word='1' AND reset ='0') THEN 
                 prev_vram_word <= curr_vram_word;
-                curr_vram_word <= getRamWord(dbb_busReg.X, dbb_busReg.Y); 
+                curr_vram_word <= getRamWord(prev_dbb_bus.X, prev_dbb_bus.Y); 
             END IF;
 
             IF (reset = '1') THEN
@@ -364,7 +377,7 @@ BEGIN
 --         WAIT UNTIL clk'EVENT AND clk ='1';
 --         IF (change_curr_word='1' AND reset ='0') THEN --enable for register
 --             prev_vram_word <= curr_vram_word;
---             curr_vram_word <= getRamWord(dbb_busReg.X, dbb_busReg.Y); 
+--             curr_vram_word <= getRamWord(.X, .Y); 
 --         END IF;
 
 --         IF (reset = '1') THEN

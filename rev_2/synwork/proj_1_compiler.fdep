@@ -13,11 +13,11 @@
 #CUR:"H:\\Desktop\\GitHub\\VHDL\\ex4\\pix_cache_pak.vhd":1393776924
 #CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\config_pack.vhd":1393700766
 #CUR:"C:\\synopsys\\fpga_G201209SP1\\lib\\vhd\\std_textio.vhd":1353965844
-#CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\ram_fsm.vhd":1395089174
+#CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\ram_fsm.vhd":1395161728
 #CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\project_pack.vhd":1394291220
 #CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\pix_word_cache.vhd":1394287466
 #CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\helper_funcs.vhd":1394386377
-#CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\rcb.vhd":1395141826
+#CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\rcb.vhd":1395158368
 0 "H:\Desktop\GitHub\VHDL\ex4\pix_cache_pak.vhd" vhdl
 1 "H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd" vhdl
 2 "H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd" vhdl
@@ -47,8 +47,6 @@
 # Design Unit to File Association
 arch work rcb rtl1 1
 module work rcb 1
-arch work mux2 dflow 1
-module work mux2 1
 arch work ram_fsm synth 2
 module work ram_fsm 2
 arch work pix_word_cache pwc 4

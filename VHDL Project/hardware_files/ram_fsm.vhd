@@ -117,8 +117,11 @@ BEGIN
     PROCESS
     BEGIN
         WAIT UNTIL CLK'EVENT AND clk ='0';
+
+        IF (state = m1 OR state = mx) THEN
             addr_del <= addr;
             data_del <= data_merged;
+      END IF;
 
     END PROCESS DELAY_PROC;
 
