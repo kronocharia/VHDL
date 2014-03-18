@@ -26,17 +26,17 @@ Clock Summary
 Start       Requested     Requested     Clock        Clock                
 Clock       Frequency     Period        Type         Group                
 --------------------------------------------------------------------------
-rcb|clk     4.1 MHz       241.138       inferred     Autoconstr_clkgroup_0
+rcb|clk     4.1 MHz       240.995       inferred     Autoconstr_clkgroup_0
 ==========================================================================
 
-@W: MT529 :"h:\desktop\github\vhdl\vhdl project\hardware_files\ram_fsm.vhd":16:22:16:29|Found inferred clock rcb|clk which controls 135 sequential elements including ram_state_machine.data_del[15:0]. This clock has no specified timing constraint which may prevent conversion of gated or generated clocks and may adversely impact design performance. 
+@W: MT529 :"h:\desktop\github\vhdl\vhdl project\hardware_files\ram_fsm.vhd":16:22:16:29|Found inferred clock rcb|clk which controls 155 sequential elements including ram_state_machine.data_del[15:0]. This clock has no specified timing constraint which may prevent conversion of gated or generated clocks and may adversely impact design performance. 
 
 Finished Pre Mapping Phase.@N: BN225 |Writing default property annotation file H:\Desktop\GitHub\VHDL\rev_2\proj_1.sap.
 Pre-mapping successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 42MB peak: 107MB)
+At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 43MB peak: 107MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Tue Mar 18 17:15:47 2014
+# Tue Mar 18 18:46:36 2014
 
 ###########################################################]

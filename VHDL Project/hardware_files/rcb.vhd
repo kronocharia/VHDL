@@ -58,7 +58,7 @@ ARCHITECTURE rtl1 OF rcb IS
 
 --RCB state machine signals
     TYPE state_type IS (s_error,s_idle, s_rangecheck, s_draw, s_clear, s_flush, s_waitram,s_fetchdraw);
-    SIGNAL state, next_state , prev_state                       : state_type;
+    SIGNAL state, next_state , prev_state, prev_2state          : state_type;
 
 --draw_px process signals
     SIGNAL vram_waddr,curr_vram_word,prev_vram_word             : std_logic_vector(7 DOWNTO 0);
@@ -91,7 +91,7 @@ BEGIN
 ---------------------state transition matrix----------------------- 
 
     state_transition: PROCESS(state,dbb_bus, curr_vram_word,next_state, vram_done,idle_counter,
-                                 prev_state,prev_vram_word,reset) 
+                                 prev_state, prev_2state,prev_vram_word,reset) 
     --idle counter variable declared in package
     variable prevState: std_logic_vector(1 DOWNTO 0);  
     variable concatDraw: std_logic_vector(2 DOWNTO 0);                  
@@ -115,6 +115,7 @@ BEGIN
         --vram_waddr <= getRamWord(dbb_bus.X, dbb_bus.Y); --stay same
 
         ram_addr <= prev_vram_word; --dont care
+        
         ram_start <='0';            --disable       
         
         --dbb_delaycmd <='1'; --always busy unless in idle state
@@ -183,17 +184,19 @@ BEGIN
 
                        -- dbb_delaycmd <='0';
                         next_state <= s_idle;       --RETURN TO IDLE <<<<< 
-
+ 
                     WHEN "100" => --movepen
                       --  dbb_delaycmd <='0';
                         next_state <= s_idle;           --RETURN TO IDLE <<<<<
+                        
 
                     WHEN "000"| "001" | "010" | "011" => --out of range draw single or move
    
                         pxcache_stash <= '1';             --load new word <<<<<
                         --change_curr_word <='1';           --ENABLE!!      <<<<<
 
-                        next_state <= s_flush;            --ENABLE FLUSH <<<<<
+                        --next_state <= s_flush;            --ENABLE FLUSH <<<<<
+                        next_state <= s_waitram;
 
                     WHEN others => next_state <= s_error; 
                     assert false report "ERROR in rcb, when concatDraw " severity failure;
@@ -201,12 +204,13 @@ BEGIN
                 END CASE;
               
 
-            
+            WHEN s_waitram => next_state <= s_flush;
+
             WHEN s_clear => next_state <=s_idle; --to be implemented later
 
             WHEN s_flush => 
             change_curr_word <='1';
-               CASE prev_state IS
+               CASE prev_2state IS
                     WHEN s_idle => prevState := "00";
                     WHEN s_draw => prevState := "01";
                     WHEN s_clear => prevState := "10";
@@ -217,6 +221,8 @@ BEGIN
                     
                     next_state <= s_flush; --loop here till done <<<<
 
+                -- ELSIF vram_done ='0' AND prev_state = s_draw THEN
+                --     next_state <= s_flush;
                 ELSE
                     concatFlush := prevState & dbb_bus.rcb_cmd(1 DOWNTO 0); --|inrange|pxopin|
                     
@@ -292,6 +298,7 @@ BEGIN
             prev_dbb_bus <= dbb_bus;
             -------------------------------          
             ---------store states----------          
+            prev_2state <= prev_state;
             prev_state <= state;
             state <= next_state;
 
