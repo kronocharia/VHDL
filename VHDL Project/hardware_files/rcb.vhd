@@ -202,8 +202,8 @@ BEGIN
                         pxcache_stash <= '1';             --load new word <<<<<
                         --change_curr_word <='1';           --ENABLE!!      <<<<<
 
-                        --next_state <= s_flush;            --ENABLE FLUSH <<<<<
-                        next_state <= s_waitram;
+                        next_state <= s_flush;            --ENABLE FLUSH <<<<<
+                        --next_state <= s_waitram;
 
                     WHEN others => next_state <= s_error; 
                     assert false report "ERROR in rcb, when concatDraw " severity failure;
@@ -222,7 +222,7 @@ BEGIN
 
             reset_idle_count <= '1';   --disable
             change_curr_word <='1';
-               CASE prev_2state IS
+               CASE prev_state IS
                     WHEN s_idle => prevState := "00";
                     WHEN s_draw => prevState := "01";
                     WHEN s_clear => prevState := "10";

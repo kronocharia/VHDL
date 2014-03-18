@@ -1,0 +1,13 @@
+clearscreen
+
+current waddr will give us bottom left corner of x.
+
+define xmax, ymax from coords of the clear command
+define xmin ymin from coords of the previous command
+
+for all the bits in the current adress
+
+are they >= xmin, >= ymin AND <= xmax <= ymax
+
+If so, then cache that thing is the colour of the pen.
+
