@@ -6,6 +6,8 @@
 Post processing for work.pix_word_cache.pwc
 @N: CD630 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":7:7:7:13|Synthesizing work.ram_fsm.synth 
 @N: CD233 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":21:17:21:18|Using sequential encoding for type state_t
+@W: CG296 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":29:4:29:10|Incomplete sensitivity list - assuming completeness
+@W: CG290 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":33:26:33:29|Referenced variable data is not in sensitivity list
 Post processing for work.ram_fsm.synth
 Post processing for work.rcb.rtl1
 @W: CL169 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":57:11:57:22|Pruning register prev_dbb_bus.rcb_cmd(2 downto 0)  

@@ -1,6 +1,6 @@
 C:\synopsys\fpga_G201209SP1\bin64\c_vhdl.exe  -osyn  H:\Desktop\GitHub\VHDL\rev_2\synwork\proj_1_compiler.srs  -top  rcb  -prodtype  synplify_pro  -verification_mode 0 -infer_seqShift -primux -fixsmult -dspmac  -nram -divnmod  -encrypt  -pro  -dmgen  H:\Desktop\GitHub\VHDL\rev_2\dm  -lite -ll 2000   -ui -fid2 -ram -sharing on  -autosm -ignore_undefined_lib  -lib work H:\Desktop\GitHub\VHDL\ex4\pix_cache_pak.vhd -lib work "H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd" -lib work "H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd" -lib work "H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\project_pack.vhd" -lib work "H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\pix_word_cache.vhd" -lib work "H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\helper_funcs.vhd" -lib work "H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\config_pack.vhd" -loga  H:\Desktop\GitHub\VHDL\rev_2\proj_1.srr 
 rc:0 success:1
-H:\Desktop\GitHub\VHDL\rev_2\synwork\proj_1_compiler.srs|o|1395162129|15609
+H:\Desktop\GitHub\VHDL\rev_2\synwork\proj_1_compiler.srs|o|1395162944|15614
 H:\Desktop\GitHub\VHDL\ex4\pix_cache_pak.vhd|i|1393776924|1061
 "H:\Desktop\GitHub\VHDL\VHDL|i|0|0
 Project\hardware_files\rcb.vhd"|i|0|0
@@ -14,6 +14,6 @@ Project\hardware_files\pix_word_cache.vhd"|i|0|0
 Project\hardware_files\helper_funcs.vhd"|i|0|0
 "H:\Desktop\GitHub\VHDL\VHDL|i|0|0
 Project\hardware_files\config_pack.vhd"|i|0|0
-H:\Desktop\GitHub\VHDL\rev_2\proj_1.srr|o|1395162129|5846
+H:\Desktop\GitHub\VHDL\rev_2\proj_1.srr|o|1395162944|6214
 C:\synopsys\fpga_G201209SP1\bin64\c_vhdl.exe|i|1354049230|5352960
 C:\synopsys\fpga_G201209SP1\bin\c_vhdl.exe|i|1354049054|1896960

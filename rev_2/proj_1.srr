@@ -6,7 +6,7 @@
 #Implementation: rev_2
 
 $ Start of Compile
-#Tue Mar 18 17:02:07 2014
+#Tue Mar 18 17:15:43 2014
 
 Synopsys VHDL Compiler, version comp201209rcp1, Build 124R, built Nov 27 2012
 @N|Running in 64-bit mode
@@ -23,6 +23,7 @@ File H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\helper_funcs.vhd changed
 File H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd changed - recompiling
 VHDL syntax check successful!
 File H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd changed - recompiling
+File H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd changed - recompiling
 @N: CD630 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":12:7:12:9|Synthesizing work.rcb.rtl1 
 @N: CD231 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":60:20:60:21|Using onehot encoding for type state_type (s_error="10000000")
 @W: CD604 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":198:20:198:33|OTHERS clause is not synthesized 
@@ -31,6 +32,8 @@ File H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd changed - re
 Post processing for work.pix_word_cache.pwc
 @N: CD630 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":7:7:7:13|Synthesizing work.ram_fsm.synth 
 @N: CD233 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":21:17:21:18|Using sequential encoding for type state_t
+@W: CG296 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":29:4:29:10|Incomplete sensitivity list - assuming completeness
+@W: CG290 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":33:26:33:29|Referenced variable data is not in sensitivity list
 Post processing for work.ram_fsm.synth
 Post processing for work.rcb.rtl1
 @W: CL169 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":57:11:57:22|Pruning register prev_dbb_bus.rcb_cmd(2 downto 0)  
@@ -66,7 +69,7 @@ State machine has 5 reachable states with original encodings of:
 @W: CL238 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":123:8:123:11|Latch state_transition.assert_sig2 enable evaluates to constant 0, optimized
 @END
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Tue Mar 18 17:02:09 2014
+# Tue Mar 18 17:15:44 2014
 
 ###########################################################]
 Premap Report
@@ -110,7 +113,7 @@ Pre-mapping successful!
 At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 42MB peak: 107MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Tue Mar 18 17:02:11 2014
+# Tue Mar 18 17:15:47 2014
 
 ###########################################################]
 Map & Optimize Report
@@ -162,7 +165,7 @@ Starting Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elaps
 Finished Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 106MB peak: 107MB)
 
 
-Finished factoring (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 107MB peak: 108MB)
+Finished factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 107MB peak: 108MB)
 
 
 Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 107MB peak: 110MB)
@@ -180,7 +183,7 @@ Finished Early Timing Optimization (Real Time elapsed 0h:00m:02s; CPU Time elaps
 Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 112MB peak: 112MB)
 
 
-Starting Early Timing Optimization (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 111MB peak: 112MB)
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 111MB peak: 112MB)
 
 
 Finished Early Timing Optimization (Real Time elapsed 0h:00m:03s; CPU Time elapsed 0h:00m:02s; Memory used current: 112MB peak: 112MB)
@@ -193,10 +196,10 @@ Finished technology mapping (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:0
 
 @N: FA100 :|Instance "px_cache.G_892" with "31" loads has been replicated "1" time(s) due to hard fanout limit of "30" 
 
-Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:03s; Memory used current: 113MB peak: 124MB)
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:03s; Memory used current: 113MB peak: 124MB)
 
 
-Finished restoring hierarchy (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:03s; Memory used current: 113MB peak: 124MB)
+Finished restoring hierarchy (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:03s; Memory used current: 113MB peak: 124MB)
 
 
 
@@ -242,7 +245,7 @@ Finished Writing Verilog Netlist and constraint files (Real Time elapsed 0h:00m:
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Tue Mar 18 17:02:18 2014
+# Timing Report written on Tue Mar 18 17:15:54 2014
 #
 
 
@@ -614,6 +617,6 @@ Mapper successful!
 At Mapper Exit (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:04s; Memory used current: 34MB peak: 124MB)
 
 Process took 0h:00m:06s realtime, 0h:00m:04s cputime
-# Tue Mar 18 17:02:18 2014
+# Tue Mar 18 17:15:54 2014
 
 ###########################################################]
