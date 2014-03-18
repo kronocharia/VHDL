@@ -1,12 +1,20 @@
-@W: CD434 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":115:78:115:92|Signal fetch_draw_flag in the sensitivity list is not used in the process
+@W: CD604 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":216:20:216:33|OTHERS clause is not synthesized 
 @W: CD638 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":63:11:63:18|Signal ram_data is undriven 
-@W: CL169 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":76:8:76:17|Pruning register dbb_busReg.startcmd  
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":97:8:97:17|All reachable assignments to one_vector(0) assign '1'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":97:8:97:17|All reachable assignments to one_vector(1) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":97:8:97:17|All reachable assignments to one_vector(2) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":97:8:97:17|All reachable assignments to one_vector(3) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":97:8:97:17|All reachable assignments to one_vector(4) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":97:8:97:17|All reachable assignments to one_vector(5) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":97:8:97:17|All reachable assignments to one_vector(6) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":97:8:97:17|All reachable assignments to one_vector(7) assign '0'; register removed by optimization
+@W: CL169 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":76:11:76:20|Pruning register dbb_busReg.startcmd  
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":94:11:94:20|All reachable assignments to one_vector(0) assign '1'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":94:11:94:20|All reachable assignments to one_vector(1) assign '0'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":94:11:94:20|All reachable assignments to one_vector(2) assign '0'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":94:11:94:20|All reachable assignments to one_vector(3) assign '0'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":94:11:94:20|All reachable assignments to one_vector(4) assign '0'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":94:11:94:20|All reachable assignments to one_vector(5) assign '0'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":94:11:94:20|All reachable assignments to one_vector(6) assign '0'; register removed by optimization
+@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":94:11:94:20|All reachable assignments to one_vector(7) assign '0'; register removed by optimization
+@W: CL279 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":76:11:76:20|Pruning register bits 1 to 0 of dbb_busReg.X(5 downto 0)  
+@W: CL279 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":76:11:76:20|Pruning register bits 1 to 0 of dbb_busReg.Y(5 downto 0)  
+@W: CL279 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":80:31:80:40|Pruning register bits 0 to 2 of prev_state(0 to 7)  
+@W: CL260 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":80:31:80:40|Pruning register bit 5 of prev_state(0 to 7)  
+@W: CL260 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":80:31:80:40|Pruning register bit 7 of prev_state(0 to 7)  
+@W: CL238 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":143:8:143:11|Latch state_transition.assert_sig3 enable evaluates to constant 0, optimized
+@W: CL246 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":38:8:38:14|Input port bits 7 to 6 of dbb_bus(15 downto 0) are unused 
+@W: CL246 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":38:8:38:14|Input port bits 1 to 0 of dbb_bus(15 downto 0) are unused 
 

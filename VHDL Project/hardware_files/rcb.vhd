@@ -87,13 +87,12 @@ ARCHITECTURE rtl1 OF rcb IS
     SIGNAL pxcache_stash                                        : std_logic;
 --waiting for ram_fsm to complete
     SIGNAL vram_done                                            : std_logic;
-    SIGNAL reset_idle_count                                     : std_logic;
+    SIGNAL reset_idle_count,idle_counter_trig                   : std_logic;
 
     --hardcoded width to handle N up to 256
     SIGNAL idle_counter                                         : std_logic_vector(7 DOWNTO 0);
     SIGNAL one_vector                                           : std_logic_vector(7 DOWNTO 0);
-    --for concatenating 
-    signal prev_stateC: std_logic_vector(1 DOWNTO 0);
+   
 
 BEGIN
 
@@ -111,7 +110,7 @@ BEGIN
 ---------------------state transition matrix----------------------- 
 
     state_transition: PROCESS(state,dbb_bus, curr_vram_word,vram_done,idle_counter,
-								dbb_busReg, prev_state, prev_stateC, prev_vram_word) 
+								dbb_busReg, prev_state,prev_vram_word) 
     --idle counter variable declared in package
     variable prevState: std_logic_vector(1 DOWNTO 0);  
     variable concatDraw: std_logic_vector(2 DOWNTO 0);                  
@@ -185,18 +184,18 @@ BEGIN
 
             WHEN s_draw =>  
               report "State = draw" severity note;
-
+               -- assert false report "breakpoint in when s_draw" severity failure;
                 
                 IF ( getRamWord(dbb_busReg.X, dbb_busReg.Y) = curr_vram_word ) THEN      
                     inRange := '1';
                 ELSE
                     inRange := '0';
-
+                END IF;
                 concatDraw := inRange & dbb_busReg.rcb_cmd(1 DOWNTO 0); --|inrange|pxopin|
 
                 CASE concatDraw IS 
                     WHEN "101" | "110" | "111" => --draw single 
-
+                        
                         pxcache_pixopin <= pixop_t(dbb_busReg.rcb_cmd(1 DOWNTO 0)); --SET VALUE <<<<<
                         pxcache_pixnum <= getRamBit(dbb_busReg.X, dbb_busReg.Y);    --SET VALUE <<<<<
                         pxcache_pw <='1';   --enable the px cache for writing singl --SET VALUE <<<<<
@@ -204,11 +203,11 @@ BEGIN
 						next_state <= s_idle;       --RETURN TO IDLE <<<<< 
 
                     WHEN "100" => --movepen
-
+                      
 						next_state <= s_idle;           --RETURN TO IDLE <<<<<
 
                     WHEN "000"| "001" | "010" | "011" => --out of range draw single or move
-
+   
 						pxcache_stash <= '1';             --load new word <<<<<
                         change_curr_word <='1';           --ENABLE!!      <<<<<
 
@@ -218,7 +217,7 @@ BEGIN
                     assert false report "ERROR in rcb, when concatDraw " severity failure;
 
                 END CASE;
-              END IF;
+              
 
             
             WHEN s_clear => next_state <=s_idle; --to be implemented later
@@ -231,20 +230,15 @@ BEGIN
                     WHEN s_clear => prevState := "10";
                     WHEN others => prevState := "11"; --not used
                 END CASE;
-               
-                --CASE prev_state IS
-                --    WHEN s_idle => prev_stateC <= "00";
-                --    WHEN s_draw => prev_stateC <= "01";
-                --    WHEN s_clear => prev_stateC <= "10";
-                --    WHEN others => prev_stateC <= "11"; --not used
-                --END CASE;
 
-                IF vram_done = '0' THEN
+                IF vram_done = '0' AND prev_state = s_flush THEN
                     
                     next_state <= s_flush; --loop here till done <<<<
 
                 ELSE
-                    concatFlush := prev_stateC & dbb_busReg.rcb_cmd(1 DOWNTO 0); --|inrange|pxopin|
+                    concatFlush := prevState & dbb_busReg.rcb_cmd(1 DOWNTO 0); --|inrange|pxopin|
+                    
+                    --assert false report "oord raw " severity failure;
                     CASE concatFlush IS
                         WHEN "0000" | "0001" | "0010" | "0011" | "0100" => --its an idle flush or out of range move (last pattern)
 
@@ -255,7 +249,6 @@ BEGIN
                            
 
                         WHEN "0101" | "0110" | "0111" => --out of range draw
-
                             pxcache_wen_all <= '1';      --ENABLE CACHE CLEAR <<<<<
                             pxcache_pw <='1';            --ENABLE SINGLE WRITE <<<<
                             ram_start <='1';             --ENABLE VRAM WRITE
@@ -264,7 +257,8 @@ BEGIN
 
                         WHEN "1001" | "1010" | "1011" => --its a clear of some colour 
                             next_state <= s_idle;
-
+                            
+                             assert false report "oord raw " severity failure;
                         WHEN others => next_state <= s_error;    
                         assert false report "ERROR in rcb, state_transition - when s_flush " severity failure;     
                     END CASE;

@@ -1,5 +1,5 @@
-@E: CS187 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":114:41:114:54|Expecting )
-@E: CD632 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":417:34:417:37|duplicate entity name ram_fsm
-@E: CD632 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":440:32:440:35|duplicate entity name pix_word_cache
+@E: CD255 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":246:47:246:47|No identifier "prev_statec" in scope
+@E: CD632 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":394:34:394:37|duplicate entity name ram_fsm
+@E: CD632 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":417:32:417:35|duplicate entity name pix_word_cache
 @E|Parse errors encountered - exiting
 
