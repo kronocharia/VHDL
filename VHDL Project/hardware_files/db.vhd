@@ -29,7 +29,7 @@ architecture rtl of db is
   signal dao_draw, dao_xbias, dao_done, dao_swap, dao_negx, dao_negy, dao_disable, dao_reset : std_logic;
   signal dao_xin, dao_yin, dao_xout, dao_yout: std_logic_vector(vsize-1 downto 0);
   signal penx, peny: std_logic_vector(vsize-1 downto 0);
-  signal previous_command : std_logic_vector(2*vsize+3 downto 0);
+  --signal previous_command : std_logic_vector(2*vsize+3 downto 0);
   
   type state_t is (draw_reset, draw_start, draw_line, idle, clear_start, clear_end);
   signal state, nstate : state_t;
@@ -107,27 +107,28 @@ begin
                                           -- xin, yin, xbias, draw, reset
     variable dx: signed(vsize downto 0);
     variable dy: signed(vsize downto 0);
+    variable v_swapxy, v_negx, v_negy: std_logic;
     --variable zero : std_logic_vector(vsize-1 downto 0) := (others =>'0');
   begin
     dx := signed(resize(unsigned(command.x), vsize+1)) - signed(resize(unsigned(penx), vsize+1));
     dy := signed(resize(unsigned(command.y), vsize+1)) - signed(resize(unsigned(peny), vsize+1));
-    -- set negx if dx is negative
-    if dx >= 0 then
-      dao_negx <= '0';
-    else
-      dao_negx <= '1';
-    end if;
-    -- set negy if dy is negative
-    if dy >= 0 then
-      dao_negy <= '0';
-    else
-      dao_negy <= '1';
-    end if;
     -- set swapxy if dx is closer to 0 than dy
     if abs(dx) < abs(dy) then
-      dao_swap <= '1';
+      v_swapxy := '1';
     else
-      dao_swap <= '0';
+      v_swapxy := '0';
+    end if;
+    -- set negx if dx is negative
+    if (v_swapxy = '0' and dx < 0) or (v_swapxy = '1' and dy < 0) then
+      v_negx := '1';
+    else
+      v_negx := '0';
+    end if;
+    -- set negy if dy is negative
+    if (v_swapxy = '0' and dy < 0) or (v_swapxy = '1' and dx < 0) then
+      v_negy := '1';
+    else
+      v_negy := '0';
     end if;
     -- set x and y inputs
     if state = draw_reset then
@@ -146,7 +147,14 @@ begin
     else dao_reset <= '0';
     end if;
     -- set xbias
-    dao_xbias <= '1'; --Tom Clarke knows
+    if (v_negx xor v_negy) = '0' then 
+      dao_xbias <= '1';
+    else
+      dao_xbias <= '0';
+    end if;
+    dao_negx <= v_negx;
+    dao_negy <= v_negy;
+    dao_swap <= v_swapxy;
   end process set_dao_inputs;
   
   db_fsm_clocked: process
@@ -161,7 +169,6 @@ begin
   begin
     nstate <= state; --default, stay in current state
     case state is
-      
       when idle =>
         if dav = '1' then
           --read command and decide which state to go to.
@@ -190,19 +197,36 @@ begin
       when clear_end =>
         if dbb_delaycmd = '0' then nstate <= idle; end if;
         
-      when others => nstate <= idle; -- reset undefined states to idle state
+      --when others => nstate <= idle; -- reset undefined states to idle state
     end case;
   end process db_fsm_comb;
 
-  send_rcb_inputs: process(state, command, dao_xout, dao_yout, penx, peny) --drives dbb_bus
-    variable default : std_logic_vector(vsize-1 downto 0) := (others =>'-');
+  send_rcb_inputs: process--(state, command, dao_xout, dao_yout, penx, peny) --drives dbb_bus
+    variable default : std_logic_vector(vsize-1 downto 0) := (others =>'0');
   begin
+    wait until clk'event and clk = '1';
+    -- encode operation
+    case command.pen is
+      when white => dbb_bus.rcb_cmd(1 downto 0) <= "01";
+      when black => dbb_bus.rcb_cmd(1 downto 0) <= "10";
+      when invert => dbb_bus.rcb_cmd(1 downto 0) <= "11";
+      when others => dbb_bus.rcb_cmd <= "100"; -- invalid command
+    end case;
+    case command.op is
+      when movepen_op => null;
+      when drawline_op => dbb_bus.rcb_cmd(2) <= '0';
+      when clearscreen_op => dbb_bus.rcb_cmd(2) <= '1';
+      when others => dbb_bus.rcb_cmd <= "100"; -- invalid command
+    end case;
+    
+    -- set other parameters
     case state is
       when draw_line =>
         dbb_bus.x <= dao_xout;
         dbb_bus.y <= dao_yout;
         dbb_bus.startcmd <= '1';
       when clear_start =>
+        dbb_bus.rcb_cmd <= "000";
         dbb_bus.X <= penx;
         dbb_bus.Y <= peny;
         dbb_bus.startcmd <= '1';
@@ -216,19 +240,13 @@ begin
         dbb_bus.startcmd <= '0';
     end case;
 
-    -- encode operation
-    case command.pen is
-      when white => dbb_bus.rcb_cmd(1 downto 0) <= "01";
-      when black => dbb_bus.rcb_cmd(1 downto 0) <= "10";
-      when invert => dbb_bus.rcb_cmd(1 downto 0) <= "11";
-      when others => dbb_bus.rcb_cmd <= "100"; -- invalid command
-    end case;
-    case command.op is
-      when movepen_op => dbb_bus.rcb_cmd <= "000";
-      when drawline_op => dbb_bus.rcb_cmd(2) <= '0';
-      when clearscreen_op => dbb_bus.rcb_cmd(2) <= '1';
-      when others => dbb_bus.rcb_cmd <= "100"; -- invalid command
-    end case;
+    -- movepen
+    if state = idle and dav = '1' and command_in.op = movepen_op then
+      dbb_bus.rcb_cmd <= "000";
+      dbb_bus.X <= command_in.x;
+      dbb_bus.Y <= command_in.y;
+      dbb_bus.startcmd <= '1';
+    end if;
   end process send_rcb_inputs;
 
   finished: process(state, dav) -- drives db_finish
@@ -238,7 +256,7 @@ begin
     end if;
   end process finished;
 
-  update_penpos: process -- dives penx, peny
+  update_penpos: process -- drives penx, peny
   begin
     wait until clk'event and clk='1';
     if reset = '1' then
@@ -248,6 +266,9 @@ begin
       penx <= command_in.x;
       peny <= command_in.y;
     elsif state = draw_line and dao_done = '1' then
+      penx <= command.x;
+      peny <= command.y;
+    elsif state = clear_end then
       penx <= command.x;
       peny <= command.y;
     end if;

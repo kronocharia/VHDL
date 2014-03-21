@@ -190,11 +190,11 @@ begin
       when clear_end =>
         if dbb_delaycmd = '0' then nstate <= idle; end if;
         
-      when others => nstate <= idle; -- reset undefined states to idle state
+      --when others => nstate <= idle; -- reset undefined states to idle state
     end case;
   end process db_fsm_comb;
 
-  send_rcb_inputs: process(state, command, dao_xout, dao_yout) --drives dbb_bus
+  send_rcb_inputs: process(state, command, dao_xout, dao_yout, penx, peny) --drives dbb_bus
     variable default : std_logic_vector(vsize-1 downto 0) := (others =>'-');
   begin
     case state is
