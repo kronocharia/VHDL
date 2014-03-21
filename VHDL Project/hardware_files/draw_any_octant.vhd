@@ -37,7 +37,7 @@ END ENTITY draw_any_octant;
 
 ARCHITECTURE comb OF draw_any_octant IS
 
-SIGNAL xi1, xi2, xo1, xo2, x03, yi1, yi2, yo1, yo2, yo3: std_logic_vector(vsize-1 DOWNTO 0);
+SIGNAL xi1, xi2, xo1, xo2, yi1, yi2, yo1, yo2: std_logic_vector(vsize-1 DOWNTO 0);
 SIGNAL negx_out, negy_out, swapxy_out, xbias_in: std_logic;
 
 BEGIN

@@ -37,10 +37,10 @@ BEGIN
 			hdb_busy     => hdb_busy,
 
 			-- bus to RCB
-			dbb_bus.x            => dbb.X,
-			dbb_bus.y            => dbb.Y,
-			dbb_bus.rcb_cmd       => dbb.rcb_cmd,
-			dbb_bus.startcmd     => dbb.startcmd,
+			dbb_bus(5 downto 0) => dbb.X,
+			dbb_bus(11 downto 6)  => dbb.Y,
+			dbb_bus(14 downto 12)=> dbb.rcb_cmd,
+			dbb_bus(15)          => dbb.startcmd,
 			dbb_delaycmd => dbb_delaycmd,
 			dbb_rcbclear => dbb_rcbclear,
 
