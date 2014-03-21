@@ -1,12 +1,12 @@
 #Build: Synplify Pro G-2012.09-SP1 , Build 168R, Nov 26 2012
 #install: C:\synopsys\fpga_G201209SP1
 #OS: Windows 7 6.1
-#Hostname: EEWS303A-003
+#Hostname: EEWS506A-009
 
 #Implementation: rev_2
 
 $ Start of Compile
-#Tue Mar 18 20:10:06 2014
+#Fri Mar 21 23:22:16 2014
 
 Synopsys VHDL Compiler, version comp201209rcp1, Build 124R, built Nov 27 2012
 @N|Running in 64-bit mode
@@ -27,7 +27,6 @@ File H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd changed - recomp
 @N: CD231 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":60:20:60:21|Using onehot encoding for type state_type (s_error="100000")
 @W: CD604 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":208:20:208:33|OTHERS clause is not synthesized 
 @W: CD604 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":276:12:276:25|OTHERS clause is not synthesized 
-@W: CD638 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":64:11:64:20|Signal vram_waddr is undriven 
 @N: CD630 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\pix_word_cache.vhd":9:7:9:20|Synthesizing work.pix_word_cache.pwc 
 Post processing for work.pix_word_cache.pwc
 @N: CD630 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":7:7:7:13|Synthesizing work.ram_fsm.synth 
@@ -36,16 +35,9 @@ Post processing for work.ram_fsm.synth
 Post processing for work.rcb.rtl1
 @W: CL169 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":57:11:57:22|Pruning register prev_dbb_bus.rcb_cmd(2 downto 0)  
 @W: CL169 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":57:11:57:22|Pruning register prev_dbb_bus.startcmd  
+@W: CL169 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":61:43:61:53|Pruning register prev_2state(0 to 5)  
 @W: CL271 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":57:11:57:22|Pruning bits 1 to 0 of prev_dbb_bus.X(5 downto 0) -- not in use ... 
 @W: CL271 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":57:11:57:22|Pruning bits 1 to 0 of prev_dbb_bus.Y(5 downto 0) -- not in use ... 
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":75:11:75:20|All reachable assignments to one_vector(0) assign '1'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":75:11:75:20|All reachable assignments to one_vector(1) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":75:11:75:20|All reachable assignments to one_vector(2) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":75:11:75:20|All reachable assignments to one_vector(3) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":75:11:75:20|All reachable assignments to one_vector(4) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":75:11:75:20|All reachable assignments to one_vector(5) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":75:11:75:20|All reachable assignments to one_vector(6) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":75:11:75:20|All reachable assignments to one_vector(7) assign '0'; register removed by optimization
 @N: CL201 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":22:9:22:13|Trying to extract state machine for register state
 Extracted state machine for register state
 State machine has 4 reachable states with original encodings of:
@@ -53,204 +45,122 @@ State machine has 4 reachable states with original encodings of:
    01
    10
    11
-@W: CL279 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":61:43:61:53|Pruning register bits 0 to 1 of prev_2state(0 to 5)  
-@W: CL260 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":61:43:61:53|Pruning register bit 5 of prev_2state(0 to 5)  
 @W: CL260 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":61:31:61:40|Pruning register bit 0 of prev_state(0 to 5)  
 @W: CL260 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":61:31:61:40|Pruning register bit 5 of prev_state(0 to 5)  
 @N: CL201 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":61:11:61:15|Trying to extract state machine for register state
 Extracted state machine for register state
-State machine has 6 reachable states with original encodings of:
+State machine has 5 reachable states with original encodings of:
    000001
    000010
    000100
    001000
    010000
-   100000
 @END
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Tue Mar 18 20:10:07 2014
-
-###########################################################]
-Premap Report
-
-Synopsys Altera Technology Pre-mapping, Version maprc, Build 1351R, Built Nov 26 2012 21:59:25
-Copyright (C) 1994-2012, Synopsys, Inc. This software the associated documentation are confidential and proprietary to Synopsys, Inc. Your use or disclosure of this software subject to the terms and conditions of a written license agreement between you, or your company, and Synopsys, Inc.
-Product Version G-2012.09-SP1 
-
-Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 91MB peak: 92MB)
-
-@L: H:\Desktop\GitHub\VHDL\rev_2\proj_1_scck.rpt 
-Printing clock  summary report in "H:\Desktop\GitHub\VHDL\rev_2\proj_1_scck.rpt" file 
-@N: MF248 |Running in 64-bit mode.
-@N: MF666 |Clock conversion enabled 
-
-Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 93MB)
-
-
-Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 93MB)
-
-
-Finished Clear Box Flow. (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 104MB peak: 107MB)
-
-@W: BN522 |Property syn_clock_priority is not supported for this target technology
-
-
-Clock Summary
-**************
-
-Start       Requested     Requested     Clock        Clock                
-Clock       Frequency     Period        Type         Group                
---------------------------------------------------------------------------
-rcb|clk     4.1 MHz       240.995       inferred     Autoconstr_clkgroup_0
-==========================================================================
-
-@W: MT529 :"h:\desktop\github\vhdl\vhdl project\hardware_files\ram_fsm.vhd":16:22:16:29|Found inferred clock rcb|clk which controls 155 sequential elements including ram_state_machine.data_del[15:0]. This clock has no specified timing constraint which may prevent conversion of gated or generated clocks and may adversely impact design performance. 
-
-Finished Pre Mapping Phase.@N: BN225 |Writing default property annotation file H:\Desktop\GitHub\VHDL\rev_2\proj_1.sap.
-Pre-mapping successful!
-
-At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 42MB peak: 107MB)
-
-Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Tue Mar 18 20:10:10 2014
+# Fri Mar 21 23:22:17 2014
 
 ###########################################################]
 Map & Optimize Report
 
-Synopsys Altera Technology Mapper, Version maprc, Build 1351R, Built Nov 26 2012 21:59:25
+Synopsys Microsemi Technology Mapper, Version maprc, Build 1351R, Built Nov 26 2012 21:46:09
 Copyright (C) 1994-2012, Synopsys, Inc. This software the associated documentation are confidential and proprietary to Synopsys, Inc. Your use or disclosure of this software subject to the terms and conditions of a written license agreement between you, or your company, and Synopsys, Inc.
 Product Version G-2012.09-SP1 
-
-Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 91MB peak: 92MB)
-
+@W: FF137 |Setting fanout limit to 16 
 @N: MF248 |Running in 64-bit mode.
-@N: MF666 |Clock conversion enabled 
-
-Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 91MB peak: 92MB)
-
-
-Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 91MB peak: 92MB)
-
-
-
-Starting Optimization and Mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 104MB peak: 107MB)
-
-
-Available hyper_sources - for debug and ip models
-	None Found
-
-@N: MT206 |Auto Constrain mode is enabled
-
-Finished RTL optimizations (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 104MB peak: 107MB)
-
+List of partitions to map:
+   view:work.rcb(rtl1)
 @N:"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":74:11:74:22|Found counter in view:work.rcb(rtl1) inst idle_counter[7:0]
-Encoding state machine state[0:5] (view:work.rcb(rtl1))
+Encoding state machine state_h.state[0:4] (view:work.rcb(rtl1))
 original code -> new code
-   000001 -> 000000
-   000010 -> 000011
-   000100 -> 000101
-   001000 -> 001001
-   010000 -> 010001
-   100000 -> 100001
-Encoding state machine state[0:3] (view:work.ram_fsm(synth))
+   000001 -> 00000
+   000010 -> 00011
+   000100 -> 00101
+   001000 -> 01001
+   010000 -> 10001
+Encoding state machine state_h.state[0:3] (view:work.ram_fsm(synth))
 original code -> new code
    00 -> 00
    01 -> 01
    10 -> 10
    11 -> 11
 
-Starting Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 106MB peak: 107MB)
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 105MB peak: 106MB)
 
 
-Finished Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 106MB peak: 107MB)
-
-@N: BN362 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":269:12:269:26|Removing sequential instance state_i[5] of view:PrimLib.dff(prim) in hierarchy view:work.rcb(rtl1) because there are no references to its outputs 
-
-Finished factoring (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 108MB peak: 108MB)
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 105MB peak: 106MB)
 
 
-Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 108MB peak: 110MB)
+High Fanout Net Report
+**********************
 
+Driver Instance / Pin Name                                     Fanout, notes
+----------------------------------------------------------------------------
+ram_state_machine.state_h.pxcache_store_buf_0_1_sqmuxa / y     32           
+px_cache.store_ram_0_1_sqmuxa_2_i_o3 / y                       70           
+reset_pad / y                                                  38           
+ram_state_machine.state_h.pxcache_pw_0_a3 / y                  29           
+============================================================================
 
-Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 108MB peak: 110MB)
+Replicating Combinational Instance ram_state_machine.state_h.pxcache_pw_0_a3, fanout 29 segments 2
+Replicating Combinational Instance px_cache.store_ram_0_1_sqmuxa_2_i_o3, fanout 46 segments 3
+Replicating Combinational Instance ram_state_machine.state_h.pxcache_store_buf_0_1_sqmuxa, fanout 32 segments 2
+Buffering reset_c, fanout 41 segments 3
 
+Added 2 Buffers
+Added 4 Cells via replication
+	Added 0 Sequential Cells via replication
+	Added 4 Combinational Cells via replication
+---------------------------------------
+Synthesized design as a chip
+Resource Usage Report of rcb 
 
-Starting Early Timing Optimization (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 108MB peak: 110MB)
+Target Part: a3265dx-2
+Combinational Cells:    117 of 475 (25%)
+Sequential Cells:    149 of 510 (29%)
+Total Cells:         266 of 985 (28%)
+DSP Blocks:          0
+Clock Buffers:       1
+IO Cells:            62
 
+Details:
+   and2:           18	comb:1
+   and2a:          6	comb:1
+   and2b:          1	comb:1
+   and3a:          9	comb:1
+   and3c:          1	comb:1
+   and4:           1	comb:1
+   and4a:          1	comb:1
+   and4b:          1	comb:1
+   buff:           2	comb:1
+   cm8:            59	comb:1
+   nand4:          1	comb:2
+   or2:            6	comb:1
+   or2a:           3	comb:1
+   or2b:           3	comb:1
+   xnor2:          4	comb:1
 
-Finished Early Timing Optimization (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:03s; Memory used current: 112MB peak: 112MB)
+   df1:            12	seq:1
+   df1b:           24	seq:1
+   dfe1b:          40	seq:1
+   dfm7a:          73	seq:1
 
+   clkbuf:         1	clock buffer
+   inbuf:          33	
+   outbuf:         28	
 
-Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:03s; Memory used current: 111MB peak: 112MB)
+   false:          1	
+   true:           1	
+@W: MT420 |Found inferred clock rcb|clk with period 1000.00ns. Please declare a user-defined clock on object "p:clk"
 
-
-Starting Early Timing Optimization (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:03s; Memory used current: 111MB peak: 112MB)
-
-
-Finished Early Timing Optimization (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:03s; Memory used current: 112MB peak: 113MB)
-
-
-Finished preparing to map (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:03s; Memory used current: 112MB peak: 113MB)
-
-
-Finished technology mapping (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:05s; Memory used current: 131MB peak: 135MB)
-
-
-Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:05s; Memory used current: 132MB peak: 135MB)
-
-
-Finished restoring hierarchy (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:05s; Memory used current: 132MB peak: 135MB)
-
-
-
-#### START OF CLOCK OPTIMIZATION REPORT #####[
-
-1 non-gated/non-generated clock tree(s) driving 152 clock pin(s) of sequential element(s)
-0 gated/generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
-0 instances converted, 0 sequential instances remain driven by gated/generated clocks
-
-=============================== Non-Gated/Non-Generated Clocks ===============================
-Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance       
-----------------------------------------------------------------------------------------------
-@K:CKID0001       clk_in              cycloneii_io           152        pxcache_store_buf_3[0]
-==============================================================================================
-===== Gated/Generated Clocks =====
-************** None **************
-----------------------------------
-==================================
-
-
-##### END OF CLOCK OPTIMIZATION REPORT ######]
-
-
-Writing Analyst data base H:\Desktop\GitHub\VHDL\rev_2\proj_1.srm
-
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:06s; Memory used current: 130MB peak: 135MB)
-
-Writing Verilog Netlist and constraint files
-Writing .vqm output for Quartus
-
-Writing scf file... (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:06s; Memory used current: 132MB peak: 135MB)
-
-@N: BW103 |Synopsys Constraint File time units using default value of 1ns 
-@N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
-
-Finished Writing Verilog Netlist and constraint files (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:06s; Memory used current: 130MB peak: 135MB)
-
-@W: MT420 |Found inferred clock rcb|clk with period 5.28ns. Please declare a user-defined clock on object "p:clk"
-
-@N: MT535 |Writing timing correlation to file H:\Desktop\GitHub\VHDL\rev_2\proj_1_ctd.txt 
-   tracing paths
-   printing end points
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Tue Mar 18 20:10:19 2014
+# Timing Report written on Fri Mar 21 23:22:23 2014
 #
 
 
 Top view:               rcb
-Requested Frequency:    189.5 MHz
+Requested Frequency:    1.0 MHz
 Wire load mode:         top
 Paths requested:        5
 Constraint File(s):    
@@ -264,13 +174,13 @@ Performance Summary
 *******************
 
 
-Worst slack in design: -0.931
+Worst slack in design: 495.950
 
-                   Requested     Estimated     Requested     Estimated                Clock        Clock                
-Starting Clock     Frequency     Frequency     Period        Period        Slack      Type         Group                
-------------------------------------------------------------------------------------------------------------------------
-rcb|clk            189.5 MHz     161.1 MHz     5.276         6.207         -0.931     inferred     Autoconstr_clkgroup_0
-========================================================================================================================
+                   Requested     Estimated     Requested     Estimated                 Clock        Clock              
+Starting Clock     Frequency     Frequency     Period        Period        Slack       Type         Group              
+-----------------------------------------------------------------------------------------------------------------------
+rcb|clk            1.0 MHz       15.0 MHz      1000.000      66.525        495.950     inferred     Inferred_clkgroup_0
+=======================================================================================================================
 
 
 
@@ -279,12 +189,12 @@ rcb|clk            189.5 MHz     161.1 MHz     5.276         6.207         -0.93
 Clock Relationships
 *******************
 
-Clocks             |    rise  to  rise    |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
-----------------------------------------------------------------------------------------------------------
-Starting  Ending   |  constraint  slack   |  constraint  slack  |  constraint  slack  |  constraint  slack
-----------------------------------------------------------------------------------------------------------
-rcb|clk   rcb|clk  |  5.276       -0.931  |  No paths    -      |  2.638       0.854  |  No paths    -    
-==========================================================================================================
+Clocks             |    rise  to  rise     |    fall  to  fall   |    rise  to  fall     |    fall  to  rise 
+-------------------------------------------------------------------------------------------------------------
+Starting  Ending   |  constraint  slack    |  constraint  slack  |  constraint  slack    |  constraint  slack
+-------------------------------------------------------------------------------------------------------------
+rcb|clk   rcb|clk  |  1000.000    933.475  |  No paths    -      |  500.000     495.950  |  No paths    -    
+=============================================================================================================
  Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
        'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
 
@@ -306,41 +216,41 @@ Detailed Report for Clock: rcb|clk
 Starting Points with Worst Slack
 ********************************
 
-                           Starting                                                              Arrival           
-Instance                   Reference     Type                   Pin        Net                   Time        Slack 
-                           Clock                                                                                   
--------------------------------------------------------------------------------------------------------------------
-curr_vram_word[1]          rcb|clk       cycloneii_lcell_ff     regout     curr_vram_word[1]     0.250       -0.931
-curr_vram_word[3]          rcb|clk       cycloneii_lcell_ff     regout     curr_vram_word[3]     0.250       -0.913
-curr_vram_word[0]          rcb|clk       cycloneii_lcell_ff     regout     curr_vram_word[0]     0.250       -0.806
-curr_vram_word[2]          rcb|clk       cycloneii_lcell_ff     regout     curr_vram_word[2]     0.250       -0.788
-curr_vram_word[5]          rcb|clk       cycloneii_lcell_ff     regout     curr_vram_word[5]     0.250       -0.768
-prev_2state[3]             rcb|clk       cycloneii_lcell_ff     regout     prev_2state[3]        0.250       -0.750
-prev_2state[2]             rcb|clk       cycloneii_lcell_ff     regout     prev_2state[2]        0.250       -0.732
-prev_state[1]              rcb|clk       cycloneii_lcell_ff     regout     prev_state[1]         0.250       -0.690
-ram_state_machine.done     rcb|clk       cycloneii_lcell_ff     regout     done                  0.250       -0.672
-curr_vram_word[4]          rcb|clk       cycloneii_lcell_ff     regout     curr_vram_word[4]     0.250       -0.643
-===================================================================================================================
+                                     Starting                                                             Arrival            
+Instance                             Reference     Type      Pin     Net                                  Time        Slack  
+                                     Clock                                                                                   
+-----------------------------------------------------------------------------------------------------------------------------
+prev_vram_word[0]                    rcb|clk       dfe1b     q       prev_vram_word[0]                    3.675       495.950
+prev_vram_word[1]                    rcb|clk       dfe1b     q       prev_vram_word[1]                    3.675       495.950
+prev_vram_word[2]                    rcb|clk       dfe1b     q       prev_vram_word[2]                    3.675       495.950
+prev_vram_word[3]                    rcb|clk       dfe1b     q       prev_vram_word[3]                    3.675       495.950
+prev_vram_word[4]                    rcb|clk       dfe1b     q       prev_vram_word[4]                    3.675       495.950
+prev_vram_word[5]                    rcb|clk       dfe1b     q       prev_vram_word[5]                    3.675       495.950
+prev_vram_word[6]                    rcb|clk       dfe1b     q       prev_vram_word[6]                    3.675       495.950
+prev_vram_word[7]                    rcb|clk       dfe1b     q       prev_vram_word[7]                    3.675       495.950
+ram_state_machine.data_merged[0]     rcb|clk       dfm7a     q       ram_state_machine.data_merged[0]     3.675       495.950
+ram_state_machine.data_merged[1]     rcb|clk       dfm7a     q       ram_state_machine.data_merged[1]     3.675       495.950
+=============================================================================================================================
 
 
 Ending Points with Worst Slack
 ******************************
 
-                             Starting                                                                   Required           
-Instance                     Reference     Type                   Pin        Net                        Time         Slack 
-                             Clock                                                                                         
----------------------------------------------------------------------------------------------------------------------------
-px_cache.store_ram_14[1]     rcb|clk       cycloneii_lcell_ff     datain     store_ram_14_0_0_937_i     5.228        -0.931
-px_cache.store_ram_15[1]     rcb|clk       cycloneii_lcell_ff     datain     store_ram_15_0_0_997_i     5.228        -0.931
-px_cache.store_ram_2[0]      rcb|clk       cycloneii_lcell_ff     datain     store_ram_2_0_1_207_i      5.228        -0.873
-px_cache.store_ram_3[0]      rcb|clk       cycloneii_lcell_ff     datain     store_ram_3_0_1_262_i      5.228        -0.873
-px_cache.store_ram_6[0]      rcb|clk       cycloneii_lcell_ff     datain     store_ram_6_0_1_429_i      5.228        -0.873
-px_cache.store_ram_10[0]     rcb|clk       cycloneii_lcell_ff     datain     store_ram_10_0_1_666_i     5.228        -0.618
-px_cache.store_ram_11[0]     rcb|clk       cycloneii_lcell_ff     datain     store_ram_11_0_1_722_i     5.228        -0.618
-px_cache.store_ram_14[0]     rcb|clk       cycloneii_lcell_ff     datain     store_ram_14_0_1_907_i     5.228        -0.618
-px_cache.store_ram_15[0]     rcb|clk       cycloneii_lcell_ff     datain     store_ram_15_0_1_966_i     5.228        -0.618
-px_cache.store_ram_0[1]      rcb|clk       cycloneii_lcell_ff     datain     store_ram_0_0_0_o2_0       5.228        -0.607
-===========================================================================================================================
+                                  Starting                                                            Required            
+Instance                          Reference     Type     Pin     Net                                  Time         Slack  
+                                  Clock                                                                                   
+--------------------------------------------------------------------------------------------------------------------------
+ram_state_machine.addr_del[0]     rcb|clk       df1b     d       prev_vram_word[0]                    499.625      495.950
+ram_state_machine.addr_del[1]     rcb|clk       df1b     d       prev_vram_word[1]                    499.625      495.950
+ram_state_machine.addr_del[2]     rcb|clk       df1b     d       prev_vram_word[2]                    499.625      495.950
+ram_state_machine.addr_del[3]     rcb|clk       df1b     d       prev_vram_word[3]                    499.625      495.950
+ram_state_machine.addr_del[4]     rcb|clk       df1b     d       prev_vram_word[4]                    499.625      495.950
+ram_state_machine.addr_del[5]     rcb|clk       df1b     d       prev_vram_word[5]                    499.625      495.950
+ram_state_machine.addr_del[6]     rcb|clk       df1b     d       prev_vram_word[6]                    499.625      495.950
+ram_state_machine.addr_del[7]     rcb|clk       df1b     d       prev_vram_word[7]                    499.625      495.950
+ram_state_machine.data_del[0]     rcb|clk       df1b     d       ram_state_machine.data_merged[0]     499.625      495.950
+ram_state_machine.data_del[1]     rcb|clk       df1b     d       ram_state_machine.data_merged[1]     499.625      495.950
+==========================================================================================================================
 
 
 
@@ -349,299 +259,39 @@ Worst Path Information
 
 
 Path information for path number 1: 
-      Requested Period:                      5.276
-    - Setup time:                            0.048
+      Requested Period:                      500.000
+    - Setup time:                            0.375
     + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         5.228
+    = Required time:                         499.625
 
-    - Propagation time:                      6.160
+    - Propagation time:                      3.675
     - Clock delay at starting point:         0.000 (ideal)
-    = Slack (critical) :                     -0.931
+    = Slack (critical) :                     495.950
 
-    Number of logic level(s):                8
-    Starting point:                          curr_vram_word[1] / regout
-    Ending point:                            px_cache.store_ram_14[1] / datain
+    Number of logic level(s):                0
+    Starting point:                          prev_vram_word[0] / q
+    Ending point:                            ram_state_machine.addr_del[0] / d
     The start point is clocked by            rcb|clk [rising] on pin clk
-    The end   point is clocked by            rcb|clk [rising] on pin clk
+    The end   point is clocked by            rcb|clk [falling] on pin clk
 
-Instance / Net                                                     Pin         Pin               Arrival     No. of    
-Name                                      Type                     Name        Dir     Delay     Time        Fan Out(s)
------------------------------------------------------------------------------------------------------------------------
-curr_vram_word[1]                         cycloneii_lcell_ff       regout      Out     0.250     0.250       -         
-curr_vram_word[1]                         Net                      -           -       0.910     -           2         
-px_cache.state_srsts_0_0__g3_2            cycloneii_lcell_comb     datac       In      -         1.160       -         
-px_cache.state_srsts_0_0__g3_2            cycloneii_lcell_comb     combout     Out     0.275     1.435       -         
-state_srsts_0_0__g3_2                     Net                      -           -       0.355     -           1         
-px_cache.state_srsts_0_0__g3              cycloneii_lcell_comb     dataa       In      -         1.790       -         
-px_cache.state_srsts_0_0__g3              cycloneii_lcell_comb     combout     Out     0.438     2.228       -         
-state_srsts_0_0__g3                       Net                      -           -       0.460     -           21        
-ram_state_machine.pxcache_pw_2_0_a5_0     cycloneii_lcell_comb     datab       In      -         2.688       -         
-ram_state_machine.pxcache_pw_2_0_a5_0     cycloneii_lcell_comb     combout     Out     0.420     3.108       -         
-pxcache_pw_2_0_a5_0                       Net                      -           -       0.380     -           10        
-px_cache.dout1_14_s[1]                    cycloneii_lcell_comb     datab       In      -         3.488       -         
-px_cache.dout1_14_s[1]                    cycloneii_lcell_comb     combout     Out     0.420     3.908       -         
-dout1_14_s[1]                             Net                      -           -       0.308     -           4         
-px_cache.dout1_14[1]                      cycloneii_lcell_comb     dataa       In      -         4.216       -         
-px_cache.dout1_14[1]                      cycloneii_lcell_comb     combout     Out     0.438     4.654       -         
-dout1_14[1]                               Net                      -           -       0.308     -           4         
-px_cache.dout1_14_RNITC081[1]             cycloneii_lcell_comb     datac       In      -         4.962       -         
-px_cache.dout1_14_RNITC081[1]             cycloneii_lcell_comb     combout     Out     0.275     5.237       -         
-store_ram_10_0_0_694_i_a10_x              Net                      -           -       0.328     -           6         
-px_cache.dout1_14_RNIGEJB2[1]             cycloneii_lcell_comb     datad       In      -         5.565       -         
-px_cache.dout1_14_RNIGEJB2[1]             cycloneii_lcell_comb     combout     Out     0.150     5.715       -         
-store_ram_10_0_0_694_i_1                  Net                      -           -       0.295     -           2         
-px_cache.store_ram_14_RNO[1]              cycloneii_lcell_comb     datad       In      -         6.010       -         
-px_cache.store_ram_14_RNO[1]              cycloneii_lcell_comb     combout     Out     0.150     6.160       -         
-store_ram_14_0_0_937_i                    Net                      -           -       0.000     -           1         
-px_cache.store_ram_14[1]                  cycloneii_lcell_ff       datain      In      -         6.160       -         
-=======================================================================================================================
-Total path delay (propagation time + setup) of 6.208 is 2.864(46.1%) logic and 3.344(53.9%) route.
-Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
-
-
-Path information for path number 2: 
-      Requested Period:                      5.276
-    - Setup time:                            0.048
-    + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         5.228
-
-    - Propagation time:                      6.160
-    - Clock delay at starting point:         0.000 (ideal)
-    = Slack (critical) :                     -0.931
-
-    Number of logic level(s):                8
-    Starting point:                          curr_vram_word[1] / regout
-    Ending point:                            px_cache.store_ram_15[1] / datain
-    The start point is clocked by            rcb|clk [rising] on pin clk
-    The end   point is clocked by            rcb|clk [rising] on pin clk
-
-Instance / Net                                                     Pin         Pin               Arrival     No. of    
-Name                                      Type                     Name        Dir     Delay     Time        Fan Out(s)
------------------------------------------------------------------------------------------------------------------------
-curr_vram_word[1]                         cycloneii_lcell_ff       regout      Out     0.250     0.250       -         
-curr_vram_word[1]                         Net                      -           -       0.910     -           2         
-px_cache.state_srsts_0_0__g3_2            cycloneii_lcell_comb     datac       In      -         1.160       -         
-px_cache.state_srsts_0_0__g3_2            cycloneii_lcell_comb     combout     Out     0.275     1.435       -         
-state_srsts_0_0__g3_2                     Net                      -           -       0.355     -           1         
-px_cache.state_srsts_0_0__g3              cycloneii_lcell_comb     dataa       In      -         1.790       -         
-px_cache.state_srsts_0_0__g3              cycloneii_lcell_comb     combout     Out     0.438     2.228       -         
-state_srsts_0_0__g3                       Net                      -           -       0.460     -           21        
-ram_state_machine.pxcache_pw_2_0_a5_0     cycloneii_lcell_comb     datab       In      -         2.688       -         
-ram_state_machine.pxcache_pw_2_0_a5_0     cycloneii_lcell_comb     combout     Out     0.420     3.108       -         
-pxcache_pw_2_0_a5_0                       Net                      -           -       0.380     -           10        
-px_cache.dout1_14_s[1]                    cycloneii_lcell_comb     datab       In      -         3.488       -         
-px_cache.dout1_14_s[1]                    cycloneii_lcell_comb     combout     Out     0.420     3.908       -         
-dout1_14_s[1]                             Net                      -           -       0.308     -           4         
-px_cache.dout1_14[1]                      cycloneii_lcell_comb     dataa       In      -         4.216       -         
-px_cache.dout1_14[1]                      cycloneii_lcell_comb     combout     Out     0.438     4.654       -         
-dout1_14[1]                               Net                      -           -       0.308     -           4         
-px_cache.dout1_14_RNITC081[1]             cycloneii_lcell_comb     datac       In      -         4.962       -         
-px_cache.dout1_14_RNITC081[1]             cycloneii_lcell_comb     combout     Out     0.275     5.237       -         
-store_ram_10_0_0_694_i_a10_x              Net                      -           -       0.328     -           6         
-px_cache.dout1_14_RNIGEJB2[1]             cycloneii_lcell_comb     datad       In      -         5.565       -         
-px_cache.dout1_14_RNIGEJB2[1]             cycloneii_lcell_comb     combout     Out     0.150     5.715       -         
-store_ram_10_0_0_694_i_1                  Net                      -           -       0.295     -           2         
-px_cache.store_ram_15_RNO[1]              cycloneii_lcell_comb     datad       In      -         6.010       -         
-px_cache.store_ram_15_RNO[1]              cycloneii_lcell_comb     combout     Out     0.150     6.160       -         
-store_ram_15_0_0_997_i                    Net                      -           -       0.000     -           1         
-px_cache.store_ram_15[1]                  cycloneii_lcell_ff       datain      In      -         6.160       -         
-=======================================================================================================================
-Total path delay (propagation time + setup) of 6.208 is 2.864(46.1%) logic and 3.344(53.9%) route.
-Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
-
-
-Path information for path number 3: 
-      Requested Period:                      5.276
-    - Setup time:                            0.048
-    + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         5.228
-
-    - Propagation time:                      6.141
-    - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -0.913
-
-    Number of logic level(s):                8
-    Starting point:                          curr_vram_word[3] / regout
-    Ending point:                            px_cache.store_ram_14[1] / datain
-    The start point is clocked by            rcb|clk [rising] on pin clk
-    The end   point is clocked by            rcb|clk [rising] on pin clk
-
-Instance / Net                                                     Pin         Pin               Arrival     No. of    
-Name                                      Type                     Name        Dir     Delay     Time        Fan Out(s)
------------------------------------------------------------------------------------------------------------------------
-curr_vram_word[3]                         cycloneii_lcell_ff       regout      Out     0.250     0.250       -         
-curr_vram_word[3]                         Net                      -           -       0.910     -           2         
-px_cache.state_srsts_0_0__g3_3            cycloneii_lcell_comb     datac       In      -         1.160       -         
-px_cache.state_srsts_0_0__g3_3            cycloneii_lcell_comb     combout     Out     0.275     1.435       -         
-state_srsts_0_0__g3_3                     Net                      -           -       0.355     -           1         
-px_cache.state_srsts_0_0__g3              cycloneii_lcell_comb     datab       In      -         1.790       -         
-px_cache.state_srsts_0_0__g3              cycloneii_lcell_comb     combout     Out     0.420     2.210       -         
-state_srsts_0_0__g3                       Net                      -           -       0.460     -           21        
-ram_state_machine.pxcache_pw_2_0_a5_0     cycloneii_lcell_comb     datab       In      -         2.671       -         
-ram_state_machine.pxcache_pw_2_0_a5_0     cycloneii_lcell_comb     combout     Out     0.420     3.091       -         
-pxcache_pw_2_0_a5_0                       Net                      -           -       0.380     -           10        
-px_cache.dout1_14_s[1]                    cycloneii_lcell_comb     datab       In      -         3.470       -         
-px_cache.dout1_14_s[1]                    cycloneii_lcell_comb     combout     Out     0.420     3.890       -         
-dout1_14_s[1]                             Net                      -           -       0.308     -           4         
-px_cache.dout1_14[1]                      cycloneii_lcell_comb     dataa       In      -         4.198       -         
-px_cache.dout1_14[1]                      cycloneii_lcell_comb     combout     Out     0.438     4.636       -         
-dout1_14[1]                               Net                      -           -       0.308     -           4         
-px_cache.dout1_14_RNITC081[1]             cycloneii_lcell_comb     datac       In      -         4.944       -         
-px_cache.dout1_14_RNITC081[1]             cycloneii_lcell_comb     combout     Out     0.275     5.219       -         
-store_ram_10_0_0_694_i_a10_x              Net                      -           -       0.328     -           6         
-px_cache.dout1_14_RNIGEJB2[1]             cycloneii_lcell_comb     datad       In      -         5.547       -         
-px_cache.dout1_14_RNIGEJB2[1]             cycloneii_lcell_comb     combout     Out     0.150     5.697       -         
-store_ram_10_0_0_694_i_1                  Net                      -           -       0.295     -           2         
-px_cache.store_ram_14_RNO[1]              cycloneii_lcell_comb     datad       In      -         5.992       -         
-px_cache.store_ram_14_RNO[1]              cycloneii_lcell_comb     combout     Out     0.150     6.141       -         
-store_ram_14_0_0_937_i                    Net                      -           -       0.000     -           1         
-px_cache.store_ram_14[1]                  cycloneii_lcell_ff       datain      In      -         6.141       -         
-=======================================================================================================================
-Total path delay (propagation time + setup) of 6.189 is 2.846(46.0%) logic and 3.344(54.0%) route.
-Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
-
-
-Path information for path number 4: 
-      Requested Period:                      5.276
-    - Setup time:                            0.048
-    + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         5.228
-
-    - Propagation time:                      6.141
-    - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -0.913
-
-    Number of logic level(s):                8
-    Starting point:                          curr_vram_word[3] / regout
-    Ending point:                            px_cache.store_ram_15[1] / datain
-    The start point is clocked by            rcb|clk [rising] on pin clk
-    The end   point is clocked by            rcb|clk [rising] on pin clk
-
-Instance / Net                                                     Pin         Pin               Arrival     No. of    
-Name                                      Type                     Name        Dir     Delay     Time        Fan Out(s)
------------------------------------------------------------------------------------------------------------------------
-curr_vram_word[3]                         cycloneii_lcell_ff       regout      Out     0.250     0.250       -         
-curr_vram_word[3]                         Net                      -           -       0.910     -           2         
-px_cache.state_srsts_0_0__g3_3            cycloneii_lcell_comb     datac       In      -         1.160       -         
-px_cache.state_srsts_0_0__g3_3            cycloneii_lcell_comb     combout     Out     0.275     1.435       -         
-state_srsts_0_0__g3_3                     Net                      -           -       0.355     -           1         
-px_cache.state_srsts_0_0__g3              cycloneii_lcell_comb     datab       In      -         1.790       -         
-px_cache.state_srsts_0_0__g3              cycloneii_lcell_comb     combout     Out     0.420     2.210       -         
-state_srsts_0_0__g3                       Net                      -           -       0.460     -           21        
-ram_state_machine.pxcache_pw_2_0_a5_0     cycloneii_lcell_comb     datab       In      -         2.671       -         
-ram_state_machine.pxcache_pw_2_0_a5_0     cycloneii_lcell_comb     combout     Out     0.420     3.091       -         
-pxcache_pw_2_0_a5_0                       Net                      -           -       0.380     -           10        
-px_cache.dout1_14_s[1]                    cycloneii_lcell_comb     datab       In      -         3.470       -         
-px_cache.dout1_14_s[1]                    cycloneii_lcell_comb     combout     Out     0.420     3.890       -         
-dout1_14_s[1]                             Net                      -           -       0.308     -           4         
-px_cache.dout1_14[1]                      cycloneii_lcell_comb     dataa       In      -         4.198       -         
-px_cache.dout1_14[1]                      cycloneii_lcell_comb     combout     Out     0.438     4.636       -         
-dout1_14[1]                               Net                      -           -       0.308     -           4         
-px_cache.dout1_14_RNITC081[1]             cycloneii_lcell_comb     datac       In      -         4.944       -         
-px_cache.dout1_14_RNITC081[1]             cycloneii_lcell_comb     combout     Out     0.275     5.219       -         
-store_ram_10_0_0_694_i_a10_x              Net                      -           -       0.328     -           6         
-px_cache.dout1_14_RNIGEJB2[1]             cycloneii_lcell_comb     datad       In      -         5.547       -         
-px_cache.dout1_14_RNIGEJB2[1]             cycloneii_lcell_comb     combout     Out     0.150     5.697       -         
-store_ram_10_0_0_694_i_1                  Net                      -           -       0.295     -           2         
-px_cache.store_ram_15_RNO[1]              cycloneii_lcell_comb     datad       In      -         5.992       -         
-px_cache.store_ram_15_RNO[1]              cycloneii_lcell_comb     combout     Out     0.150     6.141       -         
-store_ram_15_0_0_997_i                    Net                      -           -       0.000     -           1         
-px_cache.store_ram_15[1]                  cycloneii_lcell_ff       datain      In      -         6.141       -         
-=======================================================================================================================
-Total path delay (propagation time + setup) of 6.189 is 2.846(46.0%) logic and 3.344(54.0%) route.
-Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
-
-
-Path information for path number 5: 
-      Requested Period:                      5.276
-    - Setup time:                            0.048
-    + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         5.228
-
-    - Propagation time:                      6.125
-    - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -0.897
-
-    Number of logic level(s):                8
-    Starting point:                          curr_vram_word[1] / regout
-    Ending point:                            px_cache.store_ram_14[1] / datain
-    The start point is clocked by            rcb|clk [rising] on pin clk
-    The end   point is clocked by            rcb|clk [rising] on pin clk
-
-Instance / Net                                                     Pin         Pin               Arrival     No. of    
-Name                                      Type                     Name        Dir     Delay     Time        Fan Out(s)
------------------------------------------------------------------------------------------------------------------------
-curr_vram_word[1]                         cycloneii_lcell_ff       regout      Out     0.250     0.250       -         
-curr_vram_word[1]                         Net                      -           -       0.910     -           2         
-px_cache.state_srsts_0_0__g3_2            cycloneii_lcell_comb     datac       In      -         1.160       -         
-px_cache.state_srsts_0_0__g3_2            cycloneii_lcell_comb     combout     Out     0.275     1.435       -         
-state_srsts_0_0__g3_2                     Net                      -           -       0.355     -           1         
-px_cache.state_srsts_0_0__g3              cycloneii_lcell_comb     dataa       In      -         1.790       -         
-px_cache.state_srsts_0_0__g3              cycloneii_lcell_comb     combout     Out     0.438     2.228       -         
-state_srsts_0_0__g3                       Net                      -           -       0.460     -           21        
-ram_state_machine.pxcache_pw_1_0_a5_0     cycloneii_lcell_comb     datab       In      -         2.688       -         
-ram_state_machine.pxcache_pw_1_0_a5_0     cycloneii_lcell_comb     combout     Out     0.420     3.108       -         
-pxcache_pw_1_0_a5_0                       Net                      -           -       0.328     -           6         
-px_cache.dout1_14_s[1]                    cycloneii_lcell_comb     dataa       In      -         3.436       -         
-px_cache.dout1_14_s[1]                    cycloneii_lcell_comb     combout     Out     0.438     3.874       -         
-dout1_14_s[1]                             Net                      -           -       0.308     -           4         
-px_cache.dout1_14[1]                      cycloneii_lcell_comb     dataa       In      -         4.182       -         
-px_cache.dout1_14[1]                      cycloneii_lcell_comb     combout     Out     0.438     4.620       -         
-dout1_14[1]                               Net                      -           -       0.308     -           4         
-px_cache.dout1_14_RNITC081[1]             cycloneii_lcell_comb     datac       In      -         4.928       -         
-px_cache.dout1_14_RNITC081[1]             cycloneii_lcell_comb     combout     Out     0.275     5.203       -         
-store_ram_10_0_0_694_i_a10_x              Net                      -           -       0.328     -           6         
-px_cache.dout1_14_RNIGEJB2[1]             cycloneii_lcell_comb     datad       In      -         5.530       -         
-px_cache.dout1_14_RNIGEJB2[1]             cycloneii_lcell_comb     combout     Out     0.150     5.680       -         
-store_ram_10_0_0_694_i_1                  Net                      -           -       0.295     -           2         
-px_cache.store_ram_14_RNO[1]              cycloneii_lcell_comb     datad       In      -         5.975       -         
-px_cache.store_ram_14_RNO[1]              cycloneii_lcell_comb     combout     Out     0.150     6.125       -         
-store_ram_14_0_0_937_i                    Net                      -           -       0.000     -           1         
-px_cache.store_ram_14[1]                  cycloneii_lcell_ff       datain      In      -         6.125       -         
-=======================================================================================================================
-Total path delay (propagation time + setup) of 6.173 is 2.882(46.7%) logic and 3.291(53.3%) route.
-Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+Instance / Net                              Pin      Pin               Arrival     No. of    
+Name                              Type      Name     Dir     Delay     Time        Fan Out(s)
+---------------------------------------------------------------------------------------------
+prev_vram_word[0]                 dfe1b     q        Out     3.675     3.675       -         
+prev_vram_word[0]                 Net       -        -       -         -           1         
+ram_state_machine.addr_del[0]     df1b      d        In      0.000     3.675       -         
+=============================================================================================
 
 
 
 ##### END OF TIMING REPORT #####]
 
-##### START OF AREA REPORT #####[
-Design view:work.rcb(rtl1)
-Selecting part EP2C5Q208C6
-@N: FA174 |The following device usage report estimates place and route data. Please look at the place and route report for final resource usage.
-
-Total combinational functions 242 
-Logic element usage by number of inputs
-		  4 input functions 	 145
-		  3 input functions 	 54
-		  <=2 input functions 	 43
-Logic elements by mode
-		  normal mode            234
-		  arithmetic mode        8
-Total registers 152 of 4608 ( 3%)
-I/O pins 62 of 158 (39%), total I/O based on largest package of this part.
-
-Number of I/O registers
-			Input DDRs    :0
-			Output DDRs   :0
-
-
-DSP Blocks:     0  (0 nine-bit DSP elements).
-DSP Utilization: 0.00% of available 13 blocks (26 nine-bit).
-ShiftTap:       0  (0 registers)
-Ena:             0
-Sload:           0
-Sclr:            0
-Total ESB:      0 bits 
-
-##### END OF AREA REPORT #####]
-
+G-2012.09-SP1 
 Mapper successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:08s; CPU Time elapsed 0h:00m:06s; Memory used current: 35MB peak: 135MB)
+At Mapper Exit (Real Time elapsed 0h:00m:03s; CPU Time elapsed 0h:00m:03s; Memory used current: 41MB peak: 131MB)
 
-Process took 0h:00m:08s realtime, 0h:00m:06s cputime
-# Tue Mar 18 20:10:19 2014
+Process took 0h:00m:03s realtime, 0h:00m:03s cputime
+# Fri Mar 21 23:22:23 2014
 
 ###########################################################]

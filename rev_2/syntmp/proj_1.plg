@@ -1,19 +1,23 @@
-@P:  Part : ep2c5qc208-6
-@P:  Worst Slack : -0.931
-@P:  rcb|clk - Estimated Frequency : 161.1 MHz
-@P:  rcb|clk - Requested Frequency : 189.5 MHz
-@P:  rcb|clk - Estimated Period : 6.207
-@P:  rcb|clk - Requested Period : 5.276
-@P:  rcb|clk - Slack : -0.931
-@P:  Worst Slack(min analysis) : 0.465
-@P:  rcb|clk - Estimated Frequency(min analysis) : 161.1 MHz
-@P:  rcb|clk - Requested Frequency(min analysis) : 189.5 MHz
-@P:  rcb|clk - Estimated Period(min analysis) : 6.207
-@P:  rcb|clk - Requested Period(min analysis) : 5.276
-@P:  rcb|clk - Slack(min analysis) : -0.931
-@P: rcb Part : ep2c5qc208-6
-@P: rcb I/O ATOMs : 62
-@P: rcb Total LUTs : 242 
-@P: rcb Register bits : 152
-@P: rcb DSP Blocks : 0 (0 nine-bit DSP elements)
-@P:  CPU Time : 0h:00m:06s
+@P: rcb Part : a3265dx-2 
+@P: rcb Combinational Cells : 117 of 475 (25%) 
+@P: rcb Sequential Cells : 149 of 510 (29%) 
+@P: rcb Total Cells : 266 of 985 (28%) 
+@P: rcb DSP Blocks : 0 
+@P: rcb IO Cells : 62 
+@P:  Worst Slack : 495.950
+@P:  rcb|clk - Estimated Frequency : 15.0 MHz
+@P:  rcb|clk - Requested Frequency : 1.0 MHz
+@P:  rcb|clk - Estimated Period : 66.525
+@P:  rcb|clk - Requested Period : 1000.000
+@P:  rcb|clk - Slack : 495.950
+@P:  Worst Slack(min analysis) : 2.310
+@P:  rcb|clk - Estimated Frequency(min analysis) : 15.0 MHz
+@P:  rcb|clk - Requested Frequency(min analysis) : 1.0 MHz
+@P:  rcb|clk - Estimated Period(min analysis) : 66.525
+@P:  rcb|clk - Requested Period(min analysis) : 1000.000
+@P:  rcb|clk - Slack(min analysis) : 495.950
+@P:  Total Area : 0.0
+@P:  Total Area : 0.0
+@P:  Total Area : 0.0
+@P:  Total Area : 0.0
+@P:  Total Area : 0.0

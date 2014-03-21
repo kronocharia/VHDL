@@ -1,6 +1,6 @@
 %%% protect protected_file
 #defaultlanguage:vhdl
-#OPTIONS:"|-top|rcb|-prodtype|synplify_pro|-verification_mode|0|-infer_seqShift|-primux|-fixsmult|-dspmac|-nram|-divnmod|-encrypt|-pro|-lite|-ll|2000|-ui|-fid2|-ram|-sharing|on|-autosm|-ignore_undefined_lib|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work"
+#OPTIONS:"|-top|rcb|-prodtype|synplify_pro|-encrypt|-pro|-lite|-ll|2000|-ui|-fid2|-ram|-sharing|on|-autosm|-ignore_undefined_lib|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work"
 #CUR:"C:\\synopsys\\fpga_G201209SP1\\bin64\\c_vhdl.exe":1354049230
 #CUR:"C:\\synopsys\\fpga_G201209SP1\\lib\\vhd\\location.map":1354024772
 #CUR:"C:\\synopsys\\fpga_G201209SP1\\lib\\vhd\\std.vhd":1353965844
@@ -11,8 +11,8 @@
 #CUR:"C:\\synopsys\\fpga_G201209SP1\\lib\\vhd\\arith.vhd":1353965842
 #CUR:"C:\\synopsys\\fpga_G201209SP1\\lib\\vhd\\unsigned.vhd":1353965846
 #CUR:"H:\\Desktop\\GitHub\\VHDL\\ex4\\pix_cache_pak.vhd":1393776924
-#CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\rcb.vhd":1395173402
-#CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\ram_fsm.vhd":1395172908
+#CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\rcb.vhd":1395444133
+#CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\ram_fsm.vhd":1395174230
 #CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\project_pack.vhd":1394291220
 #CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\pix_word_cache.vhd":1394287466
 #CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\helper_funcs.vhd":1394386377

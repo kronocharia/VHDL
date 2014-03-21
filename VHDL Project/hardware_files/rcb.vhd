@@ -61,7 +61,7 @@ ARCHITECTURE rtl1 OF rcb IS
     SIGNAL state, next_state , prev_state, prev_2state          : state_type;
 
 --draw_px process signals
-    SIGNAL vram_waddr,curr_vram_word,prev_vram_word             : std_logic_vector(7 DOWNTO 0);
+    SIGNAL curr_vram_word,prev_vram_word             : std_logic_vector(7 DOWNTO 0);
     SIGNAL change_curr_word                                     : std_logic;
 
 --trigger the cache flush
@@ -72,7 +72,7 @@ ARCHITECTURE rtl1 OF rcb IS
 
     --hardcoded width to handle N up to 256
     SIGNAL idle_counter                                         : std_logic_vector(7 DOWNTO 0);
-    SIGNAL one_vector                                           : std_logic_vector(7 DOWNTO 0);
+    CONSTANT one_vector                                           : std_logic_vector(7 DOWNTO 0) := "00000001";
    
 
 BEGIN
@@ -91,7 +91,7 @@ BEGIN
 ---------------------state transition matrix----------------------- 
 
     state_transition: PROCESS(state,dbb_bus, curr_vram_word,next_state, vram_done,idle_counter,
-                                 prev_state, prev_2state,prev_vram_word,reset) 
+                                 prev_state,prev_vram_word,reset) 
     --idle counter variable declared in package
     variable prevState: std_logic_vector(1 DOWNTO 0);  
     variable concatDraw: std_logic_vector(2 DOWNTO 0);                  
@@ -121,7 +121,7 @@ BEGIN
         
         --transitions 
         CASE state IS
-            WHEN s_idle =>  report "State = Idle" severity note;
+            WHEN s_idle =>  --report "State = Idle" severity note;
            -- dbb_delaycmd <= '0';
 
                 concatIdle := dbb_bus.startcmd & dbb_bus.rcb_cmd(2);
@@ -131,18 +131,18 @@ BEGIN
                         --dbb_delaycmd <= '1';
 
                         reset_idle_count <= '1';   --disable
-                        next_state <= s_draw; report "Received Start cmd and draw" severity note;
+                        next_state <= s_draw; --report "Received Start cmd and draw" severity note;
                     
                     WHEN "11" => --ready and clear
                        -- dbb_delaycmd <= '1';
 
                         reset_idle_count <= '1';   --disable
-                        next_state <= s_clear; report "Received Start cmd and clear" severity note;
+                        next_state <= s_clear;-- report "Received Start cmd and clear" severity note;
                     
                     WHEN others => --Idle
                        -- dbb_delaycmd <= '1';
                         IF (to_integer(unsigned(idle_counter)) = N) THEN
-                            reset_idle_count <= '1'; report "Beginning idle flush" severity note; ---<<<<
+                            reset_idle_count <= '1'; -- report "Beginning idle flush" severity note; ---<<<<
                             pxcache_stash <= '1';       --ENABLE!! <<<<<
                             --change_curr_word <='1';     --ENABLE!! <<<<<
 
@@ -151,7 +151,7 @@ BEGIN
                         ELSE                            --increase idleCount
 
                             reset_idle_count <= '0';   --disable
-                            idle_counter_trig <= '1';    report "Going back to idle" severity note; --<<<< 
+                            idle_counter_trig <= '1';  --  report "Going back to idle" severity note; --<<<< 
                            -- dbb_delaycmd <='0'; --always busy unless in idle state
                             next_state <= s_idle; END IF; --RETURN TO IDLE <<<<<
                 END CASE;
@@ -172,7 +172,7 @@ BEGIN
             WHEN s_draw =>  
 
                 reset_idle_count <= '1';  
-                report "State = draw" severity note;
+                --report "State = draw" severity note;
                -- assert false report "breakpoint in when s_draw" severity failure;
                 
                 IF ( getRamWord(dbb_bus.X, dbb_bus.Y) = curr_vram_word ) THEN      
@@ -331,7 +331,7 @@ BEGIN
             END IF;
 
             -----------idle counter-------
-            one_vector <= "00000001";
+
             IF (idle_counter_trig ='1' AND reset = '0') THEN
                 idle_counter  <= std_logic_vector(unsigned(unsigned(one_vector)+ unsigned(idle_counter)));
             END IF;
