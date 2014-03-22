@@ -72,7 +72,7 @@ BEGIN
             
             WHEN m2 => 	
                         IF start ='1' THEN delay <='1'; END IF;
-            			         nstate <= m3;    --unconditioanl transition
+            			         nstate <= m3;    --unconditional transition
             
             WHEN m3 =>  vwrite <= '1'; 
             			IF start = '1' THEN 

@@ -74,7 +74,7 @@ ARCHITECTURE pwc of pix_word_cache IS
               store_ram <= (OTHERS => same);
             END IF;
             
-            --if not a reset, verride the pixnum addr location if pw =1
+            --if not a reset, override the pixnum addr location if pw =1
             IF pw = '1' AND wen_all = '1' AND reset ='0' THEN 
               store_ram(to_integer(unsigned(pixnum))) <= pixopin;
             END IF;
