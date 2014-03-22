@@ -8,7 +8,7 @@ ENTITY ram_fsm IS
 
     PORT(
             clk, reset, start: IN std_logic;
-            delay,vwrite,done: OUT std_logic;
+            delay,vwrite,done,really_done: OUT std_logic;
 
             addr : IN std_logic_vector;
             data : IN std_logic_vector(15 DOWNTO 0); --changedd from unbounded to hardcoded size
@@ -92,10 +92,10 @@ BEGIN
     WAIT UNTIL clk'EVENT AND clk = '1';
     --sets the done signal
         CASE nstate IS
-            WHEN mx => done <= '1';
-            WHEN m1 => done <= '1';
-            WHEN m2 => done <= '0';
-            WHEN m3 => done <= '0';
+            WHEN mx => done <= '1'; really_done <='1';
+            WHEN m1 => done <= '1'; really_done <='0';
+            WHEN m2 => done <= '0'; really_done <='0';
+            WHEN m3 => done <= '0'; really_done <='0';
             --WHEN m4 => done <= '0';
         END CASE;
   END PROCESS DONE_SIGNAL;

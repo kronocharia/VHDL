@@ -101,7 +101,7 @@ ARCHITECTURE rtl1 OF rcb IS
 --trigger the cache flush
     SIGNAL pxcache_stash                                        : std_logic;
 --waiting for ram_fsm to complete
-    SIGNAL vram_done                                            : std_logic;
+    SIGNAL vram_done,vram_really_done                           : std_logic;
     SIGNAL reset_idle_count,idle_counter_trig                   : std_logic;
 
     --hardcoded width to handle N up to 256
@@ -323,6 +323,17 @@ BEGIN
             dbb_delaycmd <= '0'; END IF;
 
 
+       ---------rcb finish------------
+        IF reset = '1' THEN
+            rcb_finish <='0';
+
+        ELSIF (next_state = s_idle AND vram_really_done = '1') THEN
+            rcb_finish <= pxcache_is_same;
+            --rcb_finish <= '1';
+        ELSE 
+            rcb_finish <= '0';
+        END IF;
+
     END PROCESS state_transition;
 -------------------------------------------------------------------------------
 
@@ -339,16 +350,7 @@ BEGIN
             prev_state <= state;
             state <= next_state;
 
-            ---------rcb finish------------
-            IF reset = '1' THEN
-                rcb_finish <='0';
-
-            ELSIF (next_state = s_idle AND vram_done = '1') THEN
-                rcb_finish <= pxcache_is_same;
-                --rcb_finish <= '1';
-            ELSE 
-                rcb_finish <= '0';
-            END IF;
+         
 
             ------------reset---------------
             IF reset = '1' THEN
@@ -415,7 +417,8 @@ ram_state_machine: ENTITY ram_fsm PORT MAP(
     --output std_logic
     delay    => ram_delay,  
     vwrite   => ram_vwrite,
-    done     => ram_done,
+    done     => vram_done,
+    really_done => vram_really_done,
 
     --output std_logc_vector
     addr_del => ram_addr_del,
@@ -446,7 +449,7 @@ px_cache: ENTITY pix_word_cache PORT MAP(
     );
 
 ------------------external connections and signal stuff----------------------
-vram_done <= ram_done;
+
 vdin <= ram_data_del;
 vaddr <= ram_addr_del; --joining external ram to the ram interface fsm
 --ram_data <= vdout; --joins vram output to ram data in
