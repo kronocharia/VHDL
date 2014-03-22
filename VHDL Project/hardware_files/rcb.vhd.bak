@@ -74,7 +74,7 @@ ARCHITECTURE rtl1 OF rcb IS
 
 
 --For interfacing with ram block
-    SIGNAL ram_start, ram_delay, ram_vwrite, ram_done           : std_logic;
+    SIGNAL ram_start, ram_delay, ram_vwrite       : std_logic;
     SIGNAL ram_addr, ram_addr_del                               : std_logic_vector(7 DOWNTO 0);
     SIGNAL ram_data_del                               : std_logic_vector(15 DOWNTO 0);
 
@@ -115,13 +115,13 @@ BEGIN
 ---------------------state transition matrix----------------------- 
 
     state_transition: PROCESS(state,dbb_bus, curr_vram_word,next_state, vram_done,idle_counter,
-                                 prev_state,prev_vram_word,reset) 
+                                 prev_state,prev_vram_word,reset,pxcache_is_same,vram_really_done) 
     --idle counter variable declared in package
-    variable prevState: std_logic_vector(1 DOWNTO 0);  
-    variable concatDraw: std_logic_vector(2 DOWNTO 0);                  
-    variable concatFlush: std_logic_vector(3 DOWNTO 0); 
-    variable concatIdle: std_logic_vector(1 DOWNTO 0);
-    variable inRange: std_logic;
+    VARIABLE prevState: std_logic_vector(1 DOWNTO 0);  
+    VARIABLE concatDraw: std_logic_vector(2 DOWNTO 0);                  
+    VARIABLE concatFlush: std_logic_vector(3 DOWNTO 0); 
+    VARIABLE concatIdle: std_logic_vector(1 DOWNTO 0);
+    VARIABLE inRange: std_logic;
   
     BEGIN
 
@@ -140,6 +140,7 @@ BEGIN
          --   ram_addr <= "00000000";
         --ELSE 
             ram_addr <= prev_vram_word; --dont care
+           -- ram_addr <= "00000000";
         --END IF;
 
         ram_start <='0';            --disable       
@@ -232,8 +233,8 @@ BEGIN
                         next_state <= s_flush;            --ENABLE FLUSH <<<<<
                         --next_state <= s_waitram;
 
-                    WHEN others => next_state <= s_error; 
-                    assert false report "ERROR in rcb, when concatDraw " severity failure;
+                  --  WHEN others => next_state <= s_error; 
+                   -- assert false report "ERROR in rcb, when concatDraw " severity failure;
 
                 END CASE;
               
@@ -302,11 +303,11 @@ BEGIN
                     next_state <= s_error; -- only reset moves state to idle
 
                     
-            WHEN others => 
+            --WHEN others => 
 
-                    reset_idle_count <= '1';   --disable
-                    assert false report "RCB Unspecified FSM transition " severity failure;
-                    next_state <= s_error;
+                   -- reset_idle_count <= '1';   --disable
+                   -- assert false report "RCB Unspecified FSM transition " severity failure;
+                   -- next_state <= s_error;
 
         END CASE;
 
@@ -418,7 +419,7 @@ ram_state_machine: ENTITY ram_fsm PORT MAP(
     delay    => ram_delay,  
     vwrite   => ram_vwrite,
     done     => vram_done,
-    really_done => ram_really_done,
+    really_done => vram_really_done,
 
     --output std_logc_vector
     addr_del => ram_addr_del,

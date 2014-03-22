@@ -74,9 +74,9 @@ ARCHITECTURE rtl1 OF rcb IS
 
 
 --For interfacing with ram block
-    SIGNAL ram_start, ram_delay, ram_vwrite, ram_done           : std_logic;
+    SIGNAL ram_start, ram_delay, ram_vwrite                     : std_logic;
     SIGNAL ram_addr, ram_addr_del                               : std_logic_vector(7 DOWNTO 0);
-    SIGNAL ram_data_del                               : std_logic_vector(15 DOWNTO 0);
+    SIGNAL ram_data_del                                         : std_logic_vector(15 DOWNTO 0);
 
 --For interfacing with pixel cache
     SIGNAL pxcache_wen_all, pxcache_pw                          : std_logic;
@@ -92,10 +92,10 @@ ARCHITECTURE rtl1 OF rcb IS
 
 --RCB state machine signals
     TYPE state_type IS (s_error,s_idle,s_draw, s_clear, s_flush);-- s_waitram);
-    SIGNAL state, next_state , prev_state         : state_type; --, prev_2state 
+    SIGNAL state, next_state , prev_state                       : state_type; --, prev_2state 
 
 --draw_px process signals
-    SIGNAL curr_vram_word,prev_vram_word             : std_logic_vector(7 DOWNTO 0);
+    SIGNAL curr_vram_word,prev_vram_word                        : std_logic_vector(7 DOWNTO 0);
     SIGNAL change_curr_word                                     : std_logic;
 
 --trigger the cache flush
@@ -107,7 +107,6 @@ ARCHITECTURE rtl1 OF rcb IS
     --hardcoded width to handle N up to 256
     SIGNAL idle_counter                                         : std_logic_vector(7 DOWNTO 0);
     CONSTANT one_vector                                         : std_logic_vector(7 DOWNTO 0) := "00000001";
-    -- CONSTANT cache_init                                         : store_t := "00000000000000000000000000000000";
    
 
 BEGIN
@@ -115,13 +114,13 @@ BEGIN
 ---------------------state transition matrix----------------------- 
 
     state_transition: PROCESS(state,dbb_bus, curr_vram_word,next_state, vram_done,idle_counter,
-                                 prev_state,prev_vram_word,reset) 
+                                 prev_state,prev_vram_word,reset,pxcache_is_same,vram_really_done) 
     --idle counter variable declared in package
-    variable prevState: std_logic_vector(1 DOWNTO 0);  
-    variable concatDraw: std_logic_vector(2 DOWNTO 0);                  
-    variable concatFlush: std_logic_vector(3 DOWNTO 0); 
-    variable concatIdle: std_logic_vector(1 DOWNTO 0);
-    variable inRange: std_logic;
+    VARIABLE prevState: std_logic_vector(1 DOWNTO 0);  
+    VARIABLE concatDraw: std_logic_vector(2 DOWNTO 0);                  
+    VARIABLE concatFlush: std_logic_vector(3 DOWNTO 0); 
+    VARIABLE concatIdle: std_logic_vector(1 DOWNTO 0);
+    VARIABLE inRange: std_logic;
   
     BEGIN
 
@@ -130,17 +129,16 @@ BEGIN
         idle_counter_trig <= '0';  --disable
             
         pxcache_pixopin <= same;   --dont care
+           
         pxcache_pixnum <= "0000";  --dont care
         pxcache_wen_all <= '0';    --disable
         pxcache_pw <='0';          --disable
         pxcache_stash <= '0';      --disable
         change_curr_word <='0';    --disable
-        --vram_waddr <= getRamWord(dbb_bus.X, dbb_bus.Y); --stay same
-        --IF (reset = '1') THEN
-         --   ram_addr <= "00000000";
-        --ELSE 
-            ram_addr <= prev_vram_word; --dont care
-        --END IF;
+        
+        IF (reset = '1') THEN
+            ram_addr <= "00000000";
+        ELSE ram_addr <= prev_vram_word; END IF;
 
         ram_start <='0';            --disable       
         
@@ -302,11 +300,11 @@ BEGIN
                     next_state <= s_error; -- only reset moves state to idle
 
                     
-            WHEN others => 
+            --WHEN others => 
 
-                    reset_idle_count <= '1';   --disable
-                    assert false report "RCB Unspecified FSM transition " severity failure;
-                    next_state <= s_error;
+                   -- reset_idle_count <= '1';   --disable
+                   -- assert false report "RCB Unspecified FSM transition " severity failure;
+                   -- next_state <= s_error;
 
         END CASE;
 
