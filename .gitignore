@@ -1,12 +1,6 @@
 .DS_Store
 ex2z/.DS_Store
 ex2z/.DS_Store
-rev_2/
-rev_1/ 
+*.db
+VHDL Project/projects
 *.bak
-VHDL Project/hardware_files/work
-*.cr.mti
-*.mpf
-VHDL Project/hardware_files/transcript
-rev_1/.recordref
-VHDL Project/Thumbs.db

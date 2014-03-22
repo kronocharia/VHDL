@@ -53,7 +53,7 @@ db_jake: ENTITY db PORT MAP(
 	db_finish	 => dbb_finish_i
 	);
 
-rcb_mike: ENTITY rcb PORT MAP(
+rcb_mike: ENTITY rcb_behav PORT MAP(
 
 	clk				=>clk,
 	reset			=>reset,
