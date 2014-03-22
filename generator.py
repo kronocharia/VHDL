@@ -1,10 +1,10 @@
 import random
 
-numCommands = 50000
+numCommands = 5000
 pen = (0, 0)
 with open("randomcommands.txt", "w+") as fo:
 	for i in range(numCommands):
-		rand_command = random.choice(['D','C','M'])
+		rand_command = random.choice(['D','D','D','C','M','M'])
 		rand_colour = random.choice(['W','B','I'])
 		if (rand_command == 'C'):
 			rand_xCoor = random.randint(pen[0],63)
