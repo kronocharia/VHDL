@@ -8,7 +8,7 @@ ENTITY ram_fsm IS
 
     PORT(
             clk, reset, start: IN std_logic;
-            delay,vwrite,done: OUT std_logic;
+            delay,vwrite,done,really_done: OUT std_logic;
 
             addr : IN std_logic_vector;
             data : IN std_logic_vector(15 DOWNTO 0); --changedd from unbounded to hardcoded size
@@ -26,12 +26,14 @@ BEGIN
 ----------------implements merge of cache changes and vram data---------
 
     MERGE_PROC:
-    PROCESS(cache_d,data)
+    PROCESS--(cache_d,data)
     BEGIN  
+     WAIT UNTIL clk'EVENT AND clk = '1';
+    
     FOR i IN cache_d'RANGE LOOP
         
         data_merged(i) <= data(i);
-        
+        --IF (state = mx) THEN
         --IF (TRUE) THEN
         CASE cache_d(i) IS
             WHEN same   => data_merged(i) <= data(i);
@@ -40,7 +42,7 @@ BEGIN
             WHEN invert => data_merged(i) <= NOT data(i);
             WHEN OTHERS => NULL;
         END CASE;
-       -- END IF;
+        --END IF;
         
     END LOOP;
     END PROCESS MERGE_PROC;
@@ -90,10 +92,10 @@ BEGIN
     WAIT UNTIL clk'EVENT AND clk = '1';
     --sets the done signal
         CASE nstate IS
-            WHEN mx => done <= '0';
-            WHEN m1 => done <= '0';
-            WHEN m2 => done <= '1';
-            WHEN m3 => done <= '0';
+            WHEN mx => done <= '1'; really_done <='1';
+            WHEN m1 => done <= '1'; really_done <='0';
+            WHEN m2 => done <= '0'; really_done <='0';
+            WHEN m3 => done <= '0'; really_done <='0';
             --WHEN m4 => done <= '0';
         END CASE;
   END PROCESS DONE_SIGNAL;
@@ -117,8 +119,11 @@ BEGIN
     PROCESS
     BEGIN
         WAIT UNTIL CLK'EVENT AND clk ='0';
+
+        --IF (state = m1 OR state = mx) THEN
             addr_del <= addr;
             data_del <= data_merged;
+       -- END IF;
 
     END PROCESS DELAY_PROC;
 

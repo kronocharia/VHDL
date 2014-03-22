@@ -3,6 +3,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use work.project_pack.all;
 use work.draw_any_octant;
+use work.clearscreen;
 
 entity db is
   generic(vsize : integer := 6);
@@ -31,7 +32,10 @@ architecture rtl of db is
   signal penx, peny: std_logic_vector(vsize-1 downto 0);
   --signal previous_command : std_logic_vector(2*vsize+3 downto 0);
   
-  type state_t is (draw_reset, draw_start, draw_line, idle, clear_start, clear_end);
+  signal cs_reset, cs_disable, cs_done, cs_draw: std_logic;
+  signal cs_xout, cs_yout: std_logic_vector(vsize-1 downto 0);
+  
+  type state_t is (draw_reset, draw_start, draw_line, idle, clear_start, draw_clear);
   signal state, nstate : state_t;
   
   type opcode_t is array (1 downto 0) of std_logic;
@@ -56,9 +60,6 @@ begin
   command_in.x   <= hdb(2*vsize+1 downto vsize+2);
   command_in.y   <= hdb(vsize+1 downto 2);
   command_in.pen <= pentype_t(hdb(1 downto 0));
-
-  -- disable dao when rcb not ready
-  dao_disable <= dbb_delaycmd;
   
   dao: entity draw_any_octant generic map(vsize) port map(
     clk => clk,
@@ -75,6 +76,47 @@ begin
     negy => dao_negy,
     disable => dao_disable
     );
+    
+  cs: entity clearscreen generic map(vsize) port map(
+    clk => clk,
+    reset => cs_reset,
+    draw => cs_draw,
+    disable => cs_disable,
+    xstart => penx,
+    ystart => peny,
+    xend => command.x,
+    yend => command.y,
+    done => cs_done,
+    xout => cs_xout,
+    yout => cs_yout
+  );
+  
+  cs_reset <= reset;
+  
+  cs_inputs: process(state)
+  begin
+    if state = clear_start then
+      cs_draw <= '1';
+    else
+      cs_draw <= '0';
+    end if;
+  end process cs_inputs;
+    
+  disable: process(state, dbb_delaycmd)
+  begin
+    -- disable dao when rcb not ready
+    if state = draw_line and dbb_delaycmd = '1' then
+      dao_disable <= '1';
+    else
+      dao_disable <= '0';
+    end if;
+    
+    if state = draw_clear and dbb_delaycmd = '1' then
+      cs_disable <= '1';
+    else
+      cs_disable <= '0';
+    end if;
+  end process disable;
   
   read_new_command: process
     constant reset_command: command_t := (
@@ -165,7 +207,7 @@ begin
     if reset = '1' then state <= idle; end if;
   end process db_fsm_clocked;
   
-  db_fsm_comb: process(state, command_in, dav, dao_done, dbb_delaycmd) -- drives nstate
+  db_fsm_comb: process(state, command_in, dav, dao_done, cs_done, dbb_delaycmd) -- drives nstate
   begin
     nstate <= state; --default, stay in current state
     case state is
@@ -192,60 +234,74 @@ begin
         end if;
         
       when clear_start =>
-        if dbb_delaycmd = '0' then nstate <= clear_end; end if;
+        --if dbb_delaycmd = '0' then nstate <= clear_end; end if;
+        nstate <= draw_clear;
         
-      when clear_end =>
-        if dbb_delaycmd = '0' then nstate <= idle; end if;
+      when draw_clear =>
+        if cs_done = '0' or dbb_delaycmd = '1' then
+          nstate <= draw_clear;
+        else
+          nstate <= idle;
+        end if;
+        
+      --when clear_end =>
+      --  if dbb_delaycmd = '0' then nstate <= idle; end if;
         
       --when others => nstate <= idle; -- reset undefined states to idle state
     end case;
   end process db_fsm_comb;
 
   send_rcb_inputs: process--(state, command, dao_xout, dao_yout, penx, peny) --drives dbb_bus
-    variable default : std_logic_vector(vsize-1 downto 0) := (others =>'0');
+    constant default : std_logic_vector(vsize-1 downto 0) := (others =>'0');
   begin
     wait until clk'event and clk = '1';
-    -- encode operation
-    case command.pen is
-      when white => dbb_bus.rcb_cmd(1 downto 0) <= "01";
-      when black => dbb_bus.rcb_cmd(1 downto 0) <= "10";
-      when invert => dbb_bus.rcb_cmd(1 downto 0) <= "11";
-      when others => dbb_bus.rcb_cmd <= "100"; -- invalid command
-    end case;
-    case command.op is
-      when movepen_op => null;
-      when drawline_op => dbb_bus.rcb_cmd(2) <= '0';
-      when clearscreen_op => dbb_bus.rcb_cmd(2) <= '1';
-      when others => dbb_bus.rcb_cmd <= "100"; -- invalid command
-    end case;
+    if dbb_delaycmd = '0' then
+      -- encode operation
+      case command.pen is
+        when white => dbb_bus.rcb_cmd(1 downto 0) <= "01";
+        when black => dbb_bus.rcb_cmd(1 downto 0) <= "10";
+        when invert => dbb_bus.rcb_cmd(1 downto 0) <= "11";
+        when others => dbb_bus.rcb_cmd <= "100"; -- invalid command
+      end case;
+      case command.op is
+        when movepen_op => null;
+        when drawline_op => dbb_bus.rcb_cmd(2) <= '0';
+        when clearscreen_op => dbb_bus.rcb_cmd(2) <= '0';--'1';
+        when others => dbb_bus.rcb_cmd <= "100"; -- invalid command
+      end case;
     
-    -- set other parameters
-    case state is
-      when draw_line =>
-        dbb_bus.x <= dao_xout;
-        dbb_bus.y <= dao_yout;
-        dbb_bus.startcmd <= '1';
-      when clear_start =>
-        dbb_bus.rcb_cmd <= "000";
-        dbb_bus.X <= penx;
-        dbb_bus.Y <= peny;
-        dbb_bus.startcmd <= '1';
-      when clear_end =>
-        dbb_bus.X <= command.x;
-        dbb_bus.Y <= command.y;
-        dbb_bus.startcmd <= '1';
-      when others => --idle, draw_reset, draw_start have no output
-        dbb_bus.X <= default;
-        dbb_bus.Y <= default;
-        dbb_bus.startcmd <= '0';
-    end case;
+      -- set other parameters
+      case state is
+        when draw_line =>
+          dbb_bus.x <= dao_xout;
+          dbb_bus.y <= dao_yout;
+          dbb_bus.startcmd <= '1';
+        when clear_start =>
+          dbb_bus.rcb_cmd <= "000";
+          dbb_bus.X <= penx;
+          dbb_bus.Y <= peny;
+          dbb_bus.startcmd <= '1';
+        --when clear_end =>
+        --  dbb_bus.X <= command.x;
+        --  dbb_bus.Y <= command.y;
+        --  dbb_bus.startcmd <= '1';
+        when draw_clear =>
+          dbb_bus.X <= cs_xout;
+          dbb_bus.Y <= cs_yout;
+          dbb_bus.startcmd <= '1';
+        when others => --idle, draw_reset, draw_start have no output
+          dbb_bus.X <= default;
+          dbb_bus.Y <= default;
+          dbb_bus.startcmd <= '0';
+      end case;
 
-    -- movepen
-    if state = idle and dav = '1' and command_in.op = movepen_op then
-      dbb_bus.rcb_cmd <= "000";
-      dbb_bus.X <= command_in.x;
-      dbb_bus.Y <= command_in.y;
-      dbb_bus.startcmd <= '1';
+      -- movepen
+      if state = idle and dav = '1' and command_in.op = movepen_op then
+        dbb_bus.rcb_cmd <= "000";
+        dbb_bus.X <= command_in.x;
+        dbb_bus.Y <= command_in.y;
+        dbb_bus.startcmd <= '1';
+      end if;
     end if;
   end process send_rcb_inputs;
 
@@ -268,7 +324,7 @@ begin
     elsif state = draw_line and dao_done = '1' then
       penx <= command.x;
       peny <= command.y;
-    elsif state = clear_end then
+    elsif state = draw_clear and cs_done = '1' then
       penx <= command.x;
       peny <= command.y;
     end if;

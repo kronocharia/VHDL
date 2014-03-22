@@ -53,13 +53,13 @@ db_jake: ENTITY db PORT MAP(
 	db_finish	 => dbb_finish_i
 	);
 
-rcb_mike: ENTITY rcb_behav PORT MAP(
+rcb_mike: ENTITY rcb PORT MAP(
 
 	clk				=>clk,
 	reset			=>reset,
 
 	--from db
-	dbb			=> dbb_i,
+	dbb_bus			=> dbb_i,
 	dbb_delaycmd 	=> dbb_delaycmd_i,
 	dbb_rcbclear 	=> dbb_rcbclear_i,
 
