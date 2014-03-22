@@ -158,11 +158,11 @@ BEGIN
                         reset_idle_count <= '1';   --disable
                         next_state <= s_draw; --report "Received Start cmd and draw" severity note;
                     
-                    WHEN "11" => --ready and clear <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< This never happens remove me
+                    --WHEN "11" => --ready and clear <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< This never happens remove me
                        -- dbb_delaycmd <= '1';
 
-                        reset_idle_count <= '1';   --disable
-                        next_state <= s_idle;
+                      --  reset_idle_count <= '1';   --disable
+                        --next_state <= s_idle;
                     
                     WHEN others => --Idle
                        -- dbb_delaycmd <= '1';
@@ -250,13 +250,13 @@ BEGIN
                     --WHEN others => prevState := "11"; --not used
                 END CASE;
 
-                IF vram_done = '0' AND prev_state = s_flush THEN -----------------------------------------------------<<<<<<<<<<<<<<<<<<<<<<<<< never happens
+                --IF vram_done = '0' AND prev_state = s_flush THEN -----------------------------------------------------<<<<<<<<<<<<<<<<<<<<<<<<< never happens
                     
-                    next_state <= s_flush; --loop here till done <<<< not actuaLLY USED
-                ELSE
+                  --  next_state <= s_flush; --loop here till done <<<< not actuaLLY USED
+                --ELSE
                     concatFlush := prevState & dbb_bus.rcb_cmd(1 DOWNTO 0); --|inrange|pxopin|
                     
-                    --assert false report "oord raw " severity failure;
+                    --assert false report "oord draw " severity failure;
                     CASE concatFlush IS
                         WHEN "0000" | "0001" | "0010" | "0011" | "0100" => --its an idle flush or out of range move (last pattern) ------------------<<<<<<<<<<<<<<check all these conditions are necessary
 
@@ -274,13 +274,13 @@ BEGIN
 
                             next_state <= s_idle;        --and go back to IDLE
                           
-                        WHEN "1001" | "1010" | "1011" => --its a clear of some colour  -----------------------------<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< never happens
-                            next_state <= s_idle;
+                        --WHEN "1001" | "1010" | "1011" => --its a clear of some colour  -----------------------------<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< never happens
+                          --  next_state <= s_idle;
 
                         WHEN others => next_state <= s_error;    
                         assert false report "ERROR in rcb, state_transition - when s_flush " severity failure;      ------------------<<<<<<<<<<<<<<<<never happens
                     END CASE;
-                END IF;
+                --END IF;
 
             WHEN s_error => 
 
