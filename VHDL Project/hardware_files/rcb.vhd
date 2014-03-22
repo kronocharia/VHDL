@@ -4,7 +4,6 @@ USE IEEE.std_logic_1164.ALL;
 USE IEEE.numeric_std.ALL;
 USE work.project_pack.ALL;
 USE WORK.pix_cache_pak.ALL;
-USE WORK.helper_funcs.ALL;
 USE WORK.ram_fsm;
 USE WORK.pix_word_cache;
 
@@ -73,9 +72,9 @@ ARCHITECTURE rtl1 OF rcb IS
 
 
 --For interfacing with ram block
-    SIGNAL ram_start, ram_delay, ram_vwrite, ram_done           : std_logic;
+    SIGNAL ram_start, ram_delay, ram_vwrite                     : std_logic;
     SIGNAL ram_addr, ram_addr_del                               : std_logic_vector(7 DOWNTO 0);
-    SIGNAL ram_data_del                               : std_logic_vector(15 DOWNTO 0);
+    SIGNAL ram_data_del                                         : std_logic_vector(15 DOWNTO 0);
 
 --For interfacing with pixel cache
     SIGNAL pxcache_wen_all, pxcache_pw                          : std_logic;
@@ -90,11 +89,11 @@ ARCHITECTURE rtl1 OF rcb IS
     SIGNAL prev_dbb_bus                                         :db_2_rcb;
 
 --RCB state machine signals
-    TYPE state_type IS (s_error,s_idle,s_draw, s_clear, s_flush);-- s_waitram);
-    SIGNAL state, next_state , prev_state         : state_type; --, prev_2state 
+    TYPE state_type IS (s_error,s_idle,s_draw, s_flush);-- s_waitram);
+    SIGNAL state, next_state , prev_state                       : state_type; --, prev_2state 
 
 --draw_px process signals
-    SIGNAL curr_vram_word,prev_vram_word             : std_logic_vector(7 DOWNTO 0);
+    SIGNAL curr_vram_word,prev_vram_word                        : std_logic_vector(7 DOWNTO 0);
     SIGNAL change_curr_word                                     : std_logic;
 
 --trigger the cache flush
@@ -106,7 +105,6 @@ ARCHITECTURE rtl1 OF rcb IS
     --hardcoded width to handle N up to 256
     SIGNAL idle_counter                                         : std_logic_vector(7 DOWNTO 0);
     CONSTANT one_vector                                         : std_logic_vector(7 DOWNTO 0) := "00000001";
-    -- CONSTANT cache_init                                         : store_t := "00000000000000000000000000000000";
    
 
 BEGIN
@@ -116,11 +114,11 @@ BEGIN
     state_transition: PROCESS(state,dbb_bus, curr_vram_word,next_state, vram_done,idle_counter,
                                  prev_state,prev_vram_word,reset,pxcache_is_same,vram_really_done) 
     --idle counter variable declared in package
-    variable prevState: std_logic_vector(1 DOWNTO 0);  
-    variable concatDraw: std_logic_vector(2 DOWNTO 0);                  
-    variable concatFlush: std_logic_vector(3 DOWNTO 0); 
-    variable concatIdle: std_logic_vector(1 DOWNTO 0);
-    variable inRange: std_logic;
+    VARIABLE prevState: std_logic_vector(1 DOWNTO 0);  
+    VARIABLE concatDraw: std_logic_vector(2 DOWNTO 0);                  
+    VARIABLE concatFlush: std_logic_vector(3 DOWNTO 0); 
+    VARIABLE concatIdle: std_logic_vector(1 DOWNTO 0);
+    VARIABLE inRange: std_logic;
   
     BEGIN
 
@@ -129,17 +127,16 @@ BEGIN
         idle_counter_trig <= '0';  --disable
             
         pxcache_pixopin <= same;   --dont care
+           
         pxcache_pixnum <= "0000";  --dont care
         pxcache_wen_all <= '0';    --disable
         pxcache_pw <='0';          --disable
         pxcache_stash <= '0';      --disable
         change_curr_word <='0';    --disable
-        --vram_waddr <= getRamWord(dbb_bus.X, dbb_bus.Y); --stay same
-        --IF (reset = '1') THEN
-         --   ram_addr <= "00000000";
-        --ELSE 
-            ram_addr <= prev_vram_word; --dont care
-        --END IF;
+        
+        IF (reset = '1') THEN
+            ram_addr <= "00000000";
+        ELSE ram_addr <= prev_vram_word; END IF;
 
         ram_start <='0';            --disable       
         
@@ -163,7 +160,7 @@ BEGIN
                        -- dbb_delaycmd <= '1';
 
                         reset_idle_count <= '1';   --disable
-                        next_state <= s_clear;-- report "Received Start cmd and clear" severity note;
+                        next_state <= s_idle;
                     
                     WHEN others => --Idle
                        -- dbb_delaycmd <= '1';
@@ -231,18 +228,13 @@ BEGIN
                         next_state <= s_flush;            --ENABLE FLUSH <<<<<
                         --next_state <= s_waitram;
 
-                    WHEN others => next_state <= s_error; 
+                    WHEN others => next_state <= s_error; --this warning should be ignored, modelsim will not build without this
                     assert false report "ERROR in rcb, when concatDraw " severity failure;
 
                 END CASE;
-              
-
             --WHEN s_waitram => next_state <= s_flush; 
            --reset_idle_count <= '1'; 
 
-            WHEN s_clear => next_state <=s_idle; --to be implemented later
-
-                reset_idle_count <= '1';   --disable
 
             WHEN s_flush => 
 
@@ -251,7 +243,6 @@ BEGIN
                CASE prev_state IS
                     WHEN s_idle => prevState := "00";
                     WHEN s_draw => prevState := "01";
-                    WHEN s_clear => prevState := "10";
                     WHEN s_error => prevState := "11"; --to remove synth warnings
                     WHEN s_flush => prevState := "11";  --to remove synth warnings
                     --WHEN others => prevState := "11"; --not used
@@ -260,9 +251,6 @@ BEGIN
                 IF vram_done = '0' AND prev_state = s_flush THEN
                     
                     next_state <= s_flush; --loop here till done <<<< not actuaLLY USED
-
-                -- ELSIF vram_done ='0' AND prev_state = s_draw THEN
-                --     next_state <= s_flush;
                 ELSE
                     concatFlush := prevState & dbb_bus.rcb_cmd(1 DOWNTO 0); --|inrange|pxopin|
                     
@@ -273,9 +261,7 @@ BEGIN
                             pxcache_wen_all <= '1';  --pseudo reset cache <<<<<
                             ram_start <='1';            --ENABLE RAM!! <<<<
 
-                            --dbb_delaycmd <= '0';
-                            next_state <= s_idle;       --and go back to IDLE<<<<
-                           
+                            next_state <= s_idle;       --and go back to IDLE<<<<                           
 
                         WHEN "0101" | "0110" | "0111" => --out of range draw
                             pxcache_pixopin <= pixop_t(dbb_bus.rcb_cmd(1 DOWNTO 0)); --SET VALUE <<<<<
@@ -283,7 +269,7 @@ BEGIN
                             pxcache_wen_all <= '1';      --ENABLE CACHE CLEAR <<<<<
                             pxcache_pw <='1';            --ENABLE SINGLE WRITE <<<<
                             ram_start <='1';             --ENABLE VRAM WRITE
-                            --dbb_delaycmd <= '0';
+
                             next_state <= s_idle;        --and go back to IDLE
                           
                         WHEN "1001" | "1010" | "1011" => --its a clear of some colour 
@@ -298,25 +284,21 @@ BEGIN
 
                     reset_idle_count <= '1';   --disable
                     assert false report "Congrats, you're in the error state, fix me" ;
-                    next_state <= s_error; -- only reset moves state to idle
+                    next_state <= s_error; -- only reset moves state to idle        
+            --WHEN others => 
 
-                    
-            WHEN others => 
-
-                    reset_idle_count <= '1';   --disable
-                    assert false report "RCB Unspecified FSM transition " severity failure;
-                    next_state <= s_error;
+                   -- reset_idle_count <= '1';   --disable
+                   -- assert false report "RCB Unspecified FSM transition " severity failure;
+                   -- next_state <= s_error;
 
         END CASE;
 
 
         IF (reset=  '1') THEN
             dbb_delaycmd <= '0';
-        -- ELSIF (next_state = s_draw OR state = s_draw OR state = s_flush OR next_state = s_draw) THEN
+
         ELSIF   ((next_state = s_draw) OR 
-                --(next_state = s_waitram) OR
-                (next_state = s_flush) OR 
-                (next_state = s_clear)) THEN
+                (next_state = s_flush)) THEN
             dbb_delaycmd <= '1';
         ELSE
             dbb_delaycmd <= '0'; END IF;
@@ -458,4 +440,4 @@ vwrite <= ram_vwrite;
 dbb_rcbclear <= '0';
 
 
-END rtl1;
+END rtl1;      
