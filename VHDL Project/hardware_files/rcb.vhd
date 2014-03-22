@@ -91,7 +91,7 @@ ARCHITECTURE rtl1 OF rcb IS
     SIGNAL prev_dbb_bus                                         :db_2_rcb;
 
 --RCB state machine signals
-    TYPE state_type IS (s_error,s_idle,s_draw, s_clear, s_flush);-- s_waitram);
+    TYPE state_type IS (s_error,s_idle,s_draw, s_flush);-- s_waitram);
     SIGNAL state, next_state , prev_state                       : state_type; --, prev_2state 
 
 --draw_px process signals
@@ -162,7 +162,7 @@ BEGIN
                        -- dbb_delaycmd <= '1';
 
                         reset_idle_count <= '1';   --disable
-                        next_state <= s_clear;-- report "Received Start cmd and clear" severity note;
+                        next_state <= s_idle;
                     
                     WHEN others => --Idle
                        -- dbb_delaycmd <= '1';
@@ -230,18 +230,13 @@ BEGIN
                         next_state <= s_flush;            --ENABLE FLUSH <<<<<
                         --next_state <= s_waitram;
 
-                    WHEN others => next_state <= s_error; 
+                    WHEN others => next_state <= s_error; --this warning should be ignored, modelsim will not build without this
                     assert false report "ERROR in rcb, when concatDraw " severity failure;
 
                 END CASE;
-              
-
             --WHEN s_waitram => next_state <= s_flush; 
            --reset_idle_count <= '1'; 
 
-            WHEN s_clear => next_state <=s_idle; --to be implemented later
-
-                reset_idle_count <= '1';   --disable
 
             WHEN s_flush => 
 
@@ -250,7 +245,6 @@ BEGIN
                CASE prev_state IS
                     WHEN s_idle => prevState := "00";
                     WHEN s_draw => prevState := "01";
-                    WHEN s_clear => prevState := "10";
                     WHEN s_error => prevState := "11"; --to remove synth warnings
                     WHEN s_flush => prevState := "11";  --to remove synth warnings
                     --WHEN others => prevState := "11"; --not used
@@ -259,9 +253,6 @@ BEGIN
                 IF vram_done = '0' AND prev_state = s_flush THEN
                     
                     next_state <= s_flush; --loop here till done <<<< not actuaLLY USED
-
-                -- ELSIF vram_done ='0' AND prev_state = s_draw THEN
-                --     next_state <= s_flush;
                 ELSE
                     concatFlush := prevState & dbb_bus.rcb_cmd(1 DOWNTO 0); --|inrange|pxopin|
                     
@@ -272,9 +263,7 @@ BEGIN
                             pxcache_wen_all <= '1';  --pseudo reset cache <<<<<
                             ram_start <='1';            --ENABLE RAM!! <<<<
 
-                            --dbb_delaycmd <= '0';
-                            next_state <= s_idle;       --and go back to IDLE<<<<
-                           
+                            next_state <= s_idle;       --and go back to IDLE<<<<                           
 
                         WHEN "0101" | "0110" | "0111" => --out of range draw
                             pxcache_pixopin <= pixop_t(dbb_bus.rcb_cmd(1 DOWNTO 0)); --SET VALUE <<<<<
@@ -282,7 +271,7 @@ BEGIN
                             pxcache_wen_all <= '1';      --ENABLE CACHE CLEAR <<<<<
                             pxcache_pw <='1';            --ENABLE SINGLE WRITE <<<<
                             ram_start <='1';             --ENABLE VRAM WRITE
-                            --dbb_delaycmd <= '0';
+
                             next_state <= s_idle;        --and go back to IDLE
                           
                         WHEN "1001" | "1010" | "1011" => --its a clear of some colour 
@@ -297,9 +286,7 @@ BEGIN
 
                     reset_idle_count <= '1';   --disable
                     assert false report "Congrats, you're in the error state, fix me" ;
-                    next_state <= s_error; -- only reset moves state to idle
-
-                    
+                    next_state <= s_error; -- only reset moves state to idle        
             --WHEN others => 
 
                    -- reset_idle_count <= '1';   --disable
@@ -311,11 +298,9 @@ BEGIN
 
         IF (reset=  '1') THEN
             dbb_delaycmd <= '0';
-        -- ELSIF (next_state = s_draw OR state = s_draw OR state = s_flush OR next_state = s_draw) THEN
+
         ELSIF   ((next_state = s_draw) OR 
-                --(next_state = s_waitram) OR
-                (next_state = s_flush) OR 
-                (next_state = s_clear)) THEN
+                (next_state = s_flush)) THEN
             dbb_delaycmd <= '1';
         ELSE
             dbb_delaycmd <= '0'; END IF;
