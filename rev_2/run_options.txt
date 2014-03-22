@@ -3,12 +3,12 @@
 #--  Project file H:\Desktop\GitHub\VHDL\rev_2\run_options.txt
 
 #project files
+add_file -vhdl -lib work "./VHDL Project/hardware_files/helper_funcs.vhd"
 add_file -vhdl -lib work "H:/Desktop/GitHub/VHDL/ex4/pix_cache_pak.vhd"
 add_file -vhdl -lib work "H:/Desktop/GitHub/VHDL/VHDL Project/hardware_files/rcb.vhd"
 add_file -vhdl -lib work "H:/Desktop/GitHub/VHDL/VHDL Project/hardware_files/ram_fsm.vhd"
 add_file -vhdl -lib work "H:/Desktop/GitHub/VHDL/VHDL Project/hardware_files/project_pack.vhd"
 add_file -vhdl -lib work "H:/Desktop/GitHub/VHDL/VHDL Project/hardware_files/pix_word_cache.vhd"
-add_file -vhdl -lib work "H:/Desktop/GitHub/VHDL/VHDL Project/hardware_files/helper_funcs.vhd"
 add_file -vhdl -lib work "H:/Desktop/GitHub/VHDL/VHDL Project/hardware_files/config_pack.vhd"
 
 
@@ -35,7 +35,7 @@ set_option -top_module "rcb"
 # mapper_options
 set_option -frequency 1.000000
 set_option -write_verilog 0
-set_option -write_vhdl 0
+set_option -write_vhdl 1
 set_option -srs_instrumentation 1
 
 # actel_options
@@ -58,5 +58,5 @@ set_option -multi_file_compilation_unit 1
 set_option -write_apr_constraint 1
 
 #set result format/file last
-project -result_file "./rev_2/proj_1.edn"
+project -result_file "./rev_2/rcb_post.edn"
 impl -active "rev_2"

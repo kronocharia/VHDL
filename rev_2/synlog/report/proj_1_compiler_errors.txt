@@ -1,5 +1,2 @@
-@E: CD197 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":334:12:334:21|Can't assign to constant
-@E: CD632 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":416:34:416:37|duplicate entity name ram_fsm
-@E: CD632 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":439:32:439:35|duplicate entity name pix_word_cache
-@E|Parse errors encountered - exiting
+@E: CD716 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":214:17:214:25|Expression has ambiguous type
 

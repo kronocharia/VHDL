@@ -36,6 +36,40 @@ END rcb;
 
 
 ARCHITECTURE rtl1 OF rcb IS
+
+-- return the RamWord address as a 8 bit vector
+    FUNCTION getRamWord( x : std_logic_vector(vsize-1 DOWNTO 0); y :std_logic_vector(vsize-1 DOWNTO 0)) RETURN std_logic_vector IS
+      
+      VARIABLE xVal, yVal       : integer;
+      VARIABLE wordAddress      : std_logic_vector(7 DOWNTO 0);
+    BEGIN
+        
+        xVal := to_integer(unsigned(x(VSIZE-1 DOWNTO 2)));
+        yVal := to_integer(unsigned(y(VSIZE-1 DOWNTO 2)));
+
+        wordAddress := std_logic_vector(to_unsigned(xVal+ 16*yVal,8));
+
+        RETURN wordAddress;
+    END;
+
+    -- return the ramBit addr as a 4bit address vector
+    FUNCTION getRamBit(  x : std_logic_vector(vsize-1 DOWNTO 0); y :std_logic_vector(vsize-1 DOWNTO 0)) RETURN std_logic_vector IS
+      
+      VARIABLE xVal, yVal   : integer;
+      VARIABLE bitAddress   : std_logic_vector(3 DOWNTO 0);
+
+    BEGIN
+        
+        xVal := to_integer(unsigned(x(1 DOWNTO 0)));
+        yVal := to_integer(unsigned(y(1 DOWNTO 0)));
+
+        bitAddress := std_logic_vector(to_unsigned(xVal + 4*yVal,4));
+
+        RETURN bitAddress;
+    END;
+
+
+
 ---------------Internal Wires--------------------
 
 
@@ -57,8 +91,8 @@ ARCHITECTURE rtl1 OF rcb IS
     SIGNAL prev_dbb_bus                                         :db_2_rcb;
 
 --RCB state machine signals
-    TYPE state_type IS (s_error,s_idle,s_draw, s_clear, s_flush, s_waitram);
-    SIGNAL state, next_state , prev_state, prev_2state          : state_type;
+    TYPE state_type IS (s_error,s_idle,s_draw, s_clear, s_flush);-- s_waitram);
+    SIGNAL state, next_state , prev_state         : state_type; --, prev_2state 
 
 --draw_px process signals
     SIGNAL curr_vram_word,prev_vram_word             : std_logic_vector(7 DOWNTO 0);
@@ -72,21 +106,11 @@ ARCHITECTURE rtl1 OF rcb IS
 
     --hardcoded width to handle N up to 256
     SIGNAL idle_counter                                         : std_logic_vector(7 DOWNTO 0);
-    CONSTANT one_vector                                           : std_logic_vector(7 DOWNTO 0) := "00000001";
+    CONSTANT one_vector                                         : std_logic_vector(7 DOWNTO 0) := "00000001";
+    -- CONSTANT cache_init                                         : store_t := "00000000000000000000000000000000";
    
 
 BEGIN
-
----------------------register the instruction----------------------
-    -- instruction_register: PROCESS
-    -- BEGIN
-    
-    -- WAIT UNTIL clk'EVENT AND clk = '1';
-    -- IF (state = s_idle) THEN
-    --      <= dbb_bus;
-    -- END IF;
-    
-    -- END PROCESS instruction_register;
 
 ---------------------state transition matrix----------------------- 
 
@@ -211,8 +235,8 @@ BEGIN
                 END CASE;
               
 
-            WHEN s_waitram => next_state <= s_flush; 
-            reset_idle_count <= '1'; 
+            --WHEN s_waitram => next_state <= s_flush; 
+           --reset_idle_count <= '1'; 
 
             WHEN s_clear => next_state <=s_idle; --to be implemented later
 
@@ -226,12 +250,14 @@ BEGIN
                     WHEN s_idle => prevState := "00";
                     WHEN s_draw => prevState := "01";
                     WHEN s_clear => prevState := "10";
-                    WHEN others => prevState := "11"; --not used
+                    WHEN s_error => prevState := "11"; --to remove synth warnings
+                    WHEN s_flush => prevState := "11";  --to remove synth warnings
+                    --WHEN others => prevState := "11"; --not used
                 END CASE;
 
                 IF vram_done = '0' AND prev_state = s_flush THEN
                     
-                    next_state <= s_flush; --loop here till done <<<<
+                    next_state <= s_flush; --loop here till done <<<< not actuaLLY USED
 
                 -- ELSIF vram_done ='0' AND prev_state = s_draw THEN
                 --     next_state <= s_flush;
@@ -286,7 +312,7 @@ BEGIN
             dbb_delaycmd <= '0';
         -- ELSIF (next_state = s_draw OR state = s_draw OR state = s_flush OR next_state = s_draw) THEN
         ELSIF   ((next_state = s_draw) OR 
-                (next_state = s_waitram) OR
+                --(next_state = s_waitram) OR
                 (next_state = s_flush) OR 
                 (next_state = s_clear)) THEN
             dbb_delaycmd <= '1';
@@ -297,14 +323,6 @@ BEGIN
     END PROCESS state_transition;
 -------------------------------------------------------------------------------
 
---delaycmd--
---delaycmd_clocked: PROCESS
- --BEGIN
-   -- WAIT UNTIL clk'EVENT AND clk = '1';
-            -------delaycmd------
-          
---END PROCESS delaycmd_clocked;
-------------
 ----------------------------fsm_clocked_process--------------------------------
     fsm_clocked_process: PROCESS
     BEGIN
@@ -314,13 +332,14 @@ BEGIN
             prev_dbb_bus <= dbb_bus;
             -------------------------------          
             ---------store states----------          
-            prev_2state <= prev_state;
+            --prev_2state <= prev_state;
             prev_state <= state;
             state <= next_state;
 
             ---------rcb finish------------
             IF (next_state = s_idle) THEN
-                rcb_finish <= '1';
+                rcb_finish <= pxcache_is_same;
+                --rcb_finish <= '1';
             ELSE 
                 rcb_finish <= '0';
             END IF;
@@ -328,6 +347,7 @@ BEGIN
             ------------reset---------------
             IF reset = '1' THEN
                 state <= s_idle;
+                prev_state <= s_idle;
             END IF;
 
             -----------idle counter-------
@@ -346,7 +366,11 @@ BEGIN
             END IF;
             
             IF (reset = '1') THEN
-                pxcache_store_buf <= pxcache_store;
+                --pxcache_store_buf <= pxcache_store;
+                pxcache_store_buf <= (OTHERS => same);
+                --FOR i IN pxcache_store_buf'RANGE LOOP
+                --    pxcache_store_buf(i) <= same;
+                --END LOOP;
             
             END IF;
 
@@ -358,6 +382,7 @@ BEGIN
 
             IF (reset = '1') THEN
             curr_vram_word <= "00000000";
+            prev_vram_word <= "00000000";
             END IF;
 
 
