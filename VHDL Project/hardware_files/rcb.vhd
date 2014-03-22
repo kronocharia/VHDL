@@ -136,9 +136,12 @@ BEGIN
         pxcache_stash <= '0';      --disable
         change_curr_word <='0';    --disable
         --vram_waddr <= getRamWord(dbb_bus.X, dbb_bus.Y); --stay same
+        --IF (reset = '1') THEN
+         --   ram_addr <= "00000000";
+        --ELSE 
+            ram_addr <= prev_vram_word; --dont care
+        --END IF;
 
-        ram_addr <= prev_vram_word; --dont care
-        
         ram_start <='0';            --disable       
         
         --dbb_delaycmd <='1'; --always busy unless in idle state
@@ -337,7 +340,10 @@ BEGIN
             state <= next_state;
 
             ---------rcb finish------------
-            IF (next_state = s_idle) THEN
+            IF reset = '1' THEN
+                rcb_finish <='0';
+
+            ELSIF (next_state = s_idle AND vram_done = '1') THEN
                 rcb_finish <= pxcache_is_same;
                 --rcb_finish <= '1';
             ELSE 
@@ -383,58 +389,13 @@ BEGIN
             IF (reset = '1') THEN
             curr_vram_word <= "00000000";
             prev_vram_word <= "00000000";
+
             END IF;
 
 
 
     END PROCESS fsm_clocked_process;
--- -----------------------------------------------------------------------------
--- ------------------------idle counter reset-----------------------------------
--- idle_counter_proc: PROCESS
--- BEGIN
---     WAIT UNTIL clk'EVENT AND clk= '1';
---     one_vector <= "00000001";
---     IF (idle_counter_trig ='1' AND reset = '0') THEN
---         idle_counter  <= std_logic_vector(unsigned(unsigned(one_vector)+ unsigned(idle_counter)));
---     END IF;
 
---     IF (reset = '1' OR reset_idle_count ='1') THEN
---         idle_counter <= "00000000";
---     END IF;
-    
--- END PROCESS idle_counter_proc;
--- -----------------------------------------------------------------------------
--- -----------------------pxcache_stored_value----------------------------------
--- pxcache_store_reg: PROCESS
--- BEGIN
---     WAIT UNTIL clk'EVENT AND clk= '1';
-    
---     IF pxcache_stash = '1' THEN
---         pxcache_store_buf <= pxcache_store;
---     END IF;
-    
---     IF (reset = '1') THEN
---         pxcache_store_buf <= pxcache_store;
-    
---     END IF;
-    
--- END PROCESS pxcache_store_reg;
--- ----------------------------------------------------------------------------
--- -------register storing current word to detect if out of range--------------
---     current_word_register: PROCESS 
---     BEGIN
---         WAIT UNTIL clk'EVENT AND clk ='1';
---         IF (change_curr_word='1' AND reset ='0') THEN --enable for register
---             prev_vram_word <= curr_vram_word;
---             curr_vram_word <= getRamWord(.X, .Y); 
---         END IF;
-
---         IF (reset = '1') THEN
---         curr_vram_word <= "00000000";
---         END IF;
-        
---     END PROCESS current_word_register;      
--- ------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------
 ---------------------------- structural -----------------------------------------

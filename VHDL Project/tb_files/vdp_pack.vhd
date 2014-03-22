@@ -337,7 +337,7 @@ PACKAGE BODY vdp_pack IS
          FOR x IN 0 TO window_size-1 LOOP
 
             CASE read_ram_bit_direct(x, y, ram) IS
-               WHEN '0'    => ch := '+';
+               WHEN '0'    => ch := '-';
                WHEN '1'    => ch := '*';
                WHEN 'U'    => ch := 'U';
                WHEN OTHERS => ch := 'X';
