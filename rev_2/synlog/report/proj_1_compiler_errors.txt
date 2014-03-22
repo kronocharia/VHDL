@@ -1,3 +1,2 @@
-@E: CD126 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":58:58:58:58|Expecting identifier
-@E|Parse errors encountered - exiting
+@E: CD716 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":214:17:214:25|Expression has ambiguous type
 

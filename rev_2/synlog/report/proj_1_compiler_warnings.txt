@@ -1,20 +1,9 @@
-@W: CD604 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":208:20:208:33|OTHERS clause is not synthesized 
-@W: CD604 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":276:12:276:25|OTHERS clause is not synthesized 
-@W: CD638 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":64:11:64:20|Signal vram_waddr is undriven 
-@W: CL169 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":57:11:57:22|Pruning register prev_dbb_bus.rcb_cmd(2 downto 0)  
-@W: CL169 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":57:11:57:22|Pruning register prev_dbb_bus.startcmd  
-@W: CL271 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":57:11:57:22|Pruning bits 1 to 0 of prev_dbb_bus.X(5 downto 0) -- not in use ... 
-@W: CL271 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":57:11:57:22|Pruning bits 1 to 0 of prev_dbb_bus.Y(5 downto 0) -- not in use ... 
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":75:11:75:20|All reachable assignments to one_vector(0) assign '1'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":75:11:75:20|All reachable assignments to one_vector(1) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":75:11:75:20|All reachable assignments to one_vector(2) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":75:11:75:20|All reachable assignments to one_vector(3) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":75:11:75:20|All reachable assignments to one_vector(4) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":75:11:75:20|All reachable assignments to one_vector(5) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":75:11:75:20|All reachable assignments to one_vector(6) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":75:11:75:20|All reachable assignments to one_vector(7) assign '0'; register removed by optimization
-@W: CL279 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":61:43:61:53|Pruning register bits 0 to 1 of prev_2state(0 to 5)  
-@W: CL260 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":61:43:61:53|Pruning register bit 5 of prev_2state(0 to 5)  
-@W: CL260 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":61:31:61:40|Pruning register bit 0 of prev_state(0 to 5)  
-@W: CL260 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":61:31:61:40|Pruning register bit 5 of prev_state(0 to 5)  
+@W: CD643 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":8:25:8:25|Ignoring use clause - helper_funcs not found ...
+@W: CD604 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":242:20:242:33|OTHERS clause is not synthesized 
+@W: CD604 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":265:20:265:33|OTHERS clause is not synthesized 
+@W: CD604 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":312:12:312:25|OTHERS clause is not synthesized 
+@W: CL169 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":91:11:91:22|Pruning register prev_dbb_bus.rcb_cmd(2 downto 0)  
+@W: CL169 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":91:11:91:22|Pruning register prev_dbb_bus.startcmd  
+@W: CL271 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":91:11:91:22|Pruning bits 1 to 0 of prev_dbb_bus.X(5 downto 0) -- not in use ... 
+@W: CL271 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":91:11:91:22|Pruning bits 1 to 0 of prev_dbb_bus.Y(5 downto 0) -- not in use ... 
 

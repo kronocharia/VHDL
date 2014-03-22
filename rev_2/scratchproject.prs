@@ -3,12 +3,12 @@
 #--  Project file H:\Desktop\GitHub\VHDL\rev_2\scratchproject.prs
 
 #project files
+add_file -vhdl -lib work "H:/Desktop/GitHub/VHDL/VHDL Project/hardware_files/helper_funcs.vhd"
 add_file -vhdl -lib work "H:/Desktop/GitHub/VHDL/ex4/pix_cache_pak.vhd"
 add_file -vhdl -lib work "H:/Desktop/GitHub/VHDL/VHDL Project/hardware_files/rcb.vhd"
 add_file -vhdl -lib work "H:/Desktop/GitHub/VHDL/VHDL Project/hardware_files/ram_fsm.vhd"
 add_file -vhdl -lib work "H:/Desktop/GitHub/VHDL/VHDL Project/hardware_files/project_pack.vhd"
 add_file -vhdl -lib work "H:/Desktop/GitHub/VHDL/VHDL Project/hardware_files/pix_word_cache.vhd"
-add_file -vhdl -lib work "H:/Desktop/GitHub/VHDL/VHDL Project/hardware_files/helper_funcs.vhd"
 add_file -vhdl -lib work "H:/Desktop/GitHub/VHDL/VHDL Project/hardware_files/config_pack.vhd"
 
 
@@ -23,34 +23,29 @@ set_option -project_relative_includes 1
 set_option -include_path {H:/Desktop/GitHub/VHDL/}
 
 #device options
-set_option -technology CYCLONEII
-set_option -part EP2C5
-set_option -package QC208
-set_option -speed_grade -6
+set_option -technology 3200DX
+set_option -part A3265DX
+set_option -package ""
+set_option -speed_grade -2
 set_option -part_companion ""
 
 #compilation/mapping options
 set_option -use_fsm_explorer 0
 set_option -top_module "rcb"
 
-# altera_options
-set_option -RWCheckOnRam 1
-
 # mapper_options
-set_option -frequency auto
+set_option -frequency 1.000000
 set_option -write_verilog 0
-set_option -write_vhdl 0
+set_option -write_vhdl 1
 set_option -srs_instrumentation 1
 
-# Altera STRATIX
-set_option -run_prop_extract 1
-set_option -maxfan 30
+# actel_options
+set_option -RWCheckOnRam 0
+
+# Microsemi 3200DX
+set_option -maxfan 16
 set_option -disable_io_insertion 0
-set_option -pipe 1
-set_option -update_models_cp 0
-set_option -retiming 0
-set_option -no_sequential_opt 0
-set_option -fix_gated_and_generated_clocks 1
+set_option -preserve_registers 0
 
 # sequential_optimization_options
 set_option -symbolic_fsm_compiler 1
@@ -60,12 +55,9 @@ set_option -compiler_compatible 0
 set_option -resource_sharing 1
 set_option -multi_file_compilation_unit 1
 
-#VIF options
-set_option -write_vif 0
-
 #automatic place and route (vendor) options
 set_option -write_apr_constraint 1
 
 #set result format/file last
-project -result_file "H:/Desktop/GitHub/VHDL/rev_2/proj_1.vqm"
+project -result_file "H:/Desktop/GitHub/VHDL/rev_2/rcb_post.edn"
 impl -active "rev_2"

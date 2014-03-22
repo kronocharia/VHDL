@@ -1,17 +1,17 @@
 C:\synopsys\fpga_G201209SP1\bin64\m_altera.exe  -prodtype synplify_pro -encrypt  -pro  -rundir  H:\Desktop\GitHub\VHDL\rev_2  -part EP2C5QC208-6   -maxfan 30 -timequest -verification_mode 0  -pipe    -fixgatedclocks 1 -fixgeneratedclocks 1 -syn_altera_model on   -reporting_ctd 1  -RWCheckOnRam 1     -summaryfile H:\Desktop\GitHub\VHDL\rev_2\synlog\report\proj_1_premap.xml -top_level_module  rcb  -map -vqm41  -ovqm  H:\Desktop\GitHub\VHDL\rev_2\proj_1.vqm  -conchk_prepass  H:\Desktop\GitHub\VHDL\rev_2\proj_1_cck_prepass.rpt  -autoconstraint  -freq 1.000  H:\Desktop\GitHub\VHDL\rev_2\synwork\proj_1_compiler.srs  -flow prepass  -gcc_prepass  -osrd  H:\Desktop\GitHub\VHDL\rev_2\synwork\proj_1_premap.srd  -qsap  H:\Desktop\GitHub\VHDL\rev_2\proj_1.sap  -devicelib  C:\synopsys\fpga_G201209SP1\lib\altera\altera.v  -devicelib  C:\synopsys\fpga_G201209SP1\lib\altera\quartus_II121\cycloneii.v  -devicelib  C:\synopsys\fpga_G201209SP1\lib\altera\quartus_II121\altera_mf.v  -devicelib  C:\synopsys\fpga_G201209SP1\lib\altera\quartus_II121\altera_lpm.v  -devicelib  C:\synopsys\fpga_G201209SP1\lib\altera\quartus_II121\altera_primitives.v  -ologparam  H:\Desktop\GitHub\VHDL\rev_2\syntmp\proj_1.plg  -osyn  H:\Desktop\GitHub\VHDL\rev_2\synwork\proj_1_premap.srd  -prjdir  H:\Desktop\GitHub\VHDL\  -prjname  "rcb synth"  -log  H:\Desktop\GitHub\VHDL\rev_2\synlog\proj_1_premap.srr 
 rc:1 success:1
-H:\Desktop\GitHub\VHDL\rev_2\proj_1.vqm|o|1395173095|149061
+H:\Desktop\GitHub\VHDL\rev_2\proj_1.vqm|o|1395484418|153188
 H:\Desktop\GitHub\VHDL\rev_2\proj_1_cck_prepass.rpt|o|0|0
-H:\Desktop\GitHub\VHDL\rev_2\synwork\proj_1_compiler.srs|i|1395173407|15760
-H:\Desktop\GitHub\VHDL\rev_2\synwork\proj_1_premap.srd|o|1395173410|24345
-H:\Desktop\GitHub\VHDL\rev_2\proj_1.sap|o|1395173410|10074
+H:\Desktop\GitHub\VHDL\rev_2\synwork\proj_1_compiler.srs|i|1395484854|15509
+H:\Desktop\GitHub\VHDL\rev_2\synwork\proj_1_premap.srd|o|1395484856|23260
+H:\Desktop\GitHub\VHDL\rev_2\proj_1.sap|o|1395484856|9818
 C:\synopsys\fpga_G201209SP1\lib\altera\altera.v|i|1353965436|799
 C:\synopsys\fpga_G201209SP1\lib\altera\quartus_II121\cycloneii.v|i|1353965548|23239
 C:\synopsys\fpga_G201209SP1\lib\altera\quartus_II121\altera_mf.v|i|1353965548|208276
 C:\synopsys\fpga_G201209SP1\lib\altera\quartus_II121\altera_lpm.v|i|1353965546|14912
 C:\synopsys\fpga_G201209SP1\lib\altera\quartus_II121\altera_primitives.v|i|1353965548|8315
-H:\Desktop\GitHub\VHDL\rev_2\syntmp\proj_1.plg|o|1395173410|26
-H:\Desktop\GitHub\VHDL\rev_2\synwork\proj_1_premap.srd|o|1395173410|24345
-H:\Desktop\GitHub\VHDL\rev_2\synlog\proj_1_premap.srr|o|1395173410|2415
+H:\Desktop\GitHub\VHDL\rev_2\syntmp\proj_1.plg|o|1395484856|26
+H:\Desktop\GitHub\VHDL\rev_2\synwork\proj_1_premap.srd|o|1395484856|23260
+H:\Desktop\GitHub\VHDL\rev_2\synlog\proj_1_premap.srr|o|1395484856|2415
 C:\synopsys\fpga_G201209SP1\bin64\m_altera.exe|i|1353965396|16430080
 C:\synopsys\fpga_G201209SP1\bin\m_altera.exe|i|1353965384|13448704

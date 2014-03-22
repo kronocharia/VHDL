@@ -397,8 +397,8 @@ PACKAGE BODY vdp_pack IS
       END CASE;
 
 
-      cmdword(13 DOWNTO 8) := std_logic_vector(to_unsigned( x, 6);
-      cmdword( 7 DOWNTO 2) := std_logic_vector(to_unsigned( y, 6);
+      cmdword(13 DOWNTO 8) := std_logic_vector(to_unsigned( x, 6));
+      cmdword( 7 DOWNTO 2) := std_logic_vector(to_unsigned( y, 6));
 
       -- terminate last command if necessary
       ASSERT hdb_busy = '0' OR hdb_busy = '1' REPORT
