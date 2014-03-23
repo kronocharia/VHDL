@@ -1,0 +1,240 @@
+<html><body><samp><pre>
+<!@TC:0>
+<a name=mapperReport122>Synopsys Microsemi Technology Mapper, Version maprc, Build 1351R, Built Nov 26 2012 21:46:09</a>
+Copyright (C) 1994-2012, Synopsys, Inc. This software the associated documentation are confidential and proprietary to Synopsys, Inc. Your use or disclosure of this software subject to the terms and conditions of a written license agreement between you, or your company, and Synopsys, Inc.
+Product Version G-2012.09-SP1 
+<font color=#A52A2A>@W:<a href="@W:FF137:@XP_HELP">FF137</a> : <!@TM:0> | Setting fanout limit to 16 </font> 
+@N:<a href="@N:MF248:@XP_HELP">MF248</a> : <!@TM:0> | Running in 64-bit mode. 
+List of partitions to map:
+   view:work.rcb(rtl1)
+@N: : <a href="h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd:108:11:108:23:@N::@XP_MSG">rcb.vhd(108)</a><!@TM:0> | Found counter in view:work.rcb(rtl1) inst idle_counter[7:0]
+Encoding state machine state_h.state[0:4] (view:work.rcb(rtl1))
+original code -> new code
+   00001 -> 00000
+   00010 -> 00011
+   00100 -> 00101
+   01000 -> 01001
+   10000 -> 10001
+Encoding state machine state_h.state[0:3] (view:work.ram_fsm(synth))
+original code -> new code
+   00 -> 00
+   01 -> 01
+   10 -> 10
+   11 -> 11
+
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 106MB peak: 106MB)
+
+
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 106MB peak: 106MB)
+
+
+High Fanout Net Report
+**********************
+
+Driver Instance / Pin Name                        Fanout, notes
+---------------------------------------------------------------
+px_cache.pxcache_store_buf_0_1_sqmuxa_i_0 / y     32           
+px_cache.store_ram_0_1_sqmuxa_2_i_o3 / y          49           
+reset_pad / y                                     38           
+===============================================================
+
+Replicating Combinational Instance px_cache.store_ram_0_1_sqmuxa_2_i_o3, fanout 49 segments 4
+Replicating Combinational Instance px_cache.pxcache_store_buf_0_1_sqmuxa_i_0, fanout 32 segments 2
+Buffering reset_c, fanout 42 segments 3
+
+Added 2 Buffers
+Added 4 Cells via replication
+	Added 0 Sequential Cells via replication
+	Added 4 Combinational Cells via replication
+---------------------------------------
+Synthesized design as a chip
+<a name=resourceUsage123>Resource Usage Report of rcb </a>
+
+Target Part: a3265dx-2
+Combinational Cells:    129 of 475 (27%)
+Sequential Cells:    149 of 510 (29%)
+Total Cells:         278 of 985 (29%)
+DSP Blocks:          0
+Clock Buffers:       1
+IO Cells:            62
+
+Details:
+   and2:           21	comb:1
+   and2a:          5	comb:1
+   and2b:          5	comb:1
+   and3:           1	comb:1
+   and3a:          2	comb:1
+   and3b:          1	comb:1
+   and4b:          2	comb:1
+   and4c:          1	comb:1
+   buff:           2	comb:1
+   cm8:            57	comb:1
+   nand4:          1	comb:2
+   or2:            4	comb:1
+   or2a:           10	comb:1
+   or2b:           2	comb:1
+   or3b:           2	comb:1
+   or4:            6	comb:1
+   or4c:           1	comb:1
+   xnor2:          4	comb:1
+   xor2:           1	comb:1
+
+   df1:            12	seq:1
+   df1b:           24	seq:1
+   dfe1b:          40	seq:1
+   dfm7a:          73	seq:1
+
+   clkbuf:         1	clock buffer
+   inbuf:          33	
+   outbuf:         28	
+
+   false:          1	
+   true:           1	
+<font color=#A52A2A>@W:<a href="@W:MT420:@XP_HELP">MT420</a> : <!@TM:0> | Found inferred clock rcb|clk with period 1000.00ns. Please declare a user-defined clock on object "p:clk"</font> 
+
+
+
+<a name=timingReport124>##### START OF TIMING REPORT #####[</a>
+# Timing Report written on Sat Mar 22 11:21:58 2014
+#
+
+
+Top view:               rcb
+Requested Frequency:    1.0 MHz
+Wire load mode:         top
+Paths requested:        5
+Constraint File(s):    
+@N:<a href="@N:MT320:@XP_HELP">MT320</a> : <!@TM:0> | Timing report estimates place and route data. Please look at the place and route timing report for final timing. 
+
+@N:<a href="@N:MT322:@XP_HELP">MT322</a> : <!@TM:0> | Clock constraints cover only FF-to-FF paths associated with the clock. 
+
+
+
+<a name=performanceSummary125>Performance Summary </a>
+*******************
+
+
+Worst slack in design: 495.950
+
+                   Requested     Estimated     Requested     Estimated                 Clock        Clock              
+Starting Clock     Frequency     Frequency     Period        Period        Slack       Type         Group              
+-----------------------------------------------------------------------------------------------------------------------
+rcb|clk            1.0 MHz       15.6 MHz      1000.000      64.125        495.950     inferred     Inferred_clkgroup_0
+=======================================================================================================================
+
+
+
+
+
+<a name=clockRelationships126>Clock Relationships</a>
+*******************
+
+Clocks             |    rise  to  rise     |    fall  to  fall   |    rise  to  fall     |    fall  to  rise 
+-------------------------------------------------------------------------------------------------------------
+Starting  Ending   |  constraint  slack    |  constraint  slack  |  constraint  slack    |  constraint  slack
+-------------------------------------------------------------------------------------------------------------
+rcb|clk   rcb|clk  |  1000.000    935.875  |  No paths    -      |  500.000     495.950  |  No paths    -    
+=============================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+
+<a name=interfaceInfo127>Interface Information </a>
+*********************
+
+No IO constraint found
+
+
+
+====================================
+<a name=clockReport128>Detailed Report for Clock: rcb|clk</a>
+====================================
+
+
+
+<a name=startingSlack129>Starting Points with Worst Slack</a>
+********************************
+
+                                     Starting                                                             Arrival            
+Instance                             Reference     Type      Pin     Net                                  Time        Slack  
+                                     Clock                                                                                   
+-----------------------------------------------------------------------------------------------------------------------------
+prev_vram_word[0]                    rcb|clk       dfe1b     q       prev_vram_word[0]                    3.675       495.950
+prev_vram_word[1]                    rcb|clk       dfe1b     q       prev_vram_word[1]                    3.675       495.950
+prev_vram_word[2]                    rcb|clk       dfe1b     q       prev_vram_word[2]                    3.675       495.950
+prev_vram_word[3]                    rcb|clk       dfe1b     q       prev_vram_word[3]                    3.675       495.950
+prev_vram_word[4]                    rcb|clk       dfe1b     q       prev_vram_word[4]                    3.675       495.950
+prev_vram_word[5]                    rcb|clk       dfe1b     q       prev_vram_word[5]                    3.675       495.950
+prev_vram_word[6]                    rcb|clk       dfe1b     q       prev_vram_word[6]                    3.675       495.950
+prev_vram_word[7]                    rcb|clk       dfe1b     q       prev_vram_word[7]                    3.675       495.950
+ram_state_machine.data_merged[0]     rcb|clk       dfm7a     q       ram_state_machine.data_merged[0]     3.675       495.950
+ram_state_machine.data_merged[1]     rcb|clk       dfm7a     q       ram_state_machine.data_merged[1]     3.675       495.950
+=============================================================================================================================
+
+
+<a name=endingSlack130>Ending Points with Worst Slack</a>
+******************************
+
+                                  Starting                                                            Required            
+Instance                          Reference     Type     Pin     Net                                  Time         Slack  
+                                  Clock                                                                                   
+--------------------------------------------------------------------------------------------------------------------------
+ram_state_machine.addr_del[0]     rcb|clk       df1b     d       prev_vram_word[0]                    499.625      495.950
+ram_state_machine.addr_del[1]     rcb|clk       df1b     d       prev_vram_word[1]                    499.625      495.950
+ram_state_machine.addr_del[2]     rcb|clk       df1b     d       prev_vram_word[2]                    499.625      495.950
+ram_state_machine.addr_del[3]     rcb|clk       df1b     d       prev_vram_word[3]                    499.625      495.950
+ram_state_machine.addr_del[4]     rcb|clk       df1b     d       prev_vram_word[4]                    499.625      495.950
+ram_state_machine.addr_del[5]     rcb|clk       df1b     d       prev_vram_word[5]                    499.625      495.950
+ram_state_machine.addr_del[6]     rcb|clk       df1b     d       prev_vram_word[6]                    499.625      495.950
+ram_state_machine.addr_del[7]     rcb|clk       df1b     d       prev_vram_word[7]                    499.625      495.950
+ram_state_machine.data_del[0]     rcb|clk       df1b     d       ram_state_machine.data_merged[0]     499.625      495.950
+ram_state_machine.data_del[1]     rcb|clk       df1b     d       ram_state_machine.data_merged[1]     499.625      495.950
+==========================================================================================================================
+
+
+
+<a name=worstPaths131>Worst Path Information</a>
+<a href="H:/Desktop/GitHub/VHDL/rev_2/synlog/rcb_post_fpga_mapper.srr:srsfH:\Desktop\GitHub\VHDL\rev_2\rcb_post.srs:fp:10679:10964:@XP_NAMES_GATE">View Worst Path in Analyst</a>
+***********************
+
+
+Path information for path number 1: 
+      Requested Period:                      500.000
+    - Setup time:                            0.375
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         499.625
+
+    - Propagation time:                      3.675
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (critical) :                     495.950
+
+    Number of logic level(s):                0
+    Starting point:                          prev_vram_word[0] / q
+    Ending point:                            ram_state_machine.addr_del[0] / d
+    The start point is clocked by            rcb|clk [rising] on pin clk
+    The end   point is clocked by            rcb|clk [falling] on pin clk
+
+Instance / Net                              Pin      Pin               Arrival     No. of    
+Name                              Type      Name     Dir     Delay     Time        Fan Out(s)
+---------------------------------------------------------------------------------------------
+prev_vram_word[0]                 dfe1b     q        Out     3.675     3.675       -         
+prev_vram_word[0]                 Net       -        -       -         -           1         
+ram_state_machine.addr_del[0]     df1b      d        In      0.000     3.675       -         
+=============================================================================================
+
+
+
+##### END OF TIMING REPORT #####]
+
+G-2012.09-SP1 
+Mapper successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:03s; CPU Time elapsed 0h:00m:02s; Memory used current: 41MB peak: 122MB)
+
+Process took 0h:00m:03s realtime, 0h:00m:02s cputime
+# Sat Mar 22 11:21:58 2014
+
+###########################################################]
+
+</pre></samp></body></html>

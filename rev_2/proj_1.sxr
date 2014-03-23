@@ -1,0 +1,463 @@
+
+BeginView rcb NoName
+Inst: idle_counter[0]   idle_counter_0_ cycloneii_lcell_ff 
+Inst: idle_counter[1]   idle_counter_1_ cycloneii_lcell_ff 
+Inst: idle_counter[2]   idle_counter_2_ cycloneii_lcell_ff 
+Inst: idle_counter[3]   idle_counter_3_ cycloneii_lcell_ff 
+Inst: idle_counter[4]   idle_counter_4_ cycloneii_lcell_ff 
+Inst: idle_counter[5]   idle_counter_5_ cycloneii_lcell_ff 
+Inst: idle_counter[6]   idle_counter_6_ cycloneii_lcell_ff 
+Inst: idle_counter[7]   idle_counter_7_ cycloneii_lcell_ff 
+Inst: state[1]   state_1_ cycloneii_lcell_ff 
+Inst: state[0]   state_0_ cycloneii_lcell_ff 
+Inst: prev_dbb_bus\.X[5]   prev_dbb_bus_X_5_ cycloneii_lcell_ff 
+Inst: prev_dbb_bus\.X[4]   prev_dbb_bus_X_4_ cycloneii_lcell_ff 
+Inst: prev_dbb_bus\.X[3]   prev_dbb_bus_X_3_ cycloneii_lcell_ff 
+Inst: prev_dbb_bus\.X[2]   prev_dbb_bus_X_2_ cycloneii_lcell_ff 
+Inst: prev_dbb_bus\.Y[5]   prev_dbb_bus_Y_5_ cycloneii_lcell_ff 
+Inst: prev_dbb_bus\.Y[4]   prev_dbb_bus_Y_4_ cycloneii_lcell_ff 
+Inst: prev_dbb_bus\.Y[3]   prev_dbb_bus_Y_3_ cycloneii_lcell_ff 
+Inst: prev_dbb_bus\.Y[2]   prev_dbb_bus_Y_2_ cycloneii_lcell_ff 
+Inst: prev_state[1]   prev_state_1_ cycloneii_lcell_ff 
+Inst: prev_state[0]   prev_state_0_ cycloneii_lcell_ff 
+Inst: prev_vram_word[0]   prev_vram_word_0_ cycloneii_lcell_ff 
+Inst: prev_vram_word[1]   prev_vram_word_1_ cycloneii_lcell_ff 
+Inst: prev_vram_word[2]   prev_vram_word_2_ cycloneii_lcell_ff 
+Inst: prev_vram_word[3]   prev_vram_word_3_ cycloneii_lcell_ff 
+Inst: prev_vram_word[4]   prev_vram_word_4_ cycloneii_lcell_ff 
+Inst: prev_vram_word[5]   prev_vram_word_5_ cycloneii_lcell_ff 
+Inst: prev_vram_word[6]   prev_vram_word_6_ cycloneii_lcell_ff 
+Inst: prev_vram_word[7]   prev_vram_word_7_ cycloneii_lcell_ff 
+Inst: curr_vram_word[1]   curr_vram_word_1_ cycloneii_lcell_ff 
+Inst: curr_vram_word[3]   curr_vram_word_3_ cycloneii_lcell_ff 
+Inst: curr_vram_word[5]   curr_vram_word_5_ cycloneii_lcell_ff 
+Inst: curr_vram_word[7]   curr_vram_word_7_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_0[1]   pxcache_store_buf_0_1_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_1[0]   pxcache_store_buf_1_0_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_1[1]   pxcache_store_buf_1_1_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_2[0]   pxcache_store_buf_2_0_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_2[1]   pxcache_store_buf_2_1_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_3[0]   pxcache_store_buf_3_0_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_3[1]   pxcache_store_buf_3_1_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_4[0]   pxcache_store_buf_4_0_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_4[1]   pxcache_store_buf_4_1_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_5[0]   pxcache_store_buf_5_0_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_5[1]   pxcache_store_buf_5_1_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_6[0]   pxcache_store_buf_6_0_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_6[1]   pxcache_store_buf_6_1_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_7[0]   pxcache_store_buf_7_0_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_7[1]   pxcache_store_buf_7_1_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_8[0]   pxcache_store_buf_8_0_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_8[1]   pxcache_store_buf_8_1_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_9[0]   pxcache_store_buf_9_0_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_9[1]   pxcache_store_buf_9_1_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_10[1]   pxcache_store_buf_10_1_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_11[1]   pxcache_store_buf_11_1_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_12[1]   pxcache_store_buf_12_1_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_13[1]   pxcache_store_buf_13_1_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_14[1]   pxcache_store_buf_14_1_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_15[1]   pxcache_store_buf_15_1_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_15[0]   pxcache_store_buf_15_0_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_14[0]   pxcache_store_buf_14_0_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_13[0]   pxcache_store_buf_13_0_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_12[0]   pxcache_store_buf_12_0_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_11[0]   pxcache_store_buf_11_0_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_10[0]   pxcache_store_buf_10_0_ cycloneii_lcell_ff 
+Inst: pxcache_store_buf_0[0]   pxcache_store_buf_0_0_ cycloneii_lcell_ff 
+Inst: curr_vram_word[6]   curr_vram_word_6_ cycloneii_lcell_ff 
+Inst: curr_vram_word[4]   curr_vram_word_4_ cycloneii_lcell_ff 
+Inst: curr_vram_word[2]   curr_vram_word_2_ cycloneii_lcell_ff 
+Inst: curr_vram_word[0]   curr_vram_word_0_ cycloneii_lcell_ff 
+Inst: retram_state_machine.state_3_0_a4_x[1]   retram_state_machine_state_3_0_a4_x_1_ cycloneii_lcell_comb 
+Inst: vdout_in[15]   vdout_in_15_ cycloneii_io 
+Inst: vdout_in[14]   vdout_in_14_ cycloneii_io 
+Inst: vdout_in[13]   vdout_in_13_ cycloneii_io 
+Inst: vdout_in[12]   vdout_in_12_ cycloneii_io 
+Inst: vdout_in[11]   vdout_in_11_ cycloneii_io 
+Inst: vdout_in[10]   vdout_in_10_ cycloneii_io 
+Inst: vdout_in[9]   vdout_in_9_ cycloneii_io 
+Inst: vdout_in[8]   vdout_in_8_ cycloneii_io 
+Inst: vdout_in[7]   vdout_in_7_ cycloneii_io 
+Inst: vdout_in[6]   vdout_in_6_ cycloneii_io 
+Inst: vdout_in[5]   vdout_in_5_ cycloneii_io 
+Inst: vdout_in[4]   vdout_in_4_ cycloneii_io 
+Inst: vdout_in[3]   vdout_in_3_ cycloneii_io 
+Inst: vdout_in[2]   vdout_in_2_ cycloneii_io 
+Inst: vdout_in[1]   vdout_in_1_ cycloneii_io 
+Inst: vdout_in[0]   vdout_in_0_ cycloneii_io 
+Inst: dbb_bus_in[15]   dbb_bus_in_15_ cycloneii_io 
+Inst: dbb_bus_in[14]   dbb_bus_in_14_ cycloneii_io 
+Inst: dbb_bus_in[13]   dbb_bus_in_13_ cycloneii_io 
+Inst: dbb_bus_in[12]   dbb_bus_in_12_ cycloneii_io 
+Inst: dbb_bus_in[11]   dbb_bus_in_11_ cycloneii_io 
+Inst: dbb_bus_in[10]   dbb_bus_in_10_ cycloneii_io 
+Inst: dbb_bus_in[9]   dbb_bus_in_9_ cycloneii_io 
+Inst: dbb_bus_in[8]   dbb_bus_in_8_ cycloneii_io 
+Inst: dbb_bus_in[7]   dbb_bus_in_7_ cycloneii_io 
+Inst: dbb_bus_in[6]   dbb_bus_in_6_ cycloneii_io 
+Inst: dbb_bus_in[5]   dbb_bus_in_5_ cycloneii_io 
+Inst: dbb_bus_in[4]   dbb_bus_in_4_ cycloneii_io 
+Inst: dbb_bus_in[3]   dbb_bus_in_3_ cycloneii_io 
+Inst: dbb_bus_in[2]   dbb_bus_in_2_ cycloneii_io 
+Inst: dbb_bus_in[1]   dbb_bus_in_1_ cycloneii_io 
+Inst: dbb_bus_in[0]   dbb_bus_in_0_ cycloneii_io 
+Inst: vaddr_out[7]   vaddr_out_7_ cycloneii_io 
+Inst: vaddr_out[6]   vaddr_out_6_ cycloneii_io 
+Inst: vaddr_out[5]   vaddr_out_5_ cycloneii_io 
+Inst: vaddr_out[4]   vaddr_out_4_ cycloneii_io 
+Inst: vaddr_out[3]   vaddr_out_3_ cycloneii_io 
+Inst: vaddr_out[2]   vaddr_out_2_ cycloneii_io 
+Inst: vaddr_out[1]   vaddr_out_1_ cycloneii_io 
+Inst: vaddr_out[0]   vaddr_out_0_ cycloneii_io 
+Inst: vdin_out[15]   vdin_out_15_ cycloneii_io 
+Inst: vdin_out[14]   vdin_out_14_ cycloneii_io 
+Inst: vdin_out[13]   vdin_out_13_ cycloneii_io 
+Inst: vdin_out[12]   vdin_out_12_ cycloneii_io 
+Inst: vdin_out[11]   vdin_out_11_ cycloneii_io 
+Inst: vdin_out[10]   vdin_out_10_ cycloneii_io 
+Inst: vdin_out[9]   vdin_out_9_ cycloneii_io 
+Inst: vdin_out[8]   vdin_out_8_ cycloneii_io 
+Inst: vdin_out[7]   vdin_out_7_ cycloneii_io 
+Inst: vdin_out[6]   vdin_out_6_ cycloneii_io 
+Inst: vdin_out[5]   vdin_out_5_ cycloneii_io 
+Inst: vdin_out[4]   vdin_out_4_ cycloneii_io 
+Inst: vdin_out[3]   vdin_out_3_ cycloneii_io 
+Inst: vdin_out[2]   vdin_out_2_ cycloneii_io 
+Inst: vdin_out[1]   vdin_out_1_ cycloneii_io 
+Inst: vdin_out[0]   vdin_out_0_ cycloneii_io 
+Inst: state[0:3]   state_0_3_ ghost 
+Inst: ram_state_machine.fsm_clocked_process\.un6_reset_0_i_i   ram_state_machine_fsm_clocked_process_un6_reset_0_i_i_cZ inv 
+Net:  px_cache.store_ram_15[0]   px_cache_store_ram_15[0] 
+Net:  px_cache.store_ram_15[1]   px_cache_store_ram_15[1] 
+Net:  px_cache.store_ram_14[0]   px_cache_store_ram_14[0] 
+Net:  px_cache.store_ram_14[1]   px_cache_store_ram_14[1] 
+Net:  px_cache.store_ram_13[0]   px_cache_store_ram_13[0] 
+Net:  px_cache.store_ram_13[1]   px_cache_store_ram_13[1] 
+Net:  px_cache.store_ram_12[0]   px_cache_store_ram_12[0] 
+Net:  px_cache.store_ram_12[1]   px_cache_store_ram_12[1] 
+Net:  px_cache.store_ram_11[0]   px_cache_store_ram_11[0] 
+Net:  px_cache.store_ram_11[1]   px_cache_store_ram_11[1] 
+Net:  px_cache.store_ram_10[0]   px_cache_store_ram_10[0] 
+Net:  px_cache.store_ram_10[1]   px_cache_store_ram_10[1] 
+Net:  px_cache.store_ram_9[0]   px_cache_store_ram_9[0] 
+Net:  px_cache.store_ram_9[1]   px_cache_store_ram_9[1] 
+Net:  px_cache.store_ram_8[0]   px_cache_store_ram_8[0] 
+Net:  px_cache.store_ram_8[1]   px_cache_store_ram_8[1] 
+Net:  px_cache.store_ram_7[0]   px_cache_store_ram_7[0] 
+Net:  px_cache.store_ram_7[1]   px_cache_store_ram_7[1] 
+Net:  px_cache.store_ram_6[0]   px_cache_store_ram_6[0] 
+Net:  px_cache.store_ram_6[1]   px_cache_store_ram_6[1] 
+Net:  px_cache.store_ram_5[0]   px_cache_store_ram_5[0] 
+Net:  px_cache.store_ram_5[1]   px_cache_store_ram_5[1] 
+Net:  px_cache.store_ram_4[0]   px_cache_store_ram_4[0] 
+Net:  px_cache.store_ram_4[1]   px_cache_store_ram_4[1] 
+Net:  px_cache.store_ram_3[0]   px_cache_store_ram_3[0] 
+Net:  px_cache.store_ram_3[1]   px_cache_store_ram_3[1] 
+Net:  px_cache.store_ram_2[0]   px_cache_store_ram_2[0] 
+Net:  px_cache.store_ram_2[1]   px_cache_store_ram_2[1] 
+Net:  px_cache.store_ram_1[0]   px_cache_store_ram_1[0] 
+Net:  px_cache.store_ram_1[1]   px_cache_store_ram_1[1] 
+Net:  px_cache.store_ram_0[0]   px_cache_store_ram_0[0] 
+Net:  px_cache.store_ram_0[1]   px_cache_store_ram_0[1] 
+Net:  ram_state_machine.prev_state_0_x[0]   ram_state_machine_prev_state_0_x[0] 
+Net:  px_cache.state_srsts_0_0__g0_x   px_cache_state_srsts_0_0__g0_x 
+Net:  px_cache.curr_vram_word_2_0_0__g0_i_0_x   px_cache_curr_vram_word_2_0_0__g0_i_0_x 
+Net:  ram_state_machine.state_3_0_a4_x[1]   ram_state_machine_state_3_0_a4_x[1] 
+Net:  ram_state_machine.data_del[0]   ram_state_machine_data_del[0] 
+Net:  ram_state_machine.data_del[1]   ram_state_machine_data_del[1] 
+Net:  ram_state_machine.data_del[2]   ram_state_machine_data_del[2] 
+Net:  ram_state_machine.data_del[3]   ram_state_machine_data_del[3] 
+Net:  ram_state_machine.data_del[4]   ram_state_machine_data_del[4] 
+Net:  ram_state_machine.data_del[5]   ram_state_machine_data_del[5] 
+Net:  ram_state_machine.data_del[6]   ram_state_machine_data_del[6] 
+Net:  ram_state_machine.data_del[7]   ram_state_machine_data_del[7] 
+Net:  ram_state_machine.data_del[8]   ram_state_machine_data_del[8] 
+Net:  ram_state_machine.data_del[9]   ram_state_machine_data_del[9] 
+Net:  ram_state_machine.data_del[10]   ram_state_machine_data_del[10] 
+Net:  ram_state_machine.data_del[11]   ram_state_machine_data_del[11] 
+Net:  ram_state_machine.data_del[12]   ram_state_machine_data_del[12] 
+Net:  ram_state_machine.data_del[13]   ram_state_machine_data_del[13] 
+Net:  ram_state_machine.data_del[14]   ram_state_machine_data_del[14] 
+Net:  ram_state_machine.data_del[15]   ram_state_machine_data_del[15] 
+Net:  ram_state_machine.state_s0_0_a3   ram_state_machine_state_s0_0_a3 
+Net:  ram_state_machine.addr_del[0]   ram_state_machine_addr_del[0] 
+Net:  ram_state_machine.addr_del[1]   ram_state_machine_addr_del[1] 
+Net:  ram_state_machine.addr_del[2]   ram_state_machine_addr_del[2] 
+Net:  ram_state_machine.addr_del[3]   ram_state_machine_addr_del[3] 
+Net:  ram_state_machine.addr_del[4]   ram_state_machine_addr_del[4] 
+Net:  ram_state_machine.addr_del[5]   ram_state_machine_addr_del[5] 
+Net:  ram_state_machine.addr_del[6]   ram_state_machine_addr_del[6] 
+Net:  ram_state_machine.addr_del[7]   ram_state_machine_addr_del[7] 
+Net:  ram_state_machine.rcb_finish   ram_state_machine_rcb_finish 
+Net:  ram_state_machine.pxcache_pw_i_1   ram_state_machine_pxcache_pw_i_1 
+Net:  ram_state_machine.un1_next_state_i_o4[2]   ram_state_machine_un1_next_state_i_o4[2] 
+Net:  ram_state_machine.next_state_i_a4[0]   ram_state_machine_next_state_i_a4[0] 
+Net:  px_cache.state_transition\.un4_curr_vram_word_NE   px_cache_state_transition_un4_curr_vram_word_NE 
+Net:  ram_state_machine.pxcache_store_buf_0_en_0_a4[0]   ram_state_machine_pxcache_store_buf_0_en_0_a4[0] 
+Net:  ram_state_machine.pxcache_wen_all_i   ram_state_machine_pxcache_wen_all_i 
+Net:  ram_state_machine.pxcache_pw_i_m3   ram_state_machine_pxcache_pw_i_m3 
+Net:  ram_state_machine.pxcache_pw_i_1_1   ram_state_machine_pxcache_pw_i_1_1 
+Net:  ram_state_machine.state_ns_0_a4_0[1]   ram_state_machine_state_ns_0_a4_0[1] 
+Net:  ram_state_machine.pxcache_pixnum_0[3]   ram_state_machine_pxcache_pixnum_0[3] 
+Net:  ram_state_machine.pxcache_pixnum_x[0]   ram_state_machine_pxcache_pixnum_x[0] 
+Net:  ram_state_machine.pxcache_pixnum_0[2]   ram_state_machine_pxcache_pixnum_0[2] 
+Net:  px_cache.pxcache_store_buf_0_1_0__g0_i_0   px_cache_pxcache_store_buf_0_1_0__g0_i_0 
+Net:  px_cache.pxcache_store_buf_0_1_0__g0_i_0_rep1   px_cache_pxcache_store_buf_0_1_0__g0_i_0_rep1 
+Net:  ram_state_machine.fsm_clocked_process\.un6_reset_0_i   ram_state_machine_fsm_clocked_process_un6_reset_0_i 
+Net:  ram_state_machine.fsm_clocked_process\.un6_reset_0_i_i   ram_state_machine_fsm_clocked_process_un6_reset_0_i_i 
+EndView rcb NoName
+
+BeginView ram_fsm NoName
+Inst: state[1]   state_1_ cycloneii_lcell_ff 
+Inst: state[0]   state_0_ cycloneii_lcell_ff 
+Inst: addr_del[7]   addr_del_7_ cycloneii_lcell_ff 
+Inst: addr_del[6]   addr_del_6_ cycloneii_lcell_ff 
+Inst: addr_del[5]   addr_del_5_ cycloneii_lcell_ff 
+Inst: addr_del[4]   addr_del_4_ cycloneii_lcell_ff 
+Inst: addr_del[3]   addr_del_3_ cycloneii_lcell_ff 
+Inst: addr_del[2]   addr_del_2_ cycloneii_lcell_ff 
+Inst: addr_del[1]   addr_del_1_ cycloneii_lcell_ff 
+Inst: addr_del[0]   addr_del_0_ cycloneii_lcell_ff 
+Inst: data_merged[15]   data_merged_15_ cycloneii_lcell_ff 
+Inst: data_merged[14]   data_merged_14_ cycloneii_lcell_ff 
+Inst: data_merged[13]   data_merged_13_ cycloneii_lcell_ff 
+Inst: data_merged[12]   data_merged_12_ cycloneii_lcell_ff 
+Inst: data_merged[11]   data_merged_11_ cycloneii_lcell_ff 
+Inst: data_merged[10]   data_merged_10_ cycloneii_lcell_ff 
+Inst: data_merged[9]   data_merged_9_ cycloneii_lcell_ff 
+Inst: data_merged[8]   data_merged_8_ cycloneii_lcell_ff 
+Inst: data_merged[7]   data_merged_7_ cycloneii_lcell_ff 
+Inst: data_merged[6]   data_merged_6_ cycloneii_lcell_ff 
+Inst: data_merged[5]   data_merged_5_ cycloneii_lcell_ff 
+Inst: data_merged[4]   data_merged_4_ cycloneii_lcell_ff 
+Inst: data_merged[3]   data_merged_3_ cycloneii_lcell_ff 
+Inst: data_merged[2]   data_merged_2_ cycloneii_lcell_ff 
+Inst: data_merged[1]   data_merged_1_ cycloneii_lcell_ff 
+Inst: data_merged[0]   data_merged_0_ cycloneii_lcell_ff 
+Inst: data_del[15]   data_del_15_ cycloneii_lcell_ff 
+Inst: data_del[14]   data_del_14_ cycloneii_lcell_ff 
+Inst: data_del[13]   data_del_13_ cycloneii_lcell_ff 
+Inst: data_del[12]   data_del_12_ cycloneii_lcell_ff 
+Inst: data_del[11]   data_del_11_ cycloneii_lcell_ff 
+Inst: data_del[10]   data_del_10_ cycloneii_lcell_ff 
+Inst: data_del[9]   data_del_9_ cycloneii_lcell_ff 
+Inst: data_del[8]   data_del_8_ cycloneii_lcell_ff 
+Inst: data_del[7]   data_del_7_ cycloneii_lcell_ff 
+Inst: data_del[6]   data_del_6_ cycloneii_lcell_ff 
+Inst: data_del[5]   data_del_5_ cycloneii_lcell_ff 
+Inst: data_del[4]   data_del_4_ cycloneii_lcell_ff 
+Inst: data_del[3]   data_del_3_ cycloneii_lcell_ff 
+Inst: data_del[2]   data_del_2_ cycloneii_lcell_ff 
+Inst: data_del[1]   data_del_1_ cycloneii_lcell_ff 
+Inst: data_del[0]   data_del_0_ cycloneii_lcell_ff 
+Inst: really_done   really_done_Z cycloneii_lcell_ff 
+Inst: state_ns_i_a4_0[0]   state_ns_i_a4_0_0_ cycloneii_lcell_comb 
+Inst: state_s0_0_a3   state_s0_0_a3_cZ cycloneii_lcell_comb 
+Inst: rcb_finish_3   rcb_finish_3_cZ cycloneii_lcell_comb 
+Inst: rcb_finish_7   rcb_finish_7_cZ cycloneii_lcell_comb 
+Inst: pxcache_store_buf_0_en_0_a4_1[0]   pxcache_store_buf_0_en_0_a4_1_0_ cycloneii_lcell_comb 
+Inst: state_ns_0_a4_0[1]   state_ns_0_a4_0_1_ cycloneii_lcell_comb 
+Inst: pxcache_wen_all_i   pxcache_wen_all_i_cZ cycloneii_lcell_comb 
+Inst: next_state_i_a4[0]   next_state_i_a4_0_ cycloneii_lcell_comb 
+Inst: rcb_finish_21   rcb_finish_21_cZ cycloneii_lcell_comb 
+Inst: rcb_finish_23   rcb_finish_23_cZ cycloneii_lcell_comb 
+Inst: rcb_finish_24   rcb_finish_24_cZ cycloneii_lcell_comb 
+Inst: rcb_finish_25   rcb_finish_25_cZ cycloneii_lcell_comb 
+Inst: rcb_finish_26   rcb_finish_26_cZ cycloneii_lcell_comb 
+Inst: pxcache_store_buf_0_en_0_a4_5[0]   pxcache_store_buf_0_en_0_a4_5_0_ cycloneii_lcell_comb 
+Inst: pxcache_pw_i_s   pxcache_pw_i_s_cZ cycloneii_lcell_comb 
+Inst: rcb_finish_29   rcb_finish_29_cZ cycloneii_lcell_comb 
+Inst: rcb_finish_32   rcb_finish_32_cZ cycloneii_lcell_comb 
+Inst: pxcache_store_buf_0_en_0_a4_4[0]   pxcache_store_buf_0_en_0_a4_4_0_ cycloneii_lcell_comb 
+Inst: rcb_finish_34   rcb_finish_34_cZ cycloneii_lcell_comb 
+Inst: state_RNO[0]   state_RNO_0_ cycloneii_lcell_comb 
+Inst: pxcache_pw_i_m3   pxcache_pw_i_m3_cZ cycloneii_lcell_comb 
+Inst: pxcache_pixnum_0[2]   pxcache_pixnum_0_2_ cycloneii_lcell_comb 
+Inst: pxcache_pixnum_0[3]   pxcache_pixnum_0_3_ cycloneii_lcell_comb 
+Inst: pxcache_pw_i_1   pxcache_pw_i_1_cZ cycloneii_lcell_comb 
+Inst: pxcache_store_buf_0_en_0_a4[0]   pxcache_store_buf_0_en_0_a4_0_ cycloneii_lcell_comb 
+Inst: pxcache_pw_i_1_1   pxcache_pw_i_1_1_cZ cycloneii_lcell_comb 
+Inst: fsm_clocked_process\.un6_reset_0   fsm_clocked_process_un6_reset_0 cycloneii_lcell_comb 
+Inst: un1_next_state_i_o4[2]   un1_next_state_i_o4_2_ cycloneii_lcell_comb 
+Inst: rcb_finish_19   rcb_finish_19_cZ cycloneii_lcell_comb 
+Inst: rcb_finish_28   rcb_finish_28_cZ cycloneii_lcell_comb 
+Inst: rcb_finish   rcb_finish_cZ cycloneii_lcell_comb 
+Inst: state_3_0_a4_x[1]   state_3_0_a4_x_1_ cycloneii_lcell_comb 
+Inst: fsm_clocked_process\.un6_reset_0_o4_x   fsm_clocked_process_un6_reset_0_o4_x cycloneii_lcell_comb 
+Inst: pxcache_pixnum_x[0]   pxcache_pixnum_x_0_ cycloneii_lcell_comb 
+Inst: state_RNO[1]   state_RNO_1_ cycloneii_lcell_comb 
+Inst: pxcache_pixnum_0_RNO_0[3]   pxcache_pixnum_0_RNO_0_3_ cycloneii_lcell_comb 
+Inst: pxcache_pixnum_0_RNO_0[2]   pxcache_pixnum_0_RNO_0_2_ cycloneii_lcell_comb 
+Inst: pxcache_pixnum_0_RNO[3]   pxcache_pixnum_0_RNO_3_ cycloneii_lcell_comb 
+Inst: pxcache_pixnum_0_RNO[2]   pxcache_pixnum_0_RNO_2_ cycloneii_lcell_comb 
+Inst: rcb_finish_17_x   rcb_finish_17_x_cZ cycloneii_lcell_comb 
+Inst: pxcache_pw_i_a4_x   pxcache_pw_i_a4_x_cZ cycloneii_lcell_comb 
+Inst: prev_state_0_x[0]   prev_state_0_x_0_ cycloneii_lcell_comb 
+Inst: data_merged_RNO[15]   data_merged_RNO_15_ cycloneii_lcell_comb 
+Inst: data_merged_RNO[14]   data_merged_RNO_14_ cycloneii_lcell_comb 
+Inst: data_merged_RNO[13]   data_merged_RNO_13_ cycloneii_lcell_comb 
+Inst: data_merged_RNO[12]   data_merged_RNO_12_ cycloneii_lcell_comb 
+Inst: data_merged_RNO[11]   data_merged_RNO_11_ cycloneii_lcell_comb 
+Inst: data_merged_RNO[10]   data_merged_RNO_10_ cycloneii_lcell_comb 
+Inst: data_merged_RNO[9]   data_merged_RNO_9_ cycloneii_lcell_comb 
+Inst: data_merged_RNO[8]   data_merged_RNO_8_ cycloneii_lcell_comb 
+Inst: data_merged_RNO[7]   data_merged_RNO_7_ cycloneii_lcell_comb 
+Inst: data_merged_RNO[6]   data_merged_RNO_6_ cycloneii_lcell_comb 
+Inst: data_merged_RNO[5]   data_merged_RNO_5_ cycloneii_lcell_comb 
+Inst: data_merged_RNO[4]   data_merged_RNO_4_ cycloneii_lcell_comb 
+Inst: data_merged_RNO[3]   data_merged_RNO_3_ cycloneii_lcell_comb 
+Inst: data_merged_RNO[2]   data_merged_RNO_2_ cycloneii_lcell_comb 
+Inst: data_merged_RNO[1]   data_merged_RNO_1_ cycloneii_lcell_comb 
+Inst: data_merged_RNO[0]   data_merged_RNO_0_ cycloneii_lcell_comb 
+Inst: clk_c_i   clk_c_i_cZ inv 
+Inst: state[0:3]   state_0_3_ ghost 
+EndView ram_fsm NoName
+
+BeginView pix_word_cache NoName
+Inst: store_ram_15[1]   store_ram_15_1_ cycloneii_lcell_ff 
+Inst: store_ram_15[0]   store_ram_15_0_ cycloneii_lcell_ff 
+Inst: store_ram_14[1]   store_ram_14_1_ cycloneii_lcell_ff 
+Inst: store_ram_14[0]   store_ram_14_0_ cycloneii_lcell_ff 
+Inst: store_ram_13[1]   store_ram_13_1_ cycloneii_lcell_ff 
+Inst: store_ram_13[0]   store_ram_13_0_ cycloneii_lcell_ff 
+Inst: store_ram_12[1]   store_ram_12_1_ cycloneii_lcell_ff 
+Inst: store_ram_12[0]   store_ram_12_0_ cycloneii_lcell_ff 
+Inst: store_ram_11[1]   store_ram_11_1_ cycloneii_lcell_ff 
+Inst: store_ram_11[0]   store_ram_11_0_ cycloneii_lcell_ff 
+Inst: store_ram_10[1]   store_ram_10_1_ cycloneii_lcell_ff 
+Inst: store_ram_10[0]   store_ram_10_0_ cycloneii_lcell_ff 
+Inst: store_ram_9[1]   store_ram_9_1_ cycloneii_lcell_ff 
+Inst: store_ram_9[0]   store_ram_9_0_ cycloneii_lcell_ff 
+Inst: store_ram_8[1]   store_ram_8_1_ cycloneii_lcell_ff 
+Inst: store_ram_8[0]   store_ram_8_0_ cycloneii_lcell_ff 
+Inst: store_ram_7[1]   store_ram_7_1_ cycloneii_lcell_ff 
+Inst: store_ram_7[0]   store_ram_7_0_ cycloneii_lcell_ff 
+Inst: store_ram_6[1]   store_ram_6_1_ cycloneii_lcell_ff 
+Inst: store_ram_6[0]   store_ram_6_0_ cycloneii_lcell_ff 
+Inst: store_ram_5[1]   store_ram_5_1_ cycloneii_lcell_ff 
+Inst: store_ram_5[0]   store_ram_5_0_ cycloneii_lcell_ff 
+Inst: store_ram_4[1]   store_ram_4_1_ cycloneii_lcell_ff 
+Inst: store_ram_4[0]   store_ram_4_0_ cycloneii_lcell_ff 
+Inst: store_ram_3[1]   store_ram_3_1_ cycloneii_lcell_ff 
+Inst: store_ram_3[0]   store_ram_3_0_ cycloneii_lcell_ff 
+Inst: store_ram_2[1]   store_ram_2_1_ cycloneii_lcell_ff 
+Inst: store_ram_2[0]   store_ram_2_0_ cycloneii_lcell_ff 
+Inst: store_ram_1[1]   store_ram_1_1_ cycloneii_lcell_ff 
+Inst: store_ram_1[0]   store_ram_1_0_ cycloneii_lcell_ff 
+Inst: store_ram_0[1]   store_ram_0_1_ cycloneii_lcell_ff 
+Inst: store_ram_0[0]   store_ram_0_0_ cycloneii_lcell_ff 
+Inst: un1_pixnum_12_2_i_o2   un1_pixnum_12_2_i_o2_cZ cycloneii_lcell_comb 
+Inst: store_ram_0_en_24_0_a2_0   store_ram_0_en_24_0_a2_0_cZ cycloneii_lcell_comb 
+Inst: store_ram_8_en_16_0_a2_0   store_ram_8_en_16_0_a2_0_cZ cycloneii_lcell_comb 
+Inst: un1_pixnum_5_2_0_a2   un1_pixnum_5_2_0_a2_cZ cycloneii_lcell_comb 
+Inst: dout1_10_i_m2_a[0]   dout1_10_i_m2_a_0_ cycloneii_lcell_comb 
+Inst: dout1_10_i_m2[0]   dout1_10_i_m2_0_ cycloneii_lcell_comb 
+Inst: dout1_13_a[0]   dout1_13_a_0_ cycloneii_lcell_comb 
+Inst: dout1_13[0]   dout1_13_0_ cycloneii_lcell_comb 
+Inst: dout1_3_a[0]   dout1_3_a_0_ cycloneii_lcell_comb 
+Inst: dout1_3[0]   dout1_3_0_ cycloneii_lcell_comb 
+Inst: dout1_3_a[1]   dout1_3_a_1_ cycloneii_lcell_comb 
+Inst: dout1_3[1]   dout1_3_1_ cycloneii_lcell_comb 
+Inst: dout1_13_a[1]   dout1_13_a_1_ cycloneii_lcell_comb 
+Inst: dout1_13[1]   dout1_13_1_ cycloneii_lcell_comb 
+Inst: dout1_6_i_m2_a[0]   dout1_6_i_m2_a_0_ cycloneii_lcell_comb 
+Inst: dout1_6_i_m2[0]   dout1_6_i_m2_0_ cycloneii_lcell_comb 
+Inst: dout1_6_i_m2_a[1]   dout1_6_i_m2_a_1_ cycloneii_lcell_comb 
+Inst: dout1_6_i_m2[1]   dout1_6_i_m2_1_ cycloneii_lcell_comb 
+Inst: dout1_10_i_m2_a[1]   dout1_10_i_m2_a_1_ cycloneii_lcell_comb 
+Inst: dout1_10_i_m2[1]   dout1_10_i_m2_1_ cycloneii_lcell_comb 
+Inst: state_transition\.un4_curr_vram_word_NE_0   state_transition_un4_curr_vram_word_NE_0 cycloneii_lcell_comb 
+Inst: state_transition\.un4_curr_vram_word_NE_1   state_transition_un4_curr_vram_word_NE_1 cycloneii_lcell_comb 
+Inst: state_transition\.un4_curr_vram_word_NE_2   state_transition_un4_curr_vram_word_NE_2 cycloneii_lcell_comb 
+Inst: state_transition\.un4_curr_vram_word_NE_3   state_transition_un4_curr_vram_word_NE_3 cycloneii_lcell_comb 
+Inst: store_ram_1_0_0_a4_1_4   store_ram_1_0_0_a4_1_4_cZ cycloneii_lcell_comb 
+Inst: store_ram_3_0_0_a4_1_4   store_ram_3_0_0_a4_1_4_cZ cycloneii_lcell_comb 
+Inst: store_ram_14_0_0_a4_1_4   store_ram_14_0_0_a4_1_4_cZ cycloneii_lcell_comb 
+Inst: store_ram_11_0_0_a4_1_4   store_ram_11_0_0_a4_1_4_cZ cycloneii_lcell_comb 
+Inst: store_ram_9_0_0_a4_1_4   store_ram_9_0_0_a4_1_4_cZ cycloneii_lcell_comb 
+Inst: store_ram_7_0_0_a4_1_4   store_ram_7_0_0_a4_1_4_cZ cycloneii_lcell_comb 
+Inst: store_ram_6_0_0_a4_1_4   store_ram_6_0_0_a4_1_4_cZ cycloneii_lcell_comb 
+Inst: store_ram_5_0_0_a4_1_4   store_ram_5_0_0_a4_1_4_cZ cycloneii_lcell_comb 
+Inst: dout1_7_i_m2[0]   dout1_7_i_m2_0_ cycloneii_lcell_comb 
+Inst: dout1_7_i_m2[1]   dout1_7_i_m2_1_ cycloneii_lcell_comb 
+Inst: store_ram_2_0_0_a4_1_4   store_ram_2_0_0_a4_1_4_cZ cycloneii_lcell_comb 
+Inst: store_ram_10_0_0_a4_1_4   store_ram_10_0_0_a4_1_4_cZ cycloneii_lcell_comb 
+Inst: store_ram_8_0_0_a4_1_4   store_ram_8_0_0_a4_1_4_cZ cycloneii_lcell_comb 
+Inst: store_ram_0_0_0_a4_1_4   store_ram_0_0_0_a4_1_4_cZ cycloneii_lcell_comb 
+Inst: store_ram_4_0_387_a2_5   store_ram_4_0_387_a2_5_cZ cycloneii_lcell_comb 
+Inst: store_ram_12_0_819_a2_5   store_ram_12_0_819_a2_5_cZ cycloneii_lcell_comb 
+Inst: state_srsts_0_0__g1_0   state_srsts_0_0__g1_0_cZ cycloneii_lcell_comb 
+Inst: store_ram_12_0_819_o2_0   store_ram_12_0_819_o2_0_cZ cycloneii_lcell_comb 
+Inst: store_ram_12_0_0_795_o2_0   store_ram_12_0_0_795_o2_0_cZ cycloneii_lcell_comb 
+Inst: dout1_10_i_m2_RNI6LI11[0]   dout1_10_i_m2_RNI6LI11_0_ cycloneii_lcell_comb 
+Inst: dout1_3_RNIARFB1[0]   dout1_3_RNIARFB1_0_ cycloneii_lcell_comb 
+Inst: dout1_3_RNIDUFB1[1]   dout1_3_RNIDUFB1_1_ cycloneii_lcell_comb 
+Inst: dout1_10_i_m2_RNI9OI11[1]   dout1_10_i_m2_RNI9OI11_1_ cycloneii_lcell_comb 
+Inst: state_transition\.un4_curr_vram_word_NE   state_transition_un4_curr_vram_word_NE cycloneii_lcell_comb 
+Inst: store_ram_2_RNO[0]   store_ram_2_RNO_0_ cycloneii_lcell_comb 
+Inst: store_ram_2_RNO[1]   store_ram_2_RNO_1_ cycloneii_lcell_comb 
+Inst: store_ram_3_RNO[0]   store_ram_3_RNO_0_ cycloneii_lcell_comb 
+Inst: store_ram_3_RNO[1]   store_ram_3_RNO_1_ cycloneii_lcell_comb 
+Inst: store_ram_6_RNO[0]   store_ram_6_RNO_0_ cycloneii_lcell_comb 
+Inst: store_ram_6_RNO[1]   store_ram_6_RNO_1_ cycloneii_lcell_comb 
+Inst: store_ram_7_RNO[0]   store_ram_7_RNO_0_ cycloneii_lcell_comb 
+Inst: store_ram_7_RNO[1]   store_ram_7_RNO_1_ cycloneii_lcell_comb 
+Inst: store_ram_10_RNO[0]   store_ram_10_RNO_0_ cycloneii_lcell_comb 
+Inst: store_ram_10_RNO[1]   store_ram_10_RNO_1_ cycloneii_lcell_comb 
+Inst: store_ram_11_RNO[0]   store_ram_11_RNO_0_ cycloneii_lcell_comb 
+Inst: store_ram_11_RNO[1]   store_ram_11_RNO_1_ cycloneii_lcell_comb 
+Inst: store_ram_14_RNO[0]   store_ram_14_RNO_0_ cycloneii_lcell_comb 
+Inst: store_ram_14_RNO[1]   store_ram_14_RNO_1_ cycloneii_lcell_comb 
+Inst: store_ram_15_RNO[0]   store_ram_15_RNO_0_ cycloneii_lcell_comb 
+Inst: store_ram_15_RNO[1]   store_ram_15_RNO_1_ cycloneii_lcell_comb 
+Inst: store_ram_0_RNO[0]   store_ram_0_RNO_0_ cycloneii_lcell_comb 
+Inst: store_ram_0_RNO[1]   store_ram_0_RNO_1_ cycloneii_lcell_comb 
+Inst: store_ram_1_RNO[0]   store_ram_1_RNO_0_ cycloneii_lcell_comb 
+Inst: store_ram_1_RNO[1]   store_ram_1_RNO_1_ cycloneii_lcell_comb 
+Inst: store_ram_5_RNO[0]   store_ram_5_RNO_0_ cycloneii_lcell_comb 
+Inst: store_ram_5_RNO[1]   store_ram_5_RNO_1_ cycloneii_lcell_comb 
+Inst: store_ram_8_RNO[0]   store_ram_8_RNO_0_ cycloneii_lcell_comb 
+Inst: store_ram_8_RNO[1]   store_ram_8_RNO_1_ cycloneii_lcell_comb 
+Inst: store_ram_9_RNO[0]   store_ram_9_RNO_0_ cycloneii_lcell_comb 
+Inst: store_ram_9_RNO[1]   store_ram_9_RNO_1_ cycloneii_lcell_comb 
+Inst: store_ram_13_RNO_2[1]   store_ram_13_RNO_2_1_ cycloneii_lcell_comb 
+Inst: state_transition\.un4_curr_vram_word_NE_RNI81TS4   state_transition_un4_curr_vram_word_NE_RNI81TS4 cycloneii_lcell_comb 
+Inst: store_ram_9_en_15_0   store_ram_9_en_15_0_cZ cycloneii_lcell_comb 
+Inst: store_ram_8_en_16_0   store_ram_8_en_16_0_cZ cycloneii_lcell_comb 
+Inst: store_ram_1_en_23_0   store_ram_1_en_23_0_cZ cycloneii_lcell_comb 
+Inst: store_ram_0_en_24_0   store_ram_0_en_24_0_cZ cycloneii_lcell_comb 
+Inst: store_ram_13_RNO_0[0]   store_ram_13_RNO_0_0_ cycloneii_lcell_comb 
+Inst: store_ram_12_RNO[1]   store_ram_12_RNO_1_ cycloneii_lcell_comb 
+Inst: store_ram_12_RNO[0]   store_ram_12_RNO_0_ cycloneii_lcell_comb 
+Inst: store_ram_4_RNO[1]   store_ram_4_RNO_1_ cycloneii_lcell_comb 
+Inst: store_ram_4_RNO[0]   store_ram_4_RNO_0_ cycloneii_lcell_comb 
+Inst: store_ram_13_RNO[0]   store_ram_13_RNO_0_ cycloneii_lcell_comb 
+Inst: store_ram_13_RNO[1]   store_ram_13_RNO_1_ cycloneii_lcell_comb 
+Inst: store_ram_12_0_0_795_a2_6_1_x   store_ram_12_0_0_795_a2_6_1_x_cZ cycloneii_lcell_comb 
+Inst: store_ram_12_0_819_a2_6_1_x   store_ram_12_0_819_a2_6_1_x_cZ cycloneii_lcell_comb 
+Inst: store_ram_2_0_sqmuxa_i_a2_1_x   store_ram_2_0_sqmuxa_i_a2_1_x_cZ cycloneii_lcell_comb 
+Inst: state_srsts_0_0__g0_x   state_srsts_0_0__g0_x_cZ cycloneii_lcell_comb 
+Inst: store_ram_0_en_24_0_o2_x   store_ram_0_en_24_0_o2_x_cZ cycloneii_lcell_comb 
+Inst: store_ram_15_RNO_0[1]   store_ram_15_RNO_0_1_ cycloneii_lcell_comb 
+Inst: store_ram_15_RNO_0[0]   store_ram_15_RNO_0_0_ cycloneii_lcell_comb 
+Inst: store_ram_0_0_164_a4_1_5_x   store_ram_0_0_164_a4_1_5_x_cZ cycloneii_lcell_comb 
+Inst: store_ram_1_0_222_a4_1_5_x   store_ram_1_0_222_a4_1_5_x_cZ cycloneii_lcell_comb 
+Inst: store_ram_9_0_0_a4_1_5_x   store_ram_9_0_0_a4_1_5_x_cZ cycloneii_lcell_comb 
+Inst: store_ram_9_0_660_a4_1_5_x   store_ram_9_0_660_a4_1_5_x_cZ cycloneii_lcell_comb 
+Inst: store_ram_0_0_0_135_a4_x   store_ram_0_0_0_135_a4_x_cZ cycloneii_lcell_comb 
+Inst: store_ram_0_0_164_a4_x   store_ram_0_0_164_a4_x_cZ cycloneii_lcell_comb 
+Inst: store_ram_1_0_0_a4_1_5_x   store_ram_1_0_0_a4_1_5_x_cZ cycloneii_lcell_comb 
+Inst: store_ram_0_0_0_a4_1_5_x   store_ram_0_0_0_a4_1_5_x_cZ cycloneii_lcell_comb 
+Inst: store_ram_0_0_0_a4_0_0_x   store_ram_0_0_0_a4_0_0_x_cZ cycloneii_lcell_comb 
+Inst: store_ram_0_0_164_a4_0_0_0_x   store_ram_0_0_164_a4_0_0_0_x_cZ cycloneii_lcell_comb 
+Inst: curr_vram_word_2_0_0__g0_i_0_x   curr_vram_word_2_0_0__g0_i_0_x_cZ cycloneii_lcell_comb 
+Inst: store_ram_13_RNO_1[1]   store_ram_13_RNO_1_1_ cycloneii_lcell_comb 
+Inst: store_m1_e_0_1_x   store_m1_e_0_1_x_cZ cycloneii_lcell_comb 
+Inst: store_m1_e_0_0_x   store_m1_e_0_0_x_cZ cycloneii_lcell_comb 
+Inst: G_981_x   G_981_x_cZ cycloneii_lcell_comb 
+Inst: store_ram_12_0_0_795_a2_1_x   store_ram_12_0_0_795_a2_1_x_cZ cycloneii_lcell_comb 
+Inst: store_ram_4_0_0_362_a2_1_x   store_ram_4_0_0_362_a2_1_x_cZ cycloneii_lcell_comb 
+Inst: store_ram_13_RNO_0[1]   store_ram_13_RNO_0_1_ cycloneii_lcell_comb 
+Inst: store_ram_13_RNO_1[0]   store_ram_13_RNO_1_0_ cycloneii_lcell_comb 
+Inst: state_transition\.un4_curr_vram_word_NE_RNI81TS4_0   state_transition_un4_curr_vram_word_NE_RNI81TS4_0 cycloneii_lcell_comb 
+EndView pix_word_cache NoName

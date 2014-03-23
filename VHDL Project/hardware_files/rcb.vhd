@@ -1,3 +1,4 @@
+
 ------------------------------main entity---------------
 LIBRARY ieee;
 USE IEEE.std_logic_1164.ALL;
@@ -111,7 +112,7 @@ BEGIN
 
 ---------------------state transition matrix----------------------- 
 
-    state_transition: PROCESS(state,dbb_bus, curr_vram_word,next_state, vram_done,idle_counter,
+    state_transition: PROCESS(state,dbb_bus, curr_vram_word,next_state,idle_counter,
                                  prev_state,prev_vram_word,reset,pxcache_is_same,vram_really_done) 
     --idle counter variable declared in package
     VARIABLE prevState: std_logic_vector(1 DOWNTO 0);  
@@ -156,11 +157,11 @@ BEGIN
                         reset_idle_count <= '1';   --disable
                         next_state <= s_draw; --report "Received Start cmd and draw" severity note;
                     
-                    WHEN "11" => --ready and clear
+                    --WHEN "11" => --ready and clear <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< This never happens remove me
                        -- dbb_delaycmd <= '1';
 
-                        reset_idle_count <= '1';   --disable
-                        next_state <= s_idle;
+                      --  reset_idle_count <= '1';   --disable
+                        --next_state <= s_idle;
                     
                     WHEN others => --Idle
                        -- dbb_delaycmd <= '1';
@@ -228,7 +229,7 @@ BEGIN
                         next_state <= s_flush;            --ENABLE FLUSH <<<<<
                         --next_state <= s_waitram;
 
-                    WHEN others => next_state <= s_error; --this warning should be ignored, modelsim will not build without this
+                    WHEN others => next_state <= s_error; --this warning should be ignored, modelsim will not build without this <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<check I really need this
                     assert false report "ERROR in rcb, when concatDraw " severity failure;
 
                 END CASE;
@@ -241,22 +242,22 @@ BEGIN
             reset_idle_count <= '1';   --disable
             change_curr_word <='1';
                CASE prev_state IS
-                    WHEN s_idle => prevState := "00";
+                    WHEN s_idle => prevState := "00";                         -----------------------------<<<<<<<<<<<<<<<<<< use 1 bit TODO
                     WHEN s_draw => prevState := "01";
                     WHEN s_error => prevState := "11"; --to remove synth warnings
                     WHEN s_flush => prevState := "11";  --to remove synth warnings
                     --WHEN others => prevState := "11"; --not used
                 END CASE;
 
-                IF vram_done = '0' AND prev_state = s_flush THEN
+                --IF vram_done = '0' AND prev_state = s_flush THEN -----------------------------------------------------<<<<<<<<<<<<<<<<<<<<<<<<< never happens
                     
-                    next_state <= s_flush; --loop here till done <<<< not actuaLLY USED
-                ELSE
+                  --  next_state <= s_flush; --loop here till done <<<< not actuaLLY USED
+                --ELSE
                     concatFlush := prevState & dbb_bus.rcb_cmd(1 DOWNTO 0); --|inrange|pxopin|
                     
-                    --assert false report "oord raw " severity failure;
+                    --assert false report "oord draw " severity failure;
                     CASE concatFlush IS
-                        WHEN "0000" | "0001" | "0010" | "0011" | "0100" => --its an idle flush or out of range move (last pattern)
+                        WHEN "0000" | "0001" | "0010" | "0011" | "0100" => --its an idle flush or out of range move (last pattern) ------------------<<<<<<<<<<<<<<check all these conditions are necessary
 
                             pxcache_wen_all <= '1';  --pseudo reset cache <<<<<
                             ram_start <='1';            --ENABLE RAM!! <<<<
@@ -272,13 +273,13 @@ BEGIN
 
                             next_state <= s_idle;        --and go back to IDLE
                           
-                        WHEN "1001" | "1010" | "1011" => --its a clear of some colour 
-                            next_state <= s_idle;
+                        --WHEN "1001" | "1010" | "1011" => --its a clear of some colour  -----------------------------<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< never happens
+                          --  next_state <= s_idle;
 
                         WHEN others => next_state <= s_error;    
-                        assert false report "ERROR in rcb, state_transition - when s_flush " severity failure;     
+                        assert false report "ERROR in rcb, state_transition - when s_flush " severity failure;      ------------------<<<<<<<<<<<<<<<<never happens
                     END CASE;
-                END IF;
+                --END IF;
 
             WHEN s_error => 
 
@@ -364,7 +365,7 @@ BEGIN
             END IF;
 
             -----current and previous word addresses----
-            IF (change_curr_word='1' AND reset ='0') THEN 
+            IF (change_curr_word='1' AND reset ='0') THEN ---<<<<<<<<<<<<<<<Condition missed in testing<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
                 prev_vram_word <= curr_vram_word;
                 curr_vram_word <= getRamWord(prev_dbb_bus.X, prev_dbb_bus.Y); 
             END IF;

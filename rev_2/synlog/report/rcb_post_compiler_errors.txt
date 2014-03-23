@@ -1,0 +1,5 @@
+@E: CD204 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":265:16:265:19|Expecting sequential statement
+@E: CD632 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":402:34:402:37|duplicate entity name ram_fsm
+@E: CD632 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":426:32:426:35|duplicate entity name pix_word_cache
+@E|Parse errors encountered - exiting
+
