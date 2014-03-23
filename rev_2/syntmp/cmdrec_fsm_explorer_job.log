@@ -1,0 +1,15 @@
+C:\synopsys\fpga_G201209SP1\bin64\m_altera.exe  -prodtype synplify_pro -encrypt  -pro  -rundir  H:\Desktop\GitHub\VHDL\rev_2  -part EP2C5QC208-6   -maxfan 30 -timequest -verification_mode 0   -update_models_cp   -fixgatedclocks 1 -fixgeneratedclocks 1 -syn_altera_model on   -reporting_ctd 1  -RWCheckOnRam 1     -summaryfile H:\Desktop\GitHub\VHDL\rev_2\synlog\report\proj_1_fsm_explorer_job.xml -top_level_module  rcb  -map -vqm41  -ovqm  H:\Desktop\GitHub\VHDL\rev_2\proj_1.vqm  -autoconstraint  -freq 1.000  H:\Desktop\GitHub\VHDL\rev_2\proj_1.srs  -fsm_explorer  H:\Desktop\GitHub\VHDL\rev_2\proj_1_fsm.sdc  -devicelib  C:\synopsys\fpga_G201209SP1\lib\altera\altera.v  -devicelib  C:\synopsys\fpga_G201209SP1\lib\altera\quartus_II121\cycloneii.v  -devicelib  C:\synopsys\fpga_G201209SP1\lib\altera\quartus_II121\altera_mf.v  -devicelib  C:\synopsys\fpga_G201209SP1\lib\altera\quartus_II121\altera_lpm.v  -devicelib  C:\synopsys\fpga_G201209SP1\lib\altera\quartus_II121\altera_primitives.v  -ologparam  H:\Desktop\GitHub\VHDL\rev_2\syntmp\proj_1.plg  -osyn  H:\Desktop\GitHub\VHDL\rev_2\proj_1.srm  -prjdir  H:\Desktop\GitHub\VHDL\  -prjname  "rcb synth"  -log  H:\Desktop\GitHub\VHDL\rev_2\proj_1.srr 
+rc:0 success:1
+H:\Desktop\GitHub\VHDL\rev_2\proj_1.vqm|o|1395597615|137537
+H:\Desktop\GitHub\VHDL\rev_2\proj_1.srs|i|1395597669|15406
+H:\Desktop\GitHub\VHDL\rev_2\proj_1_fsm.sdc|o|1395597713|271
+C:\synopsys\fpga_G201209SP1\lib\altera\altera.v|i|1353965436|799
+C:\synopsys\fpga_G201209SP1\lib\altera\quartus_II121\cycloneii.v|i|1353965548|23239
+C:\synopsys\fpga_G201209SP1\lib\altera\quartus_II121\altera_mf.v|i|1353965548|208276
+C:\synopsys\fpga_G201209SP1\lib\altera\quartus_II121\altera_lpm.v|i|1353965546|14912
+C:\synopsys\fpga_G201209SP1\lib\altera\quartus_II121\altera_primitives.v|i|1353965548|8315
+H:\Desktop\GitHub\VHDL\rev_2\syntmp\proj_1.plg|o|1395597713|26
+H:\Desktop\GitHub\VHDL\rev_2\proj_1.srm|o|1395597614|59229
+H:\Desktop\GitHub\VHDL\rev_2\proj_1.srr|o|1395597713|4705
+C:\synopsys\fpga_G201209SP1\bin64\m_altera.exe|i|1353965396|16430080
+C:\synopsys\fpga_G201209SP1\bin\m_altera.exe|i|1353965384|13448704

@@ -1,0 +1,61 @@
+#### START OF AREA REPORT #####[
+
+Part:			EP2C5QC208-6 (Altera)
+
+---------------------------------------------------------------------------------------------
+########   Utilization report for  Top level view:   ram_state_machine.state_0_3cc   ########
+=============================================================================================
+
+SEQUENTIAL ATOMS
+****************
+
+Name          Total elements     Utilization     Notes
+------------------------------------------------------
+REGISTERS     2                  100 %                
+======================================================
+Total SEQUENTIAL ATOMS in the block ram_state_machine.state_0_3cc:	2 (28.57 % Utilization)
+
+
+COMBINATIONAL ATOMS
+*******************
+
+Name                Total elements     Utilization     Notes
+------------------------------------------------------------
+ATOMS               4                  100 %                
+ARITHMETIC MODE     0                  0.0 %                
+============================================================
+Total COMBINATIONAL ATOMS in the block ram_state_machine.state_0_3cc:	4 (57.14 % Utilization)
+
+
+RAMS
+****
+
+Name          Total elements     Number of bits     Utilization     Notes
+-------------------------------------------------------------------------
+SYNC RAMS     0                  0                  0.0 %                
+=========================================================================
+Total RAMS in the block ram_state_machine.state_0_3cc:	0 (0.00 % Utilization)
+
+
+DSPs
+****
+
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+MACs     0                  0.0 %                
+=================================================
+Total DSPs in the block ram_state_machine.state_0_3cc:	0 (0.00 % Utilization)
+
+
+Black Boxes
+***********
+
+Name            Total elements     Utilization     Notes
+--------------------------------------------------------
+BLACK BOXES     0                  0.0 %                
+========================================================
+Total Black Boxes in the block ram_state_machine.state_0_3cc:	0 (0.00 % Utilization)
+
+
+##### END OF AREA REPORT #####]
+

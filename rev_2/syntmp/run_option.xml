@@ -3,8 +3,6 @@
   Synopsys, Inc.
   Version G-2012.09-SP1 
   Project file H:\Desktop\GitHub\VHDL\rev_2\syntmp\run_option.xml
-  Written on Sun Mar 23 15:33:54 2014
-
 
 --> 
 <project_attribute_list name="Project Settings"> 
@@ -14,7 +12,7 @@
      <option name="pipe" display_name="Pipelining">1</option>
      <option name="retiming" display_name="Retiming">0</option>
      <option name="resource_sharing" display_name="Resource Sharing">1</option>
-     <option name="maxfan" display_name="Fanout Guide">30</option>
+     <option name="maxfan" display_name="Fanout Guide">5</option>
      <option name="disable_io_insertion" display_name="Disable I/O Insertion">0</option>
      <option name="no_sequential_opt" display_name="Disable Sequential Optimizations">0</option>
      <option name="fix_gated_and_generated_clocks" display_name="Clock Conversion">1</option>

@@ -11,9 +11,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     143                100 %                
+REGISTERS     145                100 %                
 ======================================================
-Total SEQUENTIAL ATOMS in the block rcb:	143 (35.48 % Utilization)
+Total SEQUENTIAL ATOMS in the block rcb:	145 (36.99 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -21,10 +21,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               186                100 %                
+ATOMS               173                100 %                
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block rcb:	186 (46.15 % Utilization)
+Total COMBINATIONAL ATOMS in the block rcb:	173 (44.13 % Utilization)
 
 
 RAMS
@@ -66,9 +66,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     32                 22.4 %               
+REGISTERS     32                 22.1 %               
 ======================================================
-Total SEQUENTIAL ATOMS in the block rcb.pix_word_cache:	32 (7.94 % Utilization)
+Total SEQUENTIAL ATOMS in the block rcb.pix_word_cache:	32 (8.16 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -76,10 +76,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               126                67.7 %               
+ATOMS               152                87.9 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block rcb.pix_word_cache:	126 (31.27 % Utilization)
+Total COMBINATIONAL ATOMS in the block rcb.pix_word_cache:	152 (38.78 % Utilization)
 
 
 RAMS
@@ -121,9 +121,9 @@ SEQUENTIAL ATOMS
 
 Name          Total elements     Utilization     Notes
 ------------------------------------------------------
-REGISTERS     43                 30.1 %               
+REGISTERS     43                 29.7 %               
 ======================================================
-Total SEQUENTIAL ATOMS in the block rcb.ram_fsm:	43 (10.67 % Utilization)
+Total SEQUENTIAL ATOMS in the block rcb.ram_fsm:	43 (10.97 % Utilization)
 
 
 COMBINATIONAL ATOMS
@@ -131,10 +131,10 @@ COMBINATIONAL ATOMS
 
 Name                Total elements     Utilization     Notes
 ------------------------------------------------------------
-ATOMS               59                 31.7 %               
+ATOMS               20                 11.6 %               
 ARITHMETIC MODE     0                  0.0 %                
 ============================================================
-Total COMBINATIONAL ATOMS in the block rcb.ram_fsm:	59 (14.64 % Utilization)
+Total COMBINATIONAL ATOMS in the block rcb.ram_fsm:	20 (5.10 % Utilization)
 
 
 RAMS

@@ -1,19 +1,19 @@
 @P:  Part : ep2c5qc208-6
-@P:  Worst Slack : -0.779
-@P:  rcb|clk - Estimated Frequency : 192.6 MHz
-@P:  rcb|clk - Requested Frequency : 226.6 MHz
-@P:  rcb|clk - Estimated Period : 5.191
-@P:  rcb|clk - Requested Period : 4.413
-@P:  rcb|clk - Slack : -0.779
+@P:  Worst Slack : -0.907
+@P:  rcb|clk - Estimated Frequency : 165.4 MHz
+@P:  rcb|clk - Requested Frequency : 194.6 MHz
+@P:  rcb|clk - Estimated Period : 6.045
+@P:  rcb|clk - Requested Period : 5.138
+@P:  rcb|clk - Slack : -0.907
 @P:  Worst Slack(min analysis) : 0.465
-@P:  rcb|clk - Estimated Frequency(min analysis) : 192.6 MHz
-@P:  rcb|clk - Requested Frequency(min analysis) : 226.6 MHz
-@P:  rcb|clk - Estimated Period(min analysis) : 5.191
-@P:  rcb|clk - Requested Period(min analysis) : 4.413
-@P:  rcb|clk - Slack(min analysis) : -0.779
+@P:  rcb|clk - Estimated Frequency(min analysis) : 165.4 MHz
+@P:  rcb|clk - Requested Frequency(min analysis) : 194.6 MHz
+@P:  rcb|clk - Estimated Period(min analysis) : 6.045
+@P:  rcb|clk - Requested Period(min analysis) : 5.138
+@P:  rcb|clk - Slack(min analysis) : -0.907
 @P: rcb Part : ep2c5qc208-6
 @P: rcb I/O ATOMs : 62
-@P: rcb Total LUTs : 194 
-@P: rcb Register bits : 143
+@P: rcb Total LUTs : 181 
+@P: rcb Register bits : 145
 @P: rcb DSP Blocks : 0 (0 nine-bit DSP elements)
-@P:  CPU Time : 0h:00m:04s
+@P:  CPU Time : 0h:00m:07s
