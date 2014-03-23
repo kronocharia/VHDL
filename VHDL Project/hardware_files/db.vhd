@@ -303,7 +303,9 @@ begin
         end if;
         
       when clear_start =>
-          if dbb_rcbclear = '1' then
+          if dbb_delaycmd = '1' then
+            nstate <= clear_start;
+          elsif dbb_rcbclear = '1' then
           	nstate <= clear_end;
           else
           	nstate <= draw_clear;
@@ -317,7 +319,11 @@ begin
         end if;
         
       when clear_end =>
-        nstate <= idle;
+        if dbb_delaycmd = '1' then
+          nstate <= clear_end;
+        else
+          nstate <= idle;
+        end if;
     end case;
   end process db_fsm_comb;
 
@@ -336,7 +342,7 @@ begin
       case command.op is
         when movepen_op => null;
         when drawline_op => dbb_bus.rcb_cmd(2) <= '0';
-        when clearscreen_op => dbb_bus.rcb_cmd(2) <= '0';--'1';
+        when clearscreen_op => dbb_bus.rcb_cmd(2) <= dbb_rcbclear;
         when others => dbb_bus.rcb_cmd <= "100"; -- invalid command
       end case;
     
@@ -395,6 +401,9 @@ begin
       penx <= command.x;
       peny <= command.y;
     elsif state = draw_clear and cs_done = '1' then
+      penx <= command.x;
+      peny <= command.y;
+    elsif state = clear_end then
       penx <= command.x;
       peny <= command.y;
     end if;

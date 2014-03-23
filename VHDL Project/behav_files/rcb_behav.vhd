@@ -55,7 +55,7 @@ ARCHITECTURE behav OF rcb_behav IS
 	END;
 
 BEGIN
-	dbb_rcbclear <= '0';                --configure by hand
+	dbb_rcbclear <= '1';                --configure by hand
 
 	vdin   <= (OTHERS => '0');
 	vaddr  <= slv(to_unsigned(0, vaddr'LENGTH));
