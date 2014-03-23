@@ -34,9 +34,9 @@ rcb|clk     4.2 MHz       240.432       inferred     Autoconstr_clkgroup_0
 Finished Pre Mapping Phase.@N: BN225 |Writing default property annotation file H:\Desktop\GitHub\VHDL\rev_2\proj_1.sap.
 Pre-mapping successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 43MB peak: 107MB)
+At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 43MB peak: 107MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Sun Mar 23 15:33:59 2014
+# Sun Mar 23 18:33:11 2014
 
 ###########################################################]

@@ -1,0 +1,416 @@
+Port N_1667 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1667_5 - has input  constraint of -0.29ns w.r.t. clock clk_c:f 
+Port N_1669 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1669_5 - has input  constraint of -0.29ns w.r.t. clock clk_c:f 
+Port N_1677 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1677_5 - has input  constraint of -0.29ns w.r.t. clock clk_c:f 
+Port N_1675 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1675_5 - has input  constraint of -0.29ns w.r.t. clock clk_c:f 
+Port N_1683 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1683_5 - has input  constraint of -0.29ns w.r.t. clock clk_c:f 
+Port N_1685 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1685_5 - has input  constraint of -0.29ns w.r.t. clock clk_c:f 
+Port N_1693 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1693_5 - has input  constraint of -0.29ns w.r.t. clock clk_c:f 
+Port N_1691 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1687 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1695_5 - has input  constraint of -0.31ns w.r.t. clock clk_c:f 
+Port N_1695 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1697 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1689 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1681 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1681_5 - has input  constraint of -0.29ns w.r.t. clock clk_c:f 
+Port N_1679 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1671 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1671_5 - has input  constraint of -0.29ns w.r.t. clock clk_c:f 
+Port N_1673 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1673_5 - has input  constraint of -0.29ns w.r.t. clock clk_c:f 
+Port N_1667_2 - has input  constraint of -0.35ns w.r.t. clock clk_c:f 
+Port N_1683_2 - has input  constraint of -0.31ns w.r.t. clock clk_c:f 
+Port N_1693_2 - has input  constraint of -0.29ns w.r.t. clock clk_c:f 
+Port N_1691_2 - has input  constraint of -0.29ns w.r.t. clock clk_c:f 
+Port N_1667_3 - has input  constraint of -0.30ns w.r.t. clock clk_c:f 
+Port N_1675_3 - has input  constraint of -0.30ns w.r.t. clock clk_c:f 
+Port N_1677_3 - has input  constraint of -0.30ns w.r.t. clock clk_c:f 
+Port N_1669_3 - has input  constraint of -0.30ns w.r.t. clock clk_c:f 
+Port N_1681_2 - has input  constraint of -0.29ns w.r.t. clock clk_c:f 
+Port N_1679_2 - has input  constraint of -0.29ns w.r.t. clock clk_c:f 
+Port N_1671_2 - has input  constraint of -0.30ns w.r.t. clock clk_c:f 
+Port rcb_finish_c - has output constraint of 0.29ns w.r.t. clock clk_c:f 
+Port rcb_finish_34 - has input  constraint of -0.29ns w.r.t. clock clk_c:f 
+Port N_1668 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1670 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1672 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1674 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1676 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1678 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1680 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1682 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1684 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1686 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1688 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1696 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1698 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1690 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1692 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_1694 - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_178 - has output constraint of 0.92ns w.r.t. clock clk_c:f 
+Port N_177 - has output constraint of 0.92ns w.r.t. clock clk_c:f 
+Port N_176 - has output constraint of 0.92ns w.r.t. clock clk_c:f 
+Port N_175 - has output constraint of 0.92ns w.r.t. clock clk_c:f 
+Port N_174 - has output constraint of 0.92ns w.r.t. clock clk_c:f 
+Port N_173 - has output constraint of 0.92ns w.r.t. clock clk_c:f 
+Port N_172 - has output constraint of 0.92ns w.r.t. clock clk_c:f 
+Port N_171 - has output constraint of 0.92ns w.r.t. clock clk_c:f 
+Port N_170 - has output constraint of 0.92ns w.r.t. clock clk_c:f 
+Port N_169 - has output constraint of 0.92ns w.r.t. clock clk_c:f 
+Port N_168 - has output constraint of 0.92ns w.r.t. clock clk_c:f 
+Port N_167 - has output constraint of 0.92ns w.r.t. clock clk_c:f 
+Port N_166 - has output constraint of 0.92ns w.r.t. clock clk_c:f 
+Port N_165 - has output constraint of 0.92ns w.r.t. clock clk_c:f 
+Port N_164 - has output constraint of 0.92ns w.r.t. clock clk_c:f 
+Port N_163 - has output constraint of 0.92ns w.r.t. clock clk_c:f 
+Port N_4_i - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port un1_state_1 - has input  constraint of -0.29ns w.r.t. clock clk_c:f 
+Port rcb_finish_18 - has input  constraint of -0.29ns w.r.t. clock clk_c:f 
+Port N_1671_3 - has input  constraint of -0.29ns w.r.t. clock clk_c:f 
+Port N_1673_3 - has input  constraint of -0.29ns w.r.t. clock clk_c:f 
+Port N_1679_3 - has input  constraint of -0.29ns w.r.t. clock clk_c:f 
+Port N_1683_3 - has input  constraint of -0.29ns w.r.t. clock clk_c:f 
+Port N_1685_3 - has input  constraint of -0.29ns w.r.t. clock clk_c:f 
+Port N_1687_3 - has input  constraint of -0.29ns w.r.t. clock clk_c:f 
+Port N_1691_3 - has input  constraint of -0.29ns w.r.t. clock clk_c:f 
+Port N_32_i - has output constraint of 0.29ns w.r.t. clock clk_c:f 
+Port reset_c - has input  constraint of -0.39ns w.r.t. clock clk_c:f 
+Port pxcache_store_buf_1_1_0_0__g0_i - has output constraint of 1.17ns w.r.t. clock clk_c:f 
+Port fsm_clocked_process\.un6_reset - has output constraint of 0.83ns w.r.t. clock clk_c:f 
+Port reset_i - has output constraint of 0.74ns w.r.t. clock clk_c:f 
+Port state_transition\.un4_curr_vram_word_i_i - has input  constraint of 2.23ns w.r.t. clock clk_c:f 
+Port N_42 - has output constraint of 2.20ns w.r.t. clock clk_c:f 
+Port dbb_bus_i[15] - has output constraint of 0.29ns w.r.t. clock clk_c:f 
+Port N_63_i - has output constraint of 0.34ns w.r.t. clock clk_c:f 
+Port N_63_i_1 - has output constraint of 1.05ns w.r.t. clock clk_c:f 
+Port N_27_i_0_g2 - has output constraint of 3.49ns w.r.t. clock clk_c:f 
+BitPort dbb_bus_c[12] - has input  constraint of -0.29ns w.r.t. clock clk_c:f 
+BitPort dbb_bus_c[13] - has input  constraint of -0.40ns w.r.t. clock clk_c:f 
+BitPort dbb_bus_c[14] - has input  constraint of -0.30ns w.r.t. clock clk_c:f 
+BitPort dbb_bus_c[15] - has input  constraint of -0.31ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_11[0] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_11[1] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_15[0] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_15[1] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_3[0] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_3[1] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_7[0] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_7[1] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_10[0] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_10[1] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_14[0] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_14[1] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_2[0] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_2[1] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_6[0] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_6[1] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_1[0] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_1[1] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_5[0] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_5[1] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_9[0] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_9[1] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_13[0] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_13[1] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_0[0] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_0[1] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_4[0] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_4[1] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_8[0] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_8[1] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_12[0] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort pxcache_store_12[1] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort idle_counter[1] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort idle_counter[2] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort idle_counter[3] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort idle_counter[4] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort idle_counter[5] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort idle_counter[6] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort idle_counter[7] - has input  constraint of 0.87ns w.r.t. clock clk_c:f 
+BitPort prev_state[1] - has input  constraint of 0.85ns w.r.t. clock clk_c:f 
+BitPort prev_state[0] - has input  constraint of 0.86ns w.r.t. clock clk_c:f 
+BitPort dbb_bus_c_0_to_1[0] - has input  constraint of -0.31ns w.r.t. clock clk_c:f 
+BitPort dbb_bus_c_0_to_1[1] - has input  constraint of -0.33ns w.r.t. clock clk_c:f 
+BitPort dbb_bus_c_6_to_7[6] - has input  constraint of -0.34ns w.r.t. clock clk_c:f 
+BitPort dbb_bus_c_6_to_7[7] - has input  constraint of -0.40ns w.r.t. clock clk_c:f 
+
+
+##### START OF TIMING REPORT #####[
+# Timing Report written on Sun Mar 23 18:01:52 2014
+#
+
+
+Top view:               state_0_3cc
+Requested Frequency:    183.9 MHz
+Wire load mode:         top
+Paths requested:        5
+Constraint File(s):    fsm_tmp.sdc
+                       
+@N: MT320 |Timing report estimates place and route data. Please look at the place and route timing report for final timing.
+
+
+Performance Summary 
+*******************
+
+
+Worst slack in design: 1.085
+
+                   Requested     Estimated     Requested     Estimated                Clock        Clock           
+Starting Clock     Frequency     Frequency     Period        Period        Slack      Type         Group           
+-------------------------------------------------------------------------------------------------------------------
+clk_c              183.9 MHz     95.9 MHz      5.439         10.432        -2.497     declared     default_clkgroup
+===================================================================================================================
+
+
+
+Clock Relationships
+*******************
+
+Clocks            |    rise  to  rise   |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
+--------------------------------------------------------------------------------------------------------
+Starting  Ending  |  constraint  slack  |  constraint  slack  |  constraint  slack  |  constraint  slack
+--------------------------------------------------------------------------------------------------------
+clk_c     clk_c   |  0.000       1.085  |  0.000       False  |  2.720       False  |  2.720       False
+========================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+
+Interface Information 
+*********************
+
+
+
+Input Ports: 
+
+Port                                         Starting      User           Arrival     Required          
+Name                                         Reference     Constraint     Time        Time         Slack
+                                             Clock                                                      
+--------------------------------------------------------------------------------------------------------
+N_1667_2                                     NA            NA             NA          NA           NA   
+N_1667_3                                     NA            NA             NA          NA           NA   
+N_1667_5                                     NA            NA             NA          NA           NA   
+N_1669_3                                     NA            NA             NA          NA           NA   
+N_1669_5                                     NA            NA             NA          NA           NA   
+N_1671_2                                     NA            NA             NA          NA           NA   
+N_1671_3                                     NA            NA             NA          NA           NA   
+N_1671_5                                     NA            NA             NA          NA           NA   
+N_1673_3                                     NA            NA             NA          NA           NA   
+N_1673_5                                     NA            NA             NA          NA           NA   
+N_1675_3                                     NA            NA             NA          NA           NA   
+N_1675_5                                     NA            NA             NA          NA           NA   
+N_1677_3                                     NA            NA             NA          NA           NA   
+N_1677_5                                     NA            NA             NA          NA           NA   
+N_1679_2                                     NA            NA             NA          NA           NA   
+N_1679_3                                     NA            NA             NA          NA           NA   
+N_1681_2                                     NA            NA             NA          NA           NA   
+N_1681_5                                     NA            NA             NA          NA           NA   
+N_1683_2                                     NA            NA             NA          NA           NA   
+N_1683_3                                     NA            NA             NA          NA           NA   
+N_1683_5                                     NA            NA             NA          NA           NA   
+N_1685_3                                     NA            NA             NA          NA           NA   
+N_1685_5                                     NA            NA             NA          NA           NA   
+N_1687_3                                     NA            NA             NA          NA           NA   
+N_1691_2                                     NA            NA             NA          NA           NA   
+N_1691_3                                     NA            NA             NA          NA           NA   
+N_1693_2                                     NA            NA             NA          NA           NA   
+N_1693_5                                     NA            NA             NA          NA           NA   
+N_1695_5                                     NA            NA             NA          NA           NA   
+dbb_bus_c[12]                                NA            NA             NA          NA           NA   
+dbb_bus_c[13]                                NA            NA             NA          NA           NA   
+dbb_bus_c[14]                                NA            NA             NA          NA           NA   
+dbb_bus_c[15]                                NA            NA             NA          NA           NA   
+dbb_bus_c_0_to_1[0]                          NA            NA             NA          NA           NA   
+dbb_bus_c_0_to_1[1]                          NA            NA             NA          NA           NA   
+dbb_bus_c_6_to_7[6]                          NA            NA             NA          NA           NA   
+dbb_bus_c_6_to_7[7]                          NA            NA             NA          NA           NA   
+idle_counter[1]                              NA            NA             NA          NA           NA   
+idle_counter[2]                              NA            NA             NA          NA           NA   
+idle_counter[3]                              NA            NA             NA          NA           NA   
+idle_counter[4]                              NA            NA             NA          NA           NA   
+idle_counter[5]                              NA            NA             NA          NA           NA   
+idle_counter[6]                              NA            NA             NA          NA           NA   
+idle_counter[7]                              NA            NA             NA          NA           NA   
+prev_state[0]                                NA            NA             NA          NA           NA   
+prev_state[1]                                NA            NA             NA          NA           NA   
+pxcache_store_0[0]                           NA            NA             NA          NA           NA   
+pxcache_store_0[1]                           NA            NA             NA          NA           NA   
+pxcache_store_1[0]                           NA            NA             NA          NA           NA   
+pxcache_store_1[1]                           NA            NA             NA          NA           NA   
+pxcache_store_2[0]                           NA            NA             NA          NA           NA   
+pxcache_store_2[1]                           NA            NA             NA          NA           NA   
+pxcache_store_3[0]                           NA            NA             NA          NA           NA   
+pxcache_store_3[1]                           NA            NA             NA          NA           NA   
+pxcache_store_4[0]                           NA            NA             NA          NA           NA   
+pxcache_store_4[1]                           NA            NA             NA          NA           NA   
+pxcache_store_5[0]                           NA            NA             NA          NA           NA   
+pxcache_store_5[1]                           NA            NA             NA          NA           NA   
+pxcache_store_6[0]                           NA            NA             NA          NA           NA   
+pxcache_store_6[1]                           NA            NA             NA          NA           NA   
+pxcache_store_7[0]                           NA            NA             NA          NA           NA   
+pxcache_store_7[1]                           NA            NA             NA          NA           NA   
+pxcache_store_8[0]                           NA            NA             NA          NA           NA   
+pxcache_store_8[1]                           NA            NA             NA          NA           NA   
+pxcache_store_9[0]                           NA            NA             NA          NA           NA   
+pxcache_store_9[1]                           NA            NA             NA          NA           NA   
+pxcache_store_10[0]                          NA            NA             NA          NA           NA   
+pxcache_store_10[1]                          NA            NA             NA          NA           NA   
+pxcache_store_11[0]                          NA            NA             NA          NA           NA   
+pxcache_store_11[1]                          NA            NA             NA          NA           NA   
+pxcache_store_12[0]                          NA            NA             NA          NA           NA   
+pxcache_store_12[1]                          NA            NA             NA          NA           NA   
+pxcache_store_13[0]                          NA            NA             NA          NA           NA   
+pxcache_store_13[1]                          NA            NA             NA          NA           NA   
+pxcache_store_14[0]                          NA            NA             NA          NA           NA   
+pxcache_store_14[1]                          NA            NA             NA          NA           NA   
+pxcache_store_15[0]                          NA            NA             NA          NA           NA   
+pxcache_store_15[1]                          NA            NA             NA          NA           NA   
+rcb_finish_18                                NA            NA             NA          NA           NA   
+rcb_finish_34                                NA            NA             NA          NA           NA   
+reset_c                                      NA            NA             NA          NA           NA   
+state_transition\.un4_curr_vram_word_i_i     NA            NA             NA          NA           NA   
+un1_state_1                                  NA            NA             NA          NA           NA   
+========================================================================================================
+
+
+Output Ports: 
+
+Port                                Starting           User           Arrival     Required          
+Name                                Reference          Constraint     Time        Time         Slack
+                                    Clock                                                           
+----------------------------------------------------------------------------------------------------
+N_4_i                               clk_c (rising)     NA             1.431       0.000        1.431
+N_27_i_0_g2                         clk_c (rising)     NA             0.175       0.000        0.175
+N_32_i                              clk_c (rising)     NA             1.514       0.000        1.514
+N_42                                clk_c (rising)     NA             0.917       0.000        0.917
+N_63_i                              clk_c (rising)     NA             1.106       0.000        1.106
+N_63_i_1                            clk_c (rising)     NA             1.004       0.000        1.004
+N_163                               clk_c (rising)     NA             1.907       0.000        1.907
+N_164                               clk_c (rising)     NA             1.907       0.000        1.907
+N_165                               clk_c (rising)     NA             1.907       0.000        1.907
+N_166                               clk_c (rising)     NA             1.907       0.000        1.907
+N_167                               clk_c (rising)     NA             1.992       0.000        1.992
+N_168                               clk_c (rising)     NA             1.992       0.000        1.992
+N_169                               clk_c (rising)     NA             1.992       0.000        1.992
+N_170                               clk_c (rising)     NA             1.992       0.000        1.992
+N_171                               clk_c (rising)     NA             1.907       0.000        1.907
+N_172                               clk_c (rising)     NA             1.907       0.000        1.907
+N_173                               clk_c (rising)     NA             1.907       0.000        1.907
+N_174                               clk_c (rising)     NA             1.907       0.000        1.907
+N_175                               clk_c (rising)     NA             1.600       0.000        1.600
+N_176                               clk_c (rising)     NA             1.600       0.000        1.600
+N_177                               clk_c (rising)     NA             1.600       0.000        1.600
+N_178                               clk_c (rising)     NA             1.600       0.000        1.600
+N_1667                              clk_c (rising)     NA             1.962       0.000        1.962
+N_1668                              clk_c (rising)     NA             2.284       0.000        2.284
+N_1669                              clk_c (rising)     NA             1.962       0.000        1.962
+N_1670                              clk_c (rising)     NA             2.284       0.000        2.284
+N_1671                              clk_c (rising)     NA             1.962       0.000        1.962
+N_1672                              clk_c (rising)     NA             1.962       0.000        1.962
+N_1673                              clk_c (rising)     NA             1.962       0.000        1.962
+N_1674                              clk_c (rising)     NA             1.962       0.000        1.962
+N_1675                              clk_c (rising)     NA             1.962       0.000        1.962
+N_1676                              clk_c (rising)     NA             2.284       0.000        2.284
+N_1677                              clk_c (rising)     NA             1.962       0.000        1.962
+N_1678                              clk_c (rising)     NA             2.284       0.000        2.284
+N_1679                              clk_c (rising)     NA             1.962       0.000        1.962
+N_1680                              clk_c (rising)     NA             1.962       0.000        1.962
+N_1681                              clk_c (rising)     NA             1.962       0.000        1.962
+N_1682                              clk_c (rising)     NA             1.962       0.000        1.962
+N_1683                              clk_c (rising)     NA             1.962       0.000        1.962
+N_1684                              clk_c (rising)     NA             2.284       0.000        2.284
+N_1685                              clk_c (rising)     NA             1.962       0.000        1.962
+N_1686                              clk_c (rising)     NA             2.284       0.000        2.284
+N_1687                              clk_c (rising)     NA             1.962       0.000        1.962
+N_1688                              clk_c (rising)     NA             1.962       0.000        1.962
+N_1689                              clk_c (rising)     NA             1.962       0.000        1.962
+N_1690                              clk_c (rising)     NA             1.962       0.000        1.962
+N_1691                              clk_c (rising)     NA             1.962       0.000        1.962
+N_1692                              clk_c (rising)     NA             2.284       0.000        2.284
+N_1693                              clk_c (rising)     NA             1.962       0.000        1.962
+N_1694                              clk_c (rising)     NA             2.284       0.000        2.284
+N_1695                              clk_c (rising)     NA             1.962       0.000        1.962
+N_1696                              clk_c (rising)     NA             1.962       0.000        1.962
+N_1697                              clk_c (rising)     NA             1.962       0.000        1.962
+N_1698                              clk_c (rising)     NA             1.962       0.000        1.962
+dbb_bus_i[15]                       NA                 NA             NA          NA           NA   
+fsm_clocked_process\.un6_reset      clk_c (rising)     NA             1.325       0.000        1.325
+pxcache_store_buf_1_1_0_0__g0_i     clk_c (rising)     NA             1.514       0.000        1.514
+rcb_finish_c                        clk_c (rising)     NA             1.413       0.000        1.413
+reset_i                             NA                 NA             NA          NA           NA   
+====================================================================================================
+
+
+
+====================================
+Detailed Report for Clock: clk_c
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+             Starting                                                        Arrival          
+Instance     Reference     Type                   Pin        Net             Time        Slack
+             Clock                                                                            
+----------------------------------------------------------------------------------------------
+state[1]     clk_c         cycloneii_lcell_ff     regout     N_27_i_0_g2     0.175       1.358
+state[0]     clk_c         cycloneii_lcell_ff     regout     state[0]        0.175       1.792
+==============================================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+             Starting                                                                            Required          
+Instance     Reference     Type                   Pin        Net                                 Time         Slack
+             Clock                                                                                                 
+-------------------------------------------------------------------------------------------------------------------
+state[0]     clk_c         cycloneii_lcell_ff     datain     state_srsts_0_0__g0                 0.034        1.085
+state[1]     clk_c         cycloneii_lcell_ff     datain     retram_state_machine.N_32_i_0_0     0.034        1.595
+===================================================================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+    Propagation time:                        1.119
+    + Clock delay at starting point:         0.000 (ideal)
+    - Requested Period:                      0.000
+    - Hold time:                             0.034
+    - Clock delay at ending point:           0.000 (ideal)
+    = Slack (critical) :                     1.085
+
+    Number of logic level(s):                1
+    Starting point:                          state[1] / regout
+    Ending point:                            state[0] / datain
+    The start point is clocked by            clk_c [rising] on pin clk
+    The end   point is clocked by            clk_c [rising] on pin clk
+
+Instance / Net                                   Pin         Pin               Arrival     No. of    
+Name                    Type                     Name        Dir     Delay     Time        Fan Out(s)
+-----------------------------------------------------------------------------------------------------
+state[1]                cycloneii_lcell_ff       regout      Out     0.175     0.175       -         
+N_27_i_0_g2             Net                      -           -       0.637     -           8         
+state_RNO[0]            cycloneii_lcell_comb     dataa       In      -         0.812       -         
+state_RNO[0]            cycloneii_lcell_comb     combout     Out     0.307     1.119       -         
+state_srsts_0_0__g0     Net                      -           -       0.000     -           1         
+state[0]                cycloneii_lcell_ff       datain      In      -         1.119       -         
+=====================================================================================================
+
+
+
+##### END OF TIMING REPORT #####]
+

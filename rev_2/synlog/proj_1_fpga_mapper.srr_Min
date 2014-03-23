@@ -1,12 +1,12 @@
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Sun Mar 23 15:34:05 2014
+# Timing Report written on Sun Mar 23 18:33:19 2014
 #
 
 
 Top view:               rcb
-Requested Frequency:    226.6 MHz
+Requested Frequency:    194.6 MHz
 Wire load mode:         top
 Paths requested:        5
 Constraint File(s):    
@@ -25,7 +25,7 @@ Worst slack in design: 0.465
                    Requested     Estimated     Requested     Estimated                Clock        Clock                
 Starting Clock     Frequency     Frequency     Period        Period        Slack      Type         Group                
 ------------------------------------------------------------------------------------------------------------------------
-rcb|clk            226.6 MHz     192.6 MHz     4.413         5.191         -0.779     inferred     Autoconstr_clkgroup_0
+rcb|clk            194.6 MHz     165.4 MHz     5.138         6.045         -0.907     inferred     Autoconstr_clkgroup_0
 ========================================================================================================================
 
 
@@ -37,7 +37,7 @@ Clocks             |    rise  to  rise   |    fall  to  fall   |    rise  to  fa
 ---------------------------------------------------------------------------------------------------------
 Starting  Ending   |  constraint  slack  |  constraint  slack  |  constraint  slack  |  constraint  slack
 ---------------------------------------------------------------------------------------------------------
-rcb|clk   rcb|clk  |  0.000       0.465  |  No paths    -      |  2.206       2.671  |  No paths    -    
+rcb|clk   rcb|clk  |  0.000       0.465  |  No paths    -      |  2.569       3.034  |  No paths    -    
 =========================================================================================================
  Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
        'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.

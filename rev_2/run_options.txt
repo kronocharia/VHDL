@@ -1,7 +1,7 @@
 #--  Synopsys, Inc.
 #--  Version G-2012.09-SP1 
 #--  Project file H:\Desktop\GitHub\VHDL\rev_2\run_options.txt
-#--  Written on Sun Mar 23 15:33:54 2014
+#--  Written on Sun Mar 23 18:33:07 2014
 
 
 #project files
@@ -10,7 +10,6 @@ add_file -vhdl -lib work "H:/Desktop/GitHub/VHDL/VHDL Project/hardware_files/rcb
 add_file -vhdl -lib work "H:/Desktop/GitHub/VHDL/VHDL Project/hardware_files/ram_fsm.vhd"
 add_file -vhdl -lib work "H:/Desktop/GitHub/VHDL/VHDL Project/hardware_files/project_pack.vhd"
 add_file -vhdl -lib work "H:/Desktop/GitHub/VHDL/VHDL Project/hardware_files/pix_word_cache.vhd"
-add_file -vhdl -lib work "H:/Desktop/GitHub/VHDL/VHDL Project/hardware_files/helper_funcs.vhd"
 add_file -vhdl -lib work "H:/Desktop/GitHub/VHDL/VHDL Project/hardware_files/config_pack.vhd"
 
 
@@ -45,10 +44,10 @@ set_option -srs_instrumentation 1
 
 # Altera STRATIX
 set_option -run_prop_extract 1
-set_option -maxfan 30
+set_option -maxfan 5
 set_option -disable_io_insertion 0
 set_option -pipe 1
-set_option -update_models_cp 0
+set_option -update_models_cp 1
 set_option -retiming 0
 set_option -no_sequential_opt 0
 set_option -fix_gated_and_generated_clocks 1

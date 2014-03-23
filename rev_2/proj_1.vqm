@@ -2,7 +2,7 @@
 // Written by Synplify
 // Product Version "G-2012.09-SP1 "
 // Program "Synplify Pro", Mapper "maprc, Build 1351R"
-// Sun Mar 23 15:34:05 2014
+// Sun Mar 23 18:33:19 2014
 //
 // Source file index table:
 // Object locations will have the form <file>:<line>
@@ -21,7 +21,6 @@
 // file 12 "\h:\desktop\github\vhdl\vhdl project\hardware_files\project_pack.vhd "
 // file 13 "\h:\desktop\github\vhdl\vhdl project\hardware_files\pix_word_cache.vhd "
 // file 14 "\h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd "
-// file 15 "\h:\desktop\github\vhdl\vhdl project\hardware_files\helper_funcs.vhd "
 
 // VQM4.1+ 
 module ram_fsm (
@@ -73,65 +72,6 @@ module ram_fsm (
   vdout_c_13,
   vdout_c_14,
   vdout_c_15,
-  prev_state_0_x_0,
-  pxcache_pixnum_x_0,
-  state_3_0_a4_x_0,
-  store_ram_0_1,
-  store_ram_0_0,
-  un1_next_state_i_o4_0,
-  pxcache_store_buf_0_en_0_a4_0,
-  pxcache_pixnum_0_1,
-  pxcache_pixnum_0_0,
-  dbb_bus_c_12,
-  dbb_bus_c_13,
-  dbb_bus_c_6,
-  dbb_bus_c_7,
-  dbb_bus_c_0,
-  dbb_bus_c_14,
-  dbb_bus_c_15,
-  store_ram_15_0,
-  store_ram_15_1,
-  store_ram_14_1,
-  store_ram_14_0,
-  store_ram_2_1,
-  store_ram_2_0,
-  store_ram_7_1,
-  store_ram_7_0,
-  store_ram_6_1,
-  store_ram_6_0,
-  store_ram_9_1,
-  store_ram_9_0,
-  store_ram_8_1,
-  store_ram_8_0,
-  store_ram_11_1,
-  store_ram_11_0,
-  store_ram_10_1,
-  store_ram_10_0,
-  store_ram_13_1,
-  store_ram_13_0,
-  store_ram_12_1,
-  store_ram_12_0,
-  store_ram_5_1,
-  store_ram_5_0,
-  store_ram_4_1,
-  store_ram_4_0,
-  next_state_i_a4_0,
-  prev_state_1,
-  prev_state_0,
-  state_ns_0_a4_0_0,
-  idle_counter_1,
-  idle_counter_5,
-  idle_counter_0,
-  idle_counter_6,
-  idle_counter_2,
-  idle_counter_3,
-  idle_counter_4,
-  store_ram_3_0,
-  store_ram_3_1,
-  store_ram_1_0,
-  store_ram_1_1,
-  state_0_0,
-  state_0_1,
   data_del_0,
   data_del_1,
   data_del_2,
@@ -164,14 +104,9 @@ module ram_fsm (
   addr_del_5,
   addr_del_6,
   addr_del_7,
-  rcb_finish,
-  un6_reset_0_i,
-  pxcache_pw_i_1_1,
-  pxcache_pw_i_1,
-  un4_curr_vram_word_NE,
-  pxcache_pw_i_m3,
-  pxcache_wen_all_i,
+  pxcache_wen_all_i_0,
   state_s0_0_a3,
+  really_done,
   reset_c,
   clk_c
 )
@@ -224,65 +159,6 @@ input vdout_c_12 ;
 input vdout_c_13 ;
 input vdout_c_14 ;
 input vdout_c_15 ;
-output prev_state_0_x_0 ;
-output pxcache_pixnum_x_0 ;
-output state_3_0_a4_x_0 ;
-input store_ram_0_1 ;
-input store_ram_0_0 ;
-output un1_next_state_i_o4_0 ;
-output pxcache_store_buf_0_en_0_a4_0 ;
-output pxcache_pixnum_0_1 ;
-output pxcache_pixnum_0_0 ;
-input dbb_bus_c_12 ;
-input dbb_bus_c_13 ;
-input dbb_bus_c_6 ;
-input dbb_bus_c_7 ;
-input dbb_bus_c_0 ;
-input dbb_bus_c_14 ;
-input dbb_bus_c_15 ;
-input store_ram_15_0 ;
-input store_ram_15_1 ;
-input store_ram_14_1 ;
-input store_ram_14_0 ;
-input store_ram_2_1 ;
-input store_ram_2_0 ;
-input store_ram_7_1 ;
-input store_ram_7_0 ;
-input store_ram_6_1 ;
-input store_ram_6_0 ;
-input store_ram_9_1 ;
-input store_ram_9_0 ;
-input store_ram_8_1 ;
-input store_ram_8_0 ;
-input store_ram_11_1 ;
-input store_ram_11_0 ;
-input store_ram_10_1 ;
-input store_ram_10_0 ;
-input store_ram_13_1 ;
-input store_ram_13_0 ;
-input store_ram_12_1 ;
-input store_ram_12_0 ;
-input store_ram_5_1 ;
-input store_ram_5_0 ;
-input store_ram_4_1 ;
-input store_ram_4_0 ;
-output next_state_i_a4_0 ;
-input prev_state_1 ;
-input prev_state_0 ;
-output state_ns_0_a4_0_0 ;
-input idle_counter_1 ;
-input idle_counter_5 ;
-input idle_counter_0 ;
-input idle_counter_6 ;
-input idle_counter_2 ;
-input idle_counter_3 ;
-input idle_counter_4 ;
-input store_ram_3_0 ;
-input store_ram_3_1 ;
-input store_ram_1_0 ;
-input store_ram_1_1 ;
-input state_0_0 ;
-input state_0_1 ;
 output data_del_0 ;
 output data_del_1 ;
 output data_del_2 ;
@@ -315,14 +191,9 @@ output addr_del_4 ;
 output addr_del_5 ;
 output addr_del_6 ;
 output addr_del_7 ;
-output rcb_finish ;
-output un6_reset_0_i ;
-output pxcache_pw_i_1_1 ;
-output pxcache_pw_i_1 ;
-input un4_curr_vram_word_NE ;
-output pxcache_pw_i_m3 ;
-output pxcache_wen_all_i ;
+input pxcache_wen_all_i_0 ;
 output state_s0_0_a3 ;
+output really_done ;
 input reset_c ;
 input clk_c ;
 wire pxcache_store_buf_0_1 ;
@@ -373,65 +244,6 @@ wire vdout_c_12 ;
 wire vdout_c_13 ;
 wire vdout_c_14 ;
 wire vdout_c_15 ;
-wire prev_state_0_x_0 ;
-wire pxcache_pixnum_x_0 ;
-wire state_3_0_a4_x_0 ;
-wire store_ram_0_1 ;
-wire store_ram_0_0 ;
-wire un1_next_state_i_o4_0 ;
-wire pxcache_store_buf_0_en_0_a4_0 ;
-wire pxcache_pixnum_0_1 ;
-wire pxcache_pixnum_0_0 ;
-wire dbb_bus_c_12 ;
-wire dbb_bus_c_13 ;
-wire dbb_bus_c_6 ;
-wire dbb_bus_c_7 ;
-wire dbb_bus_c_0 ;
-wire dbb_bus_c_14 ;
-wire dbb_bus_c_15 ;
-wire store_ram_15_0 ;
-wire store_ram_15_1 ;
-wire store_ram_14_1 ;
-wire store_ram_14_0 ;
-wire store_ram_2_1 ;
-wire store_ram_2_0 ;
-wire store_ram_7_1 ;
-wire store_ram_7_0 ;
-wire store_ram_6_1 ;
-wire store_ram_6_0 ;
-wire store_ram_9_1 ;
-wire store_ram_9_0 ;
-wire store_ram_8_1 ;
-wire store_ram_8_0 ;
-wire store_ram_11_1 ;
-wire store_ram_11_0 ;
-wire store_ram_10_1 ;
-wire store_ram_10_0 ;
-wire store_ram_13_1 ;
-wire store_ram_13_0 ;
-wire store_ram_12_1 ;
-wire store_ram_12_0 ;
-wire store_ram_5_1 ;
-wire store_ram_5_0 ;
-wire store_ram_4_1 ;
-wire store_ram_4_0 ;
-wire next_state_i_a4_0 ;
-wire prev_state_1 ;
-wire prev_state_0 ;
-wire state_ns_0_a4_0_0 ;
-wire idle_counter_1 ;
-wire idle_counter_5 ;
-wire idle_counter_0 ;
-wire idle_counter_6 ;
-wire idle_counter_2 ;
-wire idle_counter_3 ;
-wire idle_counter_4 ;
-wire store_ram_3_0 ;
-wire store_ram_3_1 ;
-wire store_ram_1_0 ;
-wire store_ram_1_1 ;
-wire state_0_0 ;
-wire state_0_1 ;
 wire data_del_0 ;
 wire data_del_1 ;
 wire data_del_2 ;
@@ -464,22 +276,13 @@ wire addr_del_4 ;
 wire addr_del_5 ;
 wire addr_del_6 ;
 wire addr_del_7 ;
-wire rcb_finish ;
-wire un6_reset_0_i ;
-wire pxcache_pw_i_1_1 ;
-wire pxcache_pw_i_1 ;
-wire un4_curr_vram_word_NE ;
-wire pxcache_pw_i_m3 ;
-wire pxcache_wen_all_i ;
+wire pxcache_wen_all_i_0 ;
 wire state_s0_0_a3 ;
+wire really_done ;
 wire reset_c ;
 wire clk_c ;
 wire [1:0] state;
 wire [15:0] data_merged;
-wire [0:0] state_ns_i_a4_0;
-wire [0:0] pxcache_store_buf_0_en_0_a4_1;
-wire [0:0] pxcache_store_buf_0_en_0_a4_5;
-wire [0:0] pxcache_store_buf_0_en_0_a4_4;
 wire state_srsts_0_1__g0_x ;
 wire state_srsts_0_0__g0 ;
 wire clk_c_i ;
@@ -499,29 +302,8 @@ wire N_293_i_0_g0_x ;
 wire N_292_i_0_g0_x ;
 wire N_291_i_0_g0_x ;
 wire N_290_i_0_g0_x ;
-wire really_done ;
 wire N_158_i_0_g0 ;
-wire rcb_finish_3 ;
-wire rcb_finish_7 ;
-wire rcb_finish_21 ;
-wire rcb_finish_23 ;
-wire rcb_finish_24 ;
-wire rcb_finish_25 ;
-wire rcb_finish_26 ;
-wire pxcache_pw_i_s ;
-wire pxcache_pw_i_a4_x ;
-wire rcb_finish_29 ;
-wire rcb_finish_32 ;
-wire rcb_finish_17_x ;
-wire rcb_finish_34 ;
-wire pxcache_m2_0_a2_0_x ;
-wire d_m2_e_m1_0_a2_0_x ;
-wire pxcache_m2_0_a2_1_0_x ;
-wire d_m2_e_0_0_x ;
-wire un6_reset_0_o4_x ;
-wire rcb_finish_19 ;
-wire rcb_finish_28 ;
-wire N_458 ;
+wire N_457 ;
 wire N_139 ;
 wire N_138 ;
 wire N_137 ;
@@ -1003,16 +785,6 @@ wire VCC ;
 	.sdata(GND),
 	.ena(VCC)
 );
-// @14:94
-  cycloneii_lcell_comb state_ns_i_a4_0_0_ (
-	.combout(state_ns_i_a4_0[0]),
-	.dataa(state_0_1),
-	.datab(state_0_0),
-	.datac(VCC),
-	.datad(VCC)
-);
-defparam state_ns_i_a4_0_0_.lut_mask=16'h1111;
-defparam state_ns_i_a4_0_0_.sum_lutc_input="datac";
 // @11:22
   cycloneii_lcell_comb state_s0_0_a3_cZ (
 	.combout(state_s0_0_a3),
@@ -1023,334 +795,24 @@ defparam state_ns_i_a4_0_0_.sum_lutc_input="datac";
 );
 defparam state_s0_0_a3_cZ.lut_mask=16'h1111;
 defparam state_s0_0_a3_cZ.sum_lutc_input="datac";
-// @14:309
-  cycloneii_lcell_comb rcb_finish_3_cZ (
-	.combout(rcb_finish_3),
-	.dataa(store_ram_1_1),
-	.datab(store_ram_1_0),
-	.datac(VCC),
-	.datad(VCC)
-);
-defparam rcb_finish_3_cZ.lut_mask=16'h1111;
-defparam rcb_finish_3_cZ.sum_lutc_input="datac";
-// @14:309
-  cycloneii_lcell_comb rcb_finish_7_cZ (
-	.combout(rcb_finish_7),
-	.dataa(store_ram_3_1),
-	.datab(store_ram_3_0),
-	.datac(VCC),
-	.datad(VCC)
-);
-defparam rcb_finish_7_cZ.lut_mask=16'h1111;
-defparam rcb_finish_7_cZ.sum_lutc_input="datac";
-// @14:85
-  cycloneii_lcell_comb pxcache_store_buf_0_en_0_a4_1_0_ (
-	.combout(pxcache_store_buf_0_en_0_a4_1[0]),
-	.dataa(idle_counter_4),
-	.datab(idle_counter_3),
-	.datac(VCC),
-	.datad(VCC)
-);
-defparam pxcache_store_buf_0_en_0_a4_1_0_.lut_mask=16'h1111;
-defparam pxcache_store_buf_0_en_0_a4_1_0_.sum_lutc_input="datac";
-// @14:94
-  cycloneii_lcell_comb state_ns_0_a4_0_1_ (
-	.combout(state_ns_0_a4_0_0),
-	.dataa(state_0_0),
-	.datab(state_0_1),
-	.datac(VCC),
-	.datad(VCC)
-);
-defparam state_ns_0_a4_0_1_.lut_mask=16'h4444;
-defparam state_ns_0_a4_0_1_.sum_lutc_input="datac";
-// @14:147
-  cycloneii_lcell_comb pxcache_wen_all_i_cZ (
-	.combout(pxcache_wen_all_i),
-	.dataa(state_0_0),
-	.datab(state_0_1),
-	.datac(prev_state_0),
-	.datad(prev_state_1)
-);
-defparam pxcache_wen_all_i_cZ.lut_mask=16'hf77f;
-defparam pxcache_wen_all_i_cZ.sum_lutc_input="datac";
-// @14:147
-  cycloneii_lcell_comb next_state_i_a4_0_ (
-	.combout(next_state_i_a4_0),
-	.dataa(state_0_0),
-	.datab(state_0_1),
-	.datac(prev_state_0),
-	.datad(prev_state_1)
-);
-defparam next_state_i_a4_0_.lut_mask=16'h8008;
-defparam next_state_i_a4_0_.sum_lutc_input="datac";
-// @14:309
-  cycloneii_lcell_comb rcb_finish_21_cZ (
-	.combout(rcb_finish_21),
-	.dataa(store_ram_4_0),
-	.datab(store_ram_4_1),
-	.datac(store_ram_5_0),
-	.datad(store_ram_5_1)
-);
-defparam rcb_finish_21_cZ.lut_mask=16'h0001;
-defparam rcb_finish_21_cZ.sum_lutc_input="datac";
-// @14:309
-  cycloneii_lcell_comb rcb_finish_23_cZ (
-	.combout(rcb_finish_23),
-	.dataa(store_ram_12_0),
-	.datab(store_ram_12_1),
-	.datac(store_ram_13_0),
-	.datad(store_ram_13_1)
-);
-defparam rcb_finish_23_cZ.lut_mask=16'h0001;
-defparam rcb_finish_23_cZ.sum_lutc_input="datac";
-// @14:309
-  cycloneii_lcell_comb rcb_finish_24_cZ (
-	.combout(rcb_finish_24),
-	.dataa(store_ram_10_0),
-	.datab(store_ram_10_1),
-	.datac(store_ram_11_0),
-	.datad(store_ram_11_1)
-);
-defparam rcb_finish_24_cZ.lut_mask=16'h0001;
-defparam rcb_finish_24_cZ.sum_lutc_input="datac";
-// @14:309
-  cycloneii_lcell_comb rcb_finish_25_cZ (
-	.combout(rcb_finish_25),
-	.dataa(store_ram_8_0),
-	.datab(store_ram_8_1),
-	.datac(store_ram_9_0),
-	.datad(store_ram_9_1)
-);
-defparam rcb_finish_25_cZ.lut_mask=16'h0001;
-defparam rcb_finish_25_cZ.sum_lutc_input="datac";
-// @14:309
-  cycloneii_lcell_comb rcb_finish_26_cZ (
-	.combout(rcb_finish_26),
-	.dataa(store_ram_6_0),
-	.datab(store_ram_6_1),
-	.datac(store_ram_7_0),
-	.datad(store_ram_7_1)
-);
-defparam rcb_finish_26_cZ.lut_mask=16'h0001;
-defparam rcb_finish_26_cZ.sum_lutc_input="datac";
-// @14:85
-  cycloneii_lcell_comb pxcache_store_buf_0_en_0_a4_5_0_ (
-	.combout(pxcache_store_buf_0_en_0_a4_5[0]),
-	.dataa(idle_counter_2),
-	.datab(idle_counter_6),
-	.datac(idle_counter_0),
-	.datad(idle_counter_5)
-);
-defparam pxcache_store_buf_0_en_0_a4_5_0_.lut_mask=16'h0020;
-defparam pxcache_store_buf_0_en_0_a4_5_0_.sum_lutc_input="datac";
   cycloneii_lcell_comb really_done_RNO (
 	.combout(N_158_i_0_g0),
 	.dataa(state[0]),
 	.datab(state[1]),
-	.datac(pxcache_wen_all_i),
+	.datac(pxcache_wen_all_i_0),
 	.datad(VCC)
 );
 defparam really_done_RNO.lut_mask=16'h9090;
 defparam really_done_RNO.sum_lutc_input="datac";
-// @14:147
-  cycloneii_lcell_comb pxcache_pw_i_s_cZ (
-	.combout(pxcache_pw_i_s),
-	.dataa(pxcache_pw_i_a4_x),
-	.datab(state_0_1),
-	.datac(prev_state_0),
-	.datad(state_0_0)
-);
-defparam pxcache_pw_i_s_cZ.lut_mask=16'hfbbb;
-defparam pxcache_pw_i_s_cZ.sum_lutc_input="datac";
-// @14:309
-  cycloneii_lcell_comb rcb_finish_29_cZ (
-	.combout(rcb_finish_29),
-	.dataa(store_ram_2_0),
-	.datab(store_ram_2_1),
-	.datac(rcb_finish_7),
-	.datad(rcb_finish_21)
-);
-defparam rcb_finish_29_cZ.lut_mask=16'h1000;
-defparam rcb_finish_29_cZ.sum_lutc_input="datac";
-// @14:309
-  cycloneii_lcell_comb rcb_finish_32_cZ (
-	.combout(rcb_finish_32),
-	.dataa(store_ram_14_0),
-	.datab(store_ram_15_1),
-	.datac(store_ram_14_1),
-	.datad(rcb_finish_17_x)
-);
-defparam rcb_finish_32_cZ.lut_mask=16'h0100;
-defparam rcb_finish_32_cZ.sum_lutc_input="datac";
-// @14:85
-  cycloneii_lcell_comb pxcache_store_buf_0_en_0_a4_4_0_ (
-	.combout(pxcache_store_buf_0_en_0_a4_4[0]),
-	.dataa(dbb_bus_c_15),
-	.datab(dbb_bus_c_14),
-	.datac(idle_counter_1),
-	.datad(pxcache_store_buf_0_en_0_a4_1[0])
-);
-defparam pxcache_store_buf_0_en_0_a4_4_0_.lut_mask=16'h0d00;
-defparam pxcache_store_buf_0_en_0_a4_4_0_.sum_lutc_input="datac";
-// @14:309
-  cycloneii_lcell_comb rcb_finish_34_cZ (
-	.combout(rcb_finish_34),
-	.dataa(rcb_finish_25),
-	.datab(rcb_finish_26),
-	.datac(rcb_finish_23),
-	.datad(rcb_finish_24)
-);
-defparam rcb_finish_34_cZ.lut_mask=16'h8000;
-defparam rcb_finish_34_cZ.sum_lutc_input="datac";
   cycloneii_lcell_comb state_RNO_0_ (
 	.combout(state_srsts_0_0__g0),
 	.dataa(reset_c),
 	.datab(state[1]),
 	.datac(state[0]),
-	.datad(pxcache_wen_all_i)
+	.datad(pxcache_wen_all_i_0)
 );
 defparam state_RNO_0_.lut_mask=16'hefae;
 defparam state_RNO_0_.sum_lutc_input="datac";
-// @14:147
-  cycloneii_lcell_comb pxcache_pw_i_m3_cZ (
-	.combout(pxcache_pw_i_m3),
-	.dataa(state_0_0),
-	.datab(prev_state_1),
-	.datac(un4_curr_vram_word_NE),
-	.datad(VCC)
-);
-defparam pxcache_pw_i_m3_cZ.lut_mask=16'h8d8d;
-defparam pxcache_pw_i_m3_cZ.sum_lutc_input="datac";
-// @14:147
-  cycloneii_lcell_comb pxcache_pixnum_0_2_ (
-	.combout(pxcache_pixnum_0_0),
-	.dataa(pxcache_pw_i_s),
-	.datab(pxcache_m2_0_a2_0_x),
-	.datac(d_m2_e_m1_0_a2_0_x),
-	.datad(un4_curr_vram_word_NE)
-);
-defparam pxcache_pixnum_0_2_.lut_mask=16'h1054;
-defparam pxcache_pixnum_0_2_.sum_lutc_input="datac";
-// @14:147
-  cycloneii_lcell_comb pxcache_pixnum_0_3_ (
-	.combout(pxcache_pixnum_0_1),
-	.dataa(pxcache_pw_i_s),
-	.datab(pxcache_m2_0_a2_1_0_x),
-	.datac(d_m2_e_0_0_x),
-	.datad(un4_curr_vram_word_NE)
-);
-defparam pxcache_pixnum_0_3_.lut_mask=16'h1054;
-defparam pxcache_pixnum_0_3_.sum_lutc_input="datac";
-// @14:147
-  cycloneii_lcell_comb pxcache_pw_i_1_cZ (
-	.combout(pxcache_pw_i_1),
-	.dataa(state_0_0),
-	.datab(prev_state_1),
-	.datac(pxcache_pw_i_s),
-	.datad(un4_curr_vram_word_NE)
-);
-defparam pxcache_pw_i_1_cZ.lut_mask=16'hf7f2;
-defparam pxcache_pw_i_1_cZ.sum_lutc_input="datac";
-// @14:85
-  cycloneii_lcell_comb pxcache_store_buf_0_en_0_a4_0_ (
-	.combout(pxcache_store_buf_0_en_0_a4_0),
-	.dataa(state_0_0),
-	.datab(state_0_1),
-	.datac(pxcache_store_buf_0_en_0_a4_5[0]),
-	.datad(pxcache_store_buf_0_en_0_a4_4[0])
-);
-defparam pxcache_store_buf_0_en_0_a4_0_.lut_mask=16'h2000;
-defparam pxcache_store_buf_0_en_0_a4_0_.sum_lutc_input="datac";
-// @14:147
-  cycloneii_lcell_comb pxcache_pw_i_1_1_cZ (
-	.combout(pxcache_pw_i_1_1),
-	.dataa(prev_state_0),
-	.datab(prev_state_1),
-	.datac(state_0_0),
-	.datad(un4_curr_vram_word_NE)
-);
-defparam pxcache_pw_i_1_1_cZ.lut_mask=16'hbfb0;
-defparam pxcache_pw_i_1_1_cZ.sum_lutc_input="datac";
-// @14:349
-  cycloneii_lcell_comb fsm_clocked_process_un6_reset_0 (
-	.combout(un6_reset_0_i),
-	.dataa(reset_c),
-	.datab(state_0_0),
-	.datac(state_0_1),
-	.datad(un6_reset_0_o4_x)
-);
-defparam fsm_clocked_process_un6_reset_0.lut_mask=16'h0004;
-defparam fsm_clocked_process_un6_reset_0.sum_lutc_input="datac";
-// @14:115
-  cycloneii_lcell_comb un1_next_state_i_o4_2_ (
-	.combout(un1_next_state_i_o4_0),
-	.dataa(state_0_0),
-	.datab(state_0_1),
-	.datac(un4_curr_vram_word_NE),
-	.datad(un6_reset_0_o4_x)
-);
-defparam un1_next_state_i_o4_2_.lut_mask=16'h6240;
-defparam un1_next_state_i_o4_2_.sum_lutc_input="datac";
-// @14:309
-  cycloneii_lcell_comb rcb_finish_19_cZ (
-	.combout(rcb_finish_19),
-	.dataa(really_done),
-	.datab(state_ns_i_a4_0[0]),
-	.datac(next_state_i_a4_0),
-	.datad(un1_next_state_i_o4_0)
-);
-defparam rcb_finish_19_cZ.lut_mask=16'h0002;
-defparam rcb_finish_19_cZ.sum_lutc_input="datac";
-// @14:309
-  cycloneii_lcell_comb rcb_finish_28_cZ (
-	.combout(rcb_finish_28),
-	.dataa(store_ram_0_0),
-	.datab(store_ram_0_1),
-	.datac(rcb_finish_3),
-	.datad(rcb_finish_19)
-);
-defparam rcb_finish_28_cZ.lut_mask=16'h1000;
-defparam rcb_finish_28_cZ.sum_lutc_input="datac";
-// @14:309
-  cycloneii_lcell_comb rcb_finish_cZ (
-	.combout(rcb_finish),
-	.dataa(rcb_finish_32),
-	.datab(rcb_finish_29),
-	.datac(rcb_finish_34),
-	.datad(rcb_finish_28)
-);
-defparam rcb_finish_cZ.lut_mask=16'h8000;
-defparam rcb_finish_cZ.sum_lutc_input="datac";
-// @14:338
-  cycloneii_lcell_comb state_3_0_a4_x_1_ (
-	.combout(state_3_0_a4_x_0),
-	.dataa(reset_c),
-	.datab(un1_next_state_i_o4_0),
-	.datac(VCC),
-	.datad(VCC)
-);
-defparam state_3_0_a4_x_1_.lut_mask=16'h4444;
-defparam state_3_0_a4_x_1_.sum_lutc_input="datac";
-// @14:349
-  cycloneii_lcell_comb fsm_clocked_process_un6_reset_0_o4_x (
-	.combout(un6_reset_0_o4_x),
-	.dataa(dbb_bus_c_15),
-	.datab(dbb_bus_c_14),
-	.datac(pxcache_store_buf_0_en_0_a4_0),
-	.datad(VCC)
-);
-defparam fsm_clocked_process_un6_reset_0_o4_x.lut_mask=16'hf2f2;
-defparam fsm_clocked_process_un6_reset_0_o4_x.sum_lutc_input="datac";
-// @14:147
-  cycloneii_lcell_comb pxcache_pixnum_x_0_ (
-	.combout(pxcache_pixnum_x_0),
-	.dataa(dbb_bus_c_0),
-	.datab(pxcache_pw_i_1),
-	.datac(VCC),
-	.datad(VCC)
-);
-defparam pxcache_pixnum_x_0_.lut_mask=16'h2222;
-defparam pxcache_pixnum_x_0_.sum_lutc_input="datac";
   cycloneii_lcell_comb state_RNO_1_ (
 	.combout(state_srsts_0_1__g0_x),
 	.dataa(reset_c),
@@ -1360,76 +822,6 @@ defparam pxcache_pixnum_x_0_.sum_lutc_input="datac";
 );
 defparam state_RNO_1_.lut_mask=16'hebeb;
 defparam state_RNO_1_.sum_lutc_input="datac";
-// @14:147
-  cycloneii_lcell_comb pxcache_pixnum_0_RNO_0_3_ (
-	.combout(d_m2_e_0_0_x),
-	.dataa(dbb_bus_c_7),
-	.datab(prev_state_1),
-	.datac(VCC),
-	.datad(VCC)
-);
-defparam pxcache_pixnum_0_RNO_0_3_.lut_mask=16'h8888;
-defparam pxcache_pixnum_0_RNO_0_3_.sum_lutc_input="datac";
-// @14:147
-  cycloneii_lcell_comb pxcache_pixnum_0_RNO_0_2_ (
-	.combout(d_m2_e_m1_0_a2_0_x),
-	.dataa(dbb_bus_c_6),
-	.datab(prev_state_1),
-	.datac(VCC),
-	.datad(VCC)
-);
-defparam pxcache_pixnum_0_RNO_0_2_.lut_mask=16'h8888;
-defparam pxcache_pixnum_0_RNO_0_2_.sum_lutc_input="datac";
-// @14:147
-  cycloneii_lcell_comb pxcache_pixnum_0_RNO_3_ (
-	.combout(pxcache_m2_0_a2_1_0_x),
-	.dataa(dbb_bus_c_7),
-	.datab(state_0_0),
-	.datac(VCC),
-	.datad(VCC)
-);
-defparam pxcache_pixnum_0_RNO_3_.lut_mask=16'h2222;
-defparam pxcache_pixnum_0_RNO_3_.sum_lutc_input="datac";
-// @14:147
-  cycloneii_lcell_comb pxcache_pixnum_0_RNO_2_ (
-	.combout(pxcache_m2_0_a2_0_x),
-	.dataa(dbb_bus_c_6),
-	.datab(state_0_0),
-	.datac(VCC),
-	.datad(VCC)
-);
-defparam pxcache_pixnum_0_RNO_2_.lut_mask=16'h2222;
-defparam pxcache_pixnum_0_RNO_2_.sum_lutc_input="datac";
-// @14:309
-  cycloneii_lcell_comb rcb_finish_17_x_cZ (
-	.combout(rcb_finish_17_x),
-	.dataa(reset_c),
-	.datab(store_ram_15_0),
-	.datac(VCC),
-	.datad(VCC)
-);
-defparam rcb_finish_17_x_cZ.lut_mask=16'h1111;
-defparam rcb_finish_17_x_cZ.sum_lutc_input="datac";
-// @14:147
-  cycloneii_lcell_comb pxcache_pw_i_a4_x_cZ (
-	.combout(pxcache_pw_i_a4_x),
-	.dataa(dbb_bus_c_13),
-	.datab(dbb_bus_c_12),
-	.datac(VCC),
-	.datad(VCC)
-);
-defparam pxcache_pw_i_a4_x_cZ.lut_mask=16'h1111;
-defparam pxcache_pw_i_a4_x_cZ.sum_lutc_input="datac";
-// @14:94
-  cycloneii_lcell_comb prev_state_0_x_0_ (
-	.combout(prev_state_0_x_0),
-	.dataa(reset_c),
-	.datab(state_0_0),
-	.datac(VCC),
-	.datad(VCC)
-);
-defparam prev_state_0_x_0_.lut_mask=16'heeee;
-defparam prev_state_0_x_0_.sum_lutc_input="datac";
   cycloneii_lcell_comb data_merged_RNO_15_ (
 	.combout(N_282_i_0_g0_x),
 	.dataa(vdout_c_15),
@@ -1580,29 +972,23 @@ endmodule /* ram_fsm */
 
 // VQM4.1+ 
 module pix_word_cache (
-  next_state_i_a4_0,
-  pxcache_store_buf_0_en_0_a4_0,
-  state_ns_0_a4_0_0,
-  prev_state_1,
-  prev_state_0,
-  pxcache_pixnum_x_0,
-  state_1,
-  state_0,
+  state_srsts_x_0,
+  state_ns_0_0_o4_0,
+  curr_vram_word_4,
+  curr_vram_word_5,
   curr_vram_word_2,
   curr_vram_word_3,
   curr_vram_word_0,
   curr_vram_word_1,
   curr_vram_word_6,
   curr_vram_word_7,
-  curr_vram_word_4,
-  curr_vram_word_5,
+  dbb_bus_c_8,
   dbb_bus_c_13,
   dbb_bus_c_12,
-  dbb_bus_c_14,
-  dbb_bus_c_15,
-  dbb_bus_c_7,
-  dbb_bus_c_1,
   dbb_bus_c_0,
+  dbb_bus_c_1,
+  dbb_bus_c_9,
+  dbb_bus_c_7,
   dbb_bus_c_6,
   dbb_bus_c_4,
   dbb_bus_c_5,
@@ -1610,10 +996,21 @@ module pix_word_cache (
   dbb_bus_c_3,
   dbb_bus_c_10,
   dbb_bus_c_11,
-  dbb_bus_c_8,
-  dbb_bus_c_9,
-  pxcache_pixnum_0_1,
-  pxcache_pixnum_0_0,
+  dbb_bus_c_15,
+  dbb_bus_c_14,
+  state_rep1_0,
+  prev_state_1,
+  prev_state_0,
+  state_rep2_0,
+  state_1,
+  state_0,
+  idle_counter_6,
+  idle_counter_5,
+  idle_counter_3,
+  idle_counter_2,
+  idle_counter_4,
+  idle_counter_0,
+  idle_counter_1,
   store_ram_0_0,
   store_ram_0_1,
   store_ram_1_0,
@@ -1646,42 +1043,35 @@ module pix_word_cache (
   store_ram_14_1,
   store_ram_15_0,
   store_ram_15_1,
-  pxcache_store_buf_0_1_0__g0_i_0_rep1,
-  curr_vram_word_2_0_0__g0_i_0_x,
-  pxcache_wen_all_i,
-  state_srsts_0_0__g0_x,
-  pxcache_pw_i_1_1,
-  pxcache_pw_i_1,
+  N_57_i_0_g0_x,
+  curr_vram_word_2_0_0__g0_0_x,
+  rcb_finish_0_a4,
   pxcache_store_buf_0_1_0__g0_i_0,
-  pxcache_pw_i_m3,
-  un4_curr_vram_word_NE,
+  un6_reset_0_0_i,
+  state_srsts_0_0__g0,
   reset_c,
+  really_done,
+  pxcache_wen_all_i_0,
   clk_c
 )
 ;
-input next_state_i_a4_0 ;
-input pxcache_store_buf_0_en_0_a4_0 ;
-input state_ns_0_a4_0_0 ;
-input prev_state_1 ;
-input prev_state_0 ;
-input pxcache_pixnum_x_0 ;
-input state_1 ;
-input state_0 ;
+output state_srsts_x_0 ;
+output state_ns_0_0_o4_0 ;
+input curr_vram_word_4 ;
+input curr_vram_word_5 ;
 input curr_vram_word_2 ;
 input curr_vram_word_3 ;
 input curr_vram_word_0 ;
 input curr_vram_word_1 ;
 input curr_vram_word_6 ;
 input curr_vram_word_7 ;
-input curr_vram_word_4 ;
-input curr_vram_word_5 ;
+input dbb_bus_c_8 ;
 input dbb_bus_c_13 ;
 input dbb_bus_c_12 ;
-input dbb_bus_c_14 ;
-input dbb_bus_c_15 ;
-input dbb_bus_c_7 ;
-input dbb_bus_c_1 ;
 input dbb_bus_c_0 ;
+input dbb_bus_c_1 ;
+input dbb_bus_c_9 ;
+input dbb_bus_c_7 ;
 input dbb_bus_c_6 ;
 input dbb_bus_c_4 ;
 input dbb_bus_c_5 ;
@@ -1689,10 +1079,21 @@ input dbb_bus_c_2 ;
 input dbb_bus_c_3 ;
 input dbb_bus_c_10 ;
 input dbb_bus_c_11 ;
-input dbb_bus_c_8 ;
-input dbb_bus_c_9 ;
-input pxcache_pixnum_0_1 ;
-input pxcache_pixnum_0_0 ;
+input dbb_bus_c_15 ;
+input dbb_bus_c_14 ;
+input state_rep1_0 ;
+input prev_state_1 ;
+input prev_state_0 ;
+input state_rep2_0 ;
+input state_1 ;
+input state_0 ;
+input idle_counter_6 ;
+input idle_counter_5 ;
+input idle_counter_3 ;
+input idle_counter_2 ;
+input idle_counter_4 ;
+input idle_counter_0 ;
+input idle_counter_1 ;
 output store_ram_0_0 ;
 output store_ram_0_1 ;
 output store_ram_1_0 ;
@@ -1725,40 +1126,33 @@ output store_ram_14_0 ;
 output store_ram_14_1 ;
 output store_ram_15_0 ;
 output store_ram_15_1 ;
-output pxcache_store_buf_0_1_0__g0_i_0_rep1 ;
-output curr_vram_word_2_0_0__g0_i_0_x ;
-input pxcache_wen_all_i ;
-output state_srsts_0_0__g0_x ;
-input pxcache_pw_i_1_1 ;
-input pxcache_pw_i_1 ;
+output N_57_i_0_g0_x ;
+output curr_vram_word_2_0_0__g0_0_x ;
+output rcb_finish_0_a4 ;
 output pxcache_store_buf_0_1_0__g0_i_0 ;
-input pxcache_pw_i_m3 ;
-output un4_curr_vram_word_NE ;
+output un6_reset_0_0_i ;
+output state_srsts_0_0__g0 ;
 input reset_c ;
+input really_done ;
+output pxcache_wen_all_i_0 ;
 input clk_c ;
-wire next_state_i_a4_0 ;
-wire pxcache_store_buf_0_en_0_a4_0 ;
-wire state_ns_0_a4_0_0 ;
-wire prev_state_1 ;
-wire prev_state_0 ;
-wire pxcache_pixnum_x_0 ;
-wire state_1 ;
-wire state_0 ;
+wire state_srsts_x_0 ;
+wire state_ns_0_0_o4_0 ;
+wire curr_vram_word_4 ;
+wire curr_vram_word_5 ;
 wire curr_vram_word_2 ;
 wire curr_vram_word_3 ;
 wire curr_vram_word_0 ;
 wire curr_vram_word_1 ;
 wire curr_vram_word_6 ;
 wire curr_vram_word_7 ;
-wire curr_vram_word_4 ;
-wire curr_vram_word_5 ;
+wire dbb_bus_c_8 ;
 wire dbb_bus_c_13 ;
 wire dbb_bus_c_12 ;
-wire dbb_bus_c_14 ;
-wire dbb_bus_c_15 ;
-wire dbb_bus_c_7 ;
-wire dbb_bus_c_1 ;
 wire dbb_bus_c_0 ;
+wire dbb_bus_c_1 ;
+wire dbb_bus_c_9 ;
+wire dbb_bus_c_7 ;
 wire dbb_bus_c_6 ;
 wire dbb_bus_c_4 ;
 wire dbb_bus_c_5 ;
@@ -1766,10 +1160,21 @@ wire dbb_bus_c_2 ;
 wire dbb_bus_c_3 ;
 wire dbb_bus_c_10 ;
 wire dbb_bus_c_11 ;
-wire dbb_bus_c_8 ;
-wire dbb_bus_c_9 ;
-wire pxcache_pixnum_0_1 ;
-wire pxcache_pixnum_0_0 ;
+wire dbb_bus_c_15 ;
+wire dbb_bus_c_14 ;
+wire state_rep1_0 ;
+wire prev_state_1 ;
+wire prev_state_0 ;
+wire state_rep2_0 ;
+wire state_1 ;
+wire state_0 ;
+wire idle_counter_6 ;
+wire idle_counter_5 ;
+wire idle_counter_3 ;
+wire idle_counter_2 ;
+wire idle_counter_4 ;
+wire idle_counter_0 ;
+wire idle_counter_1 ;
 wire store_ram_0_0 ;
 wire store_ram_0_1 ;
 wire store_ram_1_0 ;
@@ -1802,129 +1207,147 @@ wire store_ram_14_0 ;
 wire store_ram_14_1 ;
 wire store_ram_15_0 ;
 wire store_ram_15_1 ;
-wire pxcache_store_buf_0_1_0__g0_i_0_rep1 ;
-wire curr_vram_word_2_0_0__g0_i_0_x ;
-wire pxcache_wen_all_i ;
-wire state_srsts_0_0__g0_x ;
-wire pxcache_pw_i_1_1 ;
-wire pxcache_pw_i_1 ;
+wire N_57_i_0_g0_x ;
+wire curr_vram_word_2_0_0__g0_0_x ;
+wire rcb_finish_0_a4 ;
 wire pxcache_store_buf_0_1_0__g0_i_0 ;
-wire pxcache_pw_i_m3 ;
-wire un4_curr_vram_word_NE ;
+wire un6_reset_0_0_i ;
+wire state_srsts_0_0__g0 ;
 wire reset_c ;
+wire really_done ;
+wire pxcache_wen_all_i_0 ;
 wire clk_c ;
-wire [1:0] dout1_10_i_m2_a;
-wire [1:0] dout1_10_i_m2;
-wire [1:0] dout1_13_a;
-wire [1:0] dout1_13;
-wire [1:0] dout1_3_a;
-wire [1:0] dout1_3;
-wire [1:0] dout1_6_i_m2_a;
-wire [1:0] dout1_6_i_m2;
-wire [1:0] dout1_7_i_m2;
-wire store_ram_15_0_968 ;
+wire [0:0] pxcache_store_buf_0_en_0_0_a4_3;
+wire [0:0] state_ns_i_0_a4;
+wire [0:0] pxcache_store_buf_0_en_0_0_a4_0_0;
+wire [0:0] pxcache_pixnum_i_o4_2_rep1;
+wire [0:0] pxcache_pixnum_i_o4_2_rep1_0;
+wire [1:0] dout1_6_i_m3_a;
+wire [3:2] pxcache_pixnum_i_x_rep1;
+wire [3:0] pxcache_pixnum_i_x;
+wire [1:0] dout1_6_i_m3;
+wire [1:0] dout1_3_i_m4_a;
+wire [1:0] dout1_3_i_m4;
+wire [1:0] dout1_10_i_m3_a;
+wire [3:3] pxcache_pixnum_i_x_rep2;
+wire [1:0] dout1_10_i_m3;
+wire [1:0] dout1_13_i_m3_a;
+wire [3:3] pxcache_pixnum_i_x_rep3;
+wire [1:0] dout1_13_i_m3;
+wire [0:0] pxcache_store_buf_0_en_0_0_a4;
+wire [0:0] pxcache_pixnum_i_o4_2;
+wire [0:0] pxcache_pixnum_i_o4_2_0_x;
+wire store_ram_15_0_966 ;
 wire store_ram_15_en_9_0 ;
-wire store_ram_15_0_0_943 ;
-wire store_ram_14_0_916 ;
+wire store_ram_15_0_0_941 ;
+wire store_ram_14_0_915 ;
 wire store_ram_14_en_10_0 ;
-wire store_ram_14_0_0_890 ;
-wire store_ram_13_0_865_a2 ;
-wire store_ram_13_en ;
-wire store_ram_13_0_0_842_a2 ;
-wire store_ram_12_0_819_a2 ;
-wire store_ram_12_0_sqmuxa_0_a0_i ;
-wire store_ram_12_0_0_795_a2 ;
-wire store_ram_11_0_769 ;
+wire store_ram_14_0_0_889 ;
+wire store_ram_13_0_863 ;
+wire store_ram_13_en_11_0 ;
+wire store_ram_13_0_0_837 ;
+wire store_ram_12_0_810 ;
+wire store_ram_12_en_12_0 ;
+wire store_ram_12_0_0_783 ;
+wire store_ram_11_0_757 ;
 wire store_ram_11_en_13_0 ;
-wire store_ram_11_0_0_743 ;
-wire store_ram_10_0_715 ;
+wire store_ram_11_0_0_731 ;
+wire store_ram_10_0_704 ;
 wire store_ram_10_en_14_0 ;
-wire store_ram_10_0_0_688 ;
-wire store_ram_9_0_660 ;
+wire store_ram_10_0_0_677 ;
+wire store_ram_9_0_650 ;
 wire store_ram_9_en_15_0 ;
-wire store_ram_9_0_0_633 ;
-wire store_ram_8_0_604 ;
+wire store_ram_9_0_0_623 ;
+wire store_ram_8_0_595 ;
 wire store_ram_8_en_16_0 ;
-wire store_ram_8_0_0_576 ;
-wire store_ram_7_0_549 ;
+wire store_ram_8_0_0_567 ;
+wire store_ram_7_0_541_x ;
 wire store_ram_7_en_17_0 ;
-wire store_ram_7_0_0_523 ;
-wire store_ram_6_0_495 ;
+wire store_ram_7_0_0_515_x ;
+wire store_ram_6_0_488_x ;
 wire store_ram_6_en_18_0 ;
-wire store_ram_6_0_0_468 ;
-wire store_ram_5_0_440 ;
+wire store_ram_6_0_0_461_x ;
+wire store_ram_5_0_434 ;
 wire store_ram_5_en_19_0 ;
-wire store_ram_5_0_0_413 ;
-wire store_ram_4_0_387_a2 ;
-wire store_ram_4_0_sqmuxa_0_a0_i ;
-wire store_ram_4_0_0_362_a2 ;
-wire store_ram_3_0_335 ;
+wire store_ram_5_0_0_407 ;
+wire store_ram_4_0_379 ;
+wire store_ram_4_en_20_0 ;
+wire store_ram_4_0_0_351 ;
+wire store_ram_3_0_324 ;
 wire store_ram_3_en_21_0 ;
-wire store_ram_3_0_0_308 ;
-wire store_ram_2_0_279 ;
+wire store_ram_3_0_0_297 ;
+wire store_ram_2_0_269 ;
 wire store_ram_2_en_22_0 ;
-wire store_ram_2_0_0_251 ;
-wire store_ram_1_0_222 ;
+wire store_ram_2_0_0_241 ;
+wire store_ram_1_0_213 ;
 wire store_ram_1_en_23_0 ;
-wire store_ram_1_0_0_194 ;
-wire store_ram_0_0_164 ;
+wire store_ram_1_0_0_185 ;
+wire store_ram_0_0_156 ;
 wire store_ram_0_en_24_0 ;
-wire store_ram_0_0_0_135 ;
-wire un1_pixnum_12_2_i_o2 ;
-wire store_ram_0_en_24_0_a2_0 ;
-wire store_ram_8_en_16_0_a2_0 ;
-wire un1_pixnum_5_2_0_a2 ;
-wire un4_curr_vram_word_NE_0 ;
+wire store_ram_0_0_0_127 ;
+wire rcb_finish_0_a4_7 ;
+wire un6_reset_0_0_a3_4_1 ;
+wire rcb_finish_0_a4_20 ;
+wire rcb_finish_0_a4_21 ;
+wire rcb_finish_0_a4_23 ;
+wire rcb_finish_0_a4_24 ;
+wire rcb_finish_0_a4_25 ;
+wire rcb_finish_0_a4_26 ;
+wire rcb_finish_0_a4_27 ;
 wire un4_curr_vram_word_NE_1 ;
 wire un4_curr_vram_word_NE_2 ;
 wire un4_curr_vram_word_NE_3 ;
-wire store_ram_1_0_0_a4_1_4 ;
-wire G_981_x ;
-wire store_ram_3_0_0_a4_1_4 ;
-wire store_ram_14_0_0_a4_1_4 ;
-wire store_ram_12_0_0_795_a2_1_x ;
-wire store_ram_11_0_0_a4_1_4 ;
-wire store_ram_9_0_0_a4_1_4 ;
-wire store_ram_7_0_0_a4_1_4 ;
-wire store_ram_6_0_0_a4_1_4 ;
-wire store_ram_4_0_0_362_a2_1_x ;
-wire store_ram_5_0_0_a4_1_4 ;
+wire store_ram_0_0_sqmuxa_i_a4_2 ;
+wire store_ram_0_0_sqmuxa_i_a4_a1_rep1 ;
+wire un6_reset_0_0_a3_4 ;
+wire store_m1_e_3 ;
+wire store_m1_e_4 ;
+wire store_m1_e_5 ;
+wire rcb_finish_0_a4_29 ;
+wire un4_curr_vram_word_NE_4 ;
+wire un4_curr_vram_word_4_x ;
+wire rcb_finish_0_a4_28 ;
+wire rcb_finish_0_a4_1_x ;
+wire rcb_finish_0_a4_33 ;
+wire store_ram_0_en_24_0_a2_1 ;
+wire store_ram_0_0_sqmuxa_i_a4_a1_rep2 ;
+wire un6_reset_0_0_o4 ;
+wire state_srsts_0_0__g1_0_tz_x ;
 wire store_ram_0_en_24_0_o2_x ;
-wire store_ram_2_0_0_a4_1_4 ;
-wire store_ram_10_0_0_a4_1_4 ;
-wire store_ram_8_0_0_a4_1_4 ;
-wire store_ram_0_0_0_a4_1_4 ;
-wire store_ram_4_0_387_a2_5 ;
-wire store_ram_12_0_819_a2_5 ;
-wire state_srsts_0_0__g1_0 ;
-wire store_ram_12_0_819_o2_0 ;
-wire store_ram_12_0_0_795_o2_0 ;
-wire store_ram_10_0_0_a4_0 ;
-wire store_ram_0_0_0_a4_0_0_x ;
-wire store_ram_0_0_0_a4_0 ;
-wire store_ram_0_0_164_a4_0 ;
-wire store_ram_0_0_164_a4_0_0_0_x ;
-wire store_ram_10_0_715_a4_0 ;
-wire store_ram_1_0_0_a4_1_5_x ;
-wire store_ram_0_0_0_135_a4_x ;
-wire store_ram_1_0_222_a4_1_5_x ;
-wire store_ram_0_0_164_a4_x ;
-wire store_ram_9_0_0_a4_1_5_x ;
-wire store_ram_9_0_660_a4_1_5_x ;
+wire store_ram_0_0_sqmuxa_i_a4_0_0_x ;
+wire store_ram_0_0_0_a4_1_2_x ;
 wire store_ram_0_0_0_a4_1_5_x ;
-wire store_ram_0_0_164_a4_1_5_x ;
-wire store_ram_15_0_0_a4_1_1_x ;
-wire store_ram_15_0_968_a4_1_1_x ;
-wire store_ram_13_0_0_842_a2_3 ;
-wire store_m1_e_0_1_x ;
-wire store_m1_e_0_0_x ;
-wire store_ram_13_0_0_842_a2_1 ;
-wire store_ram_2_0_sqmuxa_i_a2_1_x ;
-wire store_ram_12_0_819_a2_6_1_x ;
-wire store_ram_12_0_0_795_a2_6_1_x ;
-wire store_ram_13_0_0_842_a2_a ;
-wire store_ram_13_0_865_a2_a_x ;
-wire store_ram_13_0_865_a2_0_x ;
+wire store_ram_0_0_0_a4_1_1_x ;
+wire store_ram_0_0_0_0 ;
+wire store_ram_0_0_156_a4_1_1_x ;
+wire store_ram_0_0_156_0 ;
+wire store_ram_13_0_0_a4_1_2_x ;
+wire store_ram_2_0_0_a4_1_4_0_x ;
+wire store_ram_2_0_0_a4_1_5_x ;
+wire store_ram_10_0_0_a4_1_1_x ;
+wire store_ram_2_0_0_0 ;
+wire store_ram_2_0_269_a4_1_5_x ;
+wire store_ram_2_0_269_0 ;
+wire store_ram_3_0_0_a4_1_4_0_x ;
+wire store_ram_4_0_0_a4_1_5_x ;
+wire store_ram_8_0_0_a4_1_5_x ;
+wire store_ram_0_0_0_0_rep1 ;
+wire store_ram_0_0_156_0_rep1 ;
+wire store_ram_0_0_0_a4_1_5_1_x ;
+wire store_ram_10_0_0_a4_1_4_x ;
+wire store_ram_2_0_0_0_rep1 ;
+wire store_ram_2_0_269_0_rep1 ;
+wire store_ram_11_0_0_a4_1_4_x ;
+wire store_ram_12_0_0_a4_1_5_x ;
+wire store_ram_14_0_0_a4_1_5_1_x ;
+wire store_ram_6_0_0_a4_1_4_x ;
+wire store_ram_7_0_0_a4_1_4_x ;
+wire store_ram_0_0_sqmuxa_i_a4_a1 ;
+wire store_ram_0_0_0_0_a ;
+wire store_ram_0_0_156_0_a ;
+wire store_ram_2_0_269_0_a ;
+wire store_ram_2_0_0_0_a ;
+wire store_ram_0_0_sqmuxa_i_a4_a1_rep1_0 ;
 wire GND ;
 wire VCC ;
   assign VCC = 1'b1;
@@ -1932,7 +1355,7 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_15_1_ (
 	.regout(store_ram_15_1),
-	.datain(store_ram_15_0_968),
+	.datain(store_ram_15_0_966),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -1943,7 +1366,7 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_15_0_ (
 	.regout(store_ram_15_0),
-	.datain(store_ram_15_0_0_943),
+	.datain(store_ram_15_0_0_941),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -1954,7 +1377,7 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_14_1_ (
 	.regout(store_ram_14_1),
-	.datain(store_ram_14_0_916),
+	.datain(store_ram_14_0_915),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -1965,7 +1388,7 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_14_0_ (
 	.regout(store_ram_14_0),
-	.datain(store_ram_14_0_0_890),
+	.datain(store_ram_14_0_0_889),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -1976,51 +1399,51 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_13_1_ (
 	.regout(store_ram_13_1),
-	.datain(store_ram_13_0_865_a2),
+	.datain(store_ram_13_0_863),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
 	.sload(GND),
 	.sdata(GND),
-	.ena(store_ram_13_en)
+	.ena(store_ram_13_en_11_0)
 );
 // @13:27
   cycloneii_lcell_ff store_ram_13_0_ (
 	.regout(store_ram_13_0),
-	.datain(store_ram_13_0_0_842_a2),
+	.datain(store_ram_13_0_0_837),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
 	.sload(GND),
 	.sdata(GND),
-	.ena(store_ram_13_en)
+	.ena(store_ram_13_en_11_0)
 );
 // @13:27
   cycloneii_lcell_ff store_ram_12_1_ (
 	.regout(store_ram_12_1),
-	.datain(store_ram_12_0_819_a2),
+	.datain(store_ram_12_0_810),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
 	.sload(GND),
 	.sdata(GND),
-	.ena(store_ram_12_0_sqmuxa_0_a0_i)
+	.ena(store_ram_12_en_12_0)
 );
 // @13:27
   cycloneii_lcell_ff store_ram_12_0_ (
 	.regout(store_ram_12_0),
-	.datain(store_ram_12_0_0_795_a2),
+	.datain(store_ram_12_0_0_783),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
 	.sload(GND),
 	.sdata(GND),
-	.ena(store_ram_12_0_sqmuxa_0_a0_i)
+	.ena(store_ram_12_en_12_0)
 );
 // @13:27
   cycloneii_lcell_ff store_ram_11_1_ (
 	.regout(store_ram_11_1),
-	.datain(store_ram_11_0_769),
+	.datain(store_ram_11_0_757),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -2031,7 +1454,7 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_11_0_ (
 	.regout(store_ram_11_0),
-	.datain(store_ram_11_0_0_743),
+	.datain(store_ram_11_0_0_731),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -2042,7 +1465,7 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_10_1_ (
 	.regout(store_ram_10_1),
-	.datain(store_ram_10_0_715),
+	.datain(store_ram_10_0_704),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -2053,7 +1476,7 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_10_0_ (
 	.regout(store_ram_10_0),
-	.datain(store_ram_10_0_0_688),
+	.datain(store_ram_10_0_0_677),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -2064,7 +1487,7 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_9_1_ (
 	.regout(store_ram_9_1),
-	.datain(store_ram_9_0_660),
+	.datain(store_ram_9_0_650),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -2075,7 +1498,7 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_9_0_ (
 	.regout(store_ram_9_0),
-	.datain(store_ram_9_0_0_633),
+	.datain(store_ram_9_0_0_623),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -2086,7 +1509,7 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_8_1_ (
 	.regout(store_ram_8_1),
-	.datain(store_ram_8_0_604),
+	.datain(store_ram_8_0_595),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -2097,7 +1520,7 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_8_0_ (
 	.regout(store_ram_8_0),
-	.datain(store_ram_8_0_0_576),
+	.datain(store_ram_8_0_0_567),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -2108,7 +1531,7 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_7_1_ (
 	.regout(store_ram_7_1),
-	.datain(store_ram_7_0_549),
+	.datain(store_ram_7_0_541_x),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -2119,7 +1542,7 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_7_0_ (
 	.regout(store_ram_7_0),
-	.datain(store_ram_7_0_0_523),
+	.datain(store_ram_7_0_0_515_x),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -2130,7 +1553,7 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_6_1_ (
 	.regout(store_ram_6_1),
-	.datain(store_ram_6_0_495),
+	.datain(store_ram_6_0_488_x),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -2141,7 +1564,7 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_6_0_ (
 	.regout(store_ram_6_0),
-	.datain(store_ram_6_0_0_468),
+	.datain(store_ram_6_0_0_461_x),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -2152,7 +1575,7 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_5_1_ (
 	.regout(store_ram_5_1),
-	.datain(store_ram_5_0_440),
+	.datain(store_ram_5_0_434),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -2163,7 +1586,7 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_5_0_ (
 	.regout(store_ram_5_0),
-	.datain(store_ram_5_0_0_413),
+	.datain(store_ram_5_0_0_407),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -2174,29 +1597,29 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_4_1_ (
 	.regout(store_ram_4_1),
-	.datain(store_ram_4_0_387_a2),
+	.datain(store_ram_4_0_379),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
 	.sload(GND),
 	.sdata(GND),
-	.ena(store_ram_4_0_sqmuxa_0_a0_i)
+	.ena(store_ram_4_en_20_0)
 );
 // @13:27
   cycloneii_lcell_ff store_ram_4_0_ (
 	.regout(store_ram_4_0),
-	.datain(store_ram_4_0_0_362_a2),
+	.datain(store_ram_4_0_0_351),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
 	.sload(GND),
 	.sdata(GND),
-	.ena(store_ram_4_0_sqmuxa_0_a0_i)
+	.ena(store_ram_4_en_20_0)
 );
 // @13:27
   cycloneii_lcell_ff store_ram_3_1_ (
 	.regout(store_ram_3_1),
-	.datain(store_ram_3_0_335),
+	.datain(store_ram_3_0_324),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -2207,7 +1630,7 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_3_0_ (
 	.regout(store_ram_3_0),
-	.datain(store_ram_3_0_0_308),
+	.datain(store_ram_3_0_0_297),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -2218,7 +1641,7 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_2_1_ (
 	.regout(store_ram_2_1),
-	.datain(store_ram_2_0_279),
+	.datain(store_ram_2_0_269),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -2229,7 +1652,7 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_2_0_ (
 	.regout(store_ram_2_0),
-	.datain(store_ram_2_0_0_251),
+	.datain(store_ram_2_0_0_241),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -2240,7 +1663,7 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_1_1_ (
 	.regout(store_ram_1_1),
-	.datain(store_ram_1_0_222),
+	.datain(store_ram_1_0_213),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -2251,7 +1674,7 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_1_0_ (
 	.regout(store_ram_1_0),
-	.datain(store_ram_1_0_0_194),
+	.datain(store_ram_1_0_0_185),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -2262,7 +1685,7 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_0_1_ (
 	.regout(store_ram_0_1),
-	.datain(store_ram_0_0_164),
+	.datain(store_ram_0_0_156),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -2273,7 +1696,7 @@ wire VCC ;
 // @13:27
   cycloneii_lcell_ff store_ram_0_0_ (
 	.regout(store_ram_0_0),
-	.datain(store_ram_0_0_0_135),
+	.datain(store_ram_0_0_0_127),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -2281,217 +1704,137 @@ wire VCC ;
 	.sdata(GND),
 	.ena(store_ram_0_en_24_0)
 );
-// @8:20
-  cycloneii_lcell_comb un1_pixnum_12_2_i_o2_cZ (
-	.combout(un1_pixnum_12_2_i_o2),
-	.dataa(pxcache_pixnum_0_0),
-	.datab(pxcache_pixnum_0_1),
+// @14:82
+  cycloneii_lcell_comb fsm_clocked_process_un6_reset_0_0_o4_RNO (
+	.combout(pxcache_store_buf_0_en_0_0_a4_3[0]),
+	.dataa(idle_counter_1),
+	.datab(idle_counter_0),
 	.datac(VCC),
 	.datad(VCC)
 );
-defparam un1_pixnum_12_2_i_o2_cZ.lut_mask=16'h7777;
-defparam un1_pixnum_12_2_i_o2_cZ.sum_lutc_input="datac";
-// @14:410
-  cycloneii_lcell_comb store_ram_0_en_24_0_a2_0_cZ (
-	.combout(store_ram_0_en_24_0_a2_0),
-	.dataa(pxcache_pixnum_0_0),
-	.datab(pxcache_pixnum_0_1),
+defparam fsm_clocked_process_un6_reset_0_0_o4_RNO.lut_mask=16'h4444;
+defparam fsm_clocked_process_un6_reset_0_0_o4_RNO.sum_lutc_input="datac";
+// @14:284
+  cycloneii_lcell_comb rcb_finish_0_a4_7_cZ (
+	.combout(rcb_finish_0_a4_7),
+	.dataa(store_ram_12_0),
+	.datab(store_ram_4_1),
 	.datac(VCC),
 	.datad(VCC)
 );
-defparam store_ram_0_en_24_0_a2_0_cZ.lut_mask=16'h1111;
-defparam store_ram_0_en_24_0_a2_0_cZ.sum_lutc_input="datac";
-// @14:410
-  cycloneii_lcell_comb store_ram_8_en_16_0_a2_0_cZ (
-	.combout(store_ram_8_en_16_0_a2_0),
-	.dataa(pxcache_pixnum_0_0),
-	.datab(pxcache_pixnum_0_1),
+defparam rcb_finish_0_a4_7_cZ.lut_mask=16'h1111;
+defparam rcb_finish_0_a4_7_cZ.sum_lutc_input="datac";
+// @14:322
+  cycloneii_lcell_comb fsm_clocked_process_un6_reset_0_0_a3_4_1 (
+	.combout(un6_reset_0_0_a3_4_1),
+	.dataa(idle_counter_4),
+	.datab(idle_counter_2),
 	.datac(VCC),
 	.datad(VCC)
 );
-defparam store_ram_8_en_16_0_a2_0_cZ.lut_mask=16'h4444;
-defparam store_ram_8_en_16_0_a2_0_cZ.sum_lutc_input="datac";
-// @8:20
-  cycloneii_lcell_comb un1_pixnum_5_2_0_a2_cZ (
-	.combout(un1_pixnum_5_2_0_a2),
-	.dataa(pxcache_pixnum_0_0),
-	.datab(pxcache_pixnum_0_1),
-	.datac(VCC),
-	.datad(VCC)
+defparam fsm_clocked_process_un6_reset_0_0_a3_4_1.lut_mask=16'h4444;
+defparam fsm_clocked_process_un6_reset_0_0_a3_4_1.sum_lutc_input="datac";
+// @14:91
+  cycloneii_lcell_comb state_ns_i_0_a4_0_ (
+	.combout(state_ns_i_0_a4[0]),
+	.dataa(state_0),
+	.datab(state_rep2_0),
+	.datac(prev_state_0),
+	.datad(prev_state_1)
 );
-defparam un1_pixnum_5_2_0_a2_cZ.lut_mask=16'h2222;
-defparam un1_pixnum_5_2_0_a2_cZ.sum_lutc_input="datac";
-// @13:65
-  cycloneii_lcell_comb dout1_10_i_m2_a_0_ (
-	.combout(dout1_10_i_m2_a[0]),
-	.dataa(store_ram_10_0),
-	.datab(store_ram_14_0),
-	.datac(pxcache_pixnum_0_0),
-	.datad(pxcache_pixnum_0_1)
+defparam state_ns_i_0_a4_0_.lut_mask=16'h8008;
+defparam state_ns_i_0_a4_0_.sum_lutc_input="datac";
+// @14:142
+  cycloneii_lcell_comb pxcache_wen_all_i_0_cZ (
+	.combout(pxcache_wen_all_i_0),
+	.dataa(state_0),
+	.datab(state_rep1_0),
+	.datac(prev_state_0),
+	.datad(prev_state_1)
 );
-defparam dout1_10_i_m2_a_0_.lut_mask=16'h350f;
-defparam dout1_10_i_m2_a_0_.sum_lutc_input="datac";
-// @13:65
-  cycloneii_lcell_comb dout1_10_i_m2_0_ (
-	.combout(dout1_10_i_m2[0]),
-	.dataa(store_ram_6_0),
-	.datab(store_ram_2_0),
-	.datac(pxcache_pixnum_0_1),
-	.datad(dout1_10_i_m2_a[0])
+defparam pxcache_wen_all_i_0_cZ.lut_mask=16'hf77f;
+defparam pxcache_wen_all_i_0_cZ.sum_lutc_input="datac";
+// @14:284
+  cycloneii_lcell_comb rcb_finish_0_a4_20_cZ (
+	.combout(rcb_finish_0_a4_20),
+	.dataa(store_ram_1_1),
+	.datab(store_ram_5_0),
+	.datac(store_ram_5_1),
+	.datad(store_ram_12_1)
 );
-defparam dout1_10_i_m2_0_.lut_mask=16'h0cfa;
-defparam dout1_10_i_m2_0_.sum_lutc_input="datac";
-// @13:65
-  cycloneii_lcell_comb dout1_13_a_0_ (
-	.combout(dout1_13_a[0]),
-	.dataa(store_ram_11_0),
-	.datab(store_ram_15_0),
-	.datac(pxcache_pixnum_0_0),
-	.datad(pxcache_pixnum_0_1)
+defparam rcb_finish_0_a4_20_cZ.lut_mask=16'h0001;
+defparam rcb_finish_0_a4_20_cZ.sum_lutc_input="datac";
+// @14:284
+  cycloneii_lcell_comb rcb_finish_0_a4_21_cZ (
+	.combout(rcb_finish_0_a4_21),
+	.dataa(store_ram_0_1),
+	.datab(store_ram_8_0),
+	.datac(store_ram_0_0),
+	.datad(store_ram_4_0)
 );
-defparam dout1_13_a_0_.lut_mask=16'h350f;
-defparam dout1_13_a_0_.sum_lutc_input="datac";
-// @13:65
-  cycloneii_lcell_comb dout1_13_0_ (
-	.combout(dout1_13[0]),
-	.dataa(store_ram_7_0),
+defparam rcb_finish_0_a4_21_cZ.lut_mask=16'h0001;
+defparam rcb_finish_0_a4_21_cZ.sum_lutc_input="datac";
+// @14:284
+  cycloneii_lcell_comb rcb_finish_0_a4_23_cZ (
+	.combout(rcb_finish_0_a4_23),
+	.dataa(store_ram_2_1),
 	.datab(store_ram_3_0),
-	.datac(pxcache_pixnum_0_1),
-	.datad(dout1_13_a[0])
+	.datac(store_ram_3_1),
+	.datad(store_ram_6_0)
 );
-defparam dout1_13_0_.lut_mask=16'h0cfa;
-defparam dout1_13_0_.sum_lutc_input="datac";
-// @13:65
-  cycloneii_lcell_comb dout1_3_a_0_ (
-	.combout(dout1_3_a[0]),
-	.dataa(store_ram_8_0),
-	.datab(store_ram_12_0),
-	.datac(pxcache_pixnum_0_0),
-	.datad(pxcache_pixnum_0_1)
+defparam rcb_finish_0_a4_23_cZ.lut_mask=16'h0001;
+defparam rcb_finish_0_a4_23_cZ.sum_lutc_input="datac";
+// @14:284
+  cycloneii_lcell_comb rcb_finish_0_a4_24_cZ (
+	.combout(rcb_finish_0_a4_24),
+	.dataa(store_ram_14_1),
+	.datab(store_ram_15_0),
+	.datac(store_ram_2_0),
+	.datad(store_ram_15_1)
 );
-defparam dout1_3_a_0_.lut_mask=16'h350f;
-defparam dout1_3_a_0_.sum_lutc_input="datac";
-// @13:65
-  cycloneii_lcell_comb dout1_3_0_ (
-	.combout(dout1_3[0]),
-	.dataa(store_ram_4_0),
-	.datab(store_ram_0_0),
-	.datac(pxcache_pixnum_0_1),
-	.datad(dout1_3_a[0])
-);
-defparam dout1_3_0_.lut_mask=16'h0cfa;
-defparam dout1_3_0_.sum_lutc_input="datac";
-// @13:65
-  cycloneii_lcell_comb dout1_3_a_1_ (
-	.combout(dout1_3_a[1]),
-	.dataa(store_ram_8_1),
-	.datab(store_ram_12_1),
-	.datac(pxcache_pixnum_0_0),
-	.datad(pxcache_pixnum_0_1)
-);
-defparam dout1_3_a_1_.lut_mask=16'h350f;
-defparam dout1_3_a_1_.sum_lutc_input="datac";
-// @13:65
-  cycloneii_lcell_comb dout1_3_1_ (
-	.combout(dout1_3[1]),
-	.dataa(store_ram_4_1),
-	.datab(store_ram_0_1),
-	.datac(pxcache_pixnum_0_1),
-	.datad(dout1_3_a[1])
-);
-defparam dout1_3_1_.lut_mask=16'h0cfa;
-defparam dout1_3_1_.sum_lutc_input="datac";
-// @13:65
-  cycloneii_lcell_comb dout1_13_a_1_ (
-	.combout(dout1_13_a[1]),
-	.dataa(store_ram_11_1),
-	.datab(store_ram_15_1),
-	.datac(pxcache_pixnum_0_0),
-	.datad(pxcache_pixnum_0_1)
-);
-defparam dout1_13_a_1_.lut_mask=16'h350f;
-defparam dout1_13_a_1_.sum_lutc_input="datac";
-// @13:65
-  cycloneii_lcell_comb dout1_13_1_ (
-	.combout(dout1_13[1]),
-	.dataa(store_ram_7_1),
-	.datab(store_ram_3_1),
-	.datac(pxcache_pixnum_0_1),
-	.datad(dout1_13_a[1])
-);
-defparam dout1_13_1_.lut_mask=16'h0cfa;
-defparam dout1_13_1_.sum_lutc_input="datac";
-// @13:65
-  cycloneii_lcell_comb dout1_6_i_m2_a_0_ (
-	.combout(dout1_6_i_m2_a[0]),
-	.dataa(store_ram_9_0),
-	.datab(store_ram_13_0),
-	.datac(pxcache_pixnum_0_0),
-	.datad(pxcache_pixnum_0_1)
-);
-defparam dout1_6_i_m2_a_0_.lut_mask=16'h350f;
-defparam dout1_6_i_m2_a_0_.sum_lutc_input="datac";
-// @13:65
-  cycloneii_lcell_comb dout1_6_i_m2_0_ (
-	.combout(dout1_6_i_m2[0]),
-	.dataa(store_ram_5_0),
-	.datab(store_ram_1_0),
-	.datac(pxcache_pixnum_0_1),
-	.datad(dout1_6_i_m2_a[0])
-);
-defparam dout1_6_i_m2_0_.lut_mask=16'h0cfa;
-defparam dout1_6_i_m2_0_.sum_lutc_input="datac";
-// @13:65
-  cycloneii_lcell_comb dout1_6_i_m2_a_1_ (
-	.combout(dout1_6_i_m2_a[1]),
-	.dataa(store_ram_9_1),
-	.datab(store_ram_13_1),
-	.datac(pxcache_pixnum_0_0),
-	.datad(pxcache_pixnum_0_1)
-);
-defparam dout1_6_i_m2_a_1_.lut_mask=16'h350f;
-defparam dout1_6_i_m2_a_1_.sum_lutc_input="datac";
-// @13:65
-  cycloneii_lcell_comb dout1_6_i_m2_1_ (
-	.combout(dout1_6_i_m2[1]),
-	.dataa(store_ram_5_1),
-	.datab(store_ram_1_1),
-	.datac(pxcache_pixnum_0_1),
-	.datad(dout1_6_i_m2_a[1])
-);
-defparam dout1_6_i_m2_1_.lut_mask=16'h0cfa;
-defparam dout1_6_i_m2_1_.sum_lutc_input="datac";
-// @13:65
-  cycloneii_lcell_comb dout1_10_i_m2_a_1_ (
-	.combout(dout1_10_i_m2_a[1]),
+defparam rcb_finish_0_a4_24_cZ.lut_mask=16'h0001;
+defparam rcb_finish_0_a4_24_cZ.sum_lutc_input="datac";
+// @14:284
+  cycloneii_lcell_comb rcb_finish_0_a4_25_cZ (
+	.combout(rcb_finish_0_a4_25),
 	.dataa(store_ram_10_1),
-	.datab(store_ram_14_1),
-	.datac(pxcache_pixnum_0_0),
-	.datad(pxcache_pixnum_0_1)
+	.datab(store_ram_11_0),
+	.datac(store_ram_11_1),
+	.datad(store_ram_14_0)
 );
-defparam dout1_10_i_m2_a_1_.lut_mask=16'h350f;
-defparam dout1_10_i_m2_a_1_.sum_lutc_input="datac";
-// @13:65
-  cycloneii_lcell_comb dout1_10_i_m2_1_ (
-	.combout(dout1_10_i_m2[1]),
-	.dataa(store_ram_6_1),
-	.datab(store_ram_2_1),
-	.datac(pxcache_pixnum_0_1),
-	.datad(dout1_10_i_m2_a[1])
+defparam rcb_finish_0_a4_25_cZ.lut_mask=16'h0001;
+defparam rcb_finish_0_a4_25_cZ.sum_lutc_input="datac";
+// @14:284
+  cycloneii_lcell_comb rcb_finish_0_a4_26_cZ (
+	.combout(rcb_finish_0_a4_26),
+	.dataa(store_ram_9_0),
+	.datab(store_ram_9_1),
+	.datac(store_ram_10_0),
+	.datad(store_ram_13_0)
 );
-defparam dout1_10_i_m2_1_.lut_mask=16'h0cfa;
-defparam dout1_10_i_m2_1_.sum_lutc_input="datac";
-// @14:202
-  cycloneii_lcell_comb state_transition_un4_curr_vram_word_NE_0 (
-	.combout(un4_curr_vram_word_NE_0),
-	.dataa(dbb_bus_c_9),
-	.datab(dbb_bus_c_8),
-	.datac(curr_vram_word_5),
-	.datad(curr_vram_word_4)
+defparam rcb_finish_0_a4_26_cZ.lut_mask=16'h0001;
+defparam rcb_finish_0_a4_26_cZ.sum_lutc_input="datac";
+// @14:284
+  cycloneii_lcell_comb rcb_finish_0_a4_27_cZ (
+	.combout(rcb_finish_0_a4_27),
+	.dataa(really_done),
+	.datab(store_ram_6_1),
+	.datac(store_ram_7_0),
+	.datad(store_ram_7_1)
 );
-defparam state_transition_un4_curr_vram_word_NE_0.lut_mask=16'h7bde;
-defparam state_transition_un4_curr_vram_word_NE_0.sum_lutc_input="datac";
-// @14:202
+defparam rcb_finish_0_a4_27_cZ.lut_mask=16'h0002;
+defparam rcb_finish_0_a4_27_cZ.sum_lutc_input="datac";
+// @14:82
+  cycloneii_lcell_comb pxcache_store_buf_0_en_0_0_a4_0_0_0_ (
+	.combout(pxcache_store_buf_0_en_0_0_a4_0_0[0]),
+	.dataa(dbb_bus_c_14),
+	.datab(dbb_bus_c_15),
+	.datac(idle_counter_0),
+	.datad(idle_counter_1)
+);
+defparam pxcache_store_buf_0_en_0_0_a4_0_0_0_.lut_mask=16'h00b0;
+defparam pxcache_store_buf_0_en_0_0_a4_0_0_0_.sum_lutc_input="datac";
+// @14:190
   cycloneii_lcell_comb state_transition_un4_curr_vram_word_NE_1 (
 	.combout(un4_curr_vram_word_NE_1),
 	.dataa(dbb_bus_c_11),
@@ -2501,7 +1844,7 @@ defparam state_transition_un4_curr_vram_word_NE_0.sum_lutc_input="datac";
 );
 defparam state_transition_un4_curr_vram_word_NE_1.lut_mask=16'h7bde;
 defparam state_transition_un4_curr_vram_word_NE_1.sum_lutc_input="datac";
-// @14:202
+// @14:190
   cycloneii_lcell_comb state_transition_un4_curr_vram_word_NE_2 (
 	.combout(un4_curr_vram_word_NE_2),
 	.dataa(dbb_bus_c_3),
@@ -2511,7 +1854,7 @@ defparam state_transition_un4_curr_vram_word_NE_1.sum_lutc_input="datac";
 );
 defparam state_transition_un4_curr_vram_word_NE_2.lut_mask=16'h7bde;
 defparam state_transition_un4_curr_vram_word_NE_2.sum_lutc_input="datac";
-// @14:202
+// @14:190
   cycloneii_lcell_comb state_transition_un4_curr_vram_word_NE_3 (
 	.combout(un4_curr_vram_word_NE_3),
 	.dataa(dbb_bus_c_5),
@@ -2521,947 +1864,1298 @@ defparam state_transition_un4_curr_vram_word_NE_2.sum_lutc_input="datac";
 );
 defparam state_transition_un4_curr_vram_word_NE_3.lut_mask=16'h7bde;
 defparam state_transition_un4_curr_vram_word_NE_3.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_1_0_0_a4_1_4_cZ (
-	.combout(store_ram_1_0_0_a4_1_4),
-	.dataa(dbb_bus_c_6),
-	.datab(dbb_bus_c_0),
-	.datac(dbb_bus_c_1),
-	.datad(G_981_x)
-);
-defparam store_ram_1_0_0_a4_1_4_cZ.lut_mask=16'h0400;
-defparam store_ram_1_0_0_a4_1_4_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_3_0_0_a4_1_4_cZ (
-	.combout(store_ram_3_0_0_a4_1_4),
-	.dataa(dbb_bus_c_6),
-	.datab(dbb_bus_c_0),
-	.datac(dbb_bus_c_1),
-	.datad(G_981_x)
-);
-defparam store_ram_3_0_0_a4_1_4_cZ.lut_mask=16'h4000;
-defparam store_ram_3_0_0_a4_1_4_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_14_0_0_a4_1_4_cZ (
-	.combout(store_ram_14_0_0_a4_1_4),
-	.dataa(dbb_bus_c_1),
-	.datab(reset_c),
-	.datac(store_ram_12_0_0_795_a2_1_x),
-	.datad(state_0)
-);
-defparam store_ram_14_0_0_a4_1_4_cZ.lut_mask=16'h2000;
-defparam store_ram_14_0_0_a4_1_4_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_11_0_0_a4_1_4_cZ (
-	.combout(store_ram_11_0_0_a4_1_4),
-	.dataa(dbb_bus_c_7),
-	.datab(dbb_bus_c_0),
-	.datac(dbb_bus_c_1),
-	.datad(G_981_x)
-);
-defparam store_ram_11_0_0_a4_1_4_cZ.lut_mask=16'h8000;
-defparam store_ram_11_0_0_a4_1_4_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_9_0_0_a4_1_4_cZ (
-	.combout(store_ram_9_0_0_a4_1_4),
-	.dataa(dbb_bus_c_7),
-	.datab(dbb_bus_c_0),
-	.datac(dbb_bus_c_1),
-	.datad(G_981_x)
-);
-defparam store_ram_9_0_0_a4_1_4_cZ.lut_mask=16'h0800;
-defparam store_ram_9_0_0_a4_1_4_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_7_0_0_a4_1_4_cZ (
-	.combout(store_ram_7_0_0_a4_1_4),
-	.dataa(dbb_bus_c_6),
-	.datab(dbb_bus_c_0),
-	.datac(dbb_bus_c_1),
-	.datad(G_981_x)
-);
-defparam store_ram_7_0_0_a4_1_4_cZ.lut_mask=16'h8000;
-defparam store_ram_7_0_0_a4_1_4_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_6_0_0_a4_1_4_cZ (
-	.combout(store_ram_6_0_0_a4_1_4),
-	.dataa(dbb_bus_c_1),
-	.datab(reset_c),
-	.datac(store_ram_4_0_0_362_a2_1_x),
-	.datad(state_0)
-);
-defparam store_ram_6_0_0_a4_1_4_cZ.lut_mask=16'h2000;
-defparam store_ram_6_0_0_a4_1_4_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_5_0_0_a4_1_4_cZ (
-	.combout(store_ram_5_0_0_a4_1_4),
-	.dataa(dbb_bus_c_6),
-	.datab(dbb_bus_c_0),
-	.datac(dbb_bus_c_1),
-	.datad(G_981_x)
-);
-defparam store_ram_5_0_0_a4_1_4_cZ.lut_mask=16'h0800;
-defparam store_ram_5_0_0_a4_1_4_cZ.sum_lutc_input="datac";
-// @13:65
-  cycloneii_lcell_comb dout1_7_i_m2_0_ (
-	.combout(dout1_7_i_m2[0]),
-	.dataa(pxcache_pixnum_x_0),
-	.datab(dout1_3[0]),
-	.datac(dout1_6_i_m2[0]),
-	.datad(VCC)
-);
-defparam dout1_7_i_m2_0_.lut_mask=16'he4e4;
-defparam dout1_7_i_m2_0_.sum_lutc_input="datac";
-// @13:65
-  cycloneii_lcell_comb dout1_7_i_m2_1_ (
-	.combout(dout1_7_i_m2[1]),
-	.dataa(pxcache_pixnum_x_0),
-	.datab(dout1_3[1]),
-	.datac(dout1_6_i_m2[1]),
-	.datad(VCC)
-);
-defparam dout1_7_i_m2_1_.lut_mask=16'he4e4;
-defparam dout1_7_i_m2_1_.sum_lutc_input="datac";
-// @14:410
-  cycloneii_lcell_comb un1_pixnum_12_2_i_o2_RNI53QF (
-	.combout(store_ram_13_en),
-	.dataa(dbb_bus_c_1),
-	.datab(store_ram_0_en_24_0_o2_x),
-	.datac(un1_pixnum_12_2_i_o2),
-	.datad(pxcache_pixnum_x_0)
-);
-defparam un1_pixnum_12_2_i_o2_RNI53QF.lut_mask=16'hcdcc;
-defparam un1_pixnum_12_2_i_o2_RNI53QF.sum_lutc_input="datac";
-// @14:410
-  cycloneii_lcell_comb un1_pixnum_12_2_i_o2_RNI53QF_0 (
-	.combout(store_ram_12_0_sqmuxa_0_a0_i),
-	.dataa(dbb_bus_c_1),
-	.datab(store_ram_0_en_24_0_o2_x),
-	.datac(un1_pixnum_12_2_i_o2),
-	.datad(pxcache_pixnum_x_0)
-);
-defparam un1_pixnum_12_2_i_o2_RNI53QF_0.lut_mask=16'hcccd;
-defparam un1_pixnum_12_2_i_o2_RNI53QF_0.sum_lutc_input="datac";
-// @14:410
-  cycloneii_lcell_comb un1_pixnum_5_2_0_a2_RNIGNCG (
-	.combout(store_ram_4_0_sqmuxa_0_a0_i),
-	.dataa(dbb_bus_c_1),
-	.datab(store_ram_0_en_24_0_o2_x),
-	.datac(un1_pixnum_5_2_0_a2),
-	.datad(pxcache_pixnum_x_0)
-);
-defparam un1_pixnum_5_2_0_a2_RNIGNCG.lut_mask=16'hccdc;
-defparam un1_pixnum_5_2_0_a2_RNIGNCG.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_2_0_0_a4_1_4_cZ (
-	.combout(store_ram_2_0_0_a4_1_4),
-	.dataa(dbb_bus_c_6),
-	.datab(dbb_bus_c_0),
-	.datac(dbb_bus_c_1),
-	.datad(G_981_x)
-);
-defparam store_ram_2_0_0_a4_1_4_cZ.lut_mask=16'h1000;
-defparam store_ram_2_0_0_a4_1_4_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_10_0_0_a4_1_4_cZ (
-	.combout(store_ram_10_0_0_a4_1_4),
-	.dataa(dbb_bus_c_7),
-	.datab(dbb_bus_c_0),
-	.datac(dbb_bus_c_1),
-	.datad(G_981_x)
-);
-defparam store_ram_10_0_0_a4_1_4_cZ.lut_mask=16'h2000;
-defparam store_ram_10_0_0_a4_1_4_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_8_0_0_a4_1_4_cZ (
-	.combout(store_ram_8_0_0_a4_1_4),
-	.dataa(dbb_bus_c_7),
-	.datab(dbb_bus_c_6),
-	.datac(dbb_bus_c_1),
-	.datad(G_981_x)
-);
-defparam store_ram_8_0_0_a4_1_4_cZ.lut_mask=16'h0200;
-defparam store_ram_8_0_0_a4_1_4_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_0_0_0_a4_1_4_cZ (
-	.combout(store_ram_0_0_0_a4_1_4),
-	.dataa(dbb_bus_c_7),
-	.datab(dbb_bus_c_6),
-	.datac(dbb_bus_c_1),
-	.datad(G_981_x)
-);
-defparam store_ram_0_0_0_a4_1_4_cZ.lut_mask=16'h0100;
-defparam store_ram_0_0_0_a4_1_4_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_4_0_387_a2_5_cZ (
-	.combout(store_ram_4_0_387_a2_5),
-	.dataa(dbb_bus_c_6),
-	.datab(dbb_bus_c_0),
-	.datac(dbb_bus_c_1),
-	.datad(dbb_bus_c_7)
-);
-defparam store_ram_4_0_387_a2_5_cZ.lut_mask=16'h0002;
-defparam store_ram_4_0_387_a2_5_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_12_0_819_a2_5_cZ (
-	.combout(store_ram_12_0_819_a2_5),
+// @13:78
+  cycloneii_lcell_comb store_ram_0_0_sqmuxa_i_a4_2_cZ (
+	.combout(store_ram_0_0_sqmuxa_i_a4_2),
 	.dataa(dbb_bus_c_6),
 	.datab(dbb_bus_c_7),
-	.datac(dbb_bus_c_0),
-	.datad(dbb_bus_c_1)
+	.datac(pxcache_pixnum_i_o4_2_rep1[0]),
+	.datad(store_ram_0_0_sqmuxa_i_a4_a1_rep1)
 );
-defparam store_ram_12_0_819_a2_5_cZ.lut_mask=16'h0008;
-defparam store_ram_12_0_819_a2_5_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb state_srsts_0_0__g1_0_cZ (
-	.combout(state_srsts_0_0__g1_0),
-	.dataa(dbb_bus_c_15),
-	.datab(dbb_bus_c_14),
-	.datac(state_0),
-	.datad(state_1)
+defparam store_ram_0_0_sqmuxa_i_a4_2_cZ.lut_mask=16'hfff1;
+defparam store_ram_0_0_sqmuxa_i_a4_2_cZ.sum_lutc_input="datac";
+// @14:322
+  cycloneii_lcell_comb fsm_clocked_process_un6_reset_0_0_a3_4 (
+	.combout(un6_reset_0_0_a3_4),
+	.dataa(idle_counter_3),
+	.datab(idle_counter_5),
+	.datac(idle_counter_6),
+	.datad(un6_reset_0_0_a3_4_1)
 );
-defparam state_srsts_0_0__g1_0_cZ.lut_mask=16'hffd0;
-defparam state_srsts_0_0__g1_0_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_12_0_819_o2_0_cZ (
-	.combout(store_ram_12_0_819_o2_0),
-	.dataa(dbb_bus_c_12),
-	.datab(prev_state_0),
-	.datac(prev_state_1),
-	.datad(state_0)
+defparam fsm_clocked_process_un6_reset_0_0_a3_4.lut_mask=16'h0100;
+defparam fsm_clocked_process_un6_reset_0_0_a3_4.sum_lutc_input="datac";
+// @14:377
+  cycloneii_lcell_comb pxcache_pixnum_i_o4_2_rep1_0_RNIEOEO_0_ (
+	.combout(store_m1_e_3),
+	.dataa(dbb_bus_c_6),
+	.datab(dbb_bus_c_7),
+	.datac(pxcache_pixnum_i_o4_2_rep1_0[0]),
+	.datad(store_ram_0_0_sqmuxa_i_a4_a1_rep1)
 );
-defparam store_ram_12_0_819_o2_0_cZ.lut_mask=16'h7d55;
-defparam store_ram_12_0_819_o2_0_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_12_0_0_795_o2_0_cZ (
-	.combout(store_ram_12_0_0_795_o2_0),
-	.dataa(dbb_bus_c_13),
-	.datab(prev_state_0),
-	.datac(prev_state_1),
-	.datad(state_0)
+defparam pxcache_pixnum_i_o4_2_rep1_0_RNIEOEO_0_.lut_mask=16'h0008;
+defparam pxcache_pixnum_i_o4_2_rep1_0_RNIEOEO_0_.sum_lutc_input="datac";
+// @14:377
+  cycloneii_lcell_comb pxcache_pixnum_i_o4_2_rep1_RNIVPD9_0_0_ (
+	.combout(store_m1_e_4),
+	.dataa(dbb_bus_c_6),
+	.datab(dbb_bus_c_7),
+	.datac(pxcache_pixnum_i_o4_2_rep1[0]),
+	.datad(store_ram_0_0_sqmuxa_i_a4_a1_rep1)
 );
-defparam store_ram_12_0_0_795_o2_0_cZ.lut_mask=16'h7d55;
-defparam store_ram_12_0_0_795_o2_0_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb dout1_10_i_m2_RNI6LI11_0_ (
-	.combout(store_ram_10_0_0_a4_0),
-	.dataa(store_ram_0_0_0_a4_0_0_x),
-	.datab(pxcache_pixnum_x_0),
-	.datac(dout1_10_i_m2[0]),
-	.datad(dout1_13[0])
+defparam pxcache_pixnum_i_o4_2_rep1_RNIVPD9_0_0_.lut_mask=16'h0004;
+defparam pxcache_pixnum_i_o4_2_rep1_RNIVPD9_0_0_.sum_lutc_input="datac";
+// @13:78
+  cycloneii_lcell_comb pxcache_pixnum_i_o4_2_rep1_RNIVPD9_0_ (
+	.combout(store_m1_e_5),
+	.dataa(dbb_bus_c_6),
+	.datab(dbb_bus_c_7),
+	.datac(pxcache_pixnum_i_o4_2_rep1[0]),
+	.datad(store_ram_0_0_sqmuxa_i_a4_a1_rep1)
 );
-defparam dout1_10_i_m2_RNI6LI11_0_.lut_mask=16'h028a;
-defparam dout1_10_i_m2_RNI6LI11_0_.sum_lutc_input="datac";
-  cycloneii_lcell_comb dout1_3_RNIARFB1_0_ (
-	.combout(store_ram_0_0_0_a4_0),
-	.dataa(store_ram_0_0_0_a4_0_0_x),
-	.datab(pxcache_pixnum_x_0),
-	.datac(dout1_3[0]),
-	.datad(dout1_6_i_m2[0])
+defparam pxcache_pixnum_i_o4_2_rep1_RNIVPD9_0_.lut_mask=16'h0002;
+defparam pxcache_pixnum_i_o4_2_rep1_RNIVPD9_0_.sum_lutc_input="datac";
+// @14:284
+  cycloneii_lcell_comb rcb_finish_0_a4_29_cZ (
+	.combout(rcb_finish_0_a4_29),
+	.dataa(store_ram_8_1),
+	.datab(store_ram_13_1),
+	.datac(rcb_finish_0_a4_7),
+	.datad(rcb_finish_0_a4_21)
 );
-defparam dout1_3_RNIARFB1_0_.lut_mask=16'h028a;
-defparam dout1_3_RNIARFB1_0_.sum_lutc_input="datac";
-  cycloneii_lcell_comb dout1_3_RNIDUFB1_1_ (
-	.combout(store_ram_0_0_164_a4_0),
-	.dataa(store_ram_0_0_164_a4_0_0_0_x),
-	.datab(pxcache_pixnum_x_0),
-	.datac(dout1_3[1]),
-	.datad(dout1_6_i_m2[1])
-);
-defparam dout1_3_RNIDUFB1_1_.lut_mask=16'h028a;
-defparam dout1_3_RNIDUFB1_1_.sum_lutc_input="datac";
-  cycloneii_lcell_comb dout1_10_i_m2_RNI9OI11_1_ (
-	.combout(store_ram_10_0_715_a4_0),
-	.dataa(store_ram_0_0_164_a4_0_0_0_x),
-	.datab(pxcache_pixnum_x_0),
-	.datac(dout1_10_i_m2[1]),
-	.datad(dout1_13[1])
-);
-defparam dout1_10_i_m2_RNI9OI11_1_.lut_mask=16'h028a;
-defparam dout1_10_i_m2_RNI9OI11_1_.sum_lutc_input="datac";
-// @14:202
-  cycloneii_lcell_comb state_transition_un4_curr_vram_word_NE (
-	.combout(un4_curr_vram_word_NE),
-	.dataa(un4_curr_vram_word_NE_2),
-	.datab(un4_curr_vram_word_NE_3),
-	.datac(un4_curr_vram_word_NE_0),
+defparam rcb_finish_0_a4_29_cZ.lut_mask=16'h1000;
+defparam rcb_finish_0_a4_29_cZ.sum_lutc_input="datac";
+// @14:190
+  cycloneii_lcell_comb state_transition_un4_curr_vram_word_NE_4 (
+	.combout(un4_curr_vram_word_NE_4),
+	.dataa(dbb_bus_c_9),
+	.datab(curr_vram_word_5),
+	.datac(un4_curr_vram_word_4_x),
 	.datad(un4_curr_vram_word_NE_1)
 );
-defparam state_transition_un4_curr_vram_word_NE.lut_mask=16'hfffe;
-defparam state_transition_un4_curr_vram_word_NE.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_2_RNO_0_ (
-	.combout(store_ram_2_0_0_251),
-	.dataa(store_ram_1_0_0_a4_1_5_x),
-	.datab(store_ram_0_0_0_135_a4_x),
-	.datac(store_ram_2_0_0_a4_1_4),
-	.datad(store_ram_10_0_0_a4_0)
+defparam state_transition_un4_curr_vram_word_NE_4.lut_mask=16'hfff6;
+defparam state_transition_un4_curr_vram_word_NE_4.sum_lutc_input="datac";
+// @13:65
+  cycloneii_lcell_comb dout1_6_i_m3_a_1_ (
+	.combout(dout1_6_i_m3_a[1]),
+	.dataa(store_ram_5_1),
+	.datab(store_ram_1_1),
+	.datac(pxcache_pixnum_i_x_rep1[3]),
+	.datad(pxcache_pixnum_i_x[2])
 );
-defparam store_ram_2_RNO_0_.lut_mask=16'hffec;
-defparam store_ram_2_RNO_0_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_2_RNO_1_ (
-	.combout(store_ram_2_0_279),
-	.dataa(store_ram_1_0_222_a4_1_5_x),
-	.datab(store_ram_0_0_164_a4_x),
-	.datac(store_ram_2_0_0_a4_1_4),
-	.datad(store_ram_10_0_715_a4_0)
+defparam dout1_6_i_m3_a_1_.lut_mask=16'h305f;
+defparam dout1_6_i_m3_a_1_.sum_lutc_input="datac";
+// @13:65
+  cycloneii_lcell_comb dout1_6_i_m3_1_ (
+	.combout(dout1_6_i_m3[1]),
+	.dataa(store_ram_9_1),
+	.datab(store_ram_13_1),
+	.datac(pxcache_pixnum_i_x_rep1[3]),
+	.datad(dout1_6_i_m3_a[1])
 );
-defparam store_ram_2_RNO_1_.lut_mask=16'hffec;
-defparam store_ram_2_RNO_1_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_3_RNO_0_ (
-	.combout(store_ram_3_0_0_308),
-	.dataa(store_ram_1_0_0_a4_1_5_x),
-	.datab(store_ram_0_0_0_135_a4_x),
-	.datac(store_ram_3_0_0_a4_1_4),
-	.datad(store_ram_10_0_0_a4_0)
+defparam dout1_6_i_m3_1_.lut_mask=16'h0cfa;
+defparam dout1_6_i_m3_1_.sum_lutc_input="datac";
+// @13:65
+  cycloneii_lcell_comb dout1_3_i_m4_a_1_ (
+	.combout(dout1_3_i_m4_a[1]),
+	.dataa(store_ram_4_1),
+	.datab(store_ram_0_1),
+	.datac(pxcache_pixnum_i_x[2]),
+	.datad(pxcache_pixnum_i_x[3])
 );
-defparam store_ram_3_RNO_0_.lut_mask=16'hffec;
-defparam store_ram_3_RNO_0_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_3_RNO_1_ (
-	.combout(store_ram_3_0_335),
-	.dataa(store_ram_1_0_222_a4_1_5_x),
-	.datab(store_ram_0_0_164_a4_x),
-	.datac(store_ram_3_0_0_a4_1_4),
-	.datad(store_ram_10_0_715_a4_0)
+defparam dout1_3_i_m4_a_1_.lut_mask=16'h350f;
+defparam dout1_3_i_m4_a_1_.sum_lutc_input="datac";
+// @13:65
+  cycloneii_lcell_comb dout1_3_i_m4_1_ (
+	.combout(dout1_3_i_m4[1]),
+	.dataa(store_ram_8_1),
+	.datab(store_ram_12_1),
+	.datac(pxcache_pixnum_i_x[3]),
+	.datad(dout1_3_i_m4_a[1])
 );
-defparam store_ram_3_RNO_1_.lut_mask=16'hffec;
-defparam store_ram_3_RNO_1_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_6_RNO_0_ (
-	.combout(store_ram_6_0_0_468),
-	.dataa(store_ram_6_0_0_a4_1_4),
-	.datab(store_ram_1_0_0_a4_1_5_x),
-	.datac(store_ram_0_0_0_135_a4_x),
-	.datad(store_ram_10_0_0_a4_0)
+defparam dout1_3_i_m4_1_.lut_mask=16'h0cfa;
+defparam dout1_3_i_m4_1_.sum_lutc_input="datac";
+// @13:65
+  cycloneii_lcell_comb dout1_10_i_m3_a_1_ (
+	.combout(dout1_10_i_m3_a[1]),
+	.dataa(store_ram_6_1),
+	.datab(store_ram_2_1),
+	.datac(pxcache_pixnum_i_x_rep2[3]),
+	.datad(pxcache_pixnum_i_x_rep1[2])
 );
-defparam store_ram_6_RNO_0_.lut_mask=16'hfff8;
-defparam store_ram_6_RNO_0_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_6_RNO_1_ (
-	.combout(store_ram_6_0_495),
-	.dataa(store_ram_6_0_0_a4_1_4),
-	.datab(store_ram_1_0_222_a4_1_5_x),
-	.datac(store_ram_0_0_164_a4_x),
-	.datad(store_ram_10_0_715_a4_0)
+defparam dout1_10_i_m3_a_1_.lut_mask=16'h305f;
+defparam dout1_10_i_m3_a_1_.sum_lutc_input="datac";
+// @13:65
+  cycloneii_lcell_comb dout1_10_i_m3_1_ (
+	.combout(dout1_10_i_m3[1]),
+	.dataa(store_ram_10_1),
+	.datab(store_ram_14_1),
+	.datac(pxcache_pixnum_i_x_rep2[3]),
+	.datad(dout1_10_i_m3_a[1])
 );
-defparam store_ram_6_RNO_1_.lut_mask=16'hfff8;
-defparam store_ram_6_RNO_1_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_7_RNO_0_ (
-	.combout(store_ram_7_0_0_523),
-	.dataa(store_ram_1_0_0_a4_1_5_x),
-	.datab(store_ram_0_0_0_135_a4_x),
-	.datac(store_ram_7_0_0_a4_1_4),
-	.datad(store_ram_10_0_0_a4_0)
+defparam dout1_10_i_m3_1_.lut_mask=16'h0cfa;
+defparam dout1_10_i_m3_1_.sum_lutc_input="datac";
+// @13:65
+  cycloneii_lcell_comb dout1_13_i_m3_a_1_ (
+	.combout(dout1_13_i_m3_a[1]),
+	.dataa(store_ram_7_1),
+	.datab(store_ram_3_1),
+	.datac(pxcache_pixnum_i_x_rep3[3]),
+	.datad(pxcache_pixnum_i_x_rep1[2])
 );
-defparam store_ram_7_RNO_0_.lut_mask=16'hffec;
-defparam store_ram_7_RNO_0_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_7_RNO_1_ (
-	.combout(store_ram_7_0_549),
-	.dataa(store_ram_1_0_222_a4_1_5_x),
-	.datab(store_ram_0_0_164_a4_x),
-	.datac(store_ram_7_0_0_a4_1_4),
-	.datad(store_ram_10_0_715_a4_0)
+defparam dout1_13_i_m3_a_1_.lut_mask=16'h305f;
+defparam dout1_13_i_m3_a_1_.sum_lutc_input="datac";
+// @13:65
+  cycloneii_lcell_comb dout1_13_i_m3_1_ (
+	.combout(dout1_13_i_m3[1]),
+	.dataa(store_ram_11_1),
+	.datab(store_ram_15_1),
+	.datac(pxcache_pixnum_i_x_rep3[3]),
+	.datad(dout1_13_i_m3_a[1])
 );
-defparam store_ram_7_RNO_1_.lut_mask=16'hffec;
-defparam store_ram_7_RNO_1_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_10_RNO_0_ (
-	.combout(store_ram_10_0_0_688),
-	.dataa(store_ram_9_0_0_a4_1_5_x),
-	.datab(store_ram_0_0_0_135_a4_x),
-	.datac(store_ram_10_0_0_a4_1_4),
-	.datad(store_ram_10_0_0_a4_0)
+defparam dout1_13_i_m3_1_.lut_mask=16'h0cfa;
+defparam dout1_13_i_m3_1_.sum_lutc_input="datac";
+// @13:65
+  cycloneii_lcell_comb dout1_6_i_m3_a_0_ (
+	.combout(dout1_6_i_m3_a[0]),
+	.dataa(store_ram_5_0),
+	.datab(store_ram_1_0),
+	.datac(pxcache_pixnum_i_x_rep1[3]),
+	.datad(pxcache_pixnum_i_x[2])
 );
-defparam store_ram_10_RNO_0_.lut_mask=16'hffec;
-defparam store_ram_10_RNO_0_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_10_RNO_1_ (
-	.combout(store_ram_10_0_715),
-	.dataa(store_ram_9_0_660_a4_1_5_x),
-	.datab(store_ram_0_0_164_a4_x),
-	.datac(store_ram_10_0_0_a4_1_4),
-	.datad(store_ram_10_0_715_a4_0)
+defparam dout1_6_i_m3_a_0_.lut_mask=16'h305f;
+defparam dout1_6_i_m3_a_0_.sum_lutc_input="datac";
+// @13:65
+  cycloneii_lcell_comb dout1_6_i_m3_0_ (
+	.combout(dout1_6_i_m3[0]),
+	.dataa(store_ram_9_0),
+	.datab(store_ram_13_0),
+	.datac(pxcache_pixnum_i_x[3]),
+	.datad(dout1_6_i_m3_a[0])
 );
-defparam store_ram_10_RNO_1_.lut_mask=16'hffec;
-defparam store_ram_10_RNO_1_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_11_RNO_0_ (
-	.combout(store_ram_11_0_0_743),
-	.dataa(store_ram_9_0_0_a4_1_5_x),
-	.datab(store_ram_0_0_0_135_a4_x),
-	.datac(store_ram_11_0_0_a4_1_4),
-	.datad(store_ram_10_0_0_a4_0)
+defparam dout1_6_i_m3_0_.lut_mask=16'h0cfa;
+defparam dout1_6_i_m3_0_.sum_lutc_input="datac";
+// @13:65
+  cycloneii_lcell_comb dout1_3_i_m4_a_0_ (
+	.combout(dout1_3_i_m4_a[0]),
+	.dataa(store_ram_4_0),
+	.datab(store_ram_0_0),
+	.datac(pxcache_pixnum_i_x[2]),
+	.datad(pxcache_pixnum_i_x[3])
 );
-defparam store_ram_11_RNO_0_.lut_mask=16'hffec;
-defparam store_ram_11_RNO_0_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_11_RNO_1_ (
-	.combout(store_ram_11_0_769),
-	.dataa(store_ram_9_0_660_a4_1_5_x),
-	.datab(store_ram_0_0_164_a4_x),
-	.datac(store_ram_11_0_0_a4_1_4),
-	.datad(store_ram_10_0_715_a4_0)
+defparam dout1_3_i_m4_a_0_.lut_mask=16'h350f;
+defparam dout1_3_i_m4_a_0_.sum_lutc_input="datac";
+// @13:65
+  cycloneii_lcell_comb dout1_3_i_m4_0_ (
+	.combout(dout1_3_i_m4[0]),
+	.dataa(store_ram_8_0),
+	.datab(store_ram_12_0),
+	.datac(pxcache_pixnum_i_x[3]),
+	.datad(dout1_3_i_m4_a[0])
 );
-defparam store_ram_11_RNO_1_.lut_mask=16'hffec;
-defparam store_ram_11_RNO_1_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_14_RNO_0_ (
-	.combout(store_ram_14_0_0_890),
-	.dataa(store_ram_0_0_0_a4_1_5_x),
-	.datab(store_ram_14_0_0_a4_1_4),
-	.datac(store_ram_0_0_0_135_a4_x),
-	.datad(store_ram_10_0_0_a4_0)
+defparam dout1_3_i_m4_0_.lut_mask=16'h0cfa;
+defparam dout1_3_i_m4_0_.sum_lutc_input="datac";
+// @13:65
+  cycloneii_lcell_comb dout1_10_i_m3_a_0_ (
+	.combout(dout1_10_i_m3_a[0]),
+	.dataa(store_ram_6_0),
+	.datab(store_ram_2_0),
+	.datac(pxcache_pixnum_i_x_rep2[3]),
+	.datad(pxcache_pixnum_i_x[2])
 );
-defparam store_ram_14_RNO_0_.lut_mask=16'hfff8;
-defparam store_ram_14_RNO_0_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_14_RNO_1_ (
-	.combout(store_ram_14_0_916),
-	.dataa(store_ram_0_0_164_a4_1_5_x),
-	.datab(store_ram_14_0_0_a4_1_4),
-	.datac(store_ram_0_0_164_a4_x),
-	.datad(store_ram_10_0_715_a4_0)
+defparam dout1_10_i_m3_a_0_.lut_mask=16'h305f;
+defparam dout1_10_i_m3_a_0_.sum_lutc_input="datac";
+// @13:65
+  cycloneii_lcell_comb dout1_10_i_m3_0_ (
+	.combout(dout1_10_i_m3[0]),
+	.dataa(store_ram_10_0),
+	.datab(store_ram_14_0),
+	.datac(pxcache_pixnum_i_x_rep1[3]),
+	.datad(dout1_10_i_m3_a[0])
 );
-defparam store_ram_14_RNO_1_.lut_mask=16'hfff8;
-defparam store_ram_14_RNO_1_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_15_RNO_0_ (
-	.combout(store_ram_15_0_0_943),
-	.dataa(store_ram_14_0_0_a4_1_4),
-	.datab(store_ram_15_0_0_a4_1_1_x),
-	.datac(store_ram_0_0_0_135_a4_x),
-	.datad(store_ram_10_0_0_a4_0)
+defparam dout1_10_i_m3_0_.lut_mask=16'h0cfa;
+defparam dout1_10_i_m3_0_.sum_lutc_input="datac";
+// @13:65
+  cycloneii_lcell_comb dout1_13_i_m3_a_0_ (
+	.combout(dout1_13_i_m3_a[0]),
+	.dataa(store_ram_7_0),
+	.datab(store_ram_3_0),
+	.datac(pxcache_pixnum_i_x_rep3[3]),
+	.datad(pxcache_pixnum_i_x_rep1[2])
 );
-defparam store_ram_15_RNO_0_.lut_mask=16'hfff8;
-defparam store_ram_15_RNO_0_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_15_RNO_1_ (
-	.combout(store_ram_15_0_968),
-	.dataa(store_ram_14_0_0_a4_1_4),
-	.datab(store_ram_15_0_968_a4_1_1_x),
-	.datac(store_ram_0_0_164_a4_x),
-	.datad(store_ram_10_0_715_a4_0)
+defparam dout1_13_i_m3_a_0_.lut_mask=16'h305f;
+defparam dout1_13_i_m3_a_0_.sum_lutc_input="datac";
+// @13:65
+  cycloneii_lcell_comb dout1_13_i_m3_0_ (
+	.combout(dout1_13_i_m3[0]),
+	.dataa(store_ram_11_0),
+	.datab(store_ram_15_0),
+	.datac(pxcache_pixnum_i_x_rep2[3]),
+	.datad(dout1_13_i_m3_a[0])
 );
-defparam store_ram_15_RNO_1_.lut_mask=16'hfff8;
-defparam store_ram_15_RNO_1_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_0_RNO_0_ (
-	.combout(store_ram_0_0_0_135),
-	.dataa(store_ram_0_0_0_a4_1_5_x),
-	.datab(store_ram_0_0_0_135_a4_x),
-	.datac(store_ram_0_0_0_a4_1_4),
-	.datad(store_ram_0_0_0_a4_0)
+defparam dout1_13_i_m3_0_.lut_mask=16'h0cfa;
+defparam dout1_13_i_m3_0_.sum_lutc_input="datac";
+// @14:82
+  cycloneii_lcell_comb fsm_clocked_process_un6_reset_0_0_a3_4_RNIEIBH2 (
+	.combout(pxcache_store_buf_0_en_0_0_a4[0]),
+	.dataa(state_rep1_0),
+	.datab(state_0),
+	.datac(pxcache_store_buf_0_en_0_0_a4_0_0[0]),
+	.datad(un6_reset_0_0_a3_4)
 );
-defparam store_ram_0_RNO_0_.lut_mask=16'hffec;
-defparam store_ram_0_RNO_0_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_0_RNO_1_ (
-	.combout(store_ram_0_0_164),
-	.dataa(store_ram_0_0_164_a4_1_5_x),
-	.datab(store_ram_0_0_164_a4_x),
-	.datac(store_ram_0_0_0_a4_1_4),
-	.datad(store_ram_0_0_164_a4_0)
-);
-defparam store_ram_0_RNO_1_.lut_mask=16'hffec;
-defparam store_ram_0_RNO_1_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_1_RNO_0_ (
-	.combout(store_ram_1_0_0_194),
-	.dataa(store_ram_1_0_0_a4_1_5_x),
-	.datab(store_ram_0_0_0_135_a4_x),
-	.datac(store_ram_1_0_0_a4_1_4),
-	.datad(store_ram_0_0_0_a4_0)
-);
-defparam store_ram_1_RNO_0_.lut_mask=16'hffec;
-defparam store_ram_1_RNO_0_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_1_RNO_1_ (
-	.combout(store_ram_1_0_222),
-	.dataa(store_ram_1_0_222_a4_1_5_x),
-	.datab(store_ram_0_0_164_a4_x),
-	.datac(store_ram_1_0_0_a4_1_4),
-	.datad(store_ram_0_0_164_a4_0)
-);
-defparam store_ram_1_RNO_1_.lut_mask=16'hffec;
-defparam store_ram_1_RNO_1_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_5_RNO_0_ (
-	.combout(store_ram_5_0_0_413),
-	.dataa(store_ram_1_0_0_a4_1_5_x),
-	.datab(store_ram_0_0_0_135_a4_x),
-	.datac(store_ram_5_0_0_a4_1_4),
-	.datad(store_ram_0_0_0_a4_0)
-);
-defparam store_ram_5_RNO_0_.lut_mask=16'hffec;
-defparam store_ram_5_RNO_0_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_5_RNO_1_ (
-	.combout(store_ram_5_0_440),
-	.dataa(store_ram_1_0_222_a4_1_5_x),
-	.datab(store_ram_0_0_164_a4_x),
-	.datac(store_ram_5_0_0_a4_1_4),
-	.datad(store_ram_0_0_164_a4_0)
-);
-defparam store_ram_5_RNO_1_.lut_mask=16'hffec;
-defparam store_ram_5_RNO_1_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_8_RNO_0_ (
-	.combout(store_ram_8_0_0_576),
-	.dataa(store_ram_0_0_0_a4_1_5_x),
-	.datab(store_ram_0_0_0_135_a4_x),
-	.datac(store_ram_8_0_0_a4_1_4),
-	.datad(store_ram_0_0_0_a4_0)
-);
-defparam store_ram_8_RNO_0_.lut_mask=16'hffec;
-defparam store_ram_8_RNO_0_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_8_RNO_1_ (
-	.combout(store_ram_8_0_604),
-	.dataa(store_ram_0_0_164_a4_1_5_x),
-	.datab(store_ram_0_0_164_a4_x),
-	.datac(store_ram_8_0_0_a4_1_4),
-	.datad(store_ram_0_0_164_a4_0)
-);
-defparam store_ram_8_RNO_1_.lut_mask=16'hffec;
-defparam store_ram_8_RNO_1_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_9_RNO_0_ (
-	.combout(store_ram_9_0_0_633),
-	.dataa(store_ram_9_0_0_a4_1_5_x),
-	.datab(store_ram_0_0_0_135_a4_x),
-	.datac(store_ram_9_0_0_a4_1_4),
-	.datad(store_ram_0_0_0_a4_0)
-);
-defparam store_ram_9_RNO_0_.lut_mask=16'hffec;
-defparam store_ram_9_RNO_0_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_9_RNO_1_ (
-	.combout(store_ram_9_0_660),
-	.dataa(store_ram_9_0_660_a4_1_5_x),
-	.datab(store_ram_0_0_164_a4_x),
-	.datac(store_ram_9_0_0_a4_1_4),
-	.datad(store_ram_0_0_164_a4_0)
-);
-defparam store_ram_9_RNO_1_.lut_mask=16'hffec;
-defparam store_ram_9_RNO_1_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_13_RNO_2_1_ (
-	.combout(store_ram_13_0_0_842_a2_3),
-	.dataa(reset_c),
-	.datab(prev_state_0),
+defparam fsm_clocked_process_un6_reset_0_0_a3_4_RNIEIBH2.lut_mask=16'h4000;
+defparam fsm_clocked_process_un6_reset_0_0_a3_4_RNIEIBH2.sum_lutc_input="datac";
+// @14:142
+  cycloneii_lcell_comb pxcache_pixnum_i_o4_2_0_ (
+	.combout(pxcache_pixnum_i_o4_2[0]),
+	.dataa(prev_state_0),
+	.datab(prev_state_1),
 	.datac(state_0),
-	.datad(pxcache_pw_i_m3)
+	.datad(pxcache_pixnum_i_o4_2_0_x[0])
 );
-defparam store_ram_13_RNO_2_1_.lut_mask=16'h1500;
-defparam store_ram_13_RNO_2_1_.sum_lutc_input="datac";
-  cycloneii_lcell_comb state_transition_un4_curr_vram_word_NE_RNI81TS4 (
-	.combout(pxcache_store_buf_0_1_0__g0_i_0),
+defparam pxcache_pixnum_i_o4_2_0_.lut_mask=16'hffb0;
+defparam pxcache_pixnum_i_o4_2_0_.sum_lutc_input="datac";
+// @14:284
+  cycloneii_lcell_comb rcb_finish_0_a4_28_cZ (
+	.combout(rcb_finish_0_a4_28),
 	.dataa(reset_c),
-	.datab(state_ns_0_a4_0_0),
-	.datac(un4_curr_vram_word_NE),
-	.datad(pxcache_store_buf_0_en_0_a4_0)
+	.datab(store_ram_1_0),
+	.datac(rcb_finish_0_a4_1_x),
+	.datad(rcb_finish_0_a4_20)
 );
-defparam state_transition_un4_curr_vram_word_NE_RNI81TS4.lut_mask=16'hffea;
-defparam state_transition_un4_curr_vram_word_NE_RNI81TS4.sum_lutc_input="datac";
-// @14:410
-  cycloneii_lcell_comb store_ram_9_en_15_0_cZ (
-	.combout(store_ram_9_en_15_0),
-	.dataa(store_m1_e_0_1_x),
-	.datab(store_ram_0_en_24_0_o2_x),
-	.datac(pxcache_pw_i_1),
-	.datad(store_ram_8_en_16_0_a2_0)
+defparam rcb_finish_0_a4_28_cZ.lut_mask=16'h1000;
+defparam rcb_finish_0_a4_28_cZ.sum_lutc_input="datac";
+// @14:284
+  cycloneii_lcell_comb rcb_finish_0_a4_33_cZ (
+	.combout(rcb_finish_0_a4_33),
+	.dataa(rcb_finish_0_a4_25),
+	.datab(rcb_finish_0_a4_26),
+	.datac(rcb_finish_0_a4_23),
+	.datad(rcb_finish_0_a4_24)
 );
-defparam store_ram_9_en_15_0_cZ.lut_mask=16'hcecc;
-defparam store_ram_9_en_15_0_cZ.sum_lutc_input="datac";
-// @14:410
-  cycloneii_lcell_comb store_ram_8_en_16_0_cZ (
-	.combout(store_ram_8_en_16_0),
-	.dataa(store_m1_e_0_0_x),
-	.datab(store_ram_0_en_24_0_o2_x),
-	.datac(pxcache_pw_i_1),
-	.datad(store_ram_8_en_16_0_a2_0)
+defparam rcb_finish_0_a4_33_cZ.lut_mask=16'h8000;
+defparam rcb_finish_0_a4_33_cZ.sum_lutc_input="datac";
+// @14:377
+  cycloneii_lcell_comb store_ram_0_0_sqmuxa_i_a4_a1_rep2_RNIKDD9 (
+	.combout(store_ram_0_en_24_0_a2_1),
+	.dataa(dbb_bus_c_1),
+	.datab(dbb_bus_c_0),
+	.datac(pxcache_pixnum_i_o4_2_rep1[0]),
+	.datad(store_ram_0_0_sqmuxa_i_a4_a1_rep2)
 );
-defparam store_ram_8_en_16_0_cZ.lut_mask=16'hcecc;
-defparam store_ram_8_en_16_0_cZ.sum_lutc_input="datac";
-// @14:410
-  cycloneii_lcell_comb un1_pixnum_5_2_0_a2_RNIUFBU (
-	.combout(store_ram_5_en_19_0),
-	.dataa(store_m1_e_0_1_x),
-	.datab(store_ram_0_en_24_0_o2_x),
-	.datac(pxcache_pw_i_1),
-	.datad(un1_pixnum_5_2_0_a2)
+defparam store_ram_0_0_sqmuxa_i_a4_a1_rep2_RNIKDD9.lut_mask=16'h0001;
+defparam store_ram_0_0_sqmuxa_i_a4_a1_rep2_RNIKDD9.sum_lutc_input="datac";
+// @14:322
+  cycloneii_lcell_comb fsm_clocked_process_un6_reset_0_0_o4 (
+	.combout(un6_reset_0_0_o4),
+	.dataa(dbb_bus_c_14),
+	.datab(dbb_bus_c_15),
+	.datac(pxcache_store_buf_0_en_0_0_a4_3[0]),
+	.datad(un6_reset_0_0_a3_4)
 );
-defparam un1_pixnum_5_2_0_a2_RNIUFBU.lut_mask=16'hcecc;
-defparam un1_pixnum_5_2_0_a2_RNIUFBU.sum_lutc_input="datac";
-// @14:410
-  cycloneii_lcell_comb store_ram_1_en_23_0_cZ (
+defparam fsm_clocked_process_un6_reset_0_0_o4.lut_mask=16'hf444;
+defparam fsm_clocked_process_un6_reset_0_0_o4.sum_lutc_input="datac";
+  cycloneii_lcell_comb state_ns_i_0_a4_RNIAMK11_0_ (
+	.combout(state_srsts_0_0__g0),
+	.dataa(reset_c),
+	.datab(state_rep2_0),
+	.datac(state_srsts_0_0__g1_0_tz_x),
+	.datad(state_ns_i_0_a4[0])
+);
+defparam state_ns_i_0_a4_RNIAMK11_0_.lut_mask=16'haafe;
+defparam state_ns_i_0_a4_RNIAMK11_0_.sum_lutc_input="datac";
+// @14:377
+  cycloneii_lcell_comb store_ram_0_0_sqmuxa_i_a4_2_RNIDTB61_1 (
 	.combout(store_ram_1_en_23_0),
-	.dataa(store_m1_e_0_1_x),
-	.datab(store_ram_0_en_24_0_o2_x),
-	.datac(pxcache_pw_i_1),
-	.datad(store_ram_0_en_24_0_a2_0)
-);
-defparam store_ram_1_en_23_0_cZ.lut_mask=16'hcecc;
-defparam store_ram_1_en_23_0_cZ.sum_lutc_input="datac";
-// @14:410
-  cycloneii_lcell_comb store_ram_0_en_24_0_cZ (
-	.combout(store_ram_0_en_24_0),
-	.dataa(store_m1_e_0_0_x),
-	.datab(store_ram_0_en_24_0_o2_x),
-	.datac(pxcache_pw_i_1),
-	.datad(store_ram_0_en_24_0_a2_0)
-);
-defparam store_ram_0_en_24_0_cZ.lut_mask=16'hcecc;
-defparam store_ram_0_en_24_0_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_13_RNO_0_0_ (
-	.combout(store_ram_13_0_0_842_a2_1),
-	.dataa(dbb_bus_c_12),
-	.datab(dbb_bus_c_1),
-	.datac(reset_c),
-	.datad(pxcache_pw_i_1_1)
-);
-defparam store_ram_13_RNO_0_0_.lut_mask=16'h0002;
-defparam store_ram_13_RNO_0_0_.sum_lutc_input="datac";
-// @14:410
-  cycloneii_lcell_comb un1_pixnum_12_2_i_o2_RNI9VGJ (
-	.combout(store_ram_15_en_9_0),
 	.dataa(store_ram_0_en_24_0_o2_x),
-	.datab(store_ram_2_0_sqmuxa_i_a2_1_x),
-	.datac(un1_pixnum_12_2_i_o2),
-	.datad(pxcache_pixnum_x_0)
+	.datab(store_ram_0_0_sqmuxa_i_a4_2),
+	.datac(pxcache_pixnum_i_x[1]),
+	.datad(pxcache_pixnum_i_x[0])
 );
-defparam un1_pixnum_12_2_i_o2_RNI9VGJ.lut_mask=16'haeaa;
-defparam un1_pixnum_12_2_i_o2_RNI9VGJ.sum_lutc_input="datac";
-// @14:410
-  cycloneii_lcell_comb un1_pixnum_12_2_i_o2_RNI9VGJ_0 (
-	.combout(store_ram_14_en_10_0),
-	.dataa(store_ram_0_en_24_0_o2_x),
-	.datab(store_ram_2_0_sqmuxa_i_a2_1_x),
-	.datac(un1_pixnum_12_2_i_o2),
-	.datad(pxcache_pixnum_x_0)
-);
-defparam un1_pixnum_12_2_i_o2_RNI9VGJ_0.lut_mask=16'haaae;
-defparam un1_pixnum_12_2_i_o2_RNI9VGJ_0.sum_lutc_input="datac";
-// @14:410
-  cycloneii_lcell_comb store_ram_2_0_sqmuxa_i_a2_1_x_RNI0KOG (
-	.combout(store_ram_11_en_13_0),
-	.dataa(store_ram_0_en_24_0_o2_x),
-	.datab(store_ram_2_0_sqmuxa_i_a2_1_x),
-	.datac(store_ram_8_en_16_0_a2_0),
-	.datad(pxcache_pixnum_x_0)
-);
-defparam store_ram_2_0_sqmuxa_i_a2_1_x_RNI0KOG.lut_mask=16'heaaa;
-defparam store_ram_2_0_sqmuxa_i_a2_1_x_RNI0KOG.sum_lutc_input="datac";
-// @14:410
-  cycloneii_lcell_comb un1_pixnum_5_2_0_a2_RNIKJ3K (
-	.combout(store_ram_7_en_17_0),
-	.dataa(store_ram_0_en_24_0_o2_x),
-	.datab(store_ram_2_0_sqmuxa_i_a2_1_x),
-	.datac(un1_pixnum_5_2_0_a2),
-	.datad(pxcache_pixnum_x_0)
-);
-defparam un1_pixnum_5_2_0_a2_RNIKJ3K.lut_mask=16'heaaa;
-defparam un1_pixnum_5_2_0_a2_RNIKJ3K.sum_lutc_input="datac";
-// @14:410
-  cycloneii_lcell_comb store_ram_2_0_sqmuxa_i_a2_1_x_RNI0KOG_2 (
-	.combout(store_ram_10_en_14_0),
-	.dataa(store_ram_0_en_24_0_o2_x),
-	.datab(store_ram_2_0_sqmuxa_i_a2_1_x),
-	.datac(store_ram_8_en_16_0_a2_0),
-	.datad(pxcache_pixnum_x_0)
-);
-defparam store_ram_2_0_sqmuxa_i_a2_1_x_RNI0KOG_2.lut_mask=16'haaea;
-defparam store_ram_2_0_sqmuxa_i_a2_1_x_RNI0KOG_2.sum_lutc_input="datac";
-// @14:410
-  cycloneii_lcell_comb un1_pixnum_5_2_0_a2_RNIKJ3K_0 (
-	.combout(store_ram_6_en_18_0),
-	.dataa(store_ram_0_en_24_0_o2_x),
-	.datab(store_ram_2_0_sqmuxa_i_a2_1_x),
-	.datac(un1_pixnum_5_2_0_a2),
-	.datad(pxcache_pixnum_x_0)
-);
-defparam un1_pixnum_5_2_0_a2_RNIKJ3K_0.lut_mask=16'haaea;
-defparam un1_pixnum_5_2_0_a2_RNIKJ3K_0.sum_lutc_input="datac";
-// @14:410
-  cycloneii_lcell_comb store_ram_2_0_sqmuxa_i_a2_1_x_RNI0KOG_0 (
-	.combout(store_ram_3_en_21_0),
-	.dataa(store_ram_0_en_24_0_o2_x),
-	.datab(store_ram_2_0_sqmuxa_i_a2_1_x),
-	.datac(store_ram_0_en_24_0_a2_0),
-	.datad(pxcache_pixnum_x_0)
-);
-defparam store_ram_2_0_sqmuxa_i_a2_1_x_RNI0KOG_0.lut_mask=16'heaaa;
-defparam store_ram_2_0_sqmuxa_i_a2_1_x_RNI0KOG_0.sum_lutc_input="datac";
-// @14:410
-  cycloneii_lcell_comb store_ram_2_0_sqmuxa_i_a2_1_x_RNI0KOG_1 (
+defparam store_ram_0_0_sqmuxa_i_a4_2_RNIDTB61_1.lut_mask=16'haaea;
+defparam store_ram_0_0_sqmuxa_i_a4_2_RNIDTB61_1.sum_lutc_input="datac";
+// @14:377
+  cycloneii_lcell_comb store_ram_0_0_sqmuxa_i_a4_2_RNIDTB61_0 (
 	.combout(store_ram_2_en_22_0),
 	.dataa(store_ram_0_en_24_0_o2_x),
-	.datab(store_ram_2_0_sqmuxa_i_a2_1_x),
-	.datac(store_ram_0_en_24_0_a2_0),
-	.datad(pxcache_pixnum_x_0)
+	.datab(store_ram_0_0_sqmuxa_i_a4_2),
+	.datac(pxcache_pixnum_i_x[1]),
+	.datad(pxcache_pixnum_i_x[0])
 );
-defparam store_ram_2_0_sqmuxa_i_a2_1_x_RNI0KOG_1.lut_mask=16'haaea;
-defparam store_ram_2_0_sqmuxa_i_a2_1_x_RNI0KOG_1.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_12_RNO_1_ (
-	.combout(store_ram_12_0_819_a2),
-	.dataa(store_ram_12_0_819_a2_5),
-	.datab(store_ram_12_0_819_o2_0),
-	.datac(store_ram_12_0_819_a2_6_1_x),
-	.datad(dout1_7_i_m2[1])
+defparam store_ram_0_0_sqmuxa_i_a4_2_RNIDTB61_0.lut_mask=16'haeaa;
+defparam store_ram_0_0_sqmuxa_i_a4_2_RNIDTB61_0.sum_lutc_input="datac";
+// @14:377
+  cycloneii_lcell_comb pxcache_pixnum_i_x_RNIEP341_1_1_ (
+	.combout(store_ram_5_en_19_0),
+	.dataa(store_ram_0_en_24_0_o2_x),
+	.datab(store_m1_e_5),
+	.datac(pxcache_pixnum_i_x[1]),
+	.datad(pxcache_pixnum_i_x[0])
 );
-defparam store_ram_12_RNO_1_.lut_mask=16'h80a0;
-defparam store_ram_12_RNO_1_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_12_RNO_0_ (
-	.combout(store_ram_12_0_0_795_a2),
-	.dataa(store_ram_12_0_819_a2_5),
-	.datab(store_ram_12_0_0_795_o2_0),
-	.datac(store_ram_12_0_0_795_a2_6_1_x),
-	.datad(dout1_7_i_m2[0])
+defparam pxcache_pixnum_i_x_RNIEP341_1_1_.lut_mask=16'haaea;
+defparam pxcache_pixnum_i_x_RNIEP341_1_1_.sum_lutc_input="datac";
+// @14:377
+  cycloneii_lcell_comb pxcache_pixnum_i_x_RNIEP341_0_1_ (
+	.combout(store_ram_6_en_18_0),
+	.dataa(store_ram_0_en_24_0_o2_x),
+	.datab(store_m1_e_5),
+	.datac(pxcache_pixnum_i_x[1]),
+	.datad(pxcache_pixnum_i_x[0])
 );
-defparam store_ram_12_RNO_0_.lut_mask=16'h80a0;
-defparam store_ram_12_RNO_0_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_4_RNO_1_ (
-	.combout(store_ram_4_0_387_a2),
-	.dataa(store_ram_4_0_387_a2_5),
-	.datab(store_ram_12_0_819_o2_0),
-	.datac(store_ram_12_0_819_a2_6_1_x),
-	.datad(dout1_7_i_m2[1])
+defparam pxcache_pixnum_i_x_RNIEP341_0_1_.lut_mask=16'haeaa;
+defparam pxcache_pixnum_i_x_RNIEP341_0_1_.sum_lutc_input="datac";
+// @14:377
+  cycloneii_lcell_comb pxcache_pixnum_i_x_RNIEP341_3_1_ (
+	.combout(store_ram_10_en_14_0),
+	.dataa(store_ram_0_en_24_0_o2_x),
+	.datab(store_m1_e_4),
+	.datac(pxcache_pixnum_i_x[1]),
+	.datad(pxcache_pixnum_i_x[0])
 );
-defparam store_ram_4_RNO_1_.lut_mask=16'h80a0;
-defparam store_ram_4_RNO_1_.sum_lutc_input="datac";
+defparam pxcache_pixnum_i_x_RNIEP341_3_1_.lut_mask=16'haeaa;
+defparam pxcache_pixnum_i_x_RNIEP341_3_1_.sum_lutc_input="datac";
+// @14:377
+  cycloneii_lcell_comb pxcache_pixnum_i_x_RNITN4J1_0_1_ (
+	.combout(store_ram_13_en_11_0),
+	.dataa(store_ram_0_en_24_0_o2_x),
+	.datab(store_m1_e_3),
+	.datac(pxcache_pixnum_i_x[1]),
+	.datad(pxcache_pixnum_i_x[0])
+);
+defparam pxcache_pixnum_i_x_RNITN4J1_0_1_.lut_mask=16'haaea;
+defparam pxcache_pixnum_i_x_RNITN4J1_0_1_.sum_lutc_input="datac";
+// @14:377
+  cycloneii_lcell_comb pxcache_pixnum_i_x_RNITN4J1_1_1_ (
+	.combout(store_ram_14_en_10_0),
+	.dataa(store_ram_0_en_24_0_o2_x),
+	.datab(store_m1_e_3),
+	.datac(pxcache_pixnum_i_x[1]),
+	.datad(pxcache_pixnum_i_x[0])
+);
+defparam pxcache_pixnum_i_x_RNITN4J1_1_1_.lut_mask=16'haeaa;
+defparam pxcache_pixnum_i_x_RNITN4J1_1_1_.sum_lutc_input="datac";
+// @14:377
+  cycloneii_lcell_comb pxcache_pixnum_i_x_RNITN4J1_1_ (
+	.combout(store_ram_15_en_9_0),
+	.dataa(store_ram_0_en_24_0_o2_x),
+	.datab(store_m1_e_3),
+	.datac(pxcache_pixnum_i_x[1]),
+	.datad(pxcache_pixnum_i_x[0])
+);
+defparam pxcache_pixnum_i_x_RNITN4J1_1_.lut_mask=16'haaae;
+defparam pxcache_pixnum_i_x_RNITN4J1_1_.sum_lutc_input="datac";
+// @14:377
+  cycloneii_lcell_comb store_ram_0_0_sqmuxa_i_a4_0_0_x_RNIS3D81 (
+	.combout(store_ram_12_en_12_0),
+	.dataa(store_ram_0_en_24_0_o2_x),
+	.datab(store_ram_0_0_sqmuxa_i_a4_0_0_x),
+	.datac(store_ram_0_0_sqmuxa_i_a4_a1_rep2),
+	.datad(store_m1_e_3)
+);
+defparam store_ram_0_0_sqmuxa_i_a4_0_0_x_RNIS3D81.lut_mask=16'hfeaa;
+defparam store_ram_0_0_sqmuxa_i_a4_0_0_x_RNIS3D81.sum_lutc_input="datac";
+// @14:377
+  cycloneii_lcell_comb pxcache_pixnum_i_x_RNIEP341_2_1_ (
+	.combout(store_ram_11_en_13_0),
+	.dataa(store_ram_0_en_24_0_o2_x),
+	.datab(store_m1_e_4),
+	.datac(pxcache_pixnum_i_x[1]),
+	.datad(pxcache_pixnum_i_x[0])
+);
+defparam pxcache_pixnum_i_x_RNIEP341_2_1_.lut_mask=16'haaae;
+defparam pxcache_pixnum_i_x_RNIEP341_2_1_.sum_lutc_input="datac";
+// @14:377
+  cycloneii_lcell_comb pxcache_pixnum_i_x_RNIEP341_4_1_ (
+	.combout(store_ram_9_en_15_0),
+	.dataa(store_ram_0_en_24_0_o2_x),
+	.datab(store_m1_e_4),
+	.datac(pxcache_pixnum_i_x[1]),
+	.datad(pxcache_pixnum_i_x[0])
+);
+defparam pxcache_pixnum_i_x_RNIEP341_4_1_.lut_mask=16'haaea;
+defparam pxcache_pixnum_i_x_RNIEP341_4_1_.sum_lutc_input="datac";
+// @14:377
+  cycloneii_lcell_comb store_ram_0_0_sqmuxa_i_a4_0_x_RNID5CP_0 (
+	.combout(store_ram_8_en_16_0),
+	.dataa(store_ram_0_en_24_0_o2_x),
+	.datab(store_ram_0_0_sqmuxa_i_a4_0_0_x),
+	.datac(store_ram_0_0_sqmuxa_i_a4_a1_rep2),
+	.datad(store_m1_e_4)
+);
+defparam store_ram_0_0_sqmuxa_i_a4_0_x_RNID5CP_0.lut_mask=16'hfeaa;
+defparam store_ram_0_0_sqmuxa_i_a4_0_x_RNID5CP_0.sum_lutc_input="datac";
+// @14:377
+  cycloneii_lcell_comb pxcache_pixnum_i_x_RNIEP341_1_ (
+	.combout(store_ram_7_en_17_0),
+	.dataa(store_ram_0_en_24_0_o2_x),
+	.datab(store_m1_e_5),
+	.datac(pxcache_pixnum_i_x[1]),
+	.datad(pxcache_pixnum_i_x[0])
+);
+defparam pxcache_pixnum_i_x_RNIEP341_1_.lut_mask=16'haaae;
+defparam pxcache_pixnum_i_x_RNIEP341_1_.sum_lutc_input="datac";
+// @14:377
+  cycloneii_lcell_comb store_ram_0_0_sqmuxa_i_a4_0_0_x_RNID5CP (
+	.combout(store_ram_4_en_20_0),
+	.dataa(store_ram_0_en_24_0_o2_x),
+	.datab(store_ram_0_0_sqmuxa_i_a4_0_0_x),
+	.datac(store_ram_0_0_sqmuxa_i_a4_a1_rep2),
+	.datad(store_m1_e_5)
+);
+defparam store_ram_0_0_sqmuxa_i_a4_0_0_x_RNID5CP.lut_mask=16'hfeaa;
+defparam store_ram_0_0_sqmuxa_i_a4_0_0_x_RNID5CP.sum_lutc_input="datac";
+// @14:377
+  cycloneii_lcell_comb store_ram_0_0_sqmuxa_i_a4_2_RNIDTB61 (
+	.combout(store_ram_3_en_21_0),
+	.dataa(store_ram_0_en_24_0_o2_x),
+	.datab(store_ram_0_0_sqmuxa_i_a4_2),
+	.datac(pxcache_pixnum_i_x[1]),
+	.datad(pxcache_pixnum_i_x[0])
+);
+defparam store_ram_0_0_sqmuxa_i_a4_2_RNIDTB61.lut_mask=16'haaae;
+defparam store_ram_0_0_sqmuxa_i_a4_2_RNIDTB61.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_0_RNO_0_ (
+	.combout(store_ram_0_0_0_127),
+	.dataa(store_ram_0_0_0_a4_1_2_x),
+	.datab(store_ram_0_0_0_a4_1_5_x),
+	.datac(store_ram_0_0_0_a4_1_1_x),
+	.datad(store_ram_0_0_0_0)
+);
+defparam store_ram_0_RNO_0_.lut_mask=16'hff80;
+defparam store_ram_0_RNO_0_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_0_RNO_1_ (
+	.combout(store_ram_0_0_156),
+	.dataa(store_ram_0_0_0_a4_1_2_x),
+	.datab(store_ram_0_0_0_a4_1_5_x),
+	.datac(store_ram_0_0_156_a4_1_1_x),
+	.datad(store_ram_0_0_156_0)
+);
+defparam store_ram_0_RNO_1_.lut_mask=16'hff80;
+defparam store_ram_0_RNO_1_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_1_RNO_0_ (
+	.combout(store_ram_1_0_0_185),
+	.dataa(store_ram_13_0_0_a4_1_2_x),
+	.datab(store_ram_0_0_0_a4_1_5_x),
+	.datac(store_ram_0_0_0_a4_1_1_x),
+	.datad(store_ram_0_0_0_0)
+);
+defparam store_ram_1_RNO_0_.lut_mask=16'hff80;
+defparam store_ram_1_RNO_0_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_1_RNO_1_ (
+	.combout(store_ram_1_0_213),
+	.dataa(store_ram_13_0_0_a4_1_2_x),
+	.datab(store_ram_0_0_0_a4_1_5_x),
+	.datac(store_ram_0_0_156_a4_1_1_x),
+	.datad(store_ram_0_0_156_0)
+);
+defparam store_ram_1_RNO_1_.lut_mask=16'hff80;
+defparam store_ram_1_RNO_1_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_2_RNO_0_ (
+	.combout(store_ram_2_0_0_241),
+	.dataa(store_ram_2_0_0_a4_1_4_0_x),
+	.datab(store_ram_2_0_0_a4_1_5_x),
+	.datac(store_ram_10_0_0_a4_1_1_x),
+	.datad(store_ram_2_0_0_0)
+);
+defparam store_ram_2_RNO_0_.lut_mask=16'hff80;
+defparam store_ram_2_RNO_0_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_2_RNO_1_ (
+	.combout(store_ram_2_0_269),
+	.dataa(store_ram_2_0_0_a4_1_4_0_x),
+	.datab(store_ram_2_0_269_a4_1_5_x),
+	.datac(store_ram_10_0_0_a4_1_1_x),
+	.datad(store_ram_2_0_269_0)
+);
+defparam store_ram_2_RNO_1_.lut_mask=16'hff80;
+defparam store_ram_2_RNO_1_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_3_RNO_0_ (
+	.combout(store_ram_3_0_0_297),
+	.dataa(store_ram_3_0_0_a4_1_4_0_x),
+	.datab(store_ram_2_0_0_a4_1_5_x),
+	.datac(store_ram_10_0_0_a4_1_1_x),
+	.datad(store_ram_2_0_0_0)
+);
+defparam store_ram_3_RNO_0_.lut_mask=16'hff80;
+defparam store_ram_3_RNO_0_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_3_RNO_1_ (
+	.combout(store_ram_3_0_324),
+	.dataa(store_ram_3_0_0_a4_1_4_0_x),
+	.datab(store_ram_2_0_269_a4_1_5_x),
+	.datac(store_ram_10_0_0_a4_1_1_x),
+	.datad(store_ram_2_0_269_0)
+);
+defparam store_ram_3_RNO_1_.lut_mask=16'hff80;
+defparam store_ram_3_RNO_1_.sum_lutc_input="datac";
   cycloneii_lcell_comb store_ram_4_RNO_0_ (
-	.combout(store_ram_4_0_0_362_a2),
-	.dataa(store_ram_4_0_387_a2_5),
-	.datab(store_ram_12_0_0_795_o2_0),
-	.datac(store_ram_12_0_0_795_a2_6_1_x),
-	.datad(dout1_7_i_m2[0])
+	.combout(store_ram_4_0_0_351),
+	.dataa(store_ram_0_0_0_a4_1_2_x),
+	.datab(store_ram_4_0_0_a4_1_5_x),
+	.datac(store_ram_0_0_0_a4_1_1_x),
+	.datad(store_ram_0_0_0_0)
 );
-defparam store_ram_4_RNO_0_.lut_mask=16'h80a0;
+defparam store_ram_4_RNO_0_.lut_mask=16'hff80;
 defparam store_ram_4_RNO_0_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_13_RNO_0_ (
-	.combout(store_ram_13_0_0_842_a2),
-	.dataa(store_ram_12_0_0_795_o2_0),
-	.datab(store_ram_13_0_0_842_a2_1),
-	.datac(store_ram_13_0_0_842_a2_a),
-	.datad(dout1_6_i_m2[0])
+  cycloneii_lcell_comb store_ram_4_RNO_1_ (
+	.combout(store_ram_4_0_379),
+	.dataa(store_ram_0_0_0_a4_1_2_x),
+	.datab(store_ram_4_0_0_a4_1_5_x),
+	.datac(store_ram_0_0_156_a4_1_1_x),
+	.datad(store_ram_0_0_156_0)
 );
-defparam store_ram_13_RNO_0_.lut_mask=16'h080c;
+defparam store_ram_4_RNO_1_.lut_mask=16'hff80;
+defparam store_ram_4_RNO_1_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_5_RNO_0_ (
+	.combout(store_ram_5_0_0_407),
+	.dataa(store_ram_13_0_0_a4_1_2_x),
+	.datab(store_ram_4_0_0_a4_1_5_x),
+	.datac(store_ram_0_0_0_a4_1_1_x),
+	.datad(store_ram_0_0_0_0)
+);
+defparam store_ram_5_RNO_0_.lut_mask=16'hff80;
+defparam store_ram_5_RNO_0_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_5_RNO_1_ (
+	.combout(store_ram_5_0_434),
+	.dataa(store_ram_13_0_0_a4_1_2_x),
+	.datab(store_ram_4_0_0_a4_1_5_x),
+	.datac(store_ram_0_0_156_a4_1_1_x),
+	.datad(store_ram_0_0_156_0)
+);
+defparam store_ram_5_RNO_1_.lut_mask=16'hff80;
+defparam store_ram_5_RNO_1_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_8_RNO_0_ (
+	.combout(store_ram_8_0_0_567),
+	.dataa(store_ram_0_0_0_a4_1_2_x),
+	.datab(store_ram_8_0_0_a4_1_5_x),
+	.datac(store_ram_0_0_0_a4_1_1_x),
+	.datad(store_ram_0_0_0_0_rep1)
+);
+defparam store_ram_8_RNO_0_.lut_mask=16'hff80;
+defparam store_ram_8_RNO_0_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_8_RNO_1_ (
+	.combout(store_ram_8_0_595),
+	.dataa(store_ram_0_0_0_a4_1_2_x),
+	.datab(store_ram_8_0_0_a4_1_5_x),
+	.datac(store_ram_0_0_156_a4_1_1_x),
+	.datad(store_ram_0_0_156_0_rep1)
+);
+defparam store_ram_8_RNO_1_.lut_mask=16'hff80;
+defparam store_ram_8_RNO_1_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_9_RNO_0_ (
+	.combout(store_ram_9_0_0_623),
+	.dataa(store_ram_13_0_0_a4_1_2_x),
+	.datab(store_ram_8_0_0_a4_1_5_x),
+	.datac(store_ram_0_0_0_a4_1_1_x),
+	.datad(store_ram_0_0_0_0_rep1)
+);
+defparam store_ram_9_RNO_0_.lut_mask=16'hff80;
+defparam store_ram_9_RNO_0_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_9_RNO_1_ (
+	.combout(store_ram_9_0_650),
+	.dataa(store_ram_13_0_0_a4_1_2_x),
+	.datab(store_ram_8_0_0_a4_1_5_x),
+	.datac(store_ram_0_0_156_a4_1_1_x),
+	.datad(store_ram_0_0_156_0_rep1)
+);
+defparam store_ram_9_RNO_1_.lut_mask=16'hff80;
+defparam store_ram_9_RNO_1_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_10_RNO_0_ (
+	.combout(store_ram_10_0_0_677),
+	.dataa(dbb_bus_c_12),
+	.datab(store_ram_0_0_0_a4_1_5_1_x),
+	.datac(store_ram_10_0_0_a4_1_4_x),
+	.datad(store_ram_2_0_0_0_rep1)
+);
+defparam store_ram_10_RNO_0_.lut_mask=16'hff80;
+defparam store_ram_10_RNO_0_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_10_RNO_1_ (
+	.combout(store_ram_10_0_704),
+	.dataa(dbb_bus_c_13),
+	.datab(store_ram_0_0_0_a4_1_5_1_x),
+	.datac(store_ram_10_0_0_a4_1_4_x),
+	.datad(store_ram_2_0_269_0_rep1)
+);
+defparam store_ram_10_RNO_1_.lut_mask=16'hff80;
+defparam store_ram_10_RNO_1_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_11_RNO_0_ (
+	.combout(store_ram_11_0_0_731),
+	.dataa(dbb_bus_c_12),
+	.datab(store_ram_0_0_0_a4_1_5_1_x),
+	.datac(store_ram_11_0_0_a4_1_4_x),
+	.datad(store_ram_2_0_0_0_rep1)
+);
+defparam store_ram_11_RNO_0_.lut_mask=16'hff80;
+defparam store_ram_11_RNO_0_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_11_RNO_1_ (
+	.combout(store_ram_11_0_757),
+	.dataa(dbb_bus_c_13),
+	.datab(store_ram_0_0_0_a4_1_5_1_x),
+	.datac(store_ram_11_0_0_a4_1_4_x),
+	.datad(store_ram_2_0_269_0_rep1)
+);
+defparam store_ram_11_RNO_1_.lut_mask=16'hff80;
+defparam store_ram_11_RNO_1_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_12_RNO_0_ (
+	.combout(store_ram_12_0_0_783),
+	.dataa(store_ram_0_0_0_a4_1_2_x),
+	.datab(store_ram_12_0_0_a4_1_5_x),
+	.datac(store_ram_0_0_0_a4_1_1_x),
+	.datad(store_ram_0_0_0_0_rep1)
+);
+defparam store_ram_12_RNO_0_.lut_mask=16'hff80;
+defparam store_ram_12_RNO_0_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_12_RNO_1_ (
+	.combout(store_ram_12_0_810),
+	.dataa(store_ram_0_0_0_a4_1_2_x),
+	.datab(store_ram_12_0_0_a4_1_5_x),
+	.datac(store_ram_0_0_156_a4_1_1_x),
+	.datad(store_ram_0_0_156_0_rep1)
+);
+defparam store_ram_12_RNO_1_.lut_mask=16'hff80;
+defparam store_ram_12_RNO_1_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_13_RNO_0_ (
+	.combout(store_ram_13_0_0_837),
+	.dataa(store_ram_13_0_0_a4_1_2_x),
+	.datab(store_ram_12_0_0_a4_1_5_x),
+	.datac(store_ram_0_0_0_a4_1_1_x),
+	.datad(store_ram_0_0_0_0_rep1)
+);
+defparam store_ram_13_RNO_0_.lut_mask=16'hff80;
 defparam store_ram_13_RNO_0_.sum_lutc_input="datac";
   cycloneii_lcell_comb store_ram_13_RNO_1_ (
-	.combout(store_ram_13_0_865_a2),
-	.dataa(store_ram_12_0_819_o2_0),
-	.datab(pxcache_pixnum_x_0),
-	.datac(store_ram_13_0_865_a2_a_x),
-	.datad(dout1_6_i_m2[1])
+	.combout(store_ram_13_0_863),
+	.dataa(store_ram_13_0_0_a4_1_2_x),
+	.datab(store_ram_12_0_0_a4_1_5_x),
+	.datac(store_ram_0_0_156_a4_1_1_x),
+	.datad(store_ram_0_0_156_0_rep1)
 );
-defparam store_ram_13_RNO_1_.lut_mask=16'h80c0;
+defparam store_ram_13_RNO_1_.lut_mask=16'hff80;
 defparam store_ram_13_RNO_1_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_12_0_0_795_a2_6_1_x_cZ (
-	.combout(store_ram_12_0_0_795_a2_6_1_x),
+  cycloneii_lcell_comb store_ram_14_RNO_0_ (
+	.combout(store_ram_14_0_0_889),
 	.dataa(dbb_bus_c_12),
-	.datab(reset_c),
-	.datac(pxcache_pw_i_1_1),
-	.datad(VCC)
+	.datab(store_ram_14_0_0_a4_1_5_1_x),
+	.datac(store_ram_6_0_0_a4_1_4_x),
+	.datad(store_ram_2_0_0_0_rep1)
 );
-defparam store_ram_12_0_0_795_a2_6_1_x_cZ.lut_mask=16'h0202;
-defparam store_ram_12_0_0_795_a2_6_1_x_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_12_0_819_a2_6_1_x_cZ (
-	.combout(store_ram_12_0_819_a2_6_1_x),
+defparam store_ram_14_RNO_0_.lut_mask=16'hff80;
+defparam store_ram_14_RNO_0_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_14_RNO_1_ (
+	.combout(store_ram_14_0_915),
+	.dataa(dbb_bus_c_13),
+	.datab(store_ram_14_0_0_a4_1_5_1_x),
+	.datac(store_ram_6_0_0_a4_1_4_x),
+	.datad(store_ram_2_0_269_0_rep1)
+);
+defparam store_ram_14_RNO_1_.lut_mask=16'hff80;
+defparam store_ram_14_RNO_1_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_15_RNO_0_ (
+	.combout(store_ram_15_0_0_941),
+	.dataa(dbb_bus_c_12),
+	.datab(store_ram_14_0_0_a4_1_5_1_x),
+	.datac(store_ram_7_0_0_a4_1_4_x),
+	.datad(store_ram_2_0_0_0_rep1)
+);
+defparam store_ram_15_RNO_0_.lut_mask=16'hff80;
+defparam store_ram_15_RNO_0_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_15_RNO_1_ (
+	.combout(store_ram_15_0_966),
+	.dataa(dbb_bus_c_13),
+	.datab(store_ram_14_0_0_a4_1_5_1_x),
+	.datac(store_ram_7_0_0_a4_1_4_x),
+	.datad(store_ram_2_0_269_0_rep1)
+);
+defparam store_ram_15_RNO_1_.lut_mask=16'hff80;
+defparam store_ram_15_RNO_1_.sum_lutc_input="datac";
+// @13:78
+  cycloneii_lcell_comb store_ram_0_0_sqmuxa_i_a4_a1_cZ (
+	.combout(store_ram_0_0_sqmuxa_i_a4_a1),
+	.dataa(state_0),
+	.datab(un4_curr_vram_word_NE_2),
+	.datac(un4_curr_vram_word_NE_3),
+	.datad(un4_curr_vram_word_NE_4)
+);
+defparam store_ram_0_0_sqmuxa_i_a4_a1_cZ.lut_mask=16'h5554;
+defparam store_ram_0_0_sqmuxa_i_a4_a1_cZ.sum_lutc_input="datac";
+// @14:377
+  cycloneii_lcell_comb pxcache_pixnum_i_x_rep1_RNINUC61_2_ (
+	.combout(store_ram_0_en_24_0),
+	.dataa(store_ram_0_en_24_0_o2_x),
+	.datab(pxcache_pixnum_i_x_rep3[3]),
+	.datac(pxcache_pixnum_i_x_rep1[2]),
+	.datad(store_ram_0_en_24_0_a2_1)
+);
+defparam pxcache_pixnum_i_x_rep1_RNINUC61_2_.lut_mask=16'heaaa;
+defparam pxcache_pixnum_i_x_rep1_RNINUC61_2_.sum_lutc_input="datac";
+  cycloneii_lcell_comb dout1_3_i_m4_RNI0IJT_0_ (
+	.combout(store_ram_0_0_0_0_a),
+	.dataa(dbb_bus_c_12),
+	.datab(pxcache_pixnum_i_x[0]),
+	.datac(dout1_6_i_m3[0]),
+	.datad(dout1_3_i_m4[0])
+);
+defparam dout1_3_i_m4_RNI0IJT_0_.lut_mask=16'h028a;
+defparam dout1_3_i_m4_RNI0IJT_0_.sum_lutc_input="datac";
+  cycloneii_lcell_comb dout1_3_i_m4_RNI53IH1_0_ (
+	.combout(store_ram_0_0_0_0),
 	.dataa(dbb_bus_c_13),
 	.datab(reset_c),
-	.datac(pxcache_pw_i_1_1),
-	.datad(VCC)
+	.datac(state_0),
+	.datad(store_ram_0_0_0_0_a)
 );
-defparam store_ram_12_0_819_a2_6_1_x_cZ.lut_mask=16'h0202;
-defparam store_ram_12_0_819_a2_6_1_x_cZ.sum_lutc_input="datac";
-// @13:78
-  cycloneii_lcell_comb store_ram_2_0_sqmuxa_i_a2_1_x_cZ (
-	.combout(store_ram_2_0_sqmuxa_i_a2_1_x),
-	.dataa(dbb_bus_c_1),
-	.datab(pxcache_pw_i_1),
+defparam dout1_3_i_m4_RNI53IH1_0_.lut_mask=16'h0301;
+defparam dout1_3_i_m4_RNI53IH1_0_.sum_lutc_input="datac";
+  cycloneii_lcell_comb dout1_3_i_m4_RNI3LJT_1_ (
+	.combout(store_ram_0_0_156_0_a),
+	.dataa(dbb_bus_c_13),
+	.datab(pxcache_pixnum_i_x[0]),
+	.datac(dout1_6_i_m3[1]),
+	.datad(dout1_3_i_m4[1])
+);
+defparam dout1_3_i_m4_RNI3LJT_1_.lut_mask=16'h028a;
+defparam dout1_3_i_m4_RNI3LJT_1_.sum_lutc_input="datac";
+  cycloneii_lcell_comb dout1_3_i_m4_RNI75IH1_0_1_ (
+	.combout(store_ram_0_0_156_0),
+	.dataa(dbb_bus_c_12),
+	.datab(reset_c),
+	.datac(state_0),
+	.datad(store_ram_0_0_156_0_a)
+);
+defparam dout1_3_i_m4_RNI75IH1_0_1_.lut_mask=16'h0301;
+defparam dout1_3_i_m4_RNI75IH1_0_1_.sum_lutc_input="datac";
+  cycloneii_lcell_comb dout1_10_i_m3_RNIU0201_1_ (
+	.combout(store_ram_2_0_269_0_a),
+	.dataa(dbb_bus_c_13),
+	.datab(pxcache_pixnum_i_x[0]),
+	.datac(dout1_13_i_m3[1]),
+	.datad(dout1_10_i_m3[1])
+);
+defparam dout1_10_i_m3_RNIU0201_1_.lut_mask=16'h028a;
+defparam dout1_10_i_m3_RNIU0201_1_.sum_lutc_input="datac";
+  cycloneii_lcell_comb dout1_10_i_m3_RNI2H0K1_0_1_ (
+	.combout(store_ram_2_0_269_0),
+	.dataa(dbb_bus_c_12),
+	.datab(reset_c),
+	.datac(state_0),
+	.datad(store_ram_2_0_269_0_a)
+);
+defparam dout1_10_i_m3_RNI2H0K1_0_1_.lut_mask=16'h0301;
+defparam dout1_10_i_m3_RNI2H0K1_0_1_.sum_lutc_input="datac";
+  cycloneii_lcell_comb dout1_10_i_m3_RNIRT101_0_ (
+	.combout(store_ram_2_0_0_0_a),
+	.dataa(dbb_bus_c_12),
+	.datab(pxcache_pixnum_i_x[0]),
+	.datac(dout1_13_i_m3[0]),
+	.datad(dout1_10_i_m3[0])
+);
+defparam dout1_10_i_m3_RNIRT101_0_.lut_mask=16'h028a;
+defparam dout1_10_i_m3_RNIRT101_0_.sum_lutc_input="datac";
+  cycloneii_lcell_comb dout1_10_i_m3_RNI0F0K1_0_0_ (
+	.combout(store_ram_2_0_0_0),
+	.dataa(dbb_bus_c_13),
+	.datab(reset_c),
+	.datac(state_0),
+	.datad(store_ram_2_0_0_0_a)
+);
+defparam dout1_10_i_m3_RNI0F0K1_0_0_.lut_mask=16'h0301;
+defparam dout1_10_i_m3_RNI0F0K1_0_0_.sum_lutc_input="datac";
+// @14:322
+  cycloneii_lcell_comb fsm_clocked_process_un6_reset_0_0 (
+	.combout(un6_reset_0_0_i),
+	.dataa(reset_c),
+	.datab(state_1),
+	.datac(state_0),
+	.datad(un6_reset_0_0_o4)
+);
+defparam fsm_clocked_process_un6_reset_0_0.lut_mask=16'h0010;
+defparam fsm_clocked_process_un6_reset_0_0.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_0_0_sqmuxa_i_a4_a1_rep1_0_RNICGDE3 (
+	.combout(pxcache_store_buf_0_1_0__g0_i_0),
+	.dataa(reset_c),
+	.datab(state_rep1_0),
+	.datac(store_ram_0_0_sqmuxa_i_a4_a1_rep1_0),
+	.datad(pxcache_store_buf_0_en_0_0_a4[0])
+);
+defparam store_ram_0_0_sqmuxa_i_a4_a1_rep1_0_RNICGDE3.lut_mask=16'hffea;
+defparam store_ram_0_0_sqmuxa_i_a4_a1_rep1_0_RNICGDE3.sum_lutc_input="datac";
+// @14:91
+  cycloneii_lcell_comb state_ns_0_0_o4_1_ (
+	.combout(state_ns_0_0_o4_0),
+	.dataa(state_0),
+	.datab(state_rep2_0),
+	.datac(un6_reset_0_0_o4),
+	.datad(store_ram_0_0_sqmuxa_i_a4_a1_rep1)
+);
+defparam state_ns_0_0_o4_1_.lut_mask=16'hec20;
+defparam state_ns_0_0_o4_1_.sum_lutc_input="datac";
+// @14:284
+  cycloneii_lcell_comb rcb_finish_0_a4_cZ (
+	.combout(rcb_finish_0_a4),
+	.dataa(rcb_finish_0_a4_27),
+	.datab(rcb_finish_0_a4_28),
+	.datac(rcb_finish_0_a4_29),
+	.datad(rcb_finish_0_a4_33)
+);
+defparam rcb_finish_0_a4_cZ.lut_mask=16'h8000;
+defparam rcb_finish_0_a4_cZ.sum_lutc_input="datac";
+// @14:91
+  cycloneii_lcell_comb state_srsts_x_1_ (
+	.combout(state_srsts_x_0),
+	.dataa(reset_c),
+	.datab(state_ns_0_0_o4_0),
 	.datac(VCC),
 	.datad(VCC)
 );
-defparam store_ram_2_0_sqmuxa_i_a2_1_x_cZ.lut_mask=16'h2222;
-defparam store_ram_2_0_sqmuxa_i_a2_1_x_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb state_srsts_0_0__g0_x_cZ (
-	.combout(state_srsts_0_0__g0_x),
-	.dataa(reset_c),
-	.datab(next_state_i_a4_0),
-	.datac(state_srsts_0_0__g1_0),
+defparam state_srsts_x_1_.lut_mask=16'h4444;
+defparam state_srsts_x_1_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_7_RNO_1_ (
+	.combout(store_ram_7_0_541_x),
+	.dataa(store_ram_2_0_269_a4_1_5_x),
+	.datab(store_ram_7_0_0_a4_1_4_x),
+	.datac(store_ram_2_0_269_0),
 	.datad(VCC)
 );
-defparam state_srsts_0_0__g0_x_cZ.lut_mask=16'hbaba;
-defparam state_srsts_0_0__g0_x_cZ.sum_lutc_input="datac";
-// @14:410
-  cycloneii_lcell_comb store_ram_0_en_24_0_o2_x_cZ (
+defparam store_ram_7_RNO_1_.lut_mask=16'hf8f8;
+defparam store_ram_7_RNO_1_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_7_RNO_0_ (
+	.combout(store_ram_7_0_0_515_x),
+	.dataa(store_ram_2_0_0_a4_1_5_x),
+	.datab(store_ram_7_0_0_a4_1_4_x),
+	.datac(store_ram_2_0_0_0),
+	.datad(VCC)
+);
+defparam store_ram_7_RNO_0_.lut_mask=16'hf8f8;
+defparam store_ram_7_RNO_0_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_6_RNO_1_ (
+	.combout(store_ram_6_0_488_x),
+	.dataa(store_ram_2_0_269_a4_1_5_x),
+	.datab(store_ram_6_0_0_a4_1_4_x),
+	.datac(store_ram_2_0_269_0),
+	.datad(VCC)
+);
+defparam store_ram_6_RNO_1_.lut_mask=16'hf8f8;
+defparam store_ram_6_RNO_1_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_6_RNO_0_ (
+	.combout(store_ram_6_0_0_461_x),
+	.dataa(store_ram_2_0_0_a4_1_5_x),
+	.datab(store_ram_6_0_0_a4_1_4_x),
+	.datac(store_ram_2_0_0_0),
+	.datad(VCC)
+);
+defparam store_ram_6_RNO_0_.lut_mask=16'hf8f8;
+defparam store_ram_6_RNO_0_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_6_0_0_a4_1_4_x_cZ (
+	.combout(store_ram_6_0_0_a4_1_4_x),
+	.dataa(dbb_bus_c_0),
+	.datab(dbb_bus_c_6),
+	.datac(store_ram_10_0_0_a4_1_1_x),
+	.datad(VCC)
+);
+defparam store_ram_6_0_0_a4_1_4_x_cZ.lut_mask=16'h4040;
+defparam store_ram_6_0_0_a4_1_4_x_cZ.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_7_0_0_a4_1_4_x_cZ (
+	.combout(store_ram_7_0_0_a4_1_4_x),
+	.dataa(dbb_bus_c_0),
+	.datab(dbb_bus_c_6),
+	.datac(store_ram_10_0_0_a4_1_1_x),
+	.datad(VCC)
+);
+defparam store_ram_7_0_0_a4_1_4_x_cZ.lut_mask=16'h8080;
+defparam store_ram_7_0_0_a4_1_4_x_cZ.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_10_0_0_a4_1_4_x_cZ (
+	.combout(store_ram_10_0_0_a4_1_4_x),
+	.dataa(dbb_bus_c_0),
+	.datab(dbb_bus_c_7),
+	.datac(store_ram_10_0_0_a4_1_1_x),
+	.datad(VCC)
+);
+defparam store_ram_10_0_0_a4_1_4_x_cZ.lut_mask=16'h4040;
+defparam store_ram_10_0_0_a4_1_4_x_cZ.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_11_0_0_a4_1_4_x_cZ (
+	.combout(store_ram_11_0_0_a4_1_4_x),
+	.dataa(dbb_bus_c_0),
+	.datab(dbb_bus_c_7),
+	.datac(store_ram_10_0_0_a4_1_1_x),
+	.datad(VCC)
+);
+defparam store_ram_11_0_0_a4_1_4_x_cZ.lut_mask=16'h8080;
+defparam store_ram_11_0_0_a4_1_4_x_cZ.sum_lutc_input="datac";
+// @14:377
+  cycloneii_lcell_comb pxcache_wen_all_i_0_RNIMNFC (
 	.combout(store_ram_0_en_24_0_o2_x),
 	.dataa(reset_c),
-	.datab(pxcache_wen_all_i),
+	.datab(pxcache_wen_all_i_0),
 	.datac(VCC),
 	.datad(VCC)
 );
-defparam store_ram_0_en_24_0_o2_x_cZ.lut_mask=16'hbbbb;
-defparam store_ram_0_en_24_0_o2_x_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_15_RNO_0_1_ (
-	.combout(store_ram_15_0_968_a4_1_1_x),
-	.dataa(dbb_bus_c_13),
+defparam pxcache_wen_all_i_0_RNIMNFC.lut_mask=16'hbbbb;
+defparam pxcache_wen_all_i_0_RNIMNFC.sum_lutc_input="datac";
+// @13:78
+  cycloneii_lcell_comb store_ram_0_0_sqmuxa_i_a4_0_0_x_cZ (
+	.combout(store_ram_0_0_sqmuxa_i_a4_0_0_x),
+	.dataa(dbb_bus_c_1),
 	.datab(dbb_bus_c_0),
-	.datac(prev_state_0),
+	.datac(pxcache_pixnum_i_o4_2_rep1[0]),
 	.datad(VCC)
 );
-defparam store_ram_15_RNO_0_1_.lut_mask=16'h0808;
-defparam store_ram_15_RNO_0_1_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_15_RNO_0_0_ (
-	.combout(store_ram_15_0_0_a4_1_1_x),
+defparam store_ram_0_0_sqmuxa_i_a4_0_0_x_cZ.lut_mask=16'hf1f1;
+defparam store_ram_0_0_sqmuxa_i_a4_0_0_x_cZ.sum_lutc_input="datac";
+// @14:142
+  cycloneii_lcell_comb pxcache_pixnum_i_o4_2_0_x_0_ (
+	.combout(pxcache_pixnum_i_o4_2_0_x[0]),
 	.dataa(dbb_bus_c_12),
-	.datab(dbb_bus_c_0),
-	.datac(prev_state_1),
+	.datab(dbb_bus_c_13),
+	.datac(state_1),
 	.datad(VCC)
 );
-defparam store_ram_15_RNO_0_0_.lut_mask=16'h8080;
-defparam store_ram_15_RNO_0_0_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_0_0_164_a4_1_5_x_cZ (
-	.combout(store_ram_0_0_164_a4_1_5_x),
-	.dataa(dbb_bus_c_13),
-	.datab(dbb_bus_c_0),
-	.datac(prev_state_0),
-	.datad(VCC)
-);
-defparam store_ram_0_0_164_a4_1_5_x_cZ.lut_mask=16'h0202;
-defparam store_ram_0_0_164_a4_1_5_x_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_1_0_222_a4_1_5_x_cZ (
-	.combout(store_ram_1_0_222_a4_1_5_x),
-	.dataa(dbb_bus_c_13),
-	.datab(dbb_bus_c_7),
-	.datac(prev_state_0),
-	.datad(VCC)
-);
-defparam store_ram_1_0_222_a4_1_5_x_cZ.lut_mask=16'h0202;
-defparam store_ram_1_0_222_a4_1_5_x_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_9_0_0_a4_1_5_x_cZ (
-	.combout(store_ram_9_0_0_a4_1_5_x),
-	.dataa(dbb_bus_c_12),
-	.datab(dbb_bus_c_6),
-	.datac(prev_state_1),
-	.datad(VCC)
-);
-defparam store_ram_9_0_0_a4_1_5_x_cZ.lut_mask=16'h2020;
-defparam store_ram_9_0_0_a4_1_5_x_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_9_0_660_a4_1_5_x_cZ (
-	.combout(store_ram_9_0_660_a4_1_5_x),
-	.dataa(dbb_bus_c_13),
-	.datab(dbb_bus_c_6),
-	.datac(prev_state_0),
-	.datad(VCC)
-);
-defparam store_ram_9_0_660_a4_1_5_x_cZ.lut_mask=16'h0202;
-defparam store_ram_9_0_660_a4_1_5_x_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_0_0_0_135_a4_x_cZ (
-	.combout(store_ram_0_0_0_135_a4_x),
-	.dataa(dbb_bus_c_13),
-	.datab(reset_c),
+defparam pxcache_pixnum_i_o4_2_0_x_0_.lut_mask=16'h1f1f;
+defparam pxcache_pixnum_i_o4_2_0_x_0_.sum_lutc_input="datac";
+// @14:284
+  cycloneii_lcell_comb rcb_finish_0_a4_1_x_cZ (
+	.combout(rcb_finish_0_a4_1_x),
+	.dataa(dbb_bus_c_15),
+	.datab(state_rep1_0),
 	.datac(state_0),
 	.datad(VCC)
 );
-defparam store_ram_0_0_0_135_a4_x_cZ.lut_mask=16'h0101;
-defparam store_ram_0_0_0_135_a4_x_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_0_0_164_a4_x_cZ (
-	.combout(store_ram_0_0_164_a4_x),
-	.dataa(dbb_bus_c_12),
+defparam rcb_finish_0_a4_1_x_cZ.lut_mask=16'h1010;
+defparam rcb_finish_0_a4_1_x_cZ.sum_lutc_input="datac";
+// @14:142
+  cycloneii_lcell_comb pxcache_pixnum_i_x_3_ (
+	.combout(pxcache_pixnum_i_x[3]),
+	.dataa(dbb_bus_c_7),
+	.datab(pxcache_pixnum_i_o4_2[0]),
+	.datac(store_ram_0_0_sqmuxa_i_a4_a1),
+	.datad(VCC)
+);
+defparam pxcache_pixnum_i_x_3_.lut_mask=16'hfdfd;
+defparam pxcache_pixnum_i_x_3_.sum_lutc_input="datac";
+// @14:142
+  cycloneii_lcell_comb pxcache_pixnum_i_x_0_ (
+	.combout(pxcache_pixnum_i_x[0]),
+	.dataa(dbb_bus_c_0),
+	.datab(pxcache_pixnum_i_o4_2[0]),
+	.datac(store_ram_0_0_sqmuxa_i_a4_a1),
+	.datad(VCC)
+);
+defparam pxcache_pixnum_i_x_0_.lut_mask=16'hfdfd;
+defparam pxcache_pixnum_i_x_0_.sum_lutc_input="datac";
+// @14:142
+  cycloneii_lcell_comb pxcache_pixnum_i_x_2_ (
+	.combout(pxcache_pixnum_i_x[2]),
+	.dataa(dbb_bus_c_6),
+	.datab(pxcache_pixnum_i_o4_2[0]),
+	.datac(store_ram_0_0_sqmuxa_i_a4_a1),
+	.datad(VCC)
+);
+defparam pxcache_pixnum_i_x_2_.lut_mask=16'hfdfd;
+defparam pxcache_pixnum_i_x_2_.sum_lutc_input="datac";
+// @14:142
+  cycloneii_lcell_comb pxcache_pixnum_i_x_1_ (
+	.combout(pxcache_pixnum_i_x[1]),
+	.dataa(dbb_bus_c_1),
+	.datab(pxcache_pixnum_i_o4_2[0]),
+	.datac(store_ram_0_0_sqmuxa_i_a4_a1),
+	.datad(VCC)
+);
+defparam pxcache_pixnum_i_x_1_.lut_mask=16'hfdfd;
+defparam pxcache_pixnum_i_x_1_.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_2_0_269_a4_1_5_x_cZ (
+	.combout(store_ram_2_0_269_a4_1_5_x),
+	.dataa(dbb_bus_c_7),
 	.datab(reset_c),
-	.datac(state_0),
+	.datac(dbb_bus_c_13),
 	.datad(VCC)
 );
-defparam store_ram_0_0_164_a4_x_cZ.lut_mask=16'h0101;
-defparam store_ram_0_0_164_a4_x_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_1_0_0_a4_1_5_x_cZ (
-	.combout(store_ram_1_0_0_a4_1_5_x),
-	.dataa(dbb_bus_c_12),
-	.datab(dbb_bus_c_7),
-	.datac(prev_state_1),
+defparam store_ram_2_0_269_a4_1_5_x_cZ.lut_mask=16'h1010;
+defparam store_ram_2_0_269_a4_1_5_x_cZ.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_2_0_0_a4_1_5_x_cZ (
+	.combout(store_ram_2_0_0_a4_1_5_x),
+	.dataa(dbb_bus_c_7),
+	.datab(reset_c),
+	.datac(dbb_bus_c_12),
 	.datad(VCC)
 );
-defparam store_ram_1_0_0_a4_1_5_x_cZ.lut_mask=16'h2020;
-defparam store_ram_1_0_0_a4_1_5_x_cZ.sum_lutc_input="datac";
+defparam store_ram_2_0_0_a4_1_5_x_cZ.lut_mask=16'h1010;
+defparam store_ram_2_0_0_a4_1_5_x_cZ.sum_lutc_input="datac";
   cycloneii_lcell_comb store_ram_0_0_0_a4_1_5_x_cZ (
 	.combout(store_ram_0_0_0_a4_1_5_x),
-	.dataa(dbb_bus_c_12),
-	.datab(dbb_bus_c_0),
-	.datac(prev_state_1),
+	.dataa(dbb_bus_c_6),
+	.datab(reset_c),
+	.datac(dbb_bus_c_7),
 	.datad(VCC)
 );
-defparam store_ram_0_0_0_a4_1_5_x_cZ.lut_mask=16'h2020;
+defparam store_ram_0_0_0_a4_1_5_x_cZ.lut_mask=16'h0101;
 defparam store_ram_0_0_0_a4_1_5_x_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_0_0_0_a4_0_0_x_cZ (
-	.combout(store_ram_0_0_0_a4_0_0_x),
+  cycloneii_lcell_comb store_ram_4_0_0_a4_1_5_x_cZ (
+	.combout(store_ram_4_0_0_a4_1_5_x),
+	.dataa(dbb_bus_c_6),
+	.datab(reset_c),
+	.datac(dbb_bus_c_7),
+	.datad(VCC)
+);
+defparam store_ram_4_0_0_a4_1_5_x_cZ.lut_mask=16'h0202;
+defparam store_ram_4_0_0_a4_1_5_x_cZ.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_8_0_0_a4_1_5_x_cZ (
+	.combout(store_ram_8_0_0_a4_1_5_x),
+	.dataa(dbb_bus_c_6),
+	.datab(reset_c),
+	.datac(dbb_bus_c_7),
+	.datad(VCC)
+);
+defparam store_ram_8_0_0_a4_1_5_x_cZ.lut_mask=16'h1010;
+defparam store_ram_8_0_0_a4_1_5_x_cZ.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_12_0_0_a4_1_5_x_cZ (
+	.combout(store_ram_12_0_0_a4_1_5_x),
+	.dataa(dbb_bus_c_6),
+	.datab(reset_c),
+	.datac(dbb_bus_c_7),
+	.datad(VCC)
+);
+defparam store_ram_12_0_0_a4_1_5_x_cZ.lut_mask=16'h2020;
+defparam store_ram_12_0_0_a4_1_5_x_cZ.sum_lutc_input="datac";
+  cycloneii_lcell_comb state_srsts_0_0__g1_0_tz_x_cZ (
+	.combout(state_srsts_0_0__g1_0_tz_x),
+	.dataa(dbb_bus_c_14),
+	.datab(dbb_bus_c_15),
+	.datac(state_0),
+	.datad(VCC)
+);
+defparam state_srsts_0_0__g1_0_tz_x_cZ.lut_mask=16'hb0b0;
+defparam state_srsts_0_0__g1_0_tz_x_cZ.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_0_0_0_a4_1_1_x_cZ (
+	.combout(store_ram_0_0_0_a4_1_1_x),
 	.dataa(dbb_bus_c_12),
-	.datab(reset_c),
+	.datab(prev_state_1),
 	.datac(state_0),
 	.datad(VCC)
 );
-defparam store_ram_0_0_0_a4_0_0_x_cZ.lut_mask=16'h0202;
-defparam store_ram_0_0_0_a4_0_0_x_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_0_0_164_a4_0_0_0_x_cZ (
-	.combout(store_ram_0_0_164_a4_0_0_0_x),
+defparam store_ram_0_0_0_a4_1_1_x_cZ.lut_mask=16'h8080;
+defparam store_ram_0_0_0_a4_1_1_x_cZ.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_0_0_156_a4_1_1_x_cZ (
+	.combout(store_ram_0_0_156_a4_1_1_x),
 	.dataa(dbb_bus_c_13),
-	.datab(reset_c),
+	.datab(prev_state_1),
 	.datac(state_0),
 	.datad(VCC)
 );
-defparam store_ram_0_0_164_a4_0_0_0_x_cZ.lut_mask=16'h0202;
-defparam store_ram_0_0_164_a4_0_0_0_x_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb curr_vram_word_2_0_0__g0_i_0_x_cZ (
-	.combout(curr_vram_word_2_0_0__g0_i_0_x),
+defparam store_ram_0_0_156_a4_1_1_x_cZ.lut_mask=16'h8080;
+defparam store_ram_0_0_156_a4_1_1_x_cZ.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_10_0_0_a4_1_1_x_cZ (
+	.combout(store_ram_10_0_0_a4_1_1_x),
+	.dataa(dbb_bus_c_1),
+	.datab(prev_state_1),
+	.datac(state_0),
+	.datad(VCC)
+);
+defparam store_ram_10_0_0_a4_1_1_x_cZ.lut_mask=16'h8080;
+defparam store_ram_10_0_0_a4_1_1_x_cZ.sum_lutc_input="datac";
+  cycloneii_lcell_comb curr_vram_word_2_0_0__g0_0_x_cZ (
+	.combout(curr_vram_word_2_0_0__g0_0_x),
 	.dataa(reset_c),
 	.datab(state_0),
 	.datac(state_1),
 	.datad(VCC)
 );
-defparam curr_vram_word_2_0_0__g0_i_0_x_cZ.lut_mask=16'heaea;
-defparam curr_vram_word_2_0_0__g0_i_0_x_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_13_RNO_1_1_ (
-	.combout(store_ram_13_0_865_a2_0_x),
-	.dataa(dbb_bus_c_1),
-	.datab(dbb_bus_c_13),
+defparam curr_vram_word_2_0_0__g0_0_x_cZ.lut_mask=16'heaea;
+defparam curr_vram_word_2_0_0__g0_0_x_cZ.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_3_0_0_a4_1_4_0_x_cZ (
+	.combout(store_ram_3_0_0_a4_1_4_0_x),
+	.dataa(dbb_bus_c_6),
+	.datab(dbb_bus_c_0),
 	.datac(VCC),
 	.datad(VCC)
 );
-defparam store_ram_13_RNO_1_1_.lut_mask=16'h4444;
-defparam store_ram_13_RNO_1_1_.sum_lutc_input="datac";
-// @13:78
-  cycloneii_lcell_comb store_m1_e_0_1_x_cZ (
-	.combout(store_m1_e_0_1_x),
+defparam store_ram_3_0_0_a4_1_4_0_x_cZ.lut_mask=16'h4444;
+defparam store_ram_3_0_0_a4_1_4_0_x_cZ.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_2_0_0_a4_1_4_0_x_cZ (
+	.combout(store_ram_2_0_0_a4_1_4_0_x),
+	.dataa(dbb_bus_c_6),
+	.datab(dbb_bus_c_0),
+	.datac(VCC),
+	.datad(VCC)
+);
+defparam store_ram_2_0_0_a4_1_4_0_x_cZ.lut_mask=16'h1111;
+defparam store_ram_2_0_0_a4_1_4_0_x_cZ.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_0_0_0_a4_1_5_1_x_cZ (
+	.combout(store_ram_0_0_0_a4_1_5_1_x),
+	.dataa(reset_c),
+	.datab(dbb_bus_c_6),
+	.datac(VCC),
+	.datad(VCC)
+);
+defparam store_ram_0_0_0_a4_1_5_1_x_cZ.lut_mask=16'h1111;
+defparam store_ram_0_0_0_a4_1_5_1_x_cZ.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_14_0_0_a4_1_5_1_x_cZ (
+	.combout(store_ram_14_0_0_a4_1_5_1_x),
+	.dataa(reset_c),
+	.datab(dbb_bus_c_7),
+	.datac(VCC),
+	.datad(VCC)
+);
+defparam store_ram_14_0_0_a4_1_5_1_x_cZ.lut_mask=16'h4444;
+defparam store_ram_14_0_0_a4_1_5_1_x_cZ.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_0_0_0_a4_1_2_x_cZ (
+	.combout(store_ram_0_0_0_a4_1_2_x),
 	.dataa(dbb_bus_c_1),
 	.datab(dbb_bus_c_0),
 	.datac(VCC),
 	.datad(VCC)
 );
-defparam store_m1_e_0_1_x_cZ.lut_mask=16'h4444;
-defparam store_m1_e_0_1_x_cZ.sum_lutc_input="datac";
-// @13:78
-  cycloneii_lcell_comb store_m1_e_0_0_x_cZ (
-	.combout(store_m1_e_0_0_x),
+defparam store_ram_0_0_0_a4_1_2_x_cZ.lut_mask=16'h1111;
+defparam store_ram_0_0_0_a4_1_2_x_cZ.sum_lutc_input="datac";
+  cycloneii_lcell_comb store_ram_13_0_0_a4_1_2_x_cZ (
+	.combout(store_ram_13_0_0_a4_1_2_x),
 	.dataa(dbb_bus_c_1),
 	.datab(dbb_bus_c_0),
 	.datac(VCC),
 	.datad(VCC)
 );
-defparam store_m1_e_0_0_x_cZ.lut_mask=16'h1111;
-defparam store_m1_e_0_0_x_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb G_981_x_cZ (
-	.combout(G_981_x),
+defparam store_ram_13_0_0_a4_1_2_x_cZ.lut_mask=16'h4444;
+defparam store_ram_13_0_0_a4_1_2_x_cZ.sum_lutc_input="datac";
+  cycloneii_lcell_comb N_57_i_0_g0_x_cZ (
+	.combout(N_57_i_0_g0_x),
 	.dataa(reset_c),
 	.datab(state_0),
 	.datac(VCC),
 	.datad(VCC)
 );
-defparam G_981_x_cZ.lut_mask=16'h4444;
-defparam G_981_x_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_12_0_0_795_a2_1_x_cZ (
-	.combout(store_ram_12_0_0_795_a2_1_x),
+defparam N_57_i_0_g0_x_cZ.lut_mask=16'heeee;
+defparam N_57_i_0_g0_x_cZ.sum_lutc_input="datac";
+// @14:190
+  cycloneii_lcell_comb state_transition_un4_curr_vram_word_4_x (
+	.combout(un4_curr_vram_word_4_x),
+	.dataa(dbb_bus_c_8),
+	.datab(curr_vram_word_4),
+	.datac(VCC),
+	.datad(VCC)
+);
+defparam state_transition_un4_curr_vram_word_4_x.lut_mask=16'h6666;
+defparam state_transition_un4_curr_vram_word_4_x.sum_lutc_input="datac";
+  cycloneii_lcell_comb dout1_10_i_m3_RNI2H0K1_1_ (
+	.combout(store_ram_2_0_269_0_rep1),
+	.dataa(dbb_bus_c_12),
+	.datab(reset_c),
+	.datac(state_0),
+	.datad(store_ram_2_0_269_0_a)
+);
+defparam dout1_10_i_m3_RNI2H0K1_1_.lut_mask=16'h0301;
+defparam dout1_10_i_m3_RNI2H0K1_1_.sum_lutc_input="datac";
+  cycloneii_lcell_comb dout1_10_i_m3_RNI0F0K1_0_ (
+	.combout(store_ram_2_0_0_0_rep1),
+	.dataa(dbb_bus_c_13),
+	.datab(reset_c),
+	.datac(state_0),
+	.datad(store_ram_2_0_0_0_a)
+);
+defparam dout1_10_i_m3_RNI0F0K1_0_.lut_mask=16'h0301;
+defparam dout1_10_i_m3_RNI0F0K1_0_.sum_lutc_input="datac";
+  cycloneii_lcell_comb dout1_3_i_m4_RNI75IH1_1_ (
+	.combout(store_ram_0_0_156_0_rep1),
+	.dataa(dbb_bus_c_12),
+	.datab(reset_c),
+	.datac(state_0),
+	.datad(store_ram_0_0_156_0_a)
+);
+defparam dout1_3_i_m4_RNI75IH1_1_.lut_mask=16'h0301;
+defparam dout1_3_i_m4_RNI75IH1_1_.sum_lutc_input="datac";
+  cycloneii_lcell_comb dout1_3_i_m4_RNI53IH1_0_0_ (
+	.combout(store_ram_0_0_0_0_rep1),
+	.dataa(dbb_bus_c_13),
+	.datab(reset_c),
+	.datac(state_0),
+	.datad(store_ram_0_0_0_0_a)
+);
+defparam dout1_3_i_m4_RNI53IH1_0_0_.lut_mask=16'h0301;
+defparam dout1_3_i_m4_RNI53IH1_0_0_.sum_lutc_input="datac";
+// @14:142
+  cycloneii_lcell_comb pxcache_pixnum_i_o4_2_rep1_0_ (
+	.combout(pxcache_pixnum_i_o4_2_rep1[0]),
+	.dataa(prev_state_0),
+	.datab(prev_state_1),
+	.datac(state_0),
+	.datad(pxcache_pixnum_i_o4_2_0_x[0])
+);
+defparam pxcache_pixnum_i_o4_2_rep1_0_.lut_mask=16'hffb0;
+defparam pxcache_pixnum_i_o4_2_rep1_0_.sum_lutc_input="datac";
+// @13:78
+  cycloneii_lcell_comb store_ram_0_0_sqmuxa_i_a4_a1_rep1_cZ (
+	.combout(store_ram_0_0_sqmuxa_i_a4_a1_rep1),
+	.dataa(state_0),
+	.datab(un4_curr_vram_word_NE_2),
+	.datac(un4_curr_vram_word_NE_3),
+	.datad(un4_curr_vram_word_NE_4)
+);
+defparam store_ram_0_0_sqmuxa_i_a4_a1_rep1_cZ.lut_mask=16'h5554;
+defparam store_ram_0_0_sqmuxa_i_a4_a1_rep1_cZ.sum_lutc_input="datac";
+// @13:78
+  cycloneii_lcell_comb store_ram_0_0_sqmuxa_i_a4_a1_rep2_cZ (
+	.combout(store_ram_0_0_sqmuxa_i_a4_a1_rep2),
+	.dataa(state_0),
+	.datab(un4_curr_vram_word_NE_2),
+	.datac(un4_curr_vram_word_NE_3),
+	.datad(un4_curr_vram_word_NE_4)
+);
+defparam store_ram_0_0_sqmuxa_i_a4_a1_rep2_cZ.lut_mask=16'h5554;
+defparam store_ram_0_0_sqmuxa_i_a4_a1_rep2_cZ.sum_lutc_input="datac";
+// @14:142
+  cycloneii_lcell_comb pxcache_pixnum_i_x_rep1_3_ (
+	.combout(pxcache_pixnum_i_x_rep1[3]),
 	.dataa(dbb_bus_c_7),
-	.datab(dbb_bus_c_6),
-	.datac(VCC),
+	.datab(pxcache_pixnum_i_o4_2_rep1_0[0]),
+	.datac(store_ram_0_0_sqmuxa_i_a4_a1_rep1_0),
 	.datad(VCC)
 );
-defparam store_ram_12_0_0_795_a2_1_x_cZ.lut_mask=16'h8888;
-defparam store_ram_12_0_0_795_a2_1_x_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_4_0_0_362_a2_1_x_cZ (
-	.combout(store_ram_4_0_0_362_a2_1_x),
-	.dataa(dbb_bus_c_0),
-	.datab(dbb_bus_c_6),
-	.datac(VCC),
+defparam pxcache_pixnum_i_x_rep1_3_.lut_mask=16'hfdfd;
+defparam pxcache_pixnum_i_x_rep1_3_.sum_lutc_input="datac";
+// @14:142
+  cycloneii_lcell_comb pxcache_pixnum_i_x_rep2_3_ (
+	.combout(pxcache_pixnum_i_x_rep2[3]),
+	.dataa(dbb_bus_c_7),
+	.datab(pxcache_pixnum_i_o4_2_rep1_0[0]),
+	.datac(store_ram_0_0_sqmuxa_i_a4_a1_rep1_0),
 	.datad(VCC)
 );
-defparam store_ram_4_0_0_362_a2_1_x_cZ.lut_mask=16'h4444;
-defparam store_ram_4_0_0_362_a2_1_x_cZ.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_13_RNO_0_1_ (
-	.combout(store_ram_13_0_865_a2_a_x),
-	.dataa(store_ram_13_0_865_a2_0_x),
-	.datab(pxcache_pixnum_0_0),
-	.datac(pxcache_pixnum_0_1),
-	.datad(store_ram_13_0_0_842_a2_3)
+defparam pxcache_pixnum_i_x_rep2_3_.lut_mask=16'hfdfd;
+defparam pxcache_pixnum_i_x_rep2_3_.sum_lutc_input="datac";
+// @14:142
+  cycloneii_lcell_comb pxcache_pixnum_i_x_rep3_3_ (
+	.combout(pxcache_pixnum_i_x_rep3[3]),
+	.dataa(dbb_bus_c_7),
+	.datab(pxcache_pixnum_i_o4_2_rep1_0[0]),
+	.datac(store_ram_0_0_sqmuxa_i_a4_a1_rep1_0),
+	.datad(VCC)
 );
-defparam store_ram_13_RNO_0_1_.lut_mask=16'h8000;
-defparam store_ram_13_RNO_0_1_.sum_lutc_input="datac";
-  cycloneii_lcell_comb store_ram_13_RNO_1_0_ (
-	.combout(store_ram_13_0_0_842_a2_a),
-	.dataa(dbb_bus_c_0),
-	.datab(pxcache_pw_i_1),
-	.datac(pxcache_pixnum_0_0),
-	.datad(pxcache_pixnum_0_1)
+defparam pxcache_pixnum_i_x_rep3_3_.lut_mask=16'hfdfd;
+defparam pxcache_pixnum_i_x_rep3_3_.sum_lutc_input="datac";
+// @14:142
+  cycloneii_lcell_comb pxcache_pixnum_i_x_rep1_2_ (
+	.combout(pxcache_pixnum_i_x_rep1[2]),
+	.dataa(dbb_bus_c_6),
+	.datab(pxcache_pixnum_i_o4_2[0]),
+	.datac(store_ram_0_0_sqmuxa_i_a4_a1),
+	.datad(VCC)
 );
-defparam store_ram_13_RNO_1_0_.lut_mask=16'hdfff;
-defparam store_ram_13_RNO_1_0_.sum_lutc_input="datac";
-  cycloneii_lcell_comb state_transition_un4_curr_vram_word_NE_RNI81TS4_0 (
-	.combout(pxcache_store_buf_0_1_0__g0_i_0_rep1),
-	.dataa(reset_c),
-	.datab(state_ns_0_a4_0_0),
-	.datac(un4_curr_vram_word_NE),
-	.datad(pxcache_store_buf_0_en_0_a4_0)
+defparam pxcache_pixnum_i_x_rep1_2_.lut_mask=16'hfdfd;
+defparam pxcache_pixnum_i_x_rep1_2_.sum_lutc_input="datac";
+// @14:142
+  cycloneii_lcell_comb pxcache_pixnum_i_o4_2_rep1_0_0_ (
+	.combout(pxcache_pixnum_i_o4_2_rep1_0[0]),
+	.dataa(prev_state_0),
+	.datab(prev_state_1),
+	.datac(state_0),
+	.datad(pxcache_pixnum_i_o4_2_0_x[0])
 );
-defparam state_transition_un4_curr_vram_word_NE_RNI81TS4_0.lut_mask=16'hffea;
-defparam state_transition_un4_curr_vram_word_NE_RNI81TS4_0.sum_lutc_input="datac";
+defparam pxcache_pixnum_i_o4_2_rep1_0_0_.lut_mask=16'hffb0;
+defparam pxcache_pixnum_i_o4_2_rep1_0_0_.sum_lutc_input="datac";
+// @13:78
+  cycloneii_lcell_comb store_ram_0_0_sqmuxa_i_a4_a1_rep1_0_cZ (
+	.combout(store_ram_0_0_sqmuxa_i_a4_a1_rep1_0),
+	.dataa(state_0),
+	.datab(un4_curr_vram_word_NE_2),
+	.datac(un4_curr_vram_word_NE_3),
+	.datad(un4_curr_vram_word_NE_4)
+);
+defparam store_ram_0_0_sqmuxa_i_a4_a1_rep1_0_cZ.lut_mask=16'h5554;
+defparam store_ram_0_0_sqmuxa_i_a4_a1_rep1_0_cZ.sum_lutc_input="datac";
 endmodule /* pix_word_cache */
 
 // VQM4.1+ 
@@ -3539,27 +3233,24 @@ wire [5:2] \prev_dbb_bus.X ;
 wire [5:2] \prev_dbb_bus.Y ;
 wire [7:0] prev_vram_word;
 wire [7:0] curr_vram_word;
-wire [0:0] ram_state_machine_prev_state_0_x;
 wire [1:0] state;
-wire [1:1] ram_state_machine_state_3_0_a4_x;
+wire [1:1] px_cache_state_srsts_x;
 wire [15:0] ram_state_machine_data_del;
 wire [7:0] ram_state_machine_addr_del;
 wire [15:0] dbb_bus_c;
 wire [15:0] vdout_c;
-wire [2:2] ram_state_machine_un1_next_state_i_o4;
-wire [0:0] ram_state_machine_next_state_i_a4;
-wire [0:0] ram_state_machine_pxcache_store_buf_0_en_0_a4;
-wire [1:1] ram_state_machine_state_ns_0_a4_0;
-wire [3:2] ram_state_machine_pxcache_pixnum_0;
-wire [0:0] ram_state_machine_pxcache_pixnum_x;
-wire [1:1] state_3_0_a4_x_combout;
+wire [1:1] px_cache_state_ns_0_0_o4;
+wire [1:1] state_rep1;
+wire [1:1] state_rep2;
+wire [1:1] state_srsts_x_combout;
 wire GND ;
+wire ram_state_machine_really_done ;
 wire VCC ;
 wire N_144 ;
 wire N_145 ;
 wire N_146 ;
 wire N_147 ;
-wire px_cache_state_srsts_0_0__g0_x ;
+wire px_cache_state_srsts_0_0__g0 ;
 wire idle_counter_c0_combout ;
 wire idle_counter_c0_cout ;
 wire idle_counter_c1_combout ;
@@ -3575,117 +3266,113 @@ wire idle_counter_c5_cout ;
 wire idle_counter_c6_combout ;
 wire idle_counter_c6_cout ;
 wire idle_counter_c7_combout ;
-wire px_cache_curr_vram_word_2_0_0__g0_i_0_x ;
+wire px_cache_N_57_i_0_g0_x ;
+wire px_cache_curr_vram_word_2_0_0__g0_0_x ;
 wire dbb_rcbclear_tri_dffdataout ;
 wire ram_state_machine_state_s0_0_a3 ;
-wire ram_state_machine_rcb_finish ;
+wire px_cache_rcb_finish_0_a4 ;
 wire clk_c ;
 wire reset_c ;
-wire ram_state_machine_pxcache_pw_i_1 ;
-wire px_cache_state_transition_un4_curr_vram_word_NE ;
-wire ram_state_machine_pxcache_wen_all_i ;
-wire ram_state_machine_pxcache_pw_i_m3 ;
-wire ram_state_machine_pxcache_pw_i_1_1 ;
+wire px_cache_pxcache_wen_all_i_0 ;
 wire px_cache_pxcache_store_buf_0_1_0__g0_i_0 ;
-wire px_cache_pxcache_store_buf_0_1_0__g0_i_0_rep1 ;
-wire ram_state_machine_fsm_clocked_process_un6_reset_0_i ;
-wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
+wire px_cache_fsm_clocked_process_un6_reset_0_0_i ;
+wire px_cache_fsm_clocked_process_un6_reset_0_0_i_i ;
 //@1:1
   assign VCC = 1'b1;
 //@1:1
   assign GND = 1'b0;
-// @14:107
+// @14:104
   cycloneii_lcell_ff idle_counter_0_ (
 	.regout(idle_counter[0]),
 	.datain(idle_counter_c0_combout),
 	.clk(clk_c),
 	.aclr(GND),
-	.sclr(ram_state_machine_fsm_clocked_process_un6_reset_0_i_i),
+	.sclr(px_cache_fsm_clocked_process_un6_reset_0_0_i_i),
 	.sload(GND),
 	.sdata(GND),
 	.ena(VCC)
 );
-// @14:107
+// @14:104
   cycloneii_lcell_ff idle_counter_1_ (
 	.regout(idle_counter[1]),
 	.datain(idle_counter_c1_combout),
 	.clk(clk_c),
 	.aclr(GND),
-	.sclr(ram_state_machine_fsm_clocked_process_un6_reset_0_i_i),
+	.sclr(px_cache_fsm_clocked_process_un6_reset_0_0_i_i),
 	.sload(GND),
 	.sdata(GND),
 	.ena(VCC)
 );
-// @14:107
+// @14:104
   cycloneii_lcell_ff idle_counter_2_ (
 	.regout(idle_counter[2]),
 	.datain(idle_counter_c2_combout),
 	.clk(clk_c),
 	.aclr(GND),
-	.sclr(ram_state_machine_fsm_clocked_process_un6_reset_0_i_i),
+	.sclr(px_cache_fsm_clocked_process_un6_reset_0_0_i_i),
 	.sload(GND),
 	.sdata(GND),
 	.ena(VCC)
 );
-// @14:107
+// @14:104
   cycloneii_lcell_ff idle_counter_3_ (
 	.regout(idle_counter[3]),
 	.datain(idle_counter_c3_combout),
 	.clk(clk_c),
 	.aclr(GND),
-	.sclr(ram_state_machine_fsm_clocked_process_un6_reset_0_i_i),
+	.sclr(px_cache_fsm_clocked_process_un6_reset_0_0_i_i),
 	.sload(GND),
 	.sdata(GND),
 	.ena(VCC)
 );
-// @14:107
+// @14:104
   cycloneii_lcell_ff idle_counter_4_ (
 	.regout(idle_counter[4]),
 	.datain(idle_counter_c4_combout),
 	.clk(clk_c),
 	.aclr(GND),
-	.sclr(ram_state_machine_fsm_clocked_process_un6_reset_0_i_i),
+	.sclr(px_cache_fsm_clocked_process_un6_reset_0_0_i_i),
 	.sload(GND),
 	.sdata(GND),
 	.ena(VCC)
 );
-// @14:107
+// @14:104
   cycloneii_lcell_ff idle_counter_5_ (
 	.regout(idle_counter[5]),
 	.datain(idle_counter_c5_combout),
 	.clk(clk_c),
 	.aclr(GND),
-	.sclr(ram_state_machine_fsm_clocked_process_un6_reset_0_i_i),
+	.sclr(px_cache_fsm_clocked_process_un6_reset_0_0_i_i),
 	.sload(GND),
 	.sdata(GND),
 	.ena(VCC)
 );
-// @14:107
+// @14:104
   cycloneii_lcell_ff idle_counter_6_ (
 	.regout(idle_counter[6]),
 	.datain(idle_counter_c6_combout),
 	.clk(clk_c),
 	.aclr(GND),
-	.sclr(ram_state_machine_fsm_clocked_process_un6_reset_0_i_i),
+	.sclr(px_cache_fsm_clocked_process_un6_reset_0_0_i_i),
 	.sload(GND),
 	.sdata(GND),
 	.ena(VCC)
 );
-// @14:107
+// @14:104
   cycloneii_lcell_ff idle_counter_7_ (
 	.regout(idle_counter[7]),
 	.datain(idle_counter_c7_combout),
 	.clk(clk_c),
 	.aclr(GND),
-	.sclr(ram_state_machine_fsm_clocked_process_un6_reset_0_i_i),
+	.sclr(px_cache_fsm_clocked_process_un6_reset_0_0_i_i),
 	.sload(GND),
 	.sdata(GND),
 	.ena(VCC)
 );
-// @14:94
+// @14:91
   cycloneii_lcell_ff state_1_ (
 	.regout(state[1]),
-	.datain(state_3_0_a4_x_combout[1]),
+	.datain(state_srsts_x_combout[1]),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -3693,10 +3380,10 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(VCC)
 );
-// @14:94
+// @14:91
   cycloneii_lcell_ff state_0_ (
 	.regout(state[0]),
-	.datain(px_cache_state_srsts_0_0__g0_x),
+	.datain(px_cache_state_srsts_0_0__g0),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -3704,7 +3391,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(VCC)
 );
-// @14:90
+// @14:87
   cycloneii_lcell_ff prev_dbb_bus_X_5_ (
 	.regout(\prev_dbb_bus.X [5]),
 	.datain(dbb_bus_c[5]),
@@ -3715,7 +3402,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(VCC)
 );
-// @14:90
+// @14:87
   cycloneii_lcell_ff prev_dbb_bus_X_4_ (
 	.regout(\prev_dbb_bus.X [4]),
 	.datain(dbb_bus_c[4]),
@@ -3726,7 +3413,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(VCC)
 );
-// @14:90
+// @14:87
   cycloneii_lcell_ff prev_dbb_bus_X_3_ (
 	.regout(\prev_dbb_bus.X [3]),
 	.datain(dbb_bus_c[3]),
@@ -3737,7 +3424,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(VCC)
 );
-// @14:90
+// @14:87
   cycloneii_lcell_ff prev_dbb_bus_X_2_ (
 	.regout(\prev_dbb_bus.X [2]),
 	.datain(dbb_bus_c[2]),
@@ -3748,7 +3435,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(VCC)
 );
-// @14:90
+// @14:87
   cycloneii_lcell_ff prev_dbb_bus_Y_5_ (
 	.regout(\prev_dbb_bus.Y [5]),
 	.datain(dbb_bus_c[11]),
@@ -3759,7 +3446,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(VCC)
 );
-// @14:90
+// @14:87
   cycloneii_lcell_ff prev_dbb_bus_Y_4_ (
 	.regout(\prev_dbb_bus.Y [4]),
 	.datain(dbb_bus_c[10]),
@@ -3770,7 +3457,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(VCC)
 );
-// @14:90
+// @14:87
   cycloneii_lcell_ff prev_dbb_bus_Y_3_ (
 	.regout(\prev_dbb_bus.Y [3]),
 	.datain(dbb_bus_c[9]),
@@ -3781,7 +3468,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(VCC)
 );
-// @14:90
+// @14:87
   cycloneii_lcell_ff prev_dbb_bus_Y_2_ (
 	.regout(\prev_dbb_bus.Y [2]),
 	.datain(dbb_bus_c[8]),
@@ -3792,7 +3479,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(VCC)
 );
-// @14:94
+// @14:91
   cycloneii_lcell_ff prev_state_1_ (
 	.regout(prev_state[1]),
 	.datain(state[1]),
@@ -3803,10 +3490,10 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(VCC)
 );
-// @14:94
+// @14:91
   cycloneii_lcell_ff prev_state_0_ (
 	.regout(prev_state[0]),
-	.datain(ram_state_machine_prev_state_0_x[0]),
+	.datain(px_cache_N_57_i_0_g0_x),
 	.clk(clk_c),
 	.aclr(GND),
 	.sclr(GND),
@@ -3814,7 +3501,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(VCC)
 );
-// @14:97
+// @14:94
   cycloneii_lcell_ff prev_vram_word_0_ (
 	.regout(prev_vram_word[0]),
 	.datain(curr_vram_word[0]),
@@ -3823,9 +3510,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_curr_vram_word_2_0_0__g0_i_0_x)
+	.ena(px_cache_curr_vram_word_2_0_0__g0_0_x)
 );
-// @14:97
+// @14:94
   cycloneii_lcell_ff prev_vram_word_1_ (
 	.regout(prev_vram_word[1]),
 	.datain(curr_vram_word[1]),
@@ -3834,9 +3521,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_curr_vram_word_2_0_0__g0_i_0_x)
+	.ena(px_cache_curr_vram_word_2_0_0__g0_0_x)
 );
-// @14:97
+// @14:94
   cycloneii_lcell_ff prev_vram_word_2_ (
 	.regout(prev_vram_word[2]),
 	.datain(curr_vram_word[2]),
@@ -3845,9 +3532,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_curr_vram_word_2_0_0__g0_i_0_x)
+	.ena(px_cache_curr_vram_word_2_0_0__g0_0_x)
 );
-// @14:97
+// @14:94
   cycloneii_lcell_ff prev_vram_word_3_ (
 	.regout(prev_vram_word[3]),
 	.datain(curr_vram_word[3]),
@@ -3856,9 +3543,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_curr_vram_word_2_0_0__g0_i_0_x)
+	.ena(px_cache_curr_vram_word_2_0_0__g0_0_x)
 );
-// @14:97
+// @14:94
   cycloneii_lcell_ff prev_vram_word_4_ (
 	.regout(prev_vram_word[4]),
 	.datain(curr_vram_word[4]),
@@ -3867,9 +3554,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_curr_vram_word_2_0_0__g0_i_0_x)
+	.ena(px_cache_curr_vram_word_2_0_0__g0_0_x)
 );
-// @14:97
+// @14:94
   cycloneii_lcell_ff prev_vram_word_5_ (
 	.regout(prev_vram_word[5]),
 	.datain(curr_vram_word[5]),
@@ -3878,9 +3565,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_curr_vram_word_2_0_0__g0_i_0_x)
+	.ena(px_cache_curr_vram_word_2_0_0__g0_0_x)
 );
-// @14:97
+// @14:94
   cycloneii_lcell_ff prev_vram_word_6_ (
 	.regout(prev_vram_word[6]),
 	.datain(curr_vram_word[6]),
@@ -3889,9 +3576,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_curr_vram_word_2_0_0__g0_i_0_x)
+	.ena(px_cache_curr_vram_word_2_0_0__g0_0_x)
 );
-// @14:97
+// @14:94
   cycloneii_lcell_ff prev_vram_word_7_ (
 	.regout(prev_vram_word[7]),
 	.datain(curr_vram_word[7]),
@@ -3900,9 +3587,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_curr_vram_word_2_0_0__g0_i_0_x)
+	.ena(px_cache_curr_vram_word_2_0_0__g0_0_x)
 );
-// @14:97
+// @14:94
   cycloneii_lcell_ff curr_vram_word_1_ (
 	.regout(curr_vram_word[1]),
 	.datain(\prev_dbb_bus.X [3]),
@@ -3911,9 +3598,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_curr_vram_word_2_0_0__g0_i_0_x)
+	.ena(px_cache_curr_vram_word_2_0_0__g0_0_x)
 );
-// @14:97
+// @14:94
   cycloneii_lcell_ff curr_vram_word_3_ (
 	.regout(curr_vram_word[3]),
 	.datain(\prev_dbb_bus.X [5]),
@@ -3922,9 +3609,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_curr_vram_word_2_0_0__g0_i_0_x)
+	.ena(px_cache_curr_vram_word_2_0_0__g0_0_x)
 );
-// @14:97
+// @14:94
   cycloneii_lcell_ff curr_vram_word_5_ (
 	.regout(curr_vram_word[5]),
 	.datain(\prev_dbb_bus.Y [3]),
@@ -3933,9 +3620,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_curr_vram_word_2_0_0__g0_i_0_x)
+	.ena(px_cache_curr_vram_word_2_0_0__g0_0_x)
 );
-// @14:97
+// @14:94
   cycloneii_lcell_ff curr_vram_word_7_ (
 	.regout(curr_vram_word[7]),
 	.datain(\prev_dbb_bus.Y [5]),
@@ -3944,9 +3631,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_curr_vram_word_2_0_0__g0_i_0_x)
+	.ena(px_cache_curr_vram_word_2_0_0__g0_0_x)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_0_1_ (
 	.regout(pxcache_store_buf_0[1]),
 	.datain(px_cache_store_ram_0[1]),
@@ -3957,7 +3644,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_1_0_ (
 	.regout(pxcache_store_buf_1[0]),
 	.datain(px_cache_store_ram_1[0]),
@@ -3968,7 +3655,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_1_1_ (
 	.regout(pxcache_store_buf_1[1]),
 	.datain(px_cache_store_ram_1[1]),
@@ -3979,7 +3666,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_2_0_ (
 	.regout(pxcache_store_buf_2[0]),
 	.datain(px_cache_store_ram_2[0]),
@@ -3990,7 +3677,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_2_1_ (
 	.regout(pxcache_store_buf_2[1]),
 	.datain(px_cache_store_ram_2[1]),
@@ -4001,7 +3688,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_3_0_ (
 	.regout(pxcache_store_buf_3[0]),
 	.datain(px_cache_store_ram_3[0]),
@@ -4012,7 +3699,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_3_1_ (
 	.regout(pxcache_store_buf_3[1]),
 	.datain(px_cache_store_ram_3[1]),
@@ -4023,7 +3710,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_4_0_ (
 	.regout(pxcache_store_buf_4[0]),
 	.datain(px_cache_store_ram_4[0]),
@@ -4034,7 +3721,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_4_1_ (
 	.regout(pxcache_store_buf_4[1]),
 	.datain(px_cache_store_ram_4[1]),
@@ -4045,7 +3732,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_5_0_ (
 	.regout(pxcache_store_buf_5[0]),
 	.datain(px_cache_store_ram_5[0]),
@@ -4056,7 +3743,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_5_1_ (
 	.regout(pxcache_store_buf_5[1]),
 	.datain(px_cache_store_ram_5[1]),
@@ -4067,7 +3754,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_6_0_ (
 	.regout(pxcache_store_buf_6[0]),
 	.datain(px_cache_store_ram_6[0]),
@@ -4078,7 +3765,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_6_1_ (
 	.regout(pxcache_store_buf_6[1]),
 	.datain(px_cache_store_ram_6[1]),
@@ -4089,7 +3776,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_7_0_ (
 	.regout(pxcache_store_buf_7[0]),
 	.datain(px_cache_store_ram_7[0]),
@@ -4100,7 +3787,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_7_1_ (
 	.regout(pxcache_store_buf_7[1]),
 	.datain(px_cache_store_ram_7[1]),
@@ -4111,7 +3798,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_8_0_ (
 	.regout(pxcache_store_buf_8[0]),
 	.datain(px_cache_store_ram_8[0]),
@@ -4120,9 +3807,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0_rep1)
+	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_8_1_ (
 	.regout(pxcache_store_buf_8[1]),
 	.datain(px_cache_store_ram_8[1]),
@@ -4131,9 +3818,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0_rep1)
+	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_9_0_ (
 	.regout(pxcache_store_buf_9[0]),
 	.datain(px_cache_store_ram_9[0]),
@@ -4142,9 +3829,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0_rep1)
+	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_9_1_ (
 	.regout(pxcache_store_buf_9[1]),
 	.datain(px_cache_store_ram_9[1]),
@@ -4153,9 +3840,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0_rep1)
+	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_10_1_ (
 	.regout(pxcache_store_buf_10[1]),
 	.datain(px_cache_store_ram_10[1]),
@@ -4164,9 +3851,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0_rep1)
+	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_11_1_ (
 	.regout(pxcache_store_buf_11[1]),
 	.datain(px_cache_store_ram_11[1]),
@@ -4175,9 +3862,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0_rep1)
+	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_12_1_ (
 	.regout(pxcache_store_buf_12[1]),
 	.datain(px_cache_store_ram_12[1]),
@@ -4186,9 +3873,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0_rep1)
+	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_13_1_ (
 	.regout(pxcache_store_buf_13[1]),
 	.datain(px_cache_store_ram_13[1]),
@@ -4197,9 +3884,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0_rep1)
+	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_14_1_ (
 	.regout(pxcache_store_buf_14[1]),
 	.datain(px_cache_store_ram_14[1]),
@@ -4208,9 +3895,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0_rep1)
+	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_15_1_ (
 	.regout(pxcache_store_buf_15[1]),
 	.datain(px_cache_store_ram_15[1]),
@@ -4219,9 +3906,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0_rep1)
+	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_15_0_ (
 	.regout(pxcache_store_buf_15[0]),
 	.datain(px_cache_store_ram_15[0]),
@@ -4230,9 +3917,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0_rep1)
+	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_14_0_ (
 	.regout(pxcache_store_buf_14[0]),
 	.datain(px_cache_store_ram_14[0]),
@@ -4241,9 +3928,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0_rep1)
+	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_13_0_ (
 	.regout(pxcache_store_buf_13[0]),
 	.datain(px_cache_store_ram_13[0]),
@@ -4252,9 +3939,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0_rep1)
+	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_12_0_ (
 	.regout(pxcache_store_buf_12[0]),
 	.datain(px_cache_store_ram_12[0]),
@@ -4263,9 +3950,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0_rep1)
+	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_11_0_ (
 	.regout(pxcache_store_buf_11[0]),
 	.datain(px_cache_store_ram_11[0]),
@@ -4274,9 +3961,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0_rep1)
+	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_10_0_ (
 	.regout(pxcache_store_buf_10[0]),
 	.datain(px_cache_store_ram_10[0]),
@@ -4285,9 +3972,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0_rep1)
+	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:85
+// @14:82
   cycloneii_lcell_ff pxcache_store_buf_0_0_ (
 	.regout(pxcache_store_buf_0[0]),
 	.datain(px_cache_store_ram_0[0]),
@@ -4298,7 +3985,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sdata(GND),
 	.ena(px_cache_pxcache_store_buf_0_1_0__g0_i_0)
 );
-// @14:97
+// @14:94
   cycloneii_lcell_ff curr_vram_word_6_ (
 	.regout(curr_vram_word[6]),
 	.datain(\prev_dbb_bus.Y [4]),
@@ -4307,9 +3994,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_curr_vram_word_2_0_0__g0_i_0_x)
+	.ena(px_cache_curr_vram_word_2_0_0__g0_0_x)
 );
-// @14:97
+// @14:94
   cycloneii_lcell_ff curr_vram_word_4_ (
 	.regout(curr_vram_word[4]),
 	.datain(\prev_dbb_bus.Y [2]),
@@ -4318,9 +4005,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_curr_vram_word_2_0_0__g0_i_0_x)
+	.ena(px_cache_curr_vram_word_2_0_0__g0_0_x)
 );
-// @14:97
+// @14:94
   cycloneii_lcell_ff curr_vram_word_2_ (
 	.regout(curr_vram_word[2]),
 	.datain(\prev_dbb_bus.X [4]),
@@ -4329,9 +4016,9 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_curr_vram_word_2_0_0__g0_i_0_x)
+	.ena(px_cache_curr_vram_word_2_0_0__g0_0_x)
 );
-// @14:97
+// @14:94
   cycloneii_lcell_ff curr_vram_word_0_ (
 	.regout(curr_vram_word[0]),
 	.datain(\prev_dbb_bus.X [2]),
@@ -4340,9 +4027,31 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 	.sclr(reset_c),
 	.sload(GND),
 	.sdata(GND),
-	.ena(px_cache_curr_vram_word_2_0_0__g0_i_0_x)
+	.ena(px_cache_curr_vram_word_2_0_0__g0_0_x)
 );
-// @14:107
+// @14:91
+  cycloneii_lcell_ff state_rep1_1_ (
+	.regout(state_rep1[1]),
+	.datain(px_cache_state_srsts_x[1]),
+	.clk(clk_c),
+	.aclr(GND),
+	.sclr(GND),
+	.sload(GND),
+	.sdata(GND),
+	.ena(VCC)
+);
+// @14:91
+  cycloneii_lcell_ff state_rep2_1_ (
+	.regout(state_rep2[1]),
+	.datain(px_cache_state_srsts_x[1]),
+	.clk(clk_c),
+	.aclr(GND),
+	.sclr(GND),
+	.sload(GND),
+	.sdata(GND),
+	.ena(VCC)
+);
+// @14:104
   cycloneii_lcell_comb idle_counter_c0 (
 	.combout(idle_counter_c0_combout),
 	.cout(idle_counter_c0_cout),
@@ -4353,7 +4062,7 @@ wire ram_state_machine_fsm_clocked_process_un6_reset_0_i_i ;
 );
 defparam idle_counter_c0.lut_mask=16'h6688;
 defparam idle_counter_c0.sum_lutc_input="cin";
-// @14:107
+// @14:104
   cycloneii_lcell_comb idle_counter_c1 (
 	.combout(idle_counter_c1_combout),
 	.cout(idle_counter_c1_cout),
@@ -4365,7 +4074,7 @@ defparam idle_counter_c0.sum_lutc_input="cin";
 );
 defparam idle_counter_c1.lut_mask=16'h5aa0;
 defparam idle_counter_c1.sum_lutc_input="cin";
-// @14:107
+// @14:104
   cycloneii_lcell_comb idle_counter_c2 (
 	.combout(idle_counter_c2_combout),
 	.cout(idle_counter_c2_cout),
@@ -4377,7 +4086,7 @@ defparam idle_counter_c1.sum_lutc_input="cin";
 );
 defparam idle_counter_c2.lut_mask=16'h5aa0;
 defparam idle_counter_c2.sum_lutc_input="cin";
-// @14:107
+// @14:104
   cycloneii_lcell_comb idle_counter_c3 (
 	.combout(idle_counter_c3_combout),
 	.cout(idle_counter_c3_cout),
@@ -4389,7 +4098,7 @@ defparam idle_counter_c2.sum_lutc_input="cin";
 );
 defparam idle_counter_c3.lut_mask=16'h5aa0;
 defparam idle_counter_c3.sum_lutc_input="cin";
-// @14:107
+// @14:104
   cycloneii_lcell_comb idle_counter_c4 (
 	.combout(idle_counter_c4_combout),
 	.cout(idle_counter_c4_cout),
@@ -4401,7 +4110,7 @@ defparam idle_counter_c3.sum_lutc_input="cin";
 );
 defparam idle_counter_c4.lut_mask=16'h5aa0;
 defparam idle_counter_c4.sum_lutc_input="cin";
-// @14:107
+// @14:104
   cycloneii_lcell_comb idle_counter_c5 (
 	.combout(idle_counter_c5_combout),
 	.cout(idle_counter_c5_cout),
@@ -4413,7 +4122,7 @@ defparam idle_counter_c4.sum_lutc_input="cin";
 );
 defparam idle_counter_c5.lut_mask=16'h5aa0;
 defparam idle_counter_c5.sum_lutc_input="cin";
-// @14:107
+// @14:104
   cycloneii_lcell_comb idle_counter_c6 (
 	.combout(idle_counter_c6_combout),
 	.cout(idle_counter_c6_cout),
@@ -4425,7 +4134,7 @@ defparam idle_counter_c5.sum_lutc_input="cin";
 );
 defparam idle_counter_c6.lut_mask=16'h5aa0;
 defparam idle_counter_c6.sum_lutc_input="cin";
-// @14:107
+// @14:104
   cycloneii_lcell_comb idle_counter_c7 (
 	.combout(idle_counter_c7_combout),
 	.dataa(idle_counter[7]),
@@ -4436,16 +4145,16 @@ defparam idle_counter_c6.sum_lutc_input="cin";
 );
 defparam idle_counter_c7.lut_mask=16'h5a5a;
 defparam idle_counter_c7.sum_lutc_input="cin";
-// @14:338
-  cycloneii_lcell_comb retram_state_machine_state_3_0_a4_x_1_ (
-	.combout(state_3_0_a4_x_combout[1]),
+// @14:91
+  cycloneii_lcell_comb retpx_cache_state_srsts_x_1_ (
+	.combout(state_srsts_x_combout[1]),
 	.dataa(reset_c),
-	.datab(ram_state_machine_un1_next_state_i_o4[2]),
+	.datab(px_cache_state_ns_0_0_o4[1]),
 	.datac(VCC),
 	.datad(VCC)
 );
-defparam retram_state_machine_state_3_0_a4_x_1_.lut_mask=16'h4444;
-defparam retram_state_machine_state_3_0_a4_x_1_.sum_lutc_input="datac";
+defparam retpx_cache_state_srsts_x_1_.lut_mask=16'h4444;
+defparam retpx_cache_state_srsts_x_1_.sum_lutc_input="datac";
 // @14:24
   cycloneii_io vdout_in_15_ (
 	.padio(vdout[15]),
@@ -4925,7 +4634,7 @@ defparam clk_in.operation_mode = "input";
 // @14:30
   cycloneii_io rcb_finish_out (
 	.padio(rcb_finish),
-	.datain(ram_state_machine_rcb_finish),
+	.datain(px_cache_rcb_finish_0_a4),
 	.oe(VCC),
 	.outclk(GND),
 	.outclkena(VCC),
@@ -5276,7 +4985,7 @@ defparam dbb_rcbclear_tri.operation_mode = "output";
 // @14:20
   cycloneii_io dbb_delaycmd_out (
 	.padio(dbb_delaycmd),
-	.datain(ram_state_machine_state_3_0_a4_x[1]),
+	.datain(px_cache_state_srsts_x[1]),
 	.oe(VCC),
 	.outclk(GND),
 	.outclkena(VCC),
@@ -5286,8 +4995,8 @@ defparam dbb_rcbclear_tri.operation_mode = "output";
 	.sreset(GND)
 );
 defparam dbb_delaycmd_out.operation_mode = "output";
-//@14:94
-// @14:386
+//@14:91
+// @14:353
   ram_fsm ram_state_machine (
 	.pxcache_store_buf_0_1(pxcache_store_buf_0[1]),
 	.pxcache_store_buf_0_0(pxcache_store_buf_0[0]),
@@ -5337,65 +5046,6 @@ defparam dbb_delaycmd_out.operation_mode = "output";
 	.vdout_c_13(vdout_c[13]),
 	.vdout_c_14(vdout_c[14]),
 	.vdout_c_15(vdout_c[15]),
-	.prev_state_0_x_0(ram_state_machine_prev_state_0_x[0]),
-	.pxcache_pixnum_x_0(ram_state_machine_pxcache_pixnum_x[0]),
-	.state_3_0_a4_x_0(ram_state_machine_state_3_0_a4_x[1]),
-	.store_ram_0_1(px_cache_store_ram_0[1]),
-	.store_ram_0_0(px_cache_store_ram_0[0]),
-	.un1_next_state_i_o4_0(ram_state_machine_un1_next_state_i_o4[2]),
-	.pxcache_store_buf_0_en_0_a4_0(ram_state_machine_pxcache_store_buf_0_en_0_a4[0]),
-	.pxcache_pixnum_0_1(ram_state_machine_pxcache_pixnum_0[3]),
-	.pxcache_pixnum_0_0(ram_state_machine_pxcache_pixnum_0[2]),
-	.dbb_bus_c_12(dbb_bus_c[12]),
-	.dbb_bus_c_13(dbb_bus_c[13]),
-	.dbb_bus_c_6(dbb_bus_c[6]),
-	.dbb_bus_c_7(dbb_bus_c[7]),
-	.dbb_bus_c_0(dbb_bus_c[0]),
-	.dbb_bus_c_14(dbb_bus_c[14]),
-	.dbb_bus_c_15(dbb_bus_c[15]),
-	.store_ram_15_0(px_cache_store_ram_15[0]),
-	.store_ram_15_1(px_cache_store_ram_15[1]),
-	.store_ram_14_1(px_cache_store_ram_14[1]),
-	.store_ram_14_0(px_cache_store_ram_14[0]),
-	.store_ram_2_1(px_cache_store_ram_2[1]),
-	.store_ram_2_0(px_cache_store_ram_2[0]),
-	.store_ram_7_1(px_cache_store_ram_7[1]),
-	.store_ram_7_0(px_cache_store_ram_7[0]),
-	.store_ram_6_1(px_cache_store_ram_6[1]),
-	.store_ram_6_0(px_cache_store_ram_6[0]),
-	.store_ram_9_1(px_cache_store_ram_9[1]),
-	.store_ram_9_0(px_cache_store_ram_9[0]),
-	.store_ram_8_1(px_cache_store_ram_8[1]),
-	.store_ram_8_0(px_cache_store_ram_8[0]),
-	.store_ram_11_1(px_cache_store_ram_11[1]),
-	.store_ram_11_0(px_cache_store_ram_11[0]),
-	.store_ram_10_1(px_cache_store_ram_10[1]),
-	.store_ram_10_0(px_cache_store_ram_10[0]),
-	.store_ram_13_1(px_cache_store_ram_13[1]),
-	.store_ram_13_0(px_cache_store_ram_13[0]),
-	.store_ram_12_1(px_cache_store_ram_12[1]),
-	.store_ram_12_0(px_cache_store_ram_12[0]),
-	.store_ram_5_1(px_cache_store_ram_5[1]),
-	.store_ram_5_0(px_cache_store_ram_5[0]),
-	.store_ram_4_1(px_cache_store_ram_4[1]),
-	.store_ram_4_0(px_cache_store_ram_4[0]),
-	.next_state_i_a4_0(ram_state_machine_next_state_i_a4[0]),
-	.prev_state_1(prev_state[1]),
-	.prev_state_0(prev_state[0]),
-	.state_ns_0_a4_0_0(ram_state_machine_state_ns_0_a4_0[1]),
-	.idle_counter_1(idle_counter[2]),
-	.idle_counter_5(idle_counter[6]),
-	.idle_counter_0(idle_counter[1]),
-	.idle_counter_6(idle_counter[7]),
-	.idle_counter_2(idle_counter[3]),
-	.idle_counter_3(idle_counter[4]),
-	.idle_counter_4(idle_counter[5]),
-	.store_ram_3_0(px_cache_store_ram_3[0]),
-	.store_ram_3_1(px_cache_store_ram_3[1]),
-	.store_ram_1_0(px_cache_store_ram_1[0]),
-	.store_ram_1_1(px_cache_store_ram_1[1]),
-	.state_0_0(state[0]),
-	.state_0_1(state[1]),
 	.data_del_0(ram_state_machine_data_del[0]),
 	.data_del_1(ram_state_machine_data_del[1]),
 	.data_del_2(ram_state_machine_data_del[2]),
@@ -5428,42 +5078,31 @@ defparam dbb_delaycmd_out.operation_mode = "output";
 	.addr_del_5(ram_state_machine_addr_del[5]),
 	.addr_del_6(ram_state_machine_addr_del[6]),
 	.addr_del_7(ram_state_machine_addr_del[7]),
-	.rcb_finish(ram_state_machine_rcb_finish),
-	.un6_reset_0_i(ram_state_machine_fsm_clocked_process_un6_reset_0_i),
-	.pxcache_pw_i_1_1(ram_state_machine_pxcache_pw_i_1_1),
-	.pxcache_pw_i_1(ram_state_machine_pxcache_pw_i_1),
-	.un4_curr_vram_word_NE(px_cache_state_transition_un4_curr_vram_word_NE),
-	.pxcache_pw_i_m3(ram_state_machine_pxcache_pw_i_m3),
-	.pxcache_wen_all_i(ram_state_machine_pxcache_wen_all_i),
+	.pxcache_wen_all_i_0(px_cache_pxcache_wen_all_i_0),
 	.state_s0_0_a3(ram_state_machine_state_s0_0_a3),
+	.really_done(ram_state_machine_really_done),
 	.reset_c(reset_c),
 	.clk_c(clk_c)
 );
-// @14:410
+// @14:377
   pix_word_cache px_cache (
-	.next_state_i_a4_0(ram_state_machine_next_state_i_a4[0]),
-	.pxcache_store_buf_0_en_0_a4_0(ram_state_machine_pxcache_store_buf_0_en_0_a4[0]),
-	.state_ns_0_a4_0_0(ram_state_machine_state_ns_0_a4_0[1]),
-	.prev_state_1(prev_state[1]),
-	.prev_state_0(prev_state[0]),
-	.pxcache_pixnum_x_0(ram_state_machine_pxcache_pixnum_x[0]),
-	.state_1(state[1]),
-	.state_0(state[0]),
+	.state_srsts_x_0(px_cache_state_srsts_x[1]),
+	.state_ns_0_0_o4_0(px_cache_state_ns_0_0_o4[1]),
+	.curr_vram_word_4(curr_vram_word[4]),
+	.curr_vram_word_5(curr_vram_word[5]),
 	.curr_vram_word_2(curr_vram_word[2]),
 	.curr_vram_word_3(curr_vram_word[3]),
 	.curr_vram_word_0(curr_vram_word[0]),
 	.curr_vram_word_1(curr_vram_word[1]),
 	.curr_vram_word_6(curr_vram_word[6]),
 	.curr_vram_word_7(curr_vram_word[7]),
-	.curr_vram_word_4(curr_vram_word[4]),
-	.curr_vram_word_5(curr_vram_word[5]),
+	.dbb_bus_c_8(dbb_bus_c[8]),
 	.dbb_bus_c_13(dbb_bus_c[13]),
 	.dbb_bus_c_12(dbb_bus_c[12]),
-	.dbb_bus_c_14(dbb_bus_c[14]),
-	.dbb_bus_c_15(dbb_bus_c[15]),
-	.dbb_bus_c_7(dbb_bus_c[7]),
-	.dbb_bus_c_1(dbb_bus_c[1]),
 	.dbb_bus_c_0(dbb_bus_c[0]),
+	.dbb_bus_c_1(dbb_bus_c[1]),
+	.dbb_bus_c_9(dbb_bus_c[9]),
+	.dbb_bus_c_7(dbb_bus_c[7]),
 	.dbb_bus_c_6(dbb_bus_c[6]),
 	.dbb_bus_c_4(dbb_bus_c[4]),
 	.dbb_bus_c_5(dbb_bus_c[5]),
@@ -5471,10 +5110,21 @@ defparam dbb_delaycmd_out.operation_mode = "output";
 	.dbb_bus_c_3(dbb_bus_c[3]),
 	.dbb_bus_c_10(dbb_bus_c[10]),
 	.dbb_bus_c_11(dbb_bus_c[11]),
-	.dbb_bus_c_8(dbb_bus_c[8]),
-	.dbb_bus_c_9(dbb_bus_c[9]),
-	.pxcache_pixnum_0_1(ram_state_machine_pxcache_pixnum_0[3]),
-	.pxcache_pixnum_0_0(ram_state_machine_pxcache_pixnum_0[2]),
+	.dbb_bus_c_15(dbb_bus_c[15]),
+	.dbb_bus_c_14(dbb_bus_c[14]),
+	.state_rep1_0(state_rep1[1]),
+	.prev_state_1(prev_state[1]),
+	.prev_state_0(prev_state[0]),
+	.state_rep2_0(state_rep2[1]),
+	.state_1(state[1]),
+	.state_0(state[0]),
+	.idle_counter_6(idle_counter[7]),
+	.idle_counter_5(idle_counter[6]),
+	.idle_counter_3(idle_counter[4]),
+	.idle_counter_2(idle_counter[3]),
+	.idle_counter_4(idle_counter[5]),
+	.idle_counter_0(idle_counter[1]),
+	.idle_counter_1(idle_counter[2]),
 	.store_ram_0_0(px_cache_store_ram_0[0]),
 	.store_ram_0_1(px_cache_store_ram_0[1]),
 	.store_ram_1_0(px_cache_store_ram_1[0]),
@@ -5507,18 +5157,17 @@ defparam dbb_delaycmd_out.operation_mode = "output";
 	.store_ram_14_1(px_cache_store_ram_14[1]),
 	.store_ram_15_0(px_cache_store_ram_15[0]),
 	.store_ram_15_1(px_cache_store_ram_15[1]),
-	.pxcache_store_buf_0_1_0__g0_i_0_rep1(px_cache_pxcache_store_buf_0_1_0__g0_i_0_rep1),
-	.curr_vram_word_2_0_0__g0_i_0_x(px_cache_curr_vram_word_2_0_0__g0_i_0_x),
-	.pxcache_wen_all_i(ram_state_machine_pxcache_wen_all_i),
-	.state_srsts_0_0__g0_x(px_cache_state_srsts_0_0__g0_x),
-	.pxcache_pw_i_1_1(ram_state_machine_pxcache_pw_i_1_1),
-	.pxcache_pw_i_1(ram_state_machine_pxcache_pw_i_1),
+	.N_57_i_0_g0_x(px_cache_N_57_i_0_g0_x),
+	.curr_vram_word_2_0_0__g0_0_x(px_cache_curr_vram_word_2_0_0__g0_0_x),
+	.rcb_finish_0_a4(px_cache_rcb_finish_0_a4),
 	.pxcache_store_buf_0_1_0__g0_i_0(px_cache_pxcache_store_buf_0_1_0__g0_i_0),
-	.pxcache_pw_i_m3(ram_state_machine_pxcache_pw_i_m3),
-	.un4_curr_vram_word_NE(px_cache_state_transition_un4_curr_vram_word_NE),
+	.un6_reset_0_0_i(px_cache_fsm_clocked_process_un6_reset_0_0_i),
+	.state_srsts_0_0__g0(px_cache_state_srsts_0_0__g0),
 	.reset_c(reset_c),
+	.really_done(ram_state_machine_really_done),
+	.pxcache_wen_all_i_0(px_cache_pxcache_wen_all_i_0),
 	.clk_c(clk_c)
 );
-  assign  ram_state_machine_fsm_clocked_process_un6_reset_0_i_i = ~ ram_state_machine_fsm_clocked_process_un6_reset_0_i;
+  assign  px_cache_fsm_clocked_process_un6_reset_0_0_i_i = ~ px_cache_fsm_clocked_process_un6_reset_0_0_i;
 endmodule /* rcb */
 

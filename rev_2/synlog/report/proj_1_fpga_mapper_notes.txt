@@ -2,7 +2,17 @@
 @N: MF666 |Clock conversion enabled 
 @N: MT206 |Auto Constrain mode is enabled
 @N: BN362 :"h:\desktop\github\vhdl\vhdl project\hardware_files\ram_fsm.vhd":11:25:11:28|Removing sequential instance ram_state_machine.done of view:PrimLib.dff(prim) in hierarchy view:work.rcb(rtl1) because there are no references to its outputs 
-@N: FA100 :|Instance "px_cache.pxcache_store_buf_0_1_0__g0_i_0" with "32" loads has been replicated "1" time(s) due to hard fanout limit of "30" 
+@N: FA100 :|Instance "px_cache.store_ram_2_0_269_0" with "8" loads has been replicated "1" time(s) due to hard fanout limit of "5" 
+@N: FA100 :|Instance "px_cache.store_ram_2_0_0_0" with "8" loads has been replicated "1" time(s) due to hard fanout limit of "5" 
+@N: FA100 :|Instance "px_cache.store_ram_0_0_156_0" with "8" loads has been replicated "1" time(s) due to hard fanout limit of "5" 
+@N: FA100 :|Instance "px_cache.store_ram_0_0_0_0" with "8" loads has been replicated "1" time(s) due to hard fanout limit of "5" 
+@N: FA100 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":142:8:142:11|Instance "px_cache.pxcache_pixnum_i_o4_2[0]" with "10" loads has been replicated "1" time(s) due to hard fanout limit of "5" 
+@N: FA100 :"h:\desktop\github\vhdl\vhdl project\hardware_files\pix_word_cache.vhd":78:12:78:13|Instance "px_cache.store_ram_0_0_sqmuxa_i_a4_a1" with "14" loads has been replicated "2" time(s) due to hard fanout limit of "5" 
+@N: FA100 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":142:8:142:11|Instance "px_cache.pxcache_pixnum_i_x[3]" with "17" loads has been replicated "3" time(s) due to hard fanout limit of "5" 
+@N: FA100 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":142:8:142:11|Instance "px_cache.pxcache_pixnum_i_x[2]" with "9" loads has been replicated "1" time(s) due to hard fanout limit of "5" 
+@N: FA100 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":91:11:91:15|Instance "state[1]" with "11" loads has been replicated "2" time(s) due to hard fanout limit of "5" 
+@N: FA100 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":142:8:142:11|Instance "px_cache.pxcache_pixnum_i_o4_2[0]" with "9" loads has been replicated "1" time(s) due to hard fanout limit of "5" 
+@N: FA100 :"h:\desktop\github\vhdl\vhdl project\hardware_files\pix_word_cache.vhd":78:12:78:13|Instance "px_cache.store_ram_0_0_sqmuxa_i_a4_a1" with "9" loads has been replicated "1" time(s) due to hard fanout limit of "5" 
 @N: BW103 |Synopsys Constraint File time units using default value of 1ns 
 @N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
 @N: MT535 |Writing timing correlation to file H:\Desktop\GitHub\VHDL\rev_2\proj_1_ctd.txt 
