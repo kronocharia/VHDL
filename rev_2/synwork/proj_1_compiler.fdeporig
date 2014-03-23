@@ -11,10 +11,10 @@
 #CUR:"C:\\synopsys\\fpga_G201209SP1\\lib\\vhd\\arith.vhd":1353965842
 #CUR:"C:\\synopsys\\fpga_G201209SP1\\lib\\vhd\\unsigned.vhd":1353965846
 #CUR:"H:\\Desktop\\GitHub\\VHDL\\ex4\\pix_cache_pak.vhd":1393776924
-#CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\rcb.vhd":1395083680
-#CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\ram_fsm.vhd":1395082659
+#CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\rcb.vhd":1395588810
+#CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\ram_fsm.vhd":1395583841
 #CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\project_pack.vhd":1394291220
-#CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\pix_word_cache.vhd":1394287466
+#CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\pix_word_cache.vhd":1395583826
 #CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\helper_funcs.vhd":1394386377
 #CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\config_pack.vhd":1393700766
 0 "H:\Desktop\GitHub\VHDL\ex4\pix_cache_pak.vhd" vhdl
@@ -27,7 +27,7 @@
 
 # Dependency Lists (Uses list)
 0 -1
-1 2 4 3 0 5 
+1 2 4 3 0 
 2 0 
 3 6 
 4 0 
@@ -40,14 +40,12 @@
 2 1 
 3 5 1 
 4 1 
-5 1 
+5 -1
 6 5 3 
 
 # Design Unit to File Association
 arch work rcb rtl1 1
 module work rcb 1
-arch work mux2 dflow 1
-module work mux2 1
 arch work ram_fsm synth 2
 module work ram_fsm 2
 arch work pix_word_cache pwc 4

@@ -1,0 +1,24 @@
+
+fsm_encoding {149511952} sequential
+
+fsm_state_encoding {149511952} s_error {00}
+
+fsm_state_encoding {149511952} s_idle {01}
+
+fsm_state_encoding {149511952} s_draw {10}
+
+fsm_state_encoding {149511952} s_flush {11}
+
+fsm_registers {149511952} {state[1]}  {state[0]} 
+
+fsm_encoding {12229221} sequential
+
+fsm_state_encoding {12229221} m3 {00}
+
+fsm_state_encoding {12229221} m2 {01}
+
+fsm_state_encoding {12229221} m1 {10}
+
+fsm_state_encoding {12229221} mx {11}
+
+fsm_registers {12229221} {state[1]}  {state[0]} 

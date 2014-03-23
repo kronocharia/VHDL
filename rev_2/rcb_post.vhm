@@ -1,0 +1,4387 @@
+--
+-- Written by Synplicity
+-- Product Version "G-2012.09-SP1 "
+-- Program "Synplify Pro", Mapper "maprc, Build 1351R"
+-- Sat Mar 22 19:00:27 2014
+--
+
+--
+-- Written by Synplify Pro version Build 1351R
+-- Sat Mar 22 19:00:27 2014
+--
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity outbuf is
+port(
+  d :  in std_logic;
+  pad :  out std_logic);
+end outbuf;
+
+architecture beh of outbuf is
+  signal GND : std_logic ;
+  signal VCC : std_logic ;
+begin
+pad <= d;
+GND <= '0';
+VCC <= '1';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity inbuf is
+port(
+pad :  in std_logic;
+y :  out std_logic);
+end inbuf;
+
+architecture beh of inbuf is
+signal GND : std_logic ;
+signal VCC : std_logic ;
+begin
+y <= pad;
+GND <= '0';
+VCC <= '1';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity clkbuf is
+port(
+pad :  in std_logic;
+y :  out std_logic);
+end clkbuf;
+
+architecture beh of clkbuf is
+signal GND : std_logic ;
+signal VCC : std_logic ;
+begin
+y <= pad;
+GND <= '0';
+VCC <= '1';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity or4 is
+port(
+a :  in std_logic;
+b :  in std_logic;
+c :  in std_logic;
+d :  in std_logic;
+y :  out std_logic);
+end or4;
+
+architecture beh of or4 is
+signal GND : std_logic ;
+signal VCC : std_logic ;
+begin
+y <= d or c or b or a after 100 ps;
+GND <= '0';
+VCC <= '1';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity or3b is
+port(
+a :  in std_logic;
+b :  in std_logic;
+c :  in std_logic;
+y :  out std_logic);
+end or3b;
+
+architecture beh of or3b is
+signal AI : std_logic ;
+signal BI : std_logic ;
+signal GND : std_logic ;
+signal VCC : std_logic ;
+begin
+AI <= not a;
+BI <= not b;
+y <= c or BI or AI after 100 ps;
+GND <= '0';
+VCC <= '1';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity or2b is
+port(
+a :  in std_logic;
+b :  in std_logic;
+y :  out std_logic);
+end or2b;
+
+architecture beh of or2b is
+signal AI : std_logic ;
+signal BI : std_logic ;
+signal GND : std_logic ;
+signal VCC : std_logic ;
+begin
+AI <= not a;
+BI <= not b;
+y <= BI or AI after 100 ps;
+GND <= '0';
+VCC <= '1';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity or2 is
+port(
+a :  in std_logic;
+b :  in std_logic;
+y :  out std_logic);
+end or2;
+
+architecture beh of or2 is
+signal GND : std_logic ;
+signal VCC : std_logic ;
+begin
+y <= b or a after 100 ps;
+GND <= '0';
+VCC <= '1';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity nand4 is
+port(
+a :  in std_logic;
+b :  in std_logic;
+c :  in std_logic;
+d :  in std_logic;
+y :  out std_logic);
+end nand4;
+
+architecture beh of nand4 is
+signal YX : std_logic ;
+signal GND : std_logic ;
+signal VCC : std_logic ;
+begin
+YX <= d and c and b and a after 100 ps;
+y <= not YX;
+GND <= '0';
+VCC <= '1';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity and4c is
+port(
+a :  in std_logic;
+b :  in std_logic;
+c :  in std_logic;
+d :  in std_logic;
+y :  out std_logic);
+end and4c;
+
+architecture beh of and4c is
+signal AI : std_logic ;
+signal BI : std_logic ;
+signal CI : std_logic ;
+signal GND : std_logic ;
+signal VCC : std_logic ;
+begin
+AI <= not a;
+BI <= not b;
+CI <= not c;
+y <= d and CI and BI and AI after 100 ps;
+GND <= '0';
+VCC <= '1';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity and4b is
+port(
+a :  in std_logic;
+b :  in std_logic;
+c :  in std_logic;
+d :  in std_logic;
+y :  out std_logic);
+end and4b;
+
+architecture beh of and4b is
+signal AI : std_logic ;
+signal BI : std_logic ;
+signal GND : std_logic ;
+signal VCC : std_logic ;
+begin
+AI <= not a;
+BI <= not b;
+y <= d and c and BI and AI after 100 ps;
+GND <= '0';
+VCC <= '1';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity and3c is
+port(
+a :  in std_logic;
+b :  in std_logic;
+c :  in std_logic;
+y :  out std_logic);
+end and3c;
+
+architecture beh of and3c is
+signal AI : std_logic ;
+signal BI : std_logic ;
+signal CI : std_logic ;
+signal GND : std_logic ;
+signal VCC : std_logic ;
+begin
+AI <= not a;
+BI <= not b;
+CI <= not c;
+y <= CI and BI and AI after 100 ps;
+GND <= '0';
+VCC <= '1';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity and3b is
+port(
+a :  in std_logic;
+b :  in std_logic;
+c :  in std_logic;
+y :  out std_logic);
+end and3b;
+
+architecture beh of and3b is
+signal AI : std_logic ;
+signal BI : std_logic ;
+signal GND : std_logic ;
+signal VCC : std_logic ;
+begin
+AI <= not a;
+BI <= not b;
+y <= c and BI and AI after 100 ps;
+GND <= '0';
+VCC <= '1';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity and3a is
+port(
+a :  in std_logic;
+b :  in std_logic;
+c :  in std_logic;
+y :  out std_logic);
+end and3a;
+
+architecture beh of and3a is
+signal AI : std_logic ;
+signal GND : std_logic ;
+signal VCC : std_logic ;
+begin
+AI <= not a;
+y <= c and b and AI after 100 ps;
+GND <= '0';
+VCC <= '1';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity and2b is
+port(
+a :  in std_logic;
+b :  in std_logic;
+y :  out std_logic);
+end and2b;
+
+architecture beh of and2b is
+signal AI : std_logic ;
+signal BI : std_logic ;
+signal GND : std_logic ;
+signal VCC : std_logic ;
+begin
+AI <= not a;
+BI <= not b;
+y <= BI and AI after 100 ps;
+GND <= '0';
+VCC <= '1';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity and2a is
+port(
+a :  in std_logic;
+b :  in std_logic;
+y :  out std_logic);
+end and2a;
+
+architecture beh of and2a is
+signal AI : std_logic ;
+signal GND : std_logic ;
+signal VCC : std_logic ;
+begin
+AI <= not a;
+y <= b and AI after 100 ps;
+GND <= '0';
+VCC <= '1';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity and2 is
+port(
+a :  in std_logic;
+b :  in std_logic;
+y :  out std_logic);
+end and2;
+
+architecture beh of and2 is
+signal GND : std_logic ;
+signal VCC : std_logic ;
+begin
+y <= b and a after 100 ps;
+GND <= '0';
+VCC <= '1';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity xor2 is
+port(
+a :  in std_logic;
+b :  in std_logic;
+y :  out std_logic);
+end xor2;
+
+architecture beh of xor2 is
+signal GND : std_logic ;
+signal VCC : std_logic ;
+begin
+y <= b xor a after 100 ps;
+GND <= '0';
+VCC <= '1';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity xnor2 is
+port(
+a :  in std_logic;
+b :  in std_logic;
+y :  out std_logic);
+end xnor2;
+
+architecture beh of xnor2 is
+signal YI : std_logic ;
+signal GND : std_logic ;
+signal VCC : std_logic ;
+begin
+YI <= b xor a after 100 ps;
+y <= not YI;
+GND <= '0';
+VCC <= '1';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity buff is
+port(
+a :  in std_logic;
+y :  out std_logic);
+end buff;
+
+architecture beh of buff is
+signal GND : std_logic ;
+signal VCC : std_logic ;
+begin
+y <= a;
+GND <= '0';
+VCC <= '1';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity gnd is
+port(
+y :  out std_logic);
+end gnd;
+
+architecture beh of gnd is
+signal VCC : std_logic ;
+begin
+y <= '0';
+VCC <= '1';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity vcc is
+port(
+y :  out std_logic);
+end vcc;
+
+architecture beh of vcc is
+signal GND : std_logic ;
+begin
+y <= '1';
+GND <= '0';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity dfm7b is
+port(
+d0 :  in std_logic;
+d1 :  in std_logic;
+d2 :  in std_logic;
+d3 :  in std_logic;
+s10 :  in std_logic;
+s11 :  in std_logic;
+s0 :  in std_logic;
+clk :  in std_logic;
+clr :  in std_logic;
+q :  out std_logic);
+end dfm7b;
+
+architecture beh of dfm7b is
+signal S1 : std_logic ;
+signal D01 : std_logic ;
+signal D23 : std_logic ;
+signal D : std_logic ;
+signal CLRI : std_logic ;
+signal CLKI : std_logic ;
+signal GND : std_logic ;
+signal VCC : std_logic ;
+begin
+S1 <= s11 or s10 after 100 ps;
+D01 <= d0 after 100 ps when s0 = '0' else d1 after 100 ps;
+D23 <= d2 after 100 ps when s0 = '0' else d3 after 100 ps;
+D <= D01 after 100 ps when S1 = '0' else D23 after 100 ps;
+CLRI <= not clr;
+CLKI <= not clk;
+Q_Z24: prim_dff port map (q, D, CLKI, CLRI, '0');
+GND <= '0';
+VCC <= '1';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity dfm7a is
+port(
+d0 :  in std_logic;
+d1 :  in std_logic;
+d2 :  in std_logic;
+d3 :  in std_logic;
+s10 :  in std_logic;
+s11 :  in std_logic;
+s0 :  in std_logic;
+clk :  in std_logic;
+clr :  in std_logic;
+q :  out std_logic);
+end dfm7a;
+
+architecture beh of dfm7a is
+signal S1 : std_logic ;
+signal D01 : std_logic ;
+signal D23 : std_logic ;
+signal D : std_logic ;
+signal CLRI : std_logic ;
+signal GND : std_logic ;
+signal VCC : std_logic ;
+begin
+S1 <= s11 or s10 after 100 ps;
+D01 <= d0 after 100 ps when s0 = '0' else d1 after 100 ps;
+D23 <= d2 after 100 ps when s0 = '0' else d3 after 100 ps;
+D <= D01 after 100 ps when S1 = '0' else D23 after 100 ps;
+CLRI <= not clr;
+Q_Z22: prim_dff port map (q, D, clk, CLRI, '0');
+GND <= '0';
+VCC <= '1';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity df1b is
+port(
+d :  in std_logic;
+clk :  in std_logic;
+q :  out std_logic);
+end df1b;
+
+architecture beh of df1b is
+signal CLKI : std_logic ;
+signal GND : std_logic ;
+signal VCC : std_logic ;
+begin
+CLKI <= not clk;
+Q_Z7: prim_dff port map (q, d, CLKI, '0', '0');
+GND <= '0';
+VCC <= '1';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity df1 is
+port(
+d :  in std_logic;
+clk :  in std_logic;
+q :  out std_logic);
+end df1;
+
+architecture beh of df1 is
+signal GND : std_logic ;
+signal VCC : std_logic ;
+begin
+Q_Z5: prim_dff port map (q, d, clk, '0', '0');
+GND <= '0';
+VCC <= '1';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity cm8 is
+port(
+d0 :  in std_logic;
+d1 :  in std_logic;
+d2 :  in std_logic;
+d3 :  in std_logic;
+s00 :  in std_logic;
+s01 :  in std_logic;
+s10 :  in std_logic;
+s11 :  in std_logic;
+y :  out std_logic);
+end cm8;
+
+architecture beh of cm8 is
+signal S0 : std_logic ;
+signal S1 : std_logic ;
+signal M0 : std_logic ;
+signal M1 : std_logic ;
+signal GND : std_logic ;
+signal VCC : std_logic ;
+begin
+S0 <= s01 and s00 after 100 ps;
+S1 <= s11 or s10 after 100 ps;
+M0 <= d0 after 100 ps when S0 = '0' else d1 after 100 ps;
+M1 <= d2 after 100 ps when S0 = '0' else d3 after 100 ps;
+y <= M0 after 100 ps when S1 = '0' else M1 after 100 ps;
+GND <= '0';
+VCC <= '1';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity \ram_fsm_cell_state_0_3__h_1\ is
+port(
+state_d : in std_logic_vector(1 downto 1);
+state_3 : out std_logic_vector(1 downto 1);
+state_0 : in std_logic_vector(1 downto 0);
+state : out std_logic_vector(1 downto 0);
+pxcache_pixnum : out std_logic_vector(3 downto 1);
+dbb_bus_c_11 :  in std_logic;
+dbb_bus_c_14 :  in std_logic;
+dbb_bus_c_12 :  in std_logic;
+dbb_bus_c_5 :  in std_logic;
+dbb_bus_c_0 :  in std_logic;
+dbb_bus_c_6 :  in std_logic;
+pxcache_store_2 : in std_logic_vector(1 downto 0);
+pxcache_store_3 : in std_logic_vector(1 downto 0);
+pxcache_store_1 : in std_logic_vector(1 downto 0);
+pxcache_store_0 : in std_logic_vector(1 downto 0);
+pxcache_store_7 : in std_logic_vector(1 downto 0);
+pxcache_store_6 : in std_logic_vector(1 downto 0);
+pxcache_store_11 : in std_logic_vector(1 downto 0);
+pxcache_store_10 : in std_logic_vector(1 downto 0);
+pxcache_store_15 : in std_logic_vector(1 downto 0);
+pxcache_store_14 : in std_logic_vector(1 downto 0);
+pxcache_store_5 : in std_logic_vector(1 downto 0);
+pxcache_store_4 : in std_logic_vector(1 downto 0);
+pxcache_store_9 : in std_logic_vector(1 downto 0);
+pxcache_store_8 : in std_logic_vector(1 downto 0);
+pxcache_store_13 : in std_logic_vector(1 downto 0);
+pxcache_store_12 : in std_logic_vector(1 downto 0);
+prev_state : in std_logic_vector(1 downto 0);
+idle_counter : in std_logic_vector(7 downto 0);
+rcb_finish_c :  out std_logic;
+vram_really_done :  in std_logic;
+pxcache_stash :  out std_logic;
+idle_counter_n2 :  out std_logic;
+idle_counter_n6 :  out std_logic;
+clk_c :  in std_logic;
+N_161_0 :  in std_logic;
+reset_c_0 :  in std_logic;
+pxcache_stash_0 :  out std_logic;
+\ram_fsm_cell_state_0_3__h_1_VCC\ :  in std_logic;
+\ram_fsm_cell_state_0_3__h_1_GND\ :  in std_logic;
+pxcache_wen_all_1_0 :  out std_logic;
+reset_c_4 :  in std_logic;
+N_15_mux :  in std_logic;
+idle_counter_c5_n :  out std_logic;
+idle_counter_c4 :  out std_logic;
+y_18 :  in std_logic;
+idle_counter_c1_n :  out std_logic;
+pxcache_wen_all :  out std_logic;
+N_173_i :  out std_logic;
+pxcache_wen_all_1 :  out std_logic;
+un1_dbb_bus_3 :  out std_logic;
+vwrite_c :  out std_logic;
+pxcache_pw :  out std_logic;
+N_7_n :  in std_logic;
+un1_vram_done_n :  out std_logic;
+vram_done :  in std_logic;
+un6_reset_n :  out std_logic;
+reset_c :  in std_logic;
+reset_idle_count2 :  out std_logic;
+pxcache_pixopin_0_sqmuxa :  out std_logic;
+un4_curr_vram_word :  in std_logic);
+end \ram_fsm_cell_state_0_3__h_1\;
+
+architecture beh of \ram_fsm_cell_state_0_3__h_1\ is
+signal PXCACHE_PIXOPIN_0_SQMUXA_1 : std_logic ;
+signal RESET_IDLE_COUNT_2_SQMUXA : std_logic ;
+signal RESET_IDLE_COUNT2_5 : std_logic ;
+signal RCB_FINISH_C_31 : std_logic ;
+signal RCB_FINISH_C_30 : std_logic ;
+signal RCB_FINISH_C_33 : std_logic ;
+signal RCB_FINISH_C_26_N : std_logic ;
+signal RCB_FINISH_C_13 : std_logic ;
+signal RCB_FINISH_C_24_N : std_logic ;
+signal RCB_FINISH_C_9 : std_logic ;
+signal RCB_FINISH_C_22_N : std_logic ;
+signal RCB_FINISH_C_5 : std_logic ;
+signal RCB_FINISH_C_29 : std_logic ;
+signal RCB_FINISH_C_19 : std_logic ;
+signal RCB_FINISH_C_17_N : std_logic ;
+signal RCB_FINISH_C_3 : std_logic ;
+signal PXCACHE_PW_39 : std_logic ;
+signal PXCACHE_PIXOPIN_1_SQMUXA : std_logic ;
+signal PXCACHE_PIXOPIN_0_SQMUXA_41 : std_logic ;
+signal PXCACHE_WEN_ALL_38 : std_logic ;
+signal N_173_I_37 : std_logic ;
+signal RESET_IDLE_COUNT2_40 : std_logic ;
+signal STATE_35 : std_logic ;
+signal NN_1 : std_logic ;
+signal IDLE_COUNTER_C4_36 : std_logic ;
+signal RCB_FINISH_C_32 : std_logic ;
+signal NN_2 : std_logic ;
+signal N_5 : std_logic ;
+signal N_4 : std_logic ;
+signal N_3 : std_logic ;
+signal N_2 : std_logic ;
+signal GND : std_logic ;
+signal VCC : std_logic ;
+component and2
+port(
+a :  in std_logic;
+b :  in std_logic;
+y :  out std_logic  );
+end component;
+component and3b
+port(
+a :  in std_logic;
+b :  in std_logic;
+c :  in std_logic;
+y :  out std_logic  );
+end component;
+component and3c
+port(
+a :  in std_logic;
+b :  in std_logic;
+c :  in std_logic;
+y :  out std_logic  );
+end component;
+component or3b
+port(
+a :  in std_logic;
+b :  in std_logic;
+c :  in std_logic;
+y :  out std_logic  );
+end component;
+component and4c
+port(
+a :  in std_logic;
+b :  in std_logic;
+c :  in std_logic;
+d :  in std_logic;
+y :  out std_logic  );
+end component;
+component or4
+port(
+a :  in std_logic;
+b :  in std_logic;
+c :  in std_logic;
+d :  in std_logic;
+y :  out std_logic  );
+end component;
+component or2
+port(
+a :  in std_logic;
+b :  in std_logic;
+y :  out std_logic  );
+end component;
+component and2b
+port(
+a :  in std_logic;
+b :  in std_logic;
+y :  out std_logic  );
+end component;
+component and3a
+port(
+a :  in std_logic;
+b :  in std_logic;
+c :  in std_logic;
+y :  out std_logic  );
+end component;
+component xor2
+port(
+a :  in std_logic;
+b :  in std_logic;
+y :  out std_logic  );
+end component;
+component or2b
+port(
+a :  in std_logic;
+b :  in std_logic;
+y :  out std_logic  );
+end component;
+component and2a
+port(
+a :  in std_logic;
+b :  in std_logic;
+y :  out std_logic  );
+end component;
+component cm8
+port(
+d0 :  in std_logic;
+d1 :  in std_logic;
+d2 :  in std_logic;
+d3 :  in std_logic;
+s00 :  in std_logic;
+s01 :  in std_logic;
+s10 :  in std_logic;
+s11 :  in std_logic;
+y :  out std_logic  );
+end component;
+component dfm7a
+port(
+d0 :  in std_logic;
+d1 :  in std_logic;
+d2 :  in std_logic;
+d3 :  in std_logic;
+s10 :  in std_logic;
+s11 :  in std_logic;
+s0 :  in std_logic;
+clk :  in std_logic;
+clr :  in std_logic;
+q :  out std_logic  );
+end component;
+begin
+PXCACHE_PIXOPIN_0_SQMUXA_Z145: and2 port map (
+a => un4_curr_vram_word,
+b => PXCACHE_PIXOPIN_0_SQMUXA_1,
+y => PXCACHE_PIXOPIN_0_SQMUXA_41);
+\FSM_CLOCKED_PROCESS.UN6_RESET_N\: and3b port map (
+a => RESET_IDLE_COUNT2_40,
+b => reset_c,
+c => RESET_IDLE_COUNT_2_SQMUXA,
+y => un6_reset_n);
+\STATE_TRANSITION.RESET_IDLE_COUNT2_5\: and3c port map (
+a => idle_counter(6),
+b => idle_counter(7),
+c => idle_counter(5),
+y => RESET_IDLE_COUNT2_5);
+\STATE_TRANSITION.UN1_VRAM_DONE_N\: or3b port map (
+a => prev_state(1),
+b => prev_state(0),
+c => vram_done,
+y => un1_vram_done_n);
+RCB_FINISH_33: and2 port map (
+a => RCB_FINISH_C_31,
+b => RCB_FINISH_C_30,
+y => RCB_FINISH_C_33);
+RCB_FINISH_31: and4c port map (
+a => pxcache_store_12(1),
+b => RCB_FINISH_C_26_N,
+c => pxcache_store_13(0),
+d => RCB_FINISH_C_13,
+y => RCB_FINISH_C_31);
+RCB_FINISH_30: and4c port map (
+a => pxcache_store_8(1),
+b => RCB_FINISH_C_24_N,
+c => pxcache_store_9(0),
+d => RCB_FINISH_C_9,
+y => RCB_FINISH_C_30);
+RCB_FINISH_29: and4c port map (
+a => pxcache_store_4(1),
+b => RCB_FINISH_C_22_N,
+c => pxcache_store_5(0),
+d => RCB_FINISH_C_5,
+y => RCB_FINISH_C_29);
+RCB_FINISH_26_N: or4 port map (
+a => pxcache_store_13(1),
+b => pxcache_store_14(0),
+c => pxcache_store_15(0),
+d => pxcache_store_14(1),
+y => RCB_FINISH_C_26_N);
+RCB_FINISH_24_N: or4 port map (
+a => pxcache_store_9(1),
+b => pxcache_store_10(0),
+c => pxcache_store_11(0),
+d => pxcache_store_10(1),
+y => RCB_FINISH_C_24_N);
+RCB_FINISH_22_N: or4 port map (
+a => pxcache_store_5(1),
+b => pxcache_store_6(0),
+c => pxcache_store_7(0),
+d => pxcache_store_6(1),
+y => RCB_FINISH_C_22_N);
+RCB_FINISH_19: and4c port map (
+a => pxcache_store_0(0),
+b => pxcache_store_1(0),
+c => pxcache_store_0(1),
+d => N_7_n,
+y => RCB_FINISH_C_19);
+RCB_FINISH_17_N: or2 port map (
+a => pxcache_store_15(1),
+b => reset_c,
+y => RCB_FINISH_C_17_N);
+RCB_FINISH_13: and2b port map (
+a => pxcache_store_12(0),
+b => pxcache_store_11(1),
+y => RCB_FINISH_C_13);
+RCB_FINISH_9: and2b port map (
+a => pxcache_store_8(0),
+b => pxcache_store_7(1),
+y => RCB_FINISH_C_9);
+RCB_FINISH_5: and2b port map (
+a => pxcache_store_4(0),
+b => pxcache_store_3(1),
+y => RCB_FINISH_C_5);
+RCB_FINISH_3: and2b port map (
+a => pxcache_store_2(0),
+b => pxcache_store_1(1),
+y => RCB_FINISH_C_3);
+\PXCACHE_PIXNUM[3]_Z162\: and2 port map (
+a => PXCACHE_PW_39,
+b => dbb_bus_c_6,
+y => pxcache_pixnum(3));
+\PXCACHE_PIXNUM[1]_Z163\: and2 port map (
+a => PXCACHE_PW_39,
+b => dbb_bus_c_0,
+y => pxcache_pixnum(1));
+\PXCACHE_PIXNUM[2]_Z164\: and2 port map (
+a => PXCACHE_PW_39,
+b => dbb_bus_c_5,
+y => pxcache_pixnum(2));
+STATE_S0_0_A3: and2b port map (
+a => NN_1,
+b => STATE_35,
+y => vwrite_c);
+\STATE_TRANSITION.UN1_DBB_BUS_3\: and3a port map (
+a => prev_state(0),
+b => prev_state(1),
+c => dbb_bus_c_12,
+y => un1_dbb_bus_3);
+PXCACHE_PW_Z167: or2 port map (
+a => PXCACHE_PIXOPIN_1_SQMUXA,
+b => PXCACHE_PIXOPIN_0_SQMUXA_41,
+y => PXCACHE_PW_39);
+PXCACHE_WEN_ALL_0_A2_1: and2 port map (
+a => state_0(0),
+b => state_0(1),
+y => PXCACHE_WEN_ALL_38);
+PXCACHE_WEN_ALL_0_A2: and2 port map (
+a => PXCACHE_WEN_ALL_38,
+b => N_173_I_37,
+y => pxcache_wen_all);
+RESET_IDLE_COUNT_2_SQMUXA_Z170: and3b port map (
+a => state_0(1),
+b => dbb_bus_c_14,
+c => state_0(0),
+y => RESET_IDLE_COUNT_2_SQMUXA);
+\PREVSTATE_4_I_X2[1]\: xor2 port map (
+a => prev_state(0),
+b => prev_state(1),
+y => N_173_I_37);
+IDLE_COUNTER_C1_N_Z172: or2b port map (
+a => idle_counter(0),
+b => idle_counter(1),
+y => idle_counter_c1_n);
+IDLE_COUNTER_C4_Z173: and2a port map (
+a => y_18,
+b => idle_counter(4),
+y => IDLE_COUNTER_C4_36);
+IDLE_COUNTER_C5_N_Z174: or3b port map (
+a => idle_counter(4),
+b => idle_counter(5),
+c => y_18,
+y => idle_counter_c5_n);
+\STATE_3[1]_Z175\: and2b port map (
+a => N_15_mux,
+b => reset_c_4,
+y => NN_2);
+PXCACHE_WEN_ALL_0_A2_1_0: and2 port map (
+a => state_0(0),
+b => state_0(1),
+y => pxcache_wen_all_1_0);
+PXCACHE_STASH_0_Z177: cm8 port map (
+d0 => state_d(1),
+d1 => \ram_fsm_cell_state_0_3__h_1_GND\,
+d2 => RESET_IDLE_COUNT2_40,
+d3 => RESET_IDLE_COUNT2_40,
+s00 => un4_curr_vram_word,
+s01 => \ram_fsm_cell_state_0_3__h_1_VCC\,
+s10 => RESET_IDLE_COUNT_2_SQMUXA,
+s11 => \ram_fsm_cell_state_0_3__h_1_GND\,
+y => pxcache_stash_0);
+\STATE[0]_Z178\: dfm7a port map (
+d0 => \ram_fsm_cell_state_0_3__h_1_VCC\,
+d1 => STATE_35,
+d2 => STATE_35,
+d3 => reset_c_0,
+s10 => reset_c_0,
+s11 => NN_1,
+s0 => N_161_0,
+clk => clk_c,
+clr => \ram_fsm_cell_state_0_3__h_1_VCC\,
+q => NN_1);
+\STATE[1]_Z179\: dfm7a port map (
+d0 => \ram_fsm_cell_state_0_3__h_1_VCC\,
+d1 => \ram_fsm_cell_state_0_3__h_1_GND\,
+d2 => reset_c_0,
+d3 => \ram_fsm_cell_state_0_3__h_1_VCC\,
+s10 => reset_c_0,
+s11 => STATE_35,
+s0 => NN_1,
+clk => clk_c,
+clr => \ram_fsm_cell_state_0_3__h_1_VCC\,
+q => STATE_35);
+IDLE_COUNTER_N6_Z180: cm8 port map (
+d0 => \ram_fsm_cell_state_0_3__h_1_GND\,
+d1 => \ram_fsm_cell_state_0_3__h_1_VCC\,
+d2 => \ram_fsm_cell_state_0_3__h_1_VCC\,
+d3 => \ram_fsm_cell_state_0_3__h_1_GND\,
+s00 => idle_counter(5),
+s01 => IDLE_COUNTER_C4_36,
+s10 => idle_counter(6),
+s11 => \ram_fsm_cell_state_0_3__h_1_GND\,
+y => idle_counter_n6);
+IDLE_COUNTER_N2_Z181: cm8 port map (
+d0 => \ram_fsm_cell_state_0_3__h_1_GND\,
+d1 => \ram_fsm_cell_state_0_3__h_1_VCC\,
+d2 => \ram_fsm_cell_state_0_3__h_1_VCC\,
+d3 => \ram_fsm_cell_state_0_3__h_1_GND\,
+s00 => idle_counter(1),
+s01 => idle_counter(0),
+s10 => idle_counter(2),
+s11 => \ram_fsm_cell_state_0_3__h_1_GND\,
+y => idle_counter_n2);
+PXCACHE_STASH_Z182: cm8 port map (
+d0 => state_d(1),
+d1 => \ram_fsm_cell_state_0_3__h_1_GND\,
+d2 => RESET_IDLE_COUNT2_40,
+d3 => RESET_IDLE_COUNT2_40,
+s00 => un4_curr_vram_word,
+s01 => \ram_fsm_cell_state_0_3__h_1_VCC\,
+s10 => RESET_IDLE_COUNT_2_SQMUXA,
+s11 => \ram_fsm_cell_state_0_3__h_1_GND\,
+y => pxcache_stash);
+PXCACHE_PIXOPIN_1_SQMUXA_Z183: cm8 port map (
+d0 => \ram_fsm_cell_state_0_3__h_1_GND\,
+d1 => \ram_fsm_cell_state_0_3__h_1_GND\,
+d2 => \ram_fsm_cell_state_0_3__h_1_GND\,
+d3 => PXCACHE_WEN_ALL_38,
+s00 => prev_state(1),
+s01 => N_173_I_37,
+s10 => dbb_bus_c_12,
+s11 => dbb_bus_c_11,
+y => PXCACHE_PIXOPIN_1_SQMUXA);
+RCB_FINISH_32: cm8 port map (
+d0 => \ram_fsm_cell_state_0_3__h_1_GND\,
+d1 => RCB_FINISH_C_29,
+d2 => \ram_fsm_cell_state_0_3__h_1_GND\,
+d3 => \ram_fsm_cell_state_0_3__h_1_GND\,
+s00 => RCB_FINISH_C_3,
+s01 => RCB_FINISH_C_19,
+s10 => pxcache_store_2(1),
+s11 => pxcache_store_3(0),
+y => RCB_FINISH_C_32);
+RCB_FINISH: cm8 port map (
+d0 => \ram_fsm_cell_state_0_3__h_1_GND\,
+d1 => vram_really_done,
+d2 => \ram_fsm_cell_state_0_3__h_1_GND\,
+d3 => \ram_fsm_cell_state_0_3__h_1_GND\,
+s00 => RCB_FINISH_C_33,
+s01 => RCB_FINISH_C_32,
+s10 => RCB_FINISH_C_17_N,
+s11 => NN_2,
+y => rcb_finish_c);
+\STATE_TRANSITION.RESET_IDLE_COUNT2\: cm8 port map (
+d0 => \ram_fsm_cell_state_0_3__h_1_GND\,
+d1 => RESET_IDLE_COUNT2_5,
+d2 => \ram_fsm_cell_state_0_3__h_1_GND\,
+d3 => \ram_fsm_cell_state_0_3__h_1_GND\,
+s00 => idle_counter(3),
+s01 => idle_counter(1),
+s10 => idle_counter(4),
+s11 => idle_counter(2),
+y => RESET_IDLE_COUNT2_40);
+PXCACHE_PIXOPIN_0_SQMUXA_1_Z187: cm8 port map (
+d0 => \ram_fsm_cell_state_0_3__h_1_GND\,
+d1 => \ram_fsm_cell_state_0_3__h_1_GND\,
+d2 => state_0(1),
+d3 => \ram_fsm_cell_state_0_3__h_1_GND\,
+s00 => state_0(0),
+s01 => \ram_fsm_cell_state_0_3__h_1_VCC\,
+s10 => dbb_bus_c_12,
+s11 => dbb_bus_c_11,
+y => PXCACHE_PIXOPIN_0_SQMUXA_1);
+GND <= '0';
+VCC <= '1';
+state_3(1) <= NN_2;
+state(0) <= NN_1;
+state(1) <= STATE_35;
+idle_counter_c4 <= IDLE_COUNTER_C4_36;
+N_173_i <= N_173_I_37;
+pxcache_wen_all_1 <= PXCACHE_WEN_ALL_38;
+pxcache_pw <= PXCACHE_PW_39;
+reset_idle_count2 <= RESET_IDLE_COUNT2_40;
+pxcache_pixopin_0_sqmuxa <= PXCACHE_PIXOPIN_0_SQMUXA_41;
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity \rcb_cell_state_0_3__h_1\ is
+port(
+state_d : out std_logic_vector(1 downto 1);
+state : out std_logic_vector(1 downto 0);
+N_15_mux :  in std_logic;
+reset_c_1 :  in std_logic;
+clk_c :  in std_logic;
+reset_c_0 :  in std_logic;
+\rcb_cell_state_0_3__h_1_GND\ :  in std_logic;
+\rcb_cell_state_0_3__h_1_VCC\ :  in std_logic;
+N_7_n :  in std_logic);
+end \rcb_cell_state_0_3__h_1\;
+
+architecture beh of \rcb_cell_state_0_3__h_1\ is
+signal NN_1 : std_logic ;
+signal STATE_45 : std_logic ;
+signal N_126 : std_logic ;
+signal N_125 : std_logic ;
+signal N_124 : std_logic ;
+signal N_123 : std_logic ;
+signal GND : std_logic ;
+signal VCC : std_logic ;
+component and2a
+port(
+a :  in std_logic;
+b :  in std_logic;
+y :  out std_logic  );
+end component;
+component dfm7a
+port(
+d0 :  in std_logic;
+d1 :  in std_logic;
+d2 :  in std_logic;
+d3 :  in std_logic;
+s10 :  in std_logic;
+s11 :  in std_logic;
+s0 :  in std_logic;
+clk :  in std_logic;
+clr :  in std_logic;
+q :  out std_logic  );
+end component;
+begin
+STATE_S2_0_A2: and2a port map (
+a => NN_1,
+b => STATE_45,
+y => state_d(1));
+\STATE[0]_Z21\: dfm7a port map (
+d0 => N_7_n,
+d1 => \rcb_cell_state_0_3__h_1_VCC\,
+d2 => \rcb_cell_state_0_3__h_1_GND\,
+d3 => \rcb_cell_state_0_3__h_1_GND\,
+s10 => \rcb_cell_state_0_3__h_1_GND\,
+s11 => \rcb_cell_state_0_3__h_1_GND\,
+s0 => reset_c_0,
+clk => clk_c,
+clr => \rcb_cell_state_0_3__h_1_VCC\,
+q => NN_1);
+\STATE[1]_Z22\: dfm7a port map (
+d0 => \rcb_cell_state_0_3__h_1_VCC\,
+d1 => \rcb_cell_state_0_3__h_1_GND\,
+d2 => \rcb_cell_state_0_3__h_1_GND\,
+d3 => \rcb_cell_state_0_3__h_1_GND\,
+s10 => reset_c_1,
+s11 => \rcb_cell_state_0_3__h_1_GND\,
+s0 => N_15_mux,
+clk => clk_c,
+clr => \rcb_cell_state_0_3__h_1_VCC\,
+q => STATE_45);
+GND <= '0';
+VCC <= '1';
+state(0) <= NN_1;
+state(1) <= STATE_45;
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity pix_word_cache_1 is
+port(
+prev_state : in std_logic_vector(1 downto 1);
+pxcache_store_14 : out std_logic_vector(1 downto 0);
+pxcache_store_13 : out std_logic_vector(1 downto 0);
+pxcache_store_12 : out std_logic_vector(1 downto 0);
+pxcache_store_11 : out std_logic_vector(1 downto 0);
+pxcache_store_10 : out std_logic_vector(1 downto 0);
+pxcache_store_9 : out std_logic_vector(1 downto 0);
+pxcache_store_8 : out std_logic_vector(1 downto 0);
+pxcache_store_7 : out std_logic_vector(1 downto 0);
+pxcache_store_6 : out std_logic_vector(1 downto 0);
+pxcache_store_5 : out std_logic_vector(1 downto 0);
+pxcache_store_4 : out std_logic_vector(1 downto 0);
+pxcache_store_15 : out std_logic_vector(1 downto 0);
+pxcache_store_3 : out std_logic_vector(1 downto 0);
+pxcache_store_2 : out std_logic_vector(1 downto 0);
+pxcache_store_1 : out std_logic_vector(1 downto 0);
+pxcache_store_0 : out std_logic_vector(1 downto 0);
+dbb_bus_c_6 :  in std_logic;
+dbb_bus_c_12 :  in std_logic;
+dbb_bus_c_13 :  in std_logic;
+dbb_bus_c_1 :  in std_logic;
+dbb_bus_c_0 :  in std_logic;
+dbb_bus_c_7 :  in std_logic;
+pxcache_pixnum : in std_logic_vector(3 downto 1);
+N_173_i :  in std_logic;
+pxcache_pixopin_0_sqmuxa :  in std_logic;
+un1_dbb_bus_3 :  in std_logic;
+reset_c :  in std_logic;
+pix_word_cache_1_VCC :  in std_logic;
+clk_c :  in std_logic;
+pix_word_cache_1_GND :  in std_logic;
+N_161_0 :  out std_logic;
+reset_c_0 :  in std_logic;
+reset_c_4 :  in std_logic;
+pxcache_wen_all :  in std_logic;
+pxcache_pw :  in std_logic);
+end pix_word_cache_1;
+
+architecture beh of pix_word_cache_1 is
+signal DOUT1 : std_logic_vector(1 downto 0);
+signal STORE_RAM_0_5 : std_logic_vector(1 downto 0);
+signal N_192 : std_logic ;
+signal N_183 : std_logic ;
+signal N_195 : std_logic ;
+signal N_194 : std_logic ;
+signal N_200 : std_logic ;
+signal N_204 : std_logic ;
+signal N_203 : std_logic ;
+signal N_188 : std_logic ;
+signal N_199 : std_logic ;
+signal N_125 : std_logic ;
+signal N_193 : std_logic ;
+signal N_180 : std_logic ;
+signal N_181 : std_logic ;
+signal N_182 : std_logic ;
+signal N_185 : std_logic ;
+signal N_117 : std_logic ;
+signal N_118 : std_logic ;
+signal N_187 : std_logic ;
+signal N_184 : std_logic ;
+signal N_124 : std_logic ;
+signal N_120 : std_logic ;
+signal N_179 : std_logic ;
+signal N_161 : std_logic ;
+signal N_186 : std_logic ;
+signal N_178 : std_logic ;
+signal N_161_1 : std_logic ;
+signal N_161_32 : std_logic ;
+signal Y_15 : std_logic ;
+signal NN_1 : std_logic ;
+signal PXCACHE_STORE_31 : std_logic ;
+signal Y_14 : std_logic ;
+signal PXCACHE_STORE_28 : std_logic ;
+signal PXCACHE_STORE_29 : std_logic ;
+signal Y_13 : std_logic ;
+signal NN_2 : std_logic ;
+signal PXCACHE_STORE_27 : std_logic ;
+signal Y_12 : std_logic ;
+signal PXCACHE_STORE_24 : std_logic ;
+signal PXCACHE_STORE_25 : std_logic ;
+signal Y_0 : std_logic ;
+signal PXCACHE_STORE_23 : std_logic ;
+signal Y_11 : std_logic ;
+signal NN_3 : std_logic ;
+signal PXCACHE_STORE_21 : std_logic ;
+signal Y_10 : std_logic ;
+signal PXCACHE_STORE_18 : std_logic ;
+signal PXCACHE_STORE_19 : std_logic ;
+signal Y_9 : std_logic ;
+signal NN_4 : std_logic ;
+signal PXCACHE_STORE_17 : std_logic ;
+signal Y_8 : std_logic ;
+signal PXCACHE_STORE_14_0 : std_logic ;
+signal NN_5 : std_logic ;
+signal Y_7 : std_logic ;
+signal NN_6 : std_logic ;
+signal PXCACHE_STORE_13_0 : std_logic ;
+signal Y_6 : std_logic ;
+signal PXCACHE_STORE_10_0 : std_logic ;
+signal PXCACHE_STORE_11_0 : std_logic ;
+signal Y_5 : std_logic ;
+signal NN_7 : std_logic ;
+signal NN_8 : std_logic ;
+signal Y_4 : std_logic ;
+signal NN_9 : std_logic ;
+signal NN_10 : std_logic ;
+signal Y_3 : std_logic ;
+signal NN_11 : std_logic ;
+signal NN_12 : std_logic ;
+signal Y_2 : std_logic ;
+signal NN_13 : std_logic ;
+signal NN_14 : std_logic ;
+signal Y : std_logic ;
+signal Y_1 : std_logic ;
+signal NN_15 : std_logic ;
+signal NN_16 : std_logic ;
+signal PXCACHE_STORE_22 : std_logic ;
+signal N_93 : std_logic ;
+signal N_88_1_N : std_logic ;
+signal N_121 : std_logic ;
+signal N_90 : std_logic ;
+signal N_94 : std_logic ;
+signal N_99 : std_logic ;
+signal N_100 : std_logic ;
+signal N_103 : std_logic ;
+signal N_104 : std_logic ;
+signal N_107 : std_logic ;
+signal N_108 : std_logic ;
+signal N_113 : std_logic ;
+signal N_114 : std_logic ;
+signal GND : std_logic ;
+signal VCC : std_logic ;
+component and3b
+port(
+a :  in std_logic;
+b :  in std_logic;
+c :  in std_logic;
+y :  out std_logic  );
+end component;
+component and2a
+port(
+a :  in std_logic;
+b :  in std_logic;
+y :  out std_logic  );
+end component;
+component and3a
+port(
+a :  in std_logic;
+b :  in std_logic;
+c :  in std_logic;
+y :  out std_logic  );
+end component;
+component and2
+port(
+a :  in std_logic;
+b :  in std_logic;
+y :  out std_logic  );
+end component;
+component and4b
+port(
+a :  in std_logic;
+b :  in std_logic;
+c :  in std_logic;
+d :  in std_logic;
+y :  out std_logic  );
+end component;
+component or2
+port(
+a :  in std_logic;
+b :  in std_logic;
+y :  out std_logic  );
+end component;
+component dfm7a
+port(
+d0 :  in std_logic;
+d1 :  in std_logic;
+d2 :  in std_logic;
+d3 :  in std_logic;
+s10 :  in std_logic;
+s11 :  in std_logic;
+s0 :  in std_logic;
+clk :  in std_logic;
+clr :  in std_logic;
+q :  out std_logic  );
+end component;
+component cm8
+port(
+d0 :  in std_logic;
+d1 :  in std_logic;
+d2 :  in std_logic;
+d3 :  in std_logic;
+s00 :  in std_logic;
+s01 :  in std_logic;
+s10 :  in std_logic;
+s11 :  in std_logic;
+y :  out std_logic  );
+end component;
+begin
+STORE_RAM_5_1_SQMUXA_2_I_A3: and3b port map (
+a => pxcache_pixnum(1),
+b => dbb_bus_c_7,
+c => N_192,
+y => N_183);
+STORE_RAM_4_0_SQMUXA_I_A2: and2a port map (
+a => dbb_bus_c_0,
+b => pxcache_pixnum(2),
+y => N_195);
+STORE_RAM_1_0_SQMUXA_I_A2: and3a port map (
+a => pxcache_pixnum(2),
+b => pxcache_pw,
+c => dbb_bus_c_0,
+y => N_194);
+STORE_RAM_5_0_SQMUXA_I_A2: and2 port map (
+a => pxcache_pixnum(2),
+b => dbb_bus_c_0,
+y => N_192);
+STORE_RAM_0_1_SQMUXA_2_I_A2: and3b port map (
+a => pxcache_pixnum(1),
+b => dbb_bus_c_7,
+c => pxcache_pw,
+y => N_200);
+STORE_RAM_8_0_SQMUXA_I_A2_0: and2a port map (
+a => dbb_bus_c_1,
+b => pxcache_pixnum(3),
+y => N_204);
+STORE_RAM_2_1_SQMUXA_2_I_A2_0: and2a port map (
+a => pxcache_pixnum(3),
+b => pxcache_pixnum(1),
+y => N_203);
+STORE_RAM_13_1_SQMUXA_2_I_A3: and2 port map (
+a => N_192,
+b => N_204,
+y => N_188);
+STORE_RAM_10_1_SQMUXA_2_I_A2_0: and2 port map (
+a => pxcache_pixnum(1),
+b => dbb_bus_c_7,
+y => N_199);
+\STORE_RAM_0_CNST_I_A2_0_A3[0]\: and2 port map (
+a => DOUT1(0),
+b => dbb_bus_c_13,
+y => N_125);
+STORE_RAM_2_1_SQMUXA_2_I_A3: and2 port map (
+a => N_193,
+b => N_203,
+y => N_180);
+STORE_RAM_3_1_SQMUXA_2_I_A3: and2 port map (
+a => N_194,
+b => N_203,
+y => N_181);
+STORE_RAM_4_1_SQMUXA_2_I_A3: and4b port map (
+a => dbb_bus_c_7,
+b => pxcache_pixnum(1),
+c => pxcache_pw,
+d => N_195,
+y => N_182);
+STORE_RAM_7_1_SQMUXA_2_I_A3: and2 port map (
+a => N_192,
+b => N_203,
+y => N_185);
+STORE_RAM_8_1_SQMUXA_2_I_A3: and2 port map (
+a => N_193,
+b => N_204,
+y => N_117);
+STORE_RAM_9_1_SQMUXA_2_I_A3: and2 port map (
+a => N_194,
+b => N_204,
+y => N_118);
+STORE_RAM_12_1_SQMUXA_2_I_A3: and2 port map (
+a => N_195,
+b => N_204,
+y => N_187);
+STORE_RAM_6_1_SQMUXA_2_I_A3: and2 port map (
+a => N_195,
+b => N_203,
+y => N_184);
+STORE_RAM_15_1_SQMUXA_3_I_A3: and2 port map (
+a => N_192,
+b => N_199,
+y => N_124);
+STORE_RAM_11_1_SQMUXA_2_I_A3: and2 port map (
+a => N_194,
+b => N_199,
+y => N_120);
+STORE_RAM_1_1_SQMUXA_2_I_A3: and4b port map (
+a => dbb_bus_c_7,
+b => pxcache_pixnum(1),
+c => pxcache_pw,
+d => N_194,
+y => N_179);
+STORE_RAM_0_1_SQMUXA_2_I_O3: or2 port map (
+a => pxcache_wen_all,
+b => reset_c_4,
+y => N_161);
+STORE_RAM_10_1_SQMUXA_2_I_A3: and2 port map (
+a => N_193,
+b => N_199,
+y => N_186);
+STORE_RAM_0_1_SQMUXA_2_I_A3: and4b port map (
+a => dbb_bus_c_7,
+b => pxcache_pixnum(1),
+c => pxcache_pw,
+d => N_193,
+y => N_178);
+STORE_RAM_0_1_SQMUXA_2_I_O3_0: or2 port map (
+a => pxcache_wen_all,
+b => reset_c_0,
+y => N_161_32);
+STORE_RAM_0_1_SQMUXA_2_I_O3_1: or2 port map (
+a => pxcache_wen_all,
+b => reset_c_0,
+y => N_161_1);
+\STORE_RAM_0[0]\: dfm7a port map (
+d0 => NN_1,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(0),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_32,
+s11 => N_178,
+s0 => Y_15,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => NN_1);
+\STORE_RAM_0[1]\: dfm7a port map (
+d0 => PXCACHE_STORE_31,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(1),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_32,
+s11 => N_178,
+s0 => Y_15,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => PXCACHE_STORE_31);
+\STORE_RAM_1[0]\: dfm7a port map (
+d0 => PXCACHE_STORE_28,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(0),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_32,
+s11 => N_179,
+s0 => Y_14,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => PXCACHE_STORE_28);
+\STORE_RAM_1[1]\: dfm7a port map (
+d0 => PXCACHE_STORE_29,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(1),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_32,
+s11 => N_179,
+s0 => Y_14,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => PXCACHE_STORE_29);
+\STORE_RAM_2[0]\: dfm7a port map (
+d0 => NN_2,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(0),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_32,
+s11 => N_180,
+s0 => Y_13,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => NN_2);
+\STORE_RAM_2[1]\: dfm7a port map (
+d0 => PXCACHE_STORE_27,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(1),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_32,
+s11 => N_180,
+s0 => Y_13,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => PXCACHE_STORE_27);
+\STORE_RAM_3[0]\: dfm7a port map (
+d0 => PXCACHE_STORE_24,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(0),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_32,
+s11 => N_181,
+s0 => Y_12,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => PXCACHE_STORE_24);
+\STORE_RAM_3[1]\: dfm7a port map (
+d0 => PXCACHE_STORE_25,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(1),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_32,
+s11 => N_181,
+s0 => Y_12,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => PXCACHE_STORE_25);
+\STORE_RAM_15[1]\: dfm7a port map (
+d0 => PXCACHE_STORE_23,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(1),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_32,
+s11 => N_124,
+s0 => Y_0,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => PXCACHE_STORE_23);
+\STORE_RAM_4[0]\: dfm7a port map (
+d0 => NN_3,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(0),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_32,
+s11 => N_182,
+s0 => Y_11,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => NN_3);
+\STORE_RAM_4[1]\: dfm7a port map (
+d0 => PXCACHE_STORE_21,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(1),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_32,
+s11 => N_182,
+s0 => Y_11,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => PXCACHE_STORE_21);
+\STORE_RAM_5[0]\: dfm7a port map (
+d0 => PXCACHE_STORE_18,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(0),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_32,
+s11 => N_183,
+s0 => Y_10,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => PXCACHE_STORE_18);
+\STORE_RAM_5[1]\: dfm7a port map (
+d0 => PXCACHE_STORE_19,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(1),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_32,
+s11 => N_183,
+s0 => Y_10,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => PXCACHE_STORE_19);
+\STORE_RAM_6[0]\: dfm7a port map (
+d0 => NN_4,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(0),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_32,
+s11 => N_184,
+s0 => Y_9,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => NN_4);
+\STORE_RAM_6[1]\: dfm7a port map (
+d0 => PXCACHE_STORE_17,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(1),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_32,
+s11 => N_184,
+s0 => Y_9,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => PXCACHE_STORE_17);
+\STORE_RAM_7[0]\: dfm7a port map (
+d0 => PXCACHE_STORE_14_0,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(0),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_1,
+s11 => N_185,
+s0 => Y_8,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => PXCACHE_STORE_14_0);
+\STORE_RAM_7[1]\: dfm7a port map (
+d0 => NN_5,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(1),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_1,
+s11 => N_185,
+s0 => Y_8,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => NN_5);
+\STORE_RAM_8[0]\: dfm7a port map (
+d0 => NN_6,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(0),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_1,
+s11 => N_117,
+s0 => Y_7,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => NN_6);
+\STORE_RAM_8[1]\: dfm7a port map (
+d0 => PXCACHE_STORE_13_0,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(1),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_1,
+s11 => N_117,
+s0 => Y_7,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => PXCACHE_STORE_13_0);
+\STORE_RAM_9[0]\: dfm7a port map (
+d0 => PXCACHE_STORE_10_0,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(0),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_1,
+s11 => N_118,
+s0 => Y_6,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => PXCACHE_STORE_10_0);
+\STORE_RAM_9[1]\: dfm7a port map (
+d0 => PXCACHE_STORE_11_0,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(1),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_1,
+s11 => N_118,
+s0 => Y_6,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => PXCACHE_STORE_11_0);
+\STORE_RAM_10[0]\: dfm7a port map (
+d0 => NN_7,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(0),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_1,
+s11 => N_186,
+s0 => Y_5,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => NN_7);
+\STORE_RAM_10[1]\: dfm7a port map (
+d0 => NN_8,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(1),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_1,
+s11 => N_186,
+s0 => Y_5,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => NN_8);
+\STORE_RAM_11[0]\: dfm7a port map (
+d0 => NN_9,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(0),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_1,
+s11 => N_120,
+s0 => Y_4,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => NN_9);
+\STORE_RAM_11[1]\: dfm7a port map (
+d0 => NN_10,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(1),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_1,
+s11 => N_120,
+s0 => Y_4,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => NN_10);
+\STORE_RAM_12[0]\: dfm7a port map (
+d0 => NN_11,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(0),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_1,
+s11 => N_187,
+s0 => Y_3,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => NN_11);
+\STORE_RAM_12[1]\: dfm7a port map (
+d0 => NN_12,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(1),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_1,
+s11 => N_187,
+s0 => Y_3,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => NN_12);
+\STORE_RAM_13[0]\: dfm7a port map (
+d0 => NN_13,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(0),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_1,
+s11 => N_188,
+s0 => Y_2,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => NN_13);
+\STORE_RAM_13[1]\: dfm7a port map (
+d0 => NN_14,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(1),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_1,
+s11 => N_188,
+s0 => Y_2,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => NN_14);
+\STORE_RAM_14[0]\: dfm7a port map (
+d0 => NN_15,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(0),
+d3 => pix_word_cache_1_GND,
+s10 => Y,
+s11 => pix_word_cache_1_GND,
+s0 => Y_1,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => NN_15);
+\STORE_RAM_14[1]\: dfm7a port map (
+d0 => NN_16,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(1),
+d3 => pix_word_cache_1_GND,
+s10 => Y,
+s11 => pix_word_cache_1_GND,
+s0 => Y_1,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => NN_16);
+\STORE_RAM_15[0]\: dfm7a port map (
+d0 => PXCACHE_STORE_22,
+d1 => pix_word_cache_1_GND,
+d2 => STORE_RAM_0_5(0),
+d3 => pix_word_cache_1_GND,
+s10 => N_161_1,
+s11 => N_124,
+s0 => Y_0,
+clk => clk_c,
+clr => pix_word_cache_1_VCC,
+q => PXCACHE_STORE_22);
+STORE_RAM_14_1_SQMUXA_2_I: cm8 port map (
+d0 => N_161_1,
+d1 => pix_word_cache_1_VCC,
+d2 => pix_word_cache_1_GND,
+d3 => pix_word_cache_1_GND,
+s00 => N_199,
+s01 => N_195,
+s10 => pix_word_cache_1_GND,
+s11 => pix_word_cache_1_GND,
+y => Y);
+\DOUT1_3[0]\: cm8 port map (
+d0 => NN_1,
+d1 => NN_3,
+d2 => NN_6,
+d3 => NN_11,
+s00 => pxcache_pixnum(2),
+s01 => pix_word_cache_1_VCC,
+s10 => pxcache_pixnum(3),
+s11 => pix_word_cache_1_GND,
+y => N_93);
+STORE_RAM_14_0_SQMUXA_I: cm8 port map (
+d0 => pix_word_cache_1_GND,
+d1 => pix_word_cache_1_GND,
+d2 => pix_word_cache_1_VCC,
+d3 => reset_c_4,
+s00 => N_199,
+s01 => N_195,
+s10 => N_161,
+s11 => pix_word_cache_1_GND,
+y => Y_1);
+STORE_RAM_12_0_SQMUXA_I: cm8 port map (
+d0 => pix_word_cache_1_GND,
+d1 => pix_word_cache_1_GND,
+d2 => pix_word_cache_1_VCC,
+d3 => reset_c_4,
+s00 => N_204,
+s01 => N_195,
+s10 => N_161,
+s11 => pix_word_cache_1_GND,
+y => Y_3);
+STORE_RAM_11_0_SQMUXA_I: cm8 port map (
+d0 => pix_word_cache_1_GND,
+d1 => pix_word_cache_1_GND,
+d2 => pix_word_cache_1_VCC,
+d3 => reset_c_4,
+s00 => N_199,
+s01 => N_194,
+s10 => N_161,
+s11 => pix_word_cache_1_GND,
+y => Y_4);
+STORE_RAM_10_0_SQMUXA_I: cm8 port map (
+d0 => pix_word_cache_1_GND,
+d1 => pix_word_cache_1_GND,
+d2 => pix_word_cache_1_VCC,
+d3 => reset_c_4,
+s00 => N_199,
+s01 => N_193,
+s10 => N_161,
+s11 => pix_word_cache_1_GND,
+y => Y_5);
+STORE_RAM_9_0_SQMUXA_I: cm8 port map (
+d0 => pix_word_cache_1_GND,
+d1 => pix_word_cache_1_GND,
+d2 => pix_word_cache_1_VCC,
+d3 => reset_c_4,
+s00 => N_204,
+s01 => N_194,
+s10 => N_161,
+s11 => pix_word_cache_1_GND,
+y => Y_6);
+STORE_RAM_8_0_SQMUXA_I: cm8 port map (
+d0 => pix_word_cache_1_GND,
+d1 => pix_word_cache_1_GND,
+d2 => pix_word_cache_1_VCC,
+d3 => reset_c_4,
+s00 => N_204,
+s01 => N_193,
+s10 => N_161,
+s11 => pix_word_cache_1_GND,
+y => Y_7);
+STORE_RAM_6_0_SQMUXA_I: cm8 port map (
+d0 => pix_word_cache_1_GND,
+d1 => pix_word_cache_1_GND,
+d2 => pix_word_cache_1_VCC,
+d3 => reset_c_4,
+s00 => N_203,
+s01 => N_195,
+s10 => N_161,
+s11 => pix_word_cache_1_GND,
+y => Y_9);
+STORE_RAM_4_0_SQMUXA_I: cm8 port map (
+d0 => pix_word_cache_1_GND,
+d1 => pix_word_cache_1_GND,
+d2 => pix_word_cache_1_VCC,
+d3 => reset_c,
+s00 => N_195,
+s01 => N_200,
+s10 => N_161,
+s11 => pix_word_cache_1_GND,
+y => Y_11);
+STORE_RAM_3_0_SQMUXA_I: cm8 port map (
+d0 => pix_word_cache_1_GND,
+d1 => pix_word_cache_1_GND,
+d2 => pix_word_cache_1_VCC,
+d3 => reset_c,
+s00 => N_203,
+s01 => N_194,
+s10 => N_161,
+s11 => pix_word_cache_1_GND,
+y => Y_12);
+STORE_RAM_2_0_SQMUXA_I: cm8 port map (
+d0 => pix_word_cache_1_GND,
+d1 => pix_word_cache_1_GND,
+d2 => pix_word_cache_1_VCC,
+d3 => reset_c,
+s00 => N_203,
+s01 => N_193,
+s10 => N_161,
+s11 => pix_word_cache_1_GND,
+y => Y_13);
+STORE_RAM_1_0_SQMUXA_I: cm8 port map (
+d0 => pix_word_cache_1_GND,
+d1 => pix_word_cache_1_GND,
+d2 => pix_word_cache_1_VCC,
+d3 => reset_c,
+s00 => N_194,
+s01 => N_200,
+s10 => N_161,
+s11 => pix_word_cache_1_GND,
+y => Y_14);
+STORE_RAM_0_0_SQMUXA_I: cm8 port map (
+d0 => pix_word_cache_1_GND,
+d1 => pix_word_cache_1_GND,
+d2 => pix_word_cache_1_VCC,
+d3 => reset_c,
+s00 => N_193,
+s01 => N_200,
+s10 => N_161,
+s11 => pix_word_cache_1_GND,
+y => Y_15);
+\PWRITE.STORE_RAM_0_5[1]\: cm8 port map (
+d0 => DOUT1(1),
+d1 => N_88_1_N,
+d2 => un1_dbb_bus_3,
+d3 => pix_word_cache_1_GND,
+s00 => pxcache_pixopin_0_sqmuxa,
+s01 => pix_word_cache_1_VCC,
+s10 => pxcache_wen_all,
+s11 => pix_word_cache_1_GND,
+y => STORE_RAM_0_5(1));
+\PWRITE.STORE_RAM_0_5[0]\: cm8 port map (
+d0 => DOUT1(0),
+d1 => dbb_bus_c_12,
+d2 => N_121,
+d3 => pix_word_cache_1_GND,
+s00 => pxcache_pixopin_0_sqmuxa,
+s01 => pix_word_cache_1_VCC,
+s10 => pxcache_wen_all,
+s11 => N_125,
+y => STORE_RAM_0_5(0));
+\PWRITE.STORE_RAM_0_5_0[0]\: cm8 port map (
+d0 => DOUT1(0),
+d1 => DOUT1(0),
+d2 => pix_word_cache_1_GND,
+d3 => N_173_i,
+s00 => dbb_bus_c_12,
+s01 => prev_state(1),
+s10 => pxcache_wen_all,
+s11 => pix_word_cache_1_GND,
+y => N_121);
+STORE_RAM_5_0_SQMUXA_I: cm8 port map (
+d0 => pix_word_cache_1_GND,
+d1 => pix_word_cache_1_GND,
+d2 => pix_word_cache_1_VCC,
+d3 => reset_c,
+s00 => N_192,
+s01 => N_200,
+s10 => N_161,
+s11 => pix_word_cache_1_GND,
+y => Y_10);
+STORE_RAM_7_0_SQMUXA_I: cm8 port map (
+d0 => pix_word_cache_1_GND,
+d1 => pix_word_cache_1_GND,
+d2 => pix_word_cache_1_VCC,
+d3 => reset_c,
+s00 => N_203,
+s01 => N_192,
+s10 => N_161,
+s11 => pix_word_cache_1_GND,
+y => Y_8);
+STORE_RAM_15_0_SQMUXA_I: cm8 port map (
+d0 => pix_word_cache_1_GND,
+d1 => pix_word_cache_1_GND,
+d2 => pix_word_cache_1_VCC,
+d3 => reset_c,
+s00 => N_199,
+s01 => N_192,
+s10 => N_161,
+s11 => pix_word_cache_1_GND,
+y => Y_0);
+STORE_RAM_13_0_SQMUXA_I: cm8 port map (
+d0 => pix_word_cache_1_GND,
+d1 => pix_word_cache_1_GND,
+d2 => pix_word_cache_1_VCC,
+d3 => reset_c,
+s00 => N_204,
+s01 => N_192,
+s10 => N_161,
+s11 => pix_word_cache_1_GND,
+y => Y_2);
+STORE_RAM_0_0_SQMUXA_I_A2: cm8 port map (
+d0 => pix_word_cache_1_VCC,
+d1 => pix_word_cache_1_GND,
+d2 => pix_word_cache_1_GND,
+d3 => pix_word_cache_1_GND,
+s00 => dbb_bus_c_0,
+s01 => pxcache_pw,
+s10 => pxcache_pixnum(2),
+s11 => pix_word_cache_1_GND,
+y => N_193);
+\DOUT1_1[1]\: cm8 port map (
+d0 => PXCACHE_STORE_31,
+d1 => PXCACHE_STORE_13_0,
+d2 => pix_word_cache_1_GND,
+d3 => pix_word_cache_1_GND,
+s00 => pxcache_pixnum(3),
+s01 => pix_word_cache_1_VCC,
+s10 => pix_word_cache_1_GND,
+s11 => pix_word_cache_1_GND,
+y => N_90);
+\DOUT1_3[1]\: cm8 port map (
+d0 => N_90,
+d1 => PXCACHE_STORE_21,
+d2 => N_90,
+d3 => NN_12,
+s00 => pxcache_pixnum(2),
+s01 => pix_word_cache_1_VCC,
+s10 => dbb_bus_c_7,
+s11 => pix_word_cache_1_GND,
+y => N_94);
+\DOUT1_6[0]\: cm8 port map (
+d0 => NN_2,
+d1 => NN_4,
+d2 => NN_7,
+d3 => NN_15,
+s00 => dbb_bus_c_6,
+s01 => pix_word_cache_1_VCC,
+s10 => dbb_bus_c_7,
+s11 => pix_word_cache_1_GND,
+y => N_99);
+\DOUT1_6[1]\: cm8 port map (
+d0 => PXCACHE_STORE_27,
+d1 => PXCACHE_STORE_17,
+d2 => NN_8,
+d3 => NN_16,
+s00 => dbb_bus_c_6,
+s01 => pix_word_cache_1_VCC,
+s10 => dbb_bus_c_7,
+s11 => pix_word_cache_1_GND,
+y => N_100);
+\DOUT1_8[0]\: cm8 port map (
+d0 => PXCACHE_STORE_28,
+d1 => PXCACHE_STORE_10_0,
+d2 => pix_word_cache_1_GND,
+d3 => pix_word_cache_1_GND,
+s00 => pxcache_pixnum(3),
+s01 => pix_word_cache_1_VCC,
+s10 => pix_word_cache_1_GND,
+s11 => pix_word_cache_1_GND,
+y => N_103);
+\DOUT1_8[1]\: cm8 port map (
+d0 => PXCACHE_STORE_29,
+d1 => PXCACHE_STORE_11_0,
+d2 => pix_word_cache_1_GND,
+d3 => pix_word_cache_1_GND,
+s00 => pxcache_pixnum(3),
+s01 => pix_word_cache_1_VCC,
+s10 => pix_word_cache_1_GND,
+s11 => pix_word_cache_1_GND,
+y => N_104);
+\DOUT1_10[0]\: cm8 port map (
+d0 => N_103,
+d1 => PXCACHE_STORE_18,
+d2 => N_103,
+d3 => NN_13,
+s00 => pxcache_pixnum(2),
+s01 => pix_word_cache_1_VCC,
+s10 => dbb_bus_c_7,
+s11 => pix_word_cache_1_GND,
+y => N_107);
+\DOUT1_10[1]\: cm8 port map (
+d0 => N_104,
+d1 => PXCACHE_STORE_19,
+d2 => N_104,
+d3 => NN_14,
+s00 => pxcache_pixnum(2),
+s01 => pix_word_cache_1_VCC,
+s10 => dbb_bus_c_7,
+s11 => pix_word_cache_1_GND,
+y => N_108);
+\DOUT1_13[0]\: cm8 port map (
+d0 => PXCACHE_STORE_24,
+d1 => PXCACHE_STORE_14_0,
+d2 => NN_9,
+d3 => PXCACHE_STORE_22,
+s00 => dbb_bus_c_6,
+s01 => pix_word_cache_1_VCC,
+s10 => dbb_bus_c_7,
+s11 => pix_word_cache_1_GND,
+y => N_113);
+\DOUT1_13[1]\: cm8 port map (
+d0 => PXCACHE_STORE_25,
+d1 => NN_5,
+d2 => NN_10,
+d3 => PXCACHE_STORE_23,
+s00 => dbb_bus_c_6,
+s01 => pix_word_cache_1_VCC,
+s10 => dbb_bus_c_7,
+s11 => pix_word_cache_1_GND,
+y => N_114);
+\DOUT1_15[0]\: cm8 port map (
+d0 => N_93,
+d1 => N_107,
+d2 => N_99,
+d3 => N_113,
+s00 => dbb_bus_c_0,
+s01 => pxcache_pw,
+s10 => pxcache_pixnum(1),
+s11 => pix_word_cache_1_GND,
+y => DOUT1(0));
+\DOUT1_15[1]\: cm8 port map (
+d0 => N_94,
+d1 => N_108,
+d2 => N_100,
+d3 => N_114,
+s00 => dbb_bus_c_0,
+s01 => pxcache_pw,
+s10 => pxcache_pixnum(1),
+s11 => pix_word_cache_1_GND,
+y => DOUT1(1));
+\STORE_RAM_0_CNST_I_A2_0_1_N[1]\: cm8 port map (
+d0 => dbb_bus_c_13,
+d1 => pix_word_cache_1_GND,
+d2 => pix_word_cache_1_GND,
+d3 => pix_word_cache_1_GND,
+s00 => dbb_bus_c_12,
+s01 => DOUT1(1),
+s10 => pix_word_cache_1_GND,
+s11 => pix_word_cache_1_GND,
+y => N_88_1_N);
+GND <= '0';
+VCC <= '1';
+pxcache_store_14(0) <= NN_15;
+pxcache_store_14(1) <= NN_16;
+pxcache_store_13(0) <= NN_13;
+pxcache_store_13(1) <= NN_14;
+pxcache_store_12(0) <= NN_11;
+pxcache_store_12(1) <= NN_12;
+pxcache_store_11(0) <= NN_9;
+pxcache_store_11(1) <= NN_10;
+pxcache_store_10(0) <= NN_7;
+pxcache_store_10(1) <= NN_8;
+pxcache_store_9(0) <= PXCACHE_STORE_10_0;
+pxcache_store_9(1) <= PXCACHE_STORE_11_0;
+pxcache_store_8(0) <= NN_6;
+pxcache_store_8(1) <= PXCACHE_STORE_13_0;
+pxcache_store_7(0) <= PXCACHE_STORE_14_0;
+pxcache_store_7(1) <= NN_5;
+pxcache_store_6(0) <= NN_4;
+pxcache_store_6(1) <= PXCACHE_STORE_17;
+pxcache_store_5(0) <= PXCACHE_STORE_18;
+pxcache_store_5(1) <= PXCACHE_STORE_19;
+pxcache_store_4(0) <= NN_3;
+pxcache_store_4(1) <= PXCACHE_STORE_21;
+pxcache_store_15(0) <= PXCACHE_STORE_22;
+pxcache_store_15(1) <= PXCACHE_STORE_23;
+pxcache_store_3(0) <= PXCACHE_STORE_24;
+pxcache_store_3(1) <= PXCACHE_STORE_25;
+pxcache_store_2(0) <= NN_2;
+pxcache_store_2(1) <= PXCACHE_STORE_27;
+pxcache_store_1(0) <= PXCACHE_STORE_28;
+pxcache_store_1(1) <= PXCACHE_STORE_29;
+pxcache_store_0(0) <= NN_1;
+pxcache_store_0(1) <= PXCACHE_STORE_31;
+N_161_0 <= N_161_32;
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity ram_fsm_1 is
+port(
+idle_counter : in std_logic_vector(7 downto 0);
+prev_state : in std_logic_vector(1 downto 0);
+pxcache_store_12 : in std_logic_vector(1 downto 0);
+pxcache_store_13 : in std_logic_vector(1 downto 0);
+pxcache_store_8 : in std_logic_vector(1 downto 0);
+pxcache_store_9 : in std_logic_vector(1 downto 0);
+pxcache_store_4 : in std_logic_vector(1 downto 0);
+pxcache_store_5 : in std_logic_vector(1 downto 0);
+pxcache_store_14 : in std_logic_vector(1 downto 0);
+pxcache_store_15 : in std_logic_vector(1 downto 0);
+pxcache_store_10 : in std_logic_vector(1 downto 0);
+pxcache_store_11 : in std_logic_vector(1 downto 0);
+pxcache_store_6 : in std_logic_vector(1 downto 0);
+pxcache_store_7 : in std_logic_vector(1 downto 0);
+pxcache_store_0 : in std_logic_vector(1 downto 0);
+pxcache_store_1 : in std_logic_vector(1 downto 0);
+pxcache_store_3 : in std_logic_vector(1 downto 0);
+pxcache_store_2 : in std_logic_vector(1 downto 0);
+dbb_bus_c_6 :  in std_logic;
+dbb_bus_c_0 :  in std_logic;
+dbb_bus_c_5 :  in std_logic;
+dbb_bus_c_12 :  in std_logic;
+dbb_bus_c_14 :  in std_logic;
+dbb_bus_c_11 :  in std_logic;
+pxcache_pixnum : out std_logic_vector(3 downto 1);
+state_0 : in std_logic_vector(1 downto 0);
+state_3 : out std_logic_vector(1 downto 1);
+state_d : in std_logic_vector(1 downto 1);
+vdin_c : out std_logic_vector(15 downto 0);
+pxcache_store_buf_3 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_2 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_1 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_0 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_15 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_14 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_13 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_12 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_11 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_10 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_9 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_8 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_7 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_6 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_5 : in std_logic_vector(1 downto 0);
+vdout_c : in std_logic_vector(15 downto 0);
+pxcache_store_buf_4 : in std_logic_vector(1 downto 0);
+vaddr_c : out std_logic_vector(7 downto 0);
+prev_vram_word : in std_logic_vector(7 downto 0);
+un4_curr_vram_word :  in std_logic;
+pxcache_pixopin_0_sqmuxa :  out std_logic;
+reset_idle_count2 :  out std_logic;
+reset_c :  in std_logic;
+un6_reset_n :  out std_logic;
+un1_vram_done_n :  out std_logic;
+N_7_n :  in std_logic;
+pxcache_pw :  out std_logic;
+un1_dbb_bus_3 :  out std_logic;
+pxcache_wen_all_1 :  out std_logic;
+N_173_i :  out std_logic;
+idle_counter_c1_n :  out std_logic;
+y_18 :  in std_logic;
+idle_counter_c4 :  out std_logic;
+idle_counter_c5_n :  out std_logic;
+N_15_mux :  in std_logic;
+reset_c_4 :  in std_logic;
+pxcache_wen_all_1_0 :  out std_logic;
+pxcache_stash_0 :  out std_logic;
+N_161_0 :  in std_logic;
+idle_counter_n6 :  out std_logic;
+idle_counter_n2 :  out std_logic;
+pxcache_stash :  out std_logic;
+rcb_finish_c :  out std_logic;
+pxcache_wen_all :  out std_logic;
+vwrite_c :  out std_logic;
+ram_fsm_1_VCC :  in std_logic;
+clk_c :  in std_logic;
+reset_c_0 :  in std_logic;
+ram_fsm_1_GND :  in std_logic);
+end ram_fsm_1;
+
+architecture beh of ram_fsm_1 is
+signal DATA_MERGED : std_logic_vector(15 downto 0);
+signal STATE : std_logic_vector(1 downto 0);
+signal VRAM_DONE : std_logic ;
+signal VRAM_REALLY_DONE : std_logic ;
+signal PXCACHE_WEN_ALL_42 : std_logic ;
+signal VWRITE_C_43 : std_logic ;
+signal GND : std_logic ;
+signal VCC : std_logic ;
+component dfm7b
+port(
+d0 :  in std_logic;
+d1 :  in std_logic;
+d2 :  in std_logic;
+d3 :  in std_logic;
+s10 :  in std_logic;
+s11 :  in std_logic;
+s0 :  in std_logic;
+clk :  in std_logic;
+clr :  in std_logic;
+q :  out std_logic  );
+end component;
+component dfm7a
+port(
+d0 :  in std_logic;
+d1 :  in std_logic;
+d2 :  in std_logic;
+d3 :  in std_logic;
+s10 :  in std_logic;
+s11 :  in std_logic;
+s0 :  in std_logic;
+clk :  in std_logic;
+clr :  in std_logic;
+q :  out std_logic  );
+end component;
+component df1b
+port(
+d :  in std_logic;
+clk :  in std_logic;
+q :  out std_logic  );
+end component;
+component \ram_fsm_cell_state_0_3__h_1\
+port(
+state_d : in std_logic_vector(1 downto 1);
+state_3 : out std_logic_vector(1 downto 1);
+state_0 : in std_logic_vector(1 downto 0);
+state : out std_logic_vector(1 downto 0);
+pxcache_pixnum : out std_logic_vector(3 downto 1);
+dbb_bus_c_11 :  in std_logic;
+dbb_bus_c_14 :  in std_logic;
+dbb_bus_c_12 :  in std_logic;
+dbb_bus_c_5 :  in std_logic;
+dbb_bus_c_0 :  in std_logic;
+dbb_bus_c_6 :  in std_logic;
+pxcache_store_2 : in std_logic_vector(1 downto 0);
+pxcache_store_3 : in std_logic_vector(1 downto 0);
+pxcache_store_1 : in std_logic_vector(1 downto 0);
+pxcache_store_0 : in std_logic_vector(1 downto 0);
+pxcache_store_7 : in std_logic_vector(1 downto 0);
+pxcache_store_6 : in std_logic_vector(1 downto 0);
+pxcache_store_11 : in std_logic_vector(1 downto 0);
+pxcache_store_10 : in std_logic_vector(1 downto 0);
+pxcache_store_15 : in std_logic_vector(1 downto 0);
+pxcache_store_14 : in std_logic_vector(1 downto 0);
+pxcache_store_5 : in std_logic_vector(1 downto 0);
+pxcache_store_4 : in std_logic_vector(1 downto 0);
+pxcache_store_9 : in std_logic_vector(1 downto 0);
+pxcache_store_8 : in std_logic_vector(1 downto 0);
+pxcache_store_13 : in std_logic_vector(1 downto 0);
+pxcache_store_12 : in std_logic_vector(1 downto 0);
+prev_state : in std_logic_vector(1 downto 0);
+idle_counter : in std_logic_vector(7 downto 0);
+rcb_finish_c :  out std_logic;
+vram_really_done :  in std_logic;
+pxcache_stash :  out std_logic;
+idle_counter_n2 :  out std_logic;
+idle_counter_n6 :  out std_logic;
+clk_c :  in std_logic;
+N_161_0 :  in std_logic;
+reset_c_0 :  in std_logic;
+pxcache_stash_0 :  out std_logic;
+\ram_fsm_cell_state_0_3__h_1_VCC\ :  in std_logic;
+\ram_fsm_cell_state_0_3__h_1_GND\ :  in std_logic;
+pxcache_wen_all_1_0 :  out std_logic;
+reset_c_4 :  in std_logic;
+N_15_mux :  in std_logic;
+idle_counter_c5_n :  out std_logic;
+idle_counter_c4 :  out std_logic;
+y_18 :  in std_logic;
+idle_counter_c1_n :  out std_logic;
+pxcache_wen_all :  out std_logic;
+N_173_i :  out std_logic;
+pxcache_wen_all_1 :  out std_logic;
+un1_dbb_bus_3 :  out std_logic;
+vwrite_c :  out std_logic;
+pxcache_pw :  out std_logic;
+N_7_n :  in std_logic;
+un1_vram_done_n :  out std_logic;
+vram_done :  in std_logic;
+un6_reset_n :  out std_logic;
+reset_c :  in std_logic;
+reset_idle_count2 :  out std_logic;
+pxcache_pixopin_0_sqmuxa :  out std_logic;
+un4_curr_vram_word :  in std_logic  );
+end component;
+begin
+\ADDR_DEL[2]\: dfm7b port map (
+d0 => prev_vram_word(2),
+d1 => ram_fsm_1_GND,
+d2 => ram_fsm_1_GND,
+d3 => ram_fsm_1_GND,
+s10 => ram_fsm_1_GND,
+s11 => ram_fsm_1_GND,
+s0 => reset_c_0,
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => vaddr_c(2));
+\ADDR_DEL[3]\: dfm7b port map (
+d0 => prev_vram_word(3),
+d1 => ram_fsm_1_GND,
+d2 => ram_fsm_1_GND,
+d3 => ram_fsm_1_GND,
+s10 => ram_fsm_1_GND,
+s11 => ram_fsm_1_GND,
+s0 => reset_c_0,
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => vaddr_c(3));
+\ADDR_DEL[4]\: dfm7b port map (
+d0 => prev_vram_word(4),
+d1 => ram_fsm_1_GND,
+d2 => ram_fsm_1_GND,
+d3 => ram_fsm_1_GND,
+s10 => ram_fsm_1_GND,
+s11 => ram_fsm_1_GND,
+s0 => reset_c_0,
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => vaddr_c(4));
+\ADDR_DEL[5]\: dfm7b port map (
+d0 => prev_vram_word(5),
+d1 => ram_fsm_1_GND,
+d2 => ram_fsm_1_GND,
+d3 => ram_fsm_1_GND,
+s10 => ram_fsm_1_GND,
+s11 => ram_fsm_1_GND,
+s0 => reset_c_0,
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => vaddr_c(5));
+\ADDR_DEL[6]\: dfm7b port map (
+d0 => prev_vram_word(6),
+d1 => ram_fsm_1_GND,
+d2 => ram_fsm_1_GND,
+d3 => ram_fsm_1_GND,
+s10 => ram_fsm_1_GND,
+s11 => ram_fsm_1_GND,
+s0 => reset_c_0,
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => vaddr_c(6));
+\ADDR_DEL[7]\: dfm7b port map (
+d0 => prev_vram_word(7),
+d1 => ram_fsm_1_GND,
+d2 => ram_fsm_1_GND,
+d3 => ram_fsm_1_GND,
+s10 => ram_fsm_1_GND,
+s11 => ram_fsm_1_GND,
+s0 => reset_c_0,
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => vaddr_c(7));
+\ADDR_DEL[0]\: dfm7b port map (
+d0 => prev_vram_word(0),
+d1 => ram_fsm_1_GND,
+d2 => ram_fsm_1_GND,
+d3 => ram_fsm_1_GND,
+s10 => ram_fsm_1_GND,
+s11 => ram_fsm_1_GND,
+s0 => reset_c_0,
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => vaddr_c(0));
+\ADDR_DEL[1]\: dfm7b port map (
+d0 => prev_vram_word(1),
+d1 => ram_fsm_1_GND,
+d2 => ram_fsm_1_GND,
+d3 => ram_fsm_1_GND,
+s10 => ram_fsm_1_GND,
+s11 => ram_fsm_1_GND,
+s0 => reset_c_0,
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => vaddr_c(1));
+\DATA_MERGED[4]_Z241\: dfm7a port map (
+d0 => pxcache_store_buf_4(1),
+d1 => pxcache_store_buf_4(1),
+d2 => ram_fsm_1_VCC,
+d3 => ram_fsm_1_GND,
+s10 => vdout_c(4),
+s11 => ram_fsm_1_GND,
+s0 => pxcache_store_buf_4(0),
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => DATA_MERGED(4));
+\DATA_MERGED[5]_Z242\: dfm7a port map (
+d0 => pxcache_store_buf_5(1),
+d1 => pxcache_store_buf_5(1),
+d2 => ram_fsm_1_VCC,
+d3 => ram_fsm_1_GND,
+s10 => vdout_c(5),
+s11 => ram_fsm_1_GND,
+s0 => pxcache_store_buf_5(0),
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => DATA_MERGED(5));
+\DATA_MERGED[6]_Z243\: dfm7a port map (
+d0 => pxcache_store_buf_6(1),
+d1 => pxcache_store_buf_6(1),
+d2 => ram_fsm_1_VCC,
+d3 => ram_fsm_1_GND,
+s10 => vdout_c(6),
+s11 => ram_fsm_1_GND,
+s0 => pxcache_store_buf_6(0),
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => DATA_MERGED(6));
+\DATA_MERGED[7]_Z244\: dfm7a port map (
+d0 => pxcache_store_buf_7(1),
+d1 => pxcache_store_buf_7(1),
+d2 => ram_fsm_1_VCC,
+d3 => ram_fsm_1_GND,
+s10 => vdout_c(7),
+s11 => ram_fsm_1_GND,
+s0 => pxcache_store_buf_7(0),
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => DATA_MERGED(7));
+\DATA_MERGED[8]_Z245\: dfm7a port map (
+d0 => pxcache_store_buf_8(1),
+d1 => pxcache_store_buf_8(1),
+d2 => ram_fsm_1_VCC,
+d3 => ram_fsm_1_GND,
+s10 => vdout_c(8),
+s11 => ram_fsm_1_GND,
+s0 => pxcache_store_buf_8(0),
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => DATA_MERGED(8));
+\DATA_MERGED[9]_Z246\: dfm7a port map (
+d0 => pxcache_store_buf_9(1),
+d1 => pxcache_store_buf_9(1),
+d2 => ram_fsm_1_VCC,
+d3 => ram_fsm_1_GND,
+s10 => vdout_c(9),
+s11 => ram_fsm_1_GND,
+s0 => pxcache_store_buf_9(0),
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => DATA_MERGED(9));
+\DATA_MERGED[10]_Z247\: dfm7a port map (
+d0 => pxcache_store_buf_10(1),
+d1 => pxcache_store_buf_10(1),
+d2 => ram_fsm_1_VCC,
+d3 => ram_fsm_1_GND,
+s10 => vdout_c(10),
+s11 => ram_fsm_1_GND,
+s0 => pxcache_store_buf_10(0),
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => DATA_MERGED(10));
+\DATA_MERGED[11]_Z248\: dfm7a port map (
+d0 => pxcache_store_buf_11(1),
+d1 => pxcache_store_buf_11(1),
+d2 => ram_fsm_1_VCC,
+d3 => ram_fsm_1_GND,
+s10 => vdout_c(11),
+s11 => ram_fsm_1_GND,
+s0 => pxcache_store_buf_11(0),
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => DATA_MERGED(11));
+\DATA_MERGED[12]_Z249\: dfm7a port map (
+d0 => pxcache_store_buf_12(1),
+d1 => pxcache_store_buf_12(1),
+d2 => ram_fsm_1_VCC,
+d3 => ram_fsm_1_GND,
+s10 => vdout_c(12),
+s11 => ram_fsm_1_GND,
+s0 => pxcache_store_buf_12(0),
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => DATA_MERGED(12));
+\DATA_MERGED[13]_Z250\: dfm7a port map (
+d0 => pxcache_store_buf_13(1),
+d1 => pxcache_store_buf_13(1),
+d2 => ram_fsm_1_VCC,
+d3 => ram_fsm_1_GND,
+s10 => vdout_c(13),
+s11 => ram_fsm_1_GND,
+s0 => pxcache_store_buf_13(0),
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => DATA_MERGED(13));
+\DATA_MERGED[14]_Z251\: dfm7a port map (
+d0 => pxcache_store_buf_14(1),
+d1 => pxcache_store_buf_14(1),
+d2 => ram_fsm_1_VCC,
+d3 => ram_fsm_1_GND,
+s10 => vdout_c(14),
+s11 => ram_fsm_1_GND,
+s0 => pxcache_store_buf_14(0),
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => DATA_MERGED(14));
+\DATA_MERGED[15]_Z252\: dfm7a port map (
+d0 => pxcache_store_buf_15(1),
+d1 => pxcache_store_buf_15(1),
+d2 => ram_fsm_1_VCC,
+d3 => ram_fsm_1_GND,
+s10 => vdout_c(15),
+s11 => ram_fsm_1_GND,
+s0 => pxcache_store_buf_15(0),
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => DATA_MERGED(15));
+\DATA_MERGED[0]_Z253\: dfm7a port map (
+d0 => pxcache_store_buf_0(1),
+d1 => pxcache_store_buf_0(1),
+d2 => ram_fsm_1_VCC,
+d3 => ram_fsm_1_GND,
+s10 => vdout_c(0),
+s11 => ram_fsm_1_GND,
+s0 => pxcache_store_buf_0(0),
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => DATA_MERGED(0));
+\DATA_MERGED[1]_Z254\: dfm7a port map (
+d0 => pxcache_store_buf_1(1),
+d1 => pxcache_store_buf_1(1),
+d2 => ram_fsm_1_VCC,
+d3 => ram_fsm_1_GND,
+s10 => vdout_c(1),
+s11 => ram_fsm_1_GND,
+s0 => pxcache_store_buf_1(0),
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => DATA_MERGED(1));
+\DATA_MERGED[2]_Z255\: dfm7a port map (
+d0 => pxcache_store_buf_2(1),
+d1 => pxcache_store_buf_2(1),
+d2 => ram_fsm_1_VCC,
+d3 => ram_fsm_1_GND,
+s10 => vdout_c(2),
+s11 => ram_fsm_1_GND,
+s0 => pxcache_store_buf_2(0),
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => DATA_MERGED(2));
+\DATA_MERGED[3]_Z256\: dfm7a port map (
+d0 => pxcache_store_buf_3(1),
+d1 => pxcache_store_buf_3(1),
+d2 => ram_fsm_1_VCC,
+d3 => ram_fsm_1_GND,
+s10 => vdout_c(3),
+s11 => ram_fsm_1_GND,
+s0 => pxcache_store_buf_3(0),
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => DATA_MERGED(3));
+DONE: dfm7a port map (
+d0 => ram_fsm_1_VCC,
+d1 => ram_fsm_1_GND,
+d2 => ram_fsm_1_GND,
+d3 => ram_fsm_1_VCC,
+s10 => STATE(1),
+s11 => ram_fsm_1_GND,
+s0 => STATE(0),
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => VRAM_DONE);
+REALLY_DONE: dfm7a port map (
+d0 => VWRITE_C_43,
+d1 => ram_fsm_1_GND,
+d2 => STATE(0),
+d3 => ram_fsm_1_GND,
+s10 => STATE(1),
+s11 => ram_fsm_1_GND,
+s0 => PXCACHE_WEN_ALL_42,
+clk => clk_c,
+clr => ram_fsm_1_VCC,
+q => VRAM_REALLY_DONE);
+\DATA_DEL[2]\: df1b port map (
+d => DATA_MERGED(2),
+clk => clk_c,
+q => vdin_c(2));
+\DATA_DEL[1]\: df1b port map (
+d => DATA_MERGED(1),
+clk => clk_c,
+q => vdin_c(1));
+\DATA_DEL[0]\: df1b port map (
+d => DATA_MERGED(0),
+clk => clk_c,
+q => vdin_c(0));
+\DATA_DEL[15]\: df1b port map (
+d => DATA_MERGED(15),
+clk => clk_c,
+q => vdin_c(15));
+\DATA_DEL[14]\: df1b port map (
+d => DATA_MERGED(14),
+clk => clk_c,
+q => vdin_c(14));
+\DATA_DEL[13]\: df1b port map (
+d => DATA_MERGED(13),
+clk => clk_c,
+q => vdin_c(13));
+\DATA_DEL[12]\: df1b port map (
+d => DATA_MERGED(12),
+clk => clk_c,
+q => vdin_c(12));
+\DATA_DEL[11]\: df1b port map (
+d => DATA_MERGED(11),
+clk => clk_c,
+q => vdin_c(11));
+\DATA_DEL[10]\: df1b port map (
+d => DATA_MERGED(10),
+clk => clk_c,
+q => vdin_c(10));
+\DATA_DEL[9]\: df1b port map (
+d => DATA_MERGED(9),
+clk => clk_c,
+q => vdin_c(9));
+\DATA_DEL[8]\: df1b port map (
+d => DATA_MERGED(8),
+clk => clk_c,
+q => vdin_c(8));
+\DATA_DEL[7]\: df1b port map (
+d => DATA_MERGED(7),
+clk => clk_c,
+q => vdin_c(7));
+\DATA_DEL[6]\: df1b port map (
+d => DATA_MERGED(6),
+clk => clk_c,
+q => vdin_c(6));
+\DATA_DEL[5]\: df1b port map (
+d => DATA_MERGED(5),
+clk => clk_c,
+q => vdin_c(5));
+\DATA_DEL[4]\: df1b port map (
+d => DATA_MERGED(4),
+clk => clk_c,
+q => vdin_c(4));
+\DATA_DEL[3]\: df1b port map (
+d => DATA_MERGED(3),
+clk => clk_c,
+q => vdin_c(3));
+STATE_H: \ram_fsm_cell_state_0_3__h_1\ port map (
+state_d(1) => state_d(1),
+state_3(1) => state_3(1),
+state_0(1 downto 0) => state_0(1 downto 0),
+state(1 downto 0) => STATE(1 downto 0),
+pxcache_pixnum(3 downto 1) => pxcache_pixnum(3 downto 1),
+dbb_bus_c_11 => dbb_bus_c_11,
+dbb_bus_c_14 => dbb_bus_c_14,
+dbb_bus_c_12 => dbb_bus_c_12,
+dbb_bus_c_5 => dbb_bus_c_5,
+dbb_bus_c_0 => dbb_bus_c_0,
+dbb_bus_c_6 => dbb_bus_c_6,
+pxcache_store_2(1 downto 0) => pxcache_store_2(1 downto 0),
+pxcache_store_3(1 downto 0) => pxcache_store_3(1 downto 0),
+pxcache_store_1(1 downto 0) => pxcache_store_1(1 downto 0),
+pxcache_store_0(1 downto 0) => pxcache_store_0(1 downto 0),
+pxcache_store_7(1 downto 0) => pxcache_store_7(1 downto 0),
+pxcache_store_6(1 downto 0) => pxcache_store_6(1 downto 0),
+pxcache_store_11(1 downto 0) => pxcache_store_11(1 downto 0),
+pxcache_store_10(1 downto 0) => pxcache_store_10(1 downto 0),
+pxcache_store_15(1 downto 0) => pxcache_store_15(1 downto 0),
+pxcache_store_14(1 downto 0) => pxcache_store_14(1 downto 0),
+pxcache_store_5(1 downto 0) => pxcache_store_5(1 downto 0),
+pxcache_store_4(1 downto 0) => pxcache_store_4(1 downto 0),
+pxcache_store_9(1 downto 0) => pxcache_store_9(1 downto 0),
+pxcache_store_8(1 downto 0) => pxcache_store_8(1 downto 0),
+pxcache_store_13(1 downto 0) => pxcache_store_13(1 downto 0),
+pxcache_store_12(1 downto 0) => pxcache_store_12(1 downto 0),
+prev_state(1 downto 0) => prev_state(1 downto 0),
+idle_counter(7 downto 0) => idle_counter(7 downto 0),
+rcb_finish_c => rcb_finish_c,
+vram_really_done => VRAM_REALLY_DONE,
+pxcache_stash => pxcache_stash,
+idle_counter_n2 => idle_counter_n2,
+idle_counter_n6 => idle_counter_n6,
+clk_c => clk_c,
+N_161_0 => N_161_0,
+reset_c_0 => reset_c_0,
+pxcache_stash_0 => pxcache_stash_0,
+\ram_fsm_cell_state_0_3__h_1_VCC\ => ram_fsm_1_VCC,
+\ram_fsm_cell_state_0_3__h_1_GND\ => ram_fsm_1_GND,
+pxcache_wen_all_1_0 => pxcache_wen_all_1_0,
+reset_c_4 => reset_c_4,
+N_15_mux => N_15_mux,
+idle_counter_c5_n => idle_counter_c5_n,
+idle_counter_c4 => idle_counter_c4,
+y_18 => y_18,
+idle_counter_c1_n => idle_counter_c1_n,
+pxcache_wen_all => PXCACHE_WEN_ALL_42,
+N_173_i => N_173_i,
+pxcache_wen_all_1 => pxcache_wen_all_1,
+un1_dbb_bus_3 => un1_dbb_bus_3,
+vwrite_c => VWRITE_C_43,
+pxcache_pw => pxcache_pw,
+N_7_n => N_7_n,
+un1_vram_done_n => un1_vram_done_n,
+vram_done => VRAM_DONE,
+un6_reset_n => un6_reset_n,
+reset_c => reset_c,
+reset_idle_count2 => reset_idle_count2,
+pxcache_pixopin_0_sqmuxa => pxcache_pixopin_0_sqmuxa,
+un4_curr_vram_word => un4_curr_vram_word);
+GND <= '0';
+VCC <= '1';
+pxcache_wen_all <= PXCACHE_WEN_ALL_42;
+vwrite_c <= VWRITE_C_43;
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity rcb is
+port(
+clk :  in std_logic;
+reset :  in std_logic;
+dbb_bus : in std_logic_vector(15 downto 0);
+dbb_delaycmd :  out std_logic;
+dbb_rcbclear :  out std_logic;
+vdout : in std_logic_vector(15 downto 0);
+vdin : out std_logic_vector(15 downto 0);
+vwrite :  out std_logic;
+vaddr : out std_logic_vector(7 downto 0);
+rcb_finish :  out std_logic);
+end rcb;
+
+architecture beh of rcb is
+signal CURR_VRAM_WORD : std_logic_vector(7 downto 0);
+signal DBB_BUS_C : std_logic_vector(15 downto 0);
+signal IDLE_COUNTER : std_logic_vector(7 downto 0);
+signal \PREV_DBB_BUS.X\ : std_logic_vector(5 downto 2);
+signal \PREV_DBB_BUS.Y\ : std_logic_vector(5 downto 2);
+signal PREV_STATE : std_logic_vector(1 downto 0);
+signal PREV_VRAM_WORD : std_logic_vector(7 downto 0);
+signal PXCACHE_PIXNUM : std_logic_vector(3 downto 1);
+signal PXCACHE_STORE_0 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_1 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_2 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_3 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_4 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_5 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_6 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_7 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_8 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_9 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_10 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_11 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_12 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_13 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_14 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_15 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_BUF_0 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_BUF_1 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_BUF_2 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_BUF_3 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_BUF_4 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_BUF_5 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_BUF_6 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_BUF_7 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_BUF_8 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_BUF_9 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_BUF_10 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_BUF_11 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_BUF_12 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_BUF_13 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_BUF_14 : std_logic_vector(1 downto 0);
+signal PXCACHE_STORE_BUF_15 : std_logic_vector(1 downto 0);
+signal STATE_3 : std_logic_vector(1 to 1);
+signal STATE_D : std_logic_vector(1 to 1);
+signal \STATE_H.STATE\ : std_logic_vector(1 downto 0);
+signal VADDR_C : std_logic_vector(7 downto 0);
+signal VDIN_C : std_logic_vector(15 downto 0);
+signal VDOUT_C : std_logic_vector(15 downto 0);
+signal NN_1 : std_logic ;
+signal GND_0 : std_logic ;
+signal N_145_2 : std_logic ;
+signal N_173_I : std_logic ;
+signal N_185_N : std_logic ;
+signal N_187_N : std_logic ;
+signal N_189_N : std_logic ;
+signal NN_2 : std_logic ;
+signal VCC_0 : std_logic ;
+signal CLK_C : std_logic ;
+signal \FSM_CLOCKED_PROCESS.UN6_RESET_N\ : std_logic ;
+signal IDLE_COUNTER_C1_N : std_logic ;
+signal IDLE_COUNTER_C4 : std_logic ;
+signal IDLE_COUNTER_C5_N : std_logic ;
+signal IDLE_COUNTER_N2 : std_logic ;
+signal IDLE_COUNTER_N6 : std_logic ;
+signal \NEXT_STATE_1_0_.N_7_N\ : std_logic ;
+signal \NEXT_STATE_1_0_.N_8\ : std_logic ;
+signal \NEXT_STATE_1_0_.N_9_N\ : std_logic ;
+signal \PX_CACHE.N_161_0\ : std_logic ;
+signal PXCACHE_PIXOPIN_0_SQMUXA : std_logic ;
+signal PXCACHE_PW : std_logic ;
+signal PXCACHE_STASH : std_logic ;
+signal PXCACHE_STASH_0 : std_logic ;
+signal PXCACHE_WEN_ALL : std_logic ;
+signal PXCACHE_WEN_ALL_1 : std_logic ;
+signal PXCACHE_WEN_ALL_1_0 : std_logic ;
+signal RCB_FINISH_C : std_logic ;
+signal RESET_C : std_logic ;
+signal RESET_C_0 : std_logic ;
+signal RESET_C_1 : std_logic ;
+signal RESET_C_2 : std_logic ;
+signal RESET_C_3 : std_logic ;
+signal RESET_C_4 : std_logic ;
+signal \STATE_H.STATE_NS_1_0_.N_15_MUX\ : std_logic ;
+signal \STATE_TRANSITION.RESET_IDLE_COUNT2\ : std_logic ;
+signal \STATE_TRANSITION.UN1_DBB_BUS_3\ : std_logic ;
+signal \STATE_TRANSITION.UN1_VRAM_DONE_N\ : std_logic ;
+signal \STATE_TRANSITION.UN4_CURR_VRAM_WORD\ : std_logic ;
+signal \STATE_TRANSITION.UN4_CURR_VRAM_WORD_1\ : std_logic ;
+signal \STATE_TRANSITION.UN4_CURR_VRAM_WORD_2\ : std_logic ;
+signal \STATE_TRANSITION.UN4_CURR_VRAM_WORD_3\ : std_logic ;
+signal VWRITE_C : std_logic ;
+signal Y_16 : std_logic ;
+signal Y_17 : std_logic ;
+signal Y_18 : std_logic ;
+component gnd
+port(
+y :  out std_logic  );
+end component;
+component xnor2
+port(
+a :  in std_logic;
+b :  in std_logic;
+y :  out std_logic  );
+end component;
+component xor2
+port(
+a :  in std_logic;
+b :  in std_logic;
+y :  out std_logic  );
+end component;
+component vcc
+port(
+y :  out std_logic  );
+end component;
+component clkbuf
+port(
+pad :  in std_logic;
+y :  out std_logic  );
+end component;
+component dfm7a
+port(
+d0 :  in std_logic;
+d1 :  in std_logic;
+d2 :  in std_logic;
+d3 :  in std_logic;
+s10 :  in std_logic;
+s11 :  in std_logic;
+s0 :  in std_logic;
+clk :  in std_logic;
+clr :  in std_logic;
+q :  out std_logic  );
+end component;
+component inbuf
+port(
+pad :  in std_logic;
+y :  out std_logic  );
+end component;
+component outbuf
+port(
+d :  in std_logic;
+pad :  out std_logic  );
+end component;
+component nand4
+port(
+a :  in std_logic;
+b :  in std_logic;
+c :  in std_logic;
+d :  in std_logic;
+y :  out std_logic  );
+end component;
+component and2a
+port(
+a :  in std_logic;
+b :  in std_logic;
+y :  out std_logic  );
+end component;
+component cm8
+port(
+d0 :  in std_logic;
+d1 :  in std_logic;
+d2 :  in std_logic;
+d3 :  in std_logic;
+s00 :  in std_logic;
+s01 :  in std_logic;
+s10 :  in std_logic;
+s11 :  in std_logic;
+y :  out std_logic  );
+end component;
+component and2
+port(
+a :  in std_logic;
+b :  in std_logic;
+y :  out std_logic  );
+end component;
+component df1
+port(
+d :  in std_logic;
+clk :  in std_logic;
+q :  out std_logic  );
+end component;
+component pix_word_cache_1
+port(
+prev_state : in std_logic_vector(1 downto 1);
+pxcache_store_14 : out std_logic_vector(1 downto 0);
+pxcache_store_13 : out std_logic_vector(1 downto 0);
+pxcache_store_12 : out std_logic_vector(1 downto 0);
+pxcache_store_11 : out std_logic_vector(1 downto 0);
+pxcache_store_10 : out std_logic_vector(1 downto 0);
+pxcache_store_9 : out std_logic_vector(1 downto 0);
+pxcache_store_8 : out std_logic_vector(1 downto 0);
+pxcache_store_7 : out std_logic_vector(1 downto 0);
+pxcache_store_6 : out std_logic_vector(1 downto 0);
+pxcache_store_5 : out std_logic_vector(1 downto 0);
+pxcache_store_4 : out std_logic_vector(1 downto 0);
+pxcache_store_15 : out std_logic_vector(1 downto 0);
+pxcache_store_3 : out std_logic_vector(1 downto 0);
+pxcache_store_2 : out std_logic_vector(1 downto 0);
+pxcache_store_1 : out std_logic_vector(1 downto 0);
+pxcache_store_0 : out std_logic_vector(1 downto 0);
+dbb_bus_c_6 :  in std_logic;
+dbb_bus_c_12 :  in std_logic;
+dbb_bus_c_13 :  in std_logic;
+dbb_bus_c_1 :  in std_logic;
+dbb_bus_c_0 :  in std_logic;
+dbb_bus_c_7 :  in std_logic;
+pxcache_pixnum : in std_logic_vector(3 downto 1);
+N_173_i :  in std_logic;
+pxcache_pixopin_0_sqmuxa :  in std_logic;
+un1_dbb_bus_3 :  in std_logic;
+reset_c :  in std_logic;
+pix_word_cache_1_VCC :  in std_logic;
+clk_c :  in std_logic;
+pix_word_cache_1_GND :  in std_logic;
+N_161_0 :  out std_logic;
+reset_c_0 :  in std_logic;
+reset_c_4 :  in std_logic;
+pxcache_wen_all :  in std_logic;
+pxcache_pw :  in std_logic  );
+end component;
+component ram_fsm_1
+port(
+idle_counter : in std_logic_vector(7 downto 0);
+prev_state : in std_logic_vector(1 downto 0);
+pxcache_store_12 : in std_logic_vector(1 downto 0);
+pxcache_store_13 : in std_logic_vector(1 downto 0);
+pxcache_store_8 : in std_logic_vector(1 downto 0);
+pxcache_store_9 : in std_logic_vector(1 downto 0);
+pxcache_store_4 : in std_logic_vector(1 downto 0);
+pxcache_store_5 : in std_logic_vector(1 downto 0);
+pxcache_store_14 : in std_logic_vector(1 downto 0);
+pxcache_store_15 : in std_logic_vector(1 downto 0);
+pxcache_store_10 : in std_logic_vector(1 downto 0);
+pxcache_store_11 : in std_logic_vector(1 downto 0);
+pxcache_store_6 : in std_logic_vector(1 downto 0);
+pxcache_store_7 : in std_logic_vector(1 downto 0);
+pxcache_store_0 : in std_logic_vector(1 downto 0);
+pxcache_store_1 : in std_logic_vector(1 downto 0);
+pxcache_store_3 : in std_logic_vector(1 downto 0);
+pxcache_store_2 : in std_logic_vector(1 downto 0);
+dbb_bus_c_6 :  in std_logic;
+dbb_bus_c_0 :  in std_logic;
+dbb_bus_c_5 :  in std_logic;
+dbb_bus_c_12 :  in std_logic;
+dbb_bus_c_14 :  in std_logic;
+dbb_bus_c_11 :  in std_logic;
+pxcache_pixnum : out std_logic_vector(3 downto 1);
+state_0 : in std_logic_vector(1 downto 0);
+state_3 : out std_logic_vector(1 downto 1);
+state_d : in std_logic_vector(1 downto 1);
+vdin_c : out std_logic_vector(15 downto 0);
+pxcache_store_buf_3 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_2 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_1 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_0 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_15 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_14 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_13 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_12 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_11 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_10 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_9 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_8 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_7 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_6 : in std_logic_vector(1 downto 0);
+pxcache_store_buf_5 : in std_logic_vector(1 downto 0);
+vdout_c : in std_logic_vector(15 downto 0);
+pxcache_store_buf_4 : in std_logic_vector(1 downto 0);
+vaddr_c : out std_logic_vector(7 downto 0);
+prev_vram_word : in std_logic_vector(7 downto 0);
+un4_curr_vram_word :  in std_logic;
+pxcache_pixopin_0_sqmuxa :  out std_logic;
+reset_idle_count2 :  out std_logic;
+reset_c :  in std_logic;
+un6_reset_n :  out std_logic;
+un1_vram_done_n :  out std_logic;
+N_7_n :  in std_logic;
+pxcache_pw :  out std_logic;
+un1_dbb_bus_3 :  out std_logic;
+pxcache_wen_all_1 :  out std_logic;
+N_173_i :  out std_logic;
+idle_counter_c1_n :  out std_logic;
+y_18 :  in std_logic;
+idle_counter_c4 :  out std_logic;
+idle_counter_c5_n :  out std_logic;
+N_15_mux :  in std_logic;
+reset_c_4 :  in std_logic;
+pxcache_wen_all_1_0 :  out std_logic;
+pxcache_stash_0 :  out std_logic;
+N_161_0 :  in std_logic;
+idle_counter_n6 :  out std_logic;
+idle_counter_n2 :  out std_logic;
+pxcache_stash :  out std_logic;
+rcb_finish_c :  out std_logic;
+pxcache_wen_all :  out std_logic;
+vwrite_c :  out std_logic;
+ram_fsm_1_VCC :  in std_logic;
+clk_c :  in std_logic;
+reset_c_0 :  in std_logic;
+ram_fsm_1_GND :  in std_logic  );
+end component;
+component buff
+port(
+a :  in std_logic;
+y :  out std_logic  );
+end component;
+component \rcb_cell_state_0_3__h_1\
+port(
+state_d : out std_logic_vector(1 downto 1);
+state : out std_logic_vector(1 downto 0);
+N_15_mux :  in std_logic;
+reset_c_1 :  in std_logic;
+clk_c :  in std_logic;
+reset_c_0 :  in std_logic;
+\rcb_cell_state_0_3__h_1_GND\ :  in std_logic;
+\rcb_cell_state_0_3__h_1_VCC\ :  in std_logic;
+N_7_n :  in std_logic  );
+end component;
+begin
+GND_0 <= '0';
+II_GND_Z320: gnd port map (
+y => NN_1);
+G_28_N: xnor2 port map (
+a => CURR_VRAM_WORD(0),
+b => DBB_BUS_C(2),
+y => N_185_N);
+G_30_N: xnor2 port map (
+a => CURR_VRAM_WORD(2),
+b => DBB_BUS_C(4),
+y => N_187_N);
+G_32_N: xnor2 port map (
+a => CURR_VRAM_WORD(4),
+b => DBB_BUS_C(8),
+y => N_189_N);
+G_34: xor2 port map (
+a => CURR_VRAM_WORD(6),
+b => DBB_BUS_C(10),
+y => Y_17);
+G_35: xor2 port map (
+a => CURR_VRAM_WORD(7),
+b => DBB_BUS_C(11),
+y => Y_16);
+VCC_0 <= '1';
+II_VCC_Z327: vcc port map (
+y => NN_2);
+CLK_PAD: clkbuf port map (
+pad => clk,
+y => CLK_C);
+\CURR_VRAM_WORD[0]_Z329\: dfm7a port map (
+d0 => CURR_VRAM_WORD(0),
+d1 => \PREV_DBB_BUS.X\(2),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_2,
+s11 => NN_1,
+s0 => PXCACHE_WEN_ALL_1,
+clk => CLK_C,
+clr => NN_2,
+q => CURR_VRAM_WORD(0));
+\CURR_VRAM_WORD[1]_Z330\: dfm7a port map (
+d0 => CURR_VRAM_WORD(1),
+d1 => \PREV_DBB_BUS.X\(3),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_2,
+s11 => NN_1,
+s0 => PXCACHE_WEN_ALL_1,
+clk => CLK_C,
+clr => NN_2,
+q => CURR_VRAM_WORD(1));
+\CURR_VRAM_WORD[2]_Z331\: dfm7a port map (
+d0 => CURR_VRAM_WORD(2),
+d1 => \PREV_DBB_BUS.X\(4),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_1,
+s11 => NN_1,
+s0 => PXCACHE_WEN_ALL_1_0,
+clk => CLK_C,
+clr => NN_2,
+q => CURR_VRAM_WORD(2));
+\CURR_VRAM_WORD[3]_Z332\: dfm7a port map (
+d0 => CURR_VRAM_WORD(3),
+d1 => \PREV_DBB_BUS.X\(5),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_1,
+s11 => NN_1,
+s0 => PXCACHE_WEN_ALL_1_0,
+clk => CLK_C,
+clr => NN_2,
+q => CURR_VRAM_WORD(3));
+\CURR_VRAM_WORD[4]_Z333\: dfm7a port map (
+d0 => CURR_VRAM_WORD(4),
+d1 => \PREV_DBB_BUS.Y\(2),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_1,
+s11 => NN_1,
+s0 => PXCACHE_WEN_ALL_1_0,
+clk => CLK_C,
+clr => NN_2,
+q => CURR_VRAM_WORD(4));
+\CURR_VRAM_WORD[5]_Z334\: dfm7a port map (
+d0 => CURR_VRAM_WORD(5),
+d1 => \PREV_DBB_BUS.Y\(3),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_1,
+s11 => NN_1,
+s0 => PXCACHE_WEN_ALL_1_0,
+clk => CLK_C,
+clr => NN_2,
+q => CURR_VRAM_WORD(5));
+\CURR_VRAM_WORD[6]_Z335\: dfm7a port map (
+d0 => CURR_VRAM_WORD(6),
+d1 => \PREV_DBB_BUS.Y\(4),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_1,
+s11 => NN_1,
+s0 => PXCACHE_WEN_ALL_1_0,
+clk => CLK_C,
+clr => NN_2,
+q => CURR_VRAM_WORD(6));
+\CURR_VRAM_WORD[7]_Z336\: dfm7a port map (
+d0 => CURR_VRAM_WORD(7),
+d1 => \PREV_DBB_BUS.Y\(5),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_1,
+s11 => NN_1,
+s0 => PXCACHE_WEN_ALL_1_0,
+clk => CLK_C,
+clr => NN_2,
+q => CURR_VRAM_WORD(7));
+\DBB_BUS_PAD[0]\: inbuf port map (
+pad => dbb_bus(0),
+y => DBB_BUS_C(0));
+\DBB_BUS_PAD[1]\: inbuf port map (
+pad => dbb_bus(1),
+y => DBB_BUS_C(1));
+\DBB_BUS_PAD[2]\: inbuf port map (
+pad => dbb_bus(2),
+y => DBB_BUS_C(2));
+\DBB_BUS_PAD[3]\: inbuf port map (
+pad => dbb_bus(3),
+y => DBB_BUS_C(3));
+\DBB_BUS_PAD[4]\: inbuf port map (
+pad => dbb_bus(4),
+y => DBB_BUS_C(4));
+\DBB_BUS_PAD[5]\: inbuf port map (
+pad => dbb_bus(5),
+y => DBB_BUS_C(5));
+\DBB_BUS_PAD[6]\: inbuf port map (
+pad => dbb_bus(6),
+y => DBB_BUS_C(6));
+\DBB_BUS_PAD[7]\: inbuf port map (
+pad => dbb_bus(7),
+y => DBB_BUS_C(7));
+\DBB_BUS_PAD[8]\: inbuf port map (
+pad => dbb_bus(8),
+y => DBB_BUS_C(8));
+\DBB_BUS_PAD[9]\: inbuf port map (
+pad => dbb_bus(9),
+y => DBB_BUS_C(9));
+\DBB_BUS_PAD[10]\: inbuf port map (
+pad => dbb_bus(10),
+y => DBB_BUS_C(10));
+\DBB_BUS_PAD[11]\: inbuf port map (
+pad => dbb_bus(11),
+y => DBB_BUS_C(11));
+\DBB_BUS_PAD[12]\: inbuf port map (
+pad => dbb_bus(12),
+y => DBB_BUS_C(12));
+\DBB_BUS_PAD[13]\: inbuf port map (
+pad => dbb_bus(13),
+y => DBB_BUS_C(13));
+\DBB_BUS_PAD[14]\: inbuf port map (
+pad => dbb_bus(14),
+y => DBB_BUS_C(14));
+\DBB_BUS_PAD[15]\: inbuf port map (
+pad => dbb_bus(15),
+y => DBB_BUS_C(15));
+DBB_DELAYCMD_PAD: outbuf port map (
+d => STATE_3(1),
+pad => dbb_delaycmd);
+DBB_RCBCLEAR_PAD: outbuf port map (
+d => NN_1,
+pad => dbb_rcbclear);
+\IDLE_COUNTER[0]_Z355\: dfm7a port map (
+d0 => \FSM_CLOCKED_PROCESS.UN6_RESET_N\,
+d1 => NN_1,
+d2 => NN_1,
+d3 => NN_1,
+s10 => NN_1,
+s11 => NN_1,
+s0 => IDLE_COUNTER(0),
+clk => CLK_C,
+clr => NN_2,
+q => IDLE_COUNTER(0));
+\IDLE_COUNTER[1]_Z356\: dfm7a port map (
+d0 => NN_1,
+d1 => \FSM_CLOCKED_PROCESS.UN6_RESET_N\,
+d2 => \FSM_CLOCKED_PROCESS.UN6_RESET_N\,
+d3 => NN_1,
+s10 => IDLE_COUNTER(1),
+s11 => NN_1,
+s0 => IDLE_COUNTER(0),
+clk => CLK_C,
+clr => NN_2,
+q => IDLE_COUNTER(1));
+\IDLE_COUNTER[2]_Z357\: dfm7a port map (
+d0 => NN_1,
+d1 => \FSM_CLOCKED_PROCESS.UN6_RESET_N\,
+d2 => NN_1,
+d3 => NN_1,
+s10 => NN_1,
+s11 => NN_1,
+s0 => IDLE_COUNTER_N2,
+clk => CLK_C,
+clr => NN_2,
+q => IDLE_COUNTER(2));
+\IDLE_COUNTER[3]_Z358\: dfm7a port map (
+d0 => \FSM_CLOCKED_PROCESS.UN6_RESET_N\,
+d1 => NN_1,
+d2 => NN_1,
+d3 => \FSM_CLOCKED_PROCESS.UN6_RESET_N\,
+s10 => IDLE_COUNTER_C1_N,
+s11 => IDLE_COUNTER_N2,
+s0 => IDLE_COUNTER(3),
+clk => CLK_C,
+clr => NN_2,
+q => IDLE_COUNTER(3));
+\IDLE_COUNTER[4]_Z359\: dfm7a port map (
+d0 => \FSM_CLOCKED_PROCESS.UN6_RESET_N\,
+d1 => NN_1,
+d2 => NN_1,
+d3 => \FSM_CLOCKED_PROCESS.UN6_RESET_N\,
+s10 => IDLE_COUNTER(4),
+s11 => NN_1,
+s0 => Y_18,
+clk => CLK_C,
+clr => NN_2,
+q => IDLE_COUNTER(4));
+\IDLE_COUNTER[5]_Z360\: dfm7a port map (
+d0 => NN_1,
+d1 => \FSM_CLOCKED_PROCESS.UN6_RESET_N\,
+d2 => \FSM_CLOCKED_PROCESS.UN6_RESET_N\,
+d3 => NN_1,
+s10 => IDLE_COUNTER(5),
+s11 => NN_1,
+s0 => IDLE_COUNTER_C4,
+clk => CLK_C,
+clr => NN_2,
+q => IDLE_COUNTER(5));
+\IDLE_COUNTER[6]_Z361\: dfm7a port map (
+d0 => NN_1,
+d1 => \FSM_CLOCKED_PROCESS.UN6_RESET_N\,
+d2 => NN_1,
+d3 => NN_1,
+s10 => NN_1,
+s11 => NN_1,
+s0 => IDLE_COUNTER_N6,
+clk => CLK_C,
+clr => NN_2,
+q => IDLE_COUNTER(6));
+\IDLE_COUNTER[7]_Z362\: dfm7a port map (
+d0 => \FSM_CLOCKED_PROCESS.UN6_RESET_N\,
+d1 => NN_1,
+d2 => NN_1,
+d3 => \FSM_CLOCKED_PROCESS.UN6_RESET_N\,
+s10 => IDLE_COUNTER_C5_N,
+s11 => IDLE_COUNTER_N6,
+s0 => IDLE_COUNTER(7),
+clk => CLK_C,
+clr => NN_2,
+q => IDLE_COUNTER(7));
+IDLE_COUNTER_CA3: nand4 port map (
+a => IDLE_COUNTER(0),
+b => IDLE_COUNTER(1),
+c => IDLE_COUNTER(2),
+d => IDLE_COUNTER(3),
+y => Y_18);
+\NEXT_STATE_1_0_.M1\: and2a port map (
+a => DBB_BUS_C(14),
+b => DBB_BUS_C(15),
+y => N_145_2);
+\NEXT_STATE_1_0_.M6_N\: cm8 port map (
+d0 => \STATE_H.STATE\(0),
+d1 => NN_1,
+d2 => \STATE_H.STATE\(1),
+d3 => N_173_I,
+s00 => \STATE_TRANSITION.UN1_VRAM_DONE_N\,
+s01 => PXCACHE_WEN_ALL_1,
+s10 => N_145_2,
+s11 => \STATE_H.STATE\(1),
+y => \NEXT_STATE_1_0_.N_7_N\);
+\NEXT_STATE_1_0_.M7\: and2 port map (
+a => DBB_BUS_C(15),
+b => DBB_BUS_C(14),
+y => \NEXT_STATE_1_0_.N_8\);
+\NEXT_STATE_1_0_.M8_N\: cm8 port map (
+d0 => NN_2,
+d1 => \NEXT_STATE_1_0_.N_8\,
+d2 => NN_1,
+d3 => \NEXT_STATE_1_0_.N_8\,
+s00 => \STATE_TRANSITION.RESET_IDLE_COUNT2\,
+s01 => NN_2,
+s10 => N_145_2,
+s11 => NN_1,
+y => \NEXT_STATE_1_0_.N_9_N\);
+\NEXT_STATE_1_0_.M12\: cm8 port map (
+d0 => NN_2,
+d1 => \NEXT_STATE_1_0_.N_9_N\,
+d2 => \STATE_TRANSITION.UN4_CURR_VRAM_WORD\,
+d3 => \STATE_TRANSITION.UN1_VRAM_DONE_N\,
+s00 => \STATE_H.STATE\(0),
+s01 => NN_2,
+s10 => \STATE_H.STATE\(1),
+s11 => NN_1,
+y => \STATE_H.STATE_NS_1_0_.N_15_MUX\);
+\PREV_DBB_BUS.X[2]_Z369\: df1 port map (
+d => DBB_BUS_C(2),
+clk => CLK_C,
+q => \PREV_DBB_BUS.X\(2));
+\PREV_DBB_BUS.X[3]_Z370\: df1 port map (
+d => DBB_BUS_C(3),
+clk => CLK_C,
+q => \PREV_DBB_BUS.X\(3));
+\PREV_DBB_BUS.X[4]_Z371\: df1 port map (
+d => DBB_BUS_C(4),
+clk => CLK_C,
+q => \PREV_DBB_BUS.X\(4));
+\PREV_DBB_BUS.X[5]_Z372\: df1 port map (
+d => DBB_BUS_C(5),
+clk => CLK_C,
+q => \PREV_DBB_BUS.X\(5));
+\PREV_DBB_BUS.Y[2]_Z373\: df1 port map (
+d => DBB_BUS_C(8),
+clk => CLK_C,
+q => \PREV_DBB_BUS.Y\(2));
+\PREV_DBB_BUS.Y[3]_Z374\: df1 port map (
+d => DBB_BUS_C(9),
+clk => CLK_C,
+q => \PREV_DBB_BUS.Y\(3));
+\PREV_DBB_BUS.Y[4]_Z375\: df1 port map (
+d => DBB_BUS_C(10),
+clk => CLK_C,
+q => \PREV_DBB_BUS.Y\(4));
+\PREV_DBB_BUS.Y[5]_Z376\: df1 port map (
+d => DBB_BUS_C(11),
+clk => CLK_C,
+q => \PREV_DBB_BUS.Y\(5));
+\PREV_STATE[0]_Z377\: dfm7a port map (
+d0 => \STATE_H.STATE\(0),
+d1 => NN_2,
+d2 => NN_1,
+d3 => NN_1,
+s10 => NN_1,
+s11 => NN_1,
+s0 => RESET_C_3,
+clk => CLK_C,
+clr => NN_2,
+q => PREV_STATE(0));
+\PREV_STATE[1]_Z378\: dfm7a port map (
+d0 => \STATE_H.STATE\(1),
+d1 => NN_1,
+d2 => NN_1,
+d3 => NN_1,
+s10 => NN_1,
+s11 => NN_1,
+s0 => RESET_C_3,
+clk => CLK_C,
+clr => NN_2,
+q => PREV_STATE(1));
+\PREV_VRAM_WORD[0]_Z379\: dfm7a port map (
+d0 => PREV_VRAM_WORD(0),
+d1 => CURR_VRAM_WORD(0),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_2,
+s11 => NN_1,
+s0 => PXCACHE_WEN_ALL_1_0,
+clk => CLK_C,
+clr => NN_2,
+q => PREV_VRAM_WORD(0));
+\PREV_VRAM_WORD[1]_Z380\: dfm7a port map (
+d0 => PREV_VRAM_WORD(1),
+d1 => CURR_VRAM_WORD(1),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_2,
+s11 => NN_1,
+s0 => PXCACHE_WEN_ALL_1_0,
+clk => CLK_C,
+clr => NN_2,
+q => PREV_VRAM_WORD(1));
+\PREV_VRAM_WORD[2]_Z381\: dfm7a port map (
+d0 => PREV_VRAM_WORD(2),
+d1 => CURR_VRAM_WORD(2),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_2,
+s11 => NN_1,
+s0 => PXCACHE_WEN_ALL_1_0,
+clk => CLK_C,
+clr => NN_2,
+q => PREV_VRAM_WORD(2));
+\PREV_VRAM_WORD[3]_Z382\: dfm7a port map (
+d0 => PREV_VRAM_WORD(3),
+d1 => CURR_VRAM_WORD(3),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_2,
+s11 => NN_1,
+s0 => PXCACHE_WEN_ALL_1_0,
+clk => CLK_C,
+clr => NN_2,
+q => PREV_VRAM_WORD(3));
+\PREV_VRAM_WORD[4]_Z383\: dfm7a port map (
+d0 => PREV_VRAM_WORD(4),
+d1 => CURR_VRAM_WORD(4),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_2,
+s11 => NN_1,
+s0 => PXCACHE_WEN_ALL_1,
+clk => CLK_C,
+clr => NN_2,
+q => PREV_VRAM_WORD(4));
+\PREV_VRAM_WORD[5]_Z384\: dfm7a port map (
+d0 => PREV_VRAM_WORD(5),
+d1 => CURR_VRAM_WORD(5),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_2,
+s11 => NN_1,
+s0 => PXCACHE_WEN_ALL_1,
+clk => CLK_C,
+clr => NN_2,
+q => PREV_VRAM_WORD(5));
+\PREV_VRAM_WORD[6]_Z385\: dfm7a port map (
+d0 => PREV_VRAM_WORD(6),
+d1 => CURR_VRAM_WORD(6),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_2,
+s11 => NN_1,
+s0 => PXCACHE_WEN_ALL_1,
+clk => CLK_C,
+clr => NN_2,
+q => PREV_VRAM_WORD(6));
+\PREV_VRAM_WORD[7]_Z386\: dfm7a port map (
+d0 => PREV_VRAM_WORD(7),
+d1 => CURR_VRAM_WORD(7),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_2,
+s11 => NN_1,
+s0 => PXCACHE_WEN_ALL_1,
+clk => CLK_C,
+clr => NN_2,
+q => PREV_VRAM_WORD(7));
+PX_CACHE: pix_word_cache_1 port map (
+prev_state(1) => PREV_STATE(1),
+pxcache_store_14(1 downto 0) => PXCACHE_STORE_14(1 downto 0),
+pxcache_store_13(1 downto 0) => PXCACHE_STORE_13(1 downto 0),
+pxcache_store_12(1 downto 0) => PXCACHE_STORE_12(1 downto 0),
+pxcache_store_11(1 downto 0) => PXCACHE_STORE_11(1 downto 0),
+pxcache_store_10(1 downto 0) => PXCACHE_STORE_10(1 downto 0),
+pxcache_store_9(1 downto 0) => PXCACHE_STORE_9(1 downto 0),
+pxcache_store_8(1 downto 0) => PXCACHE_STORE_8(1 downto 0),
+pxcache_store_7(1 downto 0) => PXCACHE_STORE_7(1 downto 0),
+pxcache_store_6(1 downto 0) => PXCACHE_STORE_6(1 downto 0),
+pxcache_store_5(1 downto 0) => PXCACHE_STORE_5(1 downto 0),
+pxcache_store_4(1 downto 0) => PXCACHE_STORE_4(1 downto 0),
+pxcache_store_15(1 downto 0) => PXCACHE_STORE_15(1 downto 0),
+pxcache_store_3(1 downto 0) => PXCACHE_STORE_3(1 downto 0),
+pxcache_store_2(1 downto 0) => PXCACHE_STORE_2(1 downto 0),
+pxcache_store_1(1 downto 0) => PXCACHE_STORE_1(1 downto 0),
+pxcache_store_0(1 downto 0) => PXCACHE_STORE_0(1 downto 0),
+dbb_bus_c_6 => DBB_BUS_C(6),
+dbb_bus_c_12 => DBB_BUS_C(12),
+dbb_bus_c_13 => DBB_BUS_C(13),
+dbb_bus_c_1 => DBB_BUS_C(1),
+dbb_bus_c_0 => DBB_BUS_C(0),
+dbb_bus_c_7 => DBB_BUS_C(7),
+pxcache_pixnum(3 downto 1) => PXCACHE_PIXNUM(3 downto 1),
+N_173_i => N_173_I,
+pxcache_pixopin_0_sqmuxa => PXCACHE_PIXOPIN_0_SQMUXA,
+un1_dbb_bus_3 => \STATE_TRANSITION.UN1_DBB_BUS_3\,
+reset_c => RESET_C,
+pix_word_cache_1_VCC => NN_2,
+clk_c => CLK_C,
+pix_word_cache_1_GND => NN_1,
+N_161_0 => \PX_CACHE.N_161_0\,
+reset_c_0 => RESET_C_0,
+reset_c_4 => RESET_C_4,
+pxcache_wen_all => PXCACHE_WEN_ALL,
+pxcache_pw => PXCACHE_PW);
+\PXCACHE_STORE_BUF_0[0]_Z388\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_0(0),
+d1 => PXCACHE_STORE_0(0),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_1,
+s11 => NN_1,
+s0 => PXCACHE_STASH_0,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_0(0));
+\PXCACHE_STORE_BUF_0[1]_Z389\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_0(1),
+d1 => PXCACHE_STORE_0(1),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_1,
+s11 => NN_1,
+s0 => PXCACHE_STASH_0,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_0(1));
+\PXCACHE_STORE_BUF_1[0]_Z390\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_1(0),
+d1 => PXCACHE_STORE_1(0),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_1,
+s11 => NN_1,
+s0 => PXCACHE_STASH_0,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_1(0));
+\PXCACHE_STORE_BUF_1[1]_Z391\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_1(1),
+d1 => PXCACHE_STORE_1(1),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_1,
+s11 => NN_1,
+s0 => PXCACHE_STASH_0,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_1(1));
+\PXCACHE_STORE_BUF_2[0]_Z392\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_2(0),
+d1 => PXCACHE_STORE_2(0),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_1,
+s11 => NN_1,
+s0 => PXCACHE_STASH_0,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_2(0));
+\PXCACHE_STORE_BUF_2[1]_Z393\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_2(1),
+d1 => PXCACHE_STORE_2(1),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_1,
+s11 => NN_1,
+s0 => PXCACHE_STASH_0,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_2(1));
+\PXCACHE_STORE_BUF_3[0]_Z394\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_3(0),
+d1 => PXCACHE_STORE_3(0),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_1,
+s11 => NN_1,
+s0 => PXCACHE_STASH_0,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_3(0));
+\PXCACHE_STORE_BUF_3[1]_Z395\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_3(1),
+d1 => PXCACHE_STORE_3(1),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_1,
+s11 => NN_1,
+s0 => PXCACHE_STASH_0,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_3(1));
+\PXCACHE_STORE_BUF_4[0]_Z396\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_4(0),
+d1 => PXCACHE_STORE_4(0),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_3,
+s11 => NN_1,
+s0 => PXCACHE_STASH_0,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_4(0));
+\PXCACHE_STORE_BUF_4[1]_Z397\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_4(1),
+d1 => PXCACHE_STORE_4(1),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_3,
+s11 => NN_1,
+s0 => PXCACHE_STASH,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_4(1));
+\PXCACHE_STORE_BUF_5[0]_Z398\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_5(0),
+d1 => PXCACHE_STORE_5(0),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_3,
+s11 => NN_1,
+s0 => PXCACHE_STASH,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_5(0));
+\PXCACHE_STORE_BUF_5[1]_Z399\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_5(1),
+d1 => PXCACHE_STORE_5(1),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_3,
+s11 => NN_1,
+s0 => PXCACHE_STASH,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_5(1));
+\PXCACHE_STORE_BUF_6[0]_Z400\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_6(0),
+d1 => PXCACHE_STORE_6(0),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_3,
+s11 => NN_1,
+s0 => PXCACHE_STASH,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_6(0));
+\PXCACHE_STORE_BUF_6[1]_Z401\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_6(1),
+d1 => PXCACHE_STORE_6(1),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_3,
+s11 => NN_1,
+s0 => PXCACHE_STASH,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_6(1));
+\PXCACHE_STORE_BUF_7[0]_Z402\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_7(0),
+d1 => PXCACHE_STORE_7(0),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_3,
+s11 => NN_1,
+s0 => PXCACHE_STASH,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_7(0));
+\PXCACHE_STORE_BUF_7[1]_Z403\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_7(1),
+d1 => PXCACHE_STORE_7(1),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_3,
+s11 => NN_1,
+s0 => PXCACHE_STASH,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_7(1));
+\PXCACHE_STORE_BUF_8[0]_Z404\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_8(0),
+d1 => PXCACHE_STORE_8(0),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_3,
+s11 => NN_1,
+s0 => PXCACHE_STASH,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_8(0));
+\PXCACHE_STORE_BUF_8[1]_Z405\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_8(1),
+d1 => PXCACHE_STORE_8(1),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_3,
+s11 => NN_1,
+s0 => PXCACHE_STASH,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_8(1));
+\PXCACHE_STORE_BUF_9[0]_Z406\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_9(0),
+d1 => PXCACHE_STORE_9(0),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_3,
+s11 => NN_1,
+s0 => PXCACHE_STASH,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_9(0));
+\PXCACHE_STORE_BUF_9[1]_Z407\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_9(1),
+d1 => PXCACHE_STORE_9(1),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_2,
+s11 => NN_1,
+s0 => PXCACHE_STASH_0,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_9(1));
+\PXCACHE_STORE_BUF_10[0]_Z408\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_10(0),
+d1 => PXCACHE_STORE_10(0),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_2,
+s11 => NN_1,
+s0 => PXCACHE_STASH_0,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_10(0));
+\PXCACHE_STORE_BUF_10[1]_Z409\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_10(1),
+d1 => PXCACHE_STORE_10(1),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_2,
+s11 => NN_1,
+s0 => PXCACHE_STASH_0,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_10(1));
+\PXCACHE_STORE_BUF_11[0]_Z410\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_11(0),
+d1 => PXCACHE_STORE_11(0),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_2,
+s11 => NN_1,
+s0 => PXCACHE_STASH_0,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_11(0));
+\PXCACHE_STORE_BUF_11[1]_Z411\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_11(1),
+d1 => PXCACHE_STORE_11(1),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_2,
+s11 => NN_1,
+s0 => PXCACHE_STASH_0,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_11(1));
+\PXCACHE_STORE_BUF_12[0]_Z412\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_12(0),
+d1 => PXCACHE_STORE_12(0),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_4,
+s11 => NN_1,
+s0 => PXCACHE_STASH,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_12(0));
+\PXCACHE_STORE_BUF_12[1]_Z413\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_12(1),
+d1 => PXCACHE_STORE_12(1),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_4,
+s11 => NN_1,
+s0 => PXCACHE_STASH,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_12(1));
+\PXCACHE_STORE_BUF_13[0]_Z414\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_13(0),
+d1 => PXCACHE_STORE_13(0),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_4,
+s11 => NN_1,
+s0 => PXCACHE_STASH,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_13(0));
+\PXCACHE_STORE_BUF_13[1]_Z415\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_13(1),
+d1 => PXCACHE_STORE_13(1),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_4,
+s11 => NN_1,
+s0 => PXCACHE_STASH,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_13(1));
+\PXCACHE_STORE_BUF_14[0]_Z416\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_14(0),
+d1 => PXCACHE_STORE_14(0),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_4,
+s11 => NN_1,
+s0 => PXCACHE_STASH,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_14(0));
+\PXCACHE_STORE_BUF_14[1]_Z417\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_14(1),
+d1 => PXCACHE_STORE_14(1),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_4,
+s11 => NN_1,
+s0 => PXCACHE_STASH,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_14(1));
+\PXCACHE_STORE_BUF_15[0]_Z418\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_15(0),
+d1 => PXCACHE_STORE_15(0),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_3,
+s11 => NN_1,
+s0 => PXCACHE_STASH_0,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_15(0));
+\PXCACHE_STORE_BUF_15[1]_Z419\: dfm7a port map (
+d0 => PXCACHE_STORE_BUF_15(1),
+d1 => PXCACHE_STORE_15(1),
+d2 => NN_1,
+d3 => NN_1,
+s10 => RESET_C_3,
+s11 => NN_1,
+s0 => PXCACHE_STASH_0,
+clk => CLK_C,
+clr => NN_2,
+q => PXCACHE_STORE_BUF_15(1));
+RAM_STATE_MACHINE: ram_fsm_1 port map (
+idle_counter(7 downto 0) => IDLE_COUNTER(7 downto 0),
+prev_state(1 downto 0) => PREV_STATE(1 downto 0),
+pxcache_store_12(1 downto 0) => PXCACHE_STORE_12(1 downto 0),
+pxcache_store_13(1 downto 0) => PXCACHE_STORE_13(1 downto 0),
+pxcache_store_8(1 downto 0) => PXCACHE_STORE_8(1 downto 0),
+pxcache_store_9(1 downto 0) => PXCACHE_STORE_9(1 downto 0),
+pxcache_store_4(1 downto 0) => PXCACHE_STORE_4(1 downto 0),
+pxcache_store_5(1 downto 0) => PXCACHE_STORE_5(1 downto 0),
+pxcache_store_14(1 downto 0) => PXCACHE_STORE_14(1 downto 0),
+pxcache_store_15(1 downto 0) => PXCACHE_STORE_15(1 downto 0),
+pxcache_store_10(1 downto 0) => PXCACHE_STORE_10(1 downto 0),
+pxcache_store_11(1 downto 0) => PXCACHE_STORE_11(1 downto 0),
+pxcache_store_6(1 downto 0) => PXCACHE_STORE_6(1 downto 0),
+pxcache_store_7(1 downto 0) => PXCACHE_STORE_7(1 downto 0),
+pxcache_store_0(1 downto 0) => PXCACHE_STORE_0(1 downto 0),
+pxcache_store_1(1 downto 0) => PXCACHE_STORE_1(1 downto 0),
+pxcache_store_3(1 downto 0) => PXCACHE_STORE_3(1 downto 0),
+pxcache_store_2(1 downto 0) => PXCACHE_STORE_2(1 downto 0),
+dbb_bus_c_6 => DBB_BUS_C(7),
+dbb_bus_c_0 => DBB_BUS_C(1),
+dbb_bus_c_5 => DBB_BUS_C(6),
+dbb_bus_c_12 => DBB_BUS_C(13),
+dbb_bus_c_14 => DBB_BUS_C(15),
+dbb_bus_c_11 => DBB_BUS_C(12),
+pxcache_pixnum(3 downto 1) => PXCACHE_PIXNUM(3 downto 1),
+state_0(1 downto 0) => \STATE_H.STATE\(1 downto 0),
+state_3(1) => STATE_3(1),
+state_d(1) => STATE_D(1),
+vdin_c(15 downto 0) => VDIN_C(15 downto 0),
+pxcache_store_buf_3(1 downto 0) => PXCACHE_STORE_BUF_3(1 downto 0),
+pxcache_store_buf_2(1 downto 0) => PXCACHE_STORE_BUF_2(1 downto 0),
+pxcache_store_buf_1(1 downto 0) => PXCACHE_STORE_BUF_1(1 downto 0),
+pxcache_store_buf_0(1 downto 0) => PXCACHE_STORE_BUF_0(1 downto 0),
+pxcache_store_buf_15(1 downto 0) => PXCACHE_STORE_BUF_15(1 downto 0),
+pxcache_store_buf_14(1 downto 0) => PXCACHE_STORE_BUF_14(1 downto 0),
+pxcache_store_buf_13(1 downto 0) => PXCACHE_STORE_BUF_13(1 downto 0),
+pxcache_store_buf_12(1 downto 0) => PXCACHE_STORE_BUF_12(1 downto 0),
+pxcache_store_buf_11(1 downto 0) => PXCACHE_STORE_BUF_11(1 downto 0),
+pxcache_store_buf_10(1 downto 0) => PXCACHE_STORE_BUF_10(1 downto 0),
+pxcache_store_buf_9(1 downto 0) => PXCACHE_STORE_BUF_9(1 downto 0),
+pxcache_store_buf_8(1 downto 0) => PXCACHE_STORE_BUF_8(1 downto 0),
+pxcache_store_buf_7(1 downto 0) => PXCACHE_STORE_BUF_7(1 downto 0),
+pxcache_store_buf_6(1 downto 0) => PXCACHE_STORE_BUF_6(1 downto 0),
+pxcache_store_buf_5(1 downto 0) => PXCACHE_STORE_BUF_5(1 downto 0),
+vdout_c(15 downto 0) => VDOUT_C(15 downto 0),
+pxcache_store_buf_4(1 downto 0) => PXCACHE_STORE_BUF_4(1 downto 0),
+vaddr_c(7 downto 0) => VADDR_C(7 downto 0),
+prev_vram_word(7 downto 0) => PREV_VRAM_WORD(7 downto 0),
+un4_curr_vram_word => \STATE_TRANSITION.UN4_CURR_VRAM_WORD\,
+pxcache_pixopin_0_sqmuxa => PXCACHE_PIXOPIN_0_SQMUXA,
+reset_idle_count2 => \STATE_TRANSITION.RESET_IDLE_COUNT2\,
+reset_c => RESET_C,
+un6_reset_n => \FSM_CLOCKED_PROCESS.UN6_RESET_N\,
+un1_vram_done_n => \STATE_TRANSITION.UN1_VRAM_DONE_N\,
+N_7_n => \NEXT_STATE_1_0_.N_7_N\,
+pxcache_pw => PXCACHE_PW,
+un1_dbb_bus_3 => \STATE_TRANSITION.UN1_DBB_BUS_3\,
+pxcache_wen_all_1 => PXCACHE_WEN_ALL_1,
+N_173_i => N_173_I,
+idle_counter_c1_n => IDLE_COUNTER_C1_N,
+y_18 => Y_18,
+idle_counter_c4 => IDLE_COUNTER_C4,
+idle_counter_c5_n => IDLE_COUNTER_C5_N,
+N_15_mux => \STATE_H.STATE_NS_1_0_.N_15_MUX\,
+reset_c_4 => RESET_C_4,
+pxcache_wen_all_1_0 => PXCACHE_WEN_ALL_1_0,
+pxcache_stash_0 => PXCACHE_STASH_0,
+N_161_0 => \PX_CACHE.N_161_0\,
+idle_counter_n6 => IDLE_COUNTER_N6,
+idle_counter_n2 => IDLE_COUNTER_N2,
+pxcache_stash => PXCACHE_STASH,
+rcb_finish_c => RCB_FINISH_C,
+pxcache_wen_all => PXCACHE_WEN_ALL,
+vwrite_c => VWRITE_C,
+ram_fsm_1_VCC => NN_2,
+clk_c => CLK_C,
+reset_c_0 => RESET_C_0,
+ram_fsm_1_GND => NN_1);
+RCB_FINISH_PAD: outbuf port map (
+d => RCB_FINISH_C,
+pad => rcb_finish);
+RESET_PAD: inbuf port map (
+pad => reset,
+y => RESET_C);
+RESET_PAD_0: buff port map (
+a => RESET_C,
+y => RESET_C_0);
+RESET_PAD_1: buff port map (
+a => RESET_C,
+y => RESET_C_1);
+RESET_PAD_2: buff port map (
+a => RESET_C,
+y => RESET_C_2);
+RESET_PAD_3: buff port map (
+a => RESET_C,
+y => RESET_C_3);
+RESET_PAD_4: buff port map (
+a => RESET_C,
+y => RESET_C_4);
+STATE_H: \rcb_cell_state_0_3__h_1\ port map (
+state_d(1) => STATE_D(1),
+state(1 downto 0) => \STATE_H.STATE\(1 downto 0),
+N_15_mux => \STATE_H.STATE_NS_1_0_.N_15_MUX\,
+reset_c_1 => RESET_C_1,
+clk_c => CLK_C,
+reset_c_0 => RESET_C_0,
+\rcb_cell_state_0_3__h_1_GND\ => NN_1,
+\rcb_cell_state_0_3__h_1_VCC\ => NN_2,
+N_7_n => \NEXT_STATE_1_0_.N_7_N\);
+\STATE_TRANSITION.UN4_CURR_VRAM_WORD_Z429\: cm8 port map (
+d0 => NN_1,
+d1 => \STATE_TRANSITION.UN4_CURR_VRAM_WORD_1\,
+d2 => NN_1,
+d3 => NN_1,
+s00 => \STATE_TRANSITION.UN4_CURR_VRAM_WORD_3\,
+s01 => \STATE_TRANSITION.UN4_CURR_VRAM_WORD_2\,
+s10 => Y_16,
+s11 => Y_17,
+y => \STATE_TRANSITION.UN4_CURR_VRAM_WORD\);
+\STATE_TRANSITION.UN4_CURR_VRAM_WORD_1_Z430\: cm8 port map (
+d0 => N_185_N,
+d1 => NN_1,
+d2 => NN_1,
+d3 => N_185_N,
+s00 => CURR_VRAM_WORD(1),
+s01 => NN_2,
+s10 => DBB_BUS_C(3),
+s11 => NN_1,
+y => \STATE_TRANSITION.UN4_CURR_VRAM_WORD_1\);
+\STATE_TRANSITION.UN4_CURR_VRAM_WORD_2_Z431\: cm8 port map (
+d0 => N_187_N,
+d1 => NN_1,
+d2 => NN_1,
+d3 => N_187_N,
+s00 => CURR_VRAM_WORD(3),
+s01 => NN_2,
+s10 => DBB_BUS_C(5),
+s11 => NN_1,
+y => \STATE_TRANSITION.UN4_CURR_VRAM_WORD_2\);
+\STATE_TRANSITION.UN4_CURR_VRAM_WORD_3_Z432\: cm8 port map (
+d0 => N_189_N,
+d1 => NN_1,
+d2 => NN_1,
+d3 => N_189_N,
+s00 => CURR_VRAM_WORD(5),
+s01 => NN_2,
+s10 => DBB_BUS_C(9),
+s11 => NN_1,
+y => \STATE_TRANSITION.UN4_CURR_VRAM_WORD_3\);
+\VADDR_PAD[0]\: outbuf port map (
+d => VADDR_C(0),
+pad => vaddr(0));
+\VADDR_PAD[1]\: outbuf port map (
+d => VADDR_C(1),
+pad => vaddr(1));
+\VADDR_PAD[2]\: outbuf port map (
+d => VADDR_C(2),
+pad => vaddr(2));
+\VADDR_PAD[3]\: outbuf port map (
+d => VADDR_C(3),
+pad => vaddr(3));
+\VADDR_PAD[4]\: outbuf port map (
+d => VADDR_C(4),
+pad => vaddr(4));
+\VADDR_PAD[5]\: outbuf port map (
+d => VADDR_C(5),
+pad => vaddr(5));
+\VADDR_PAD[6]\: outbuf port map (
+d => VADDR_C(6),
+pad => vaddr(6));
+\VADDR_PAD[7]\: outbuf port map (
+d => VADDR_C(7),
+pad => vaddr(7));
+\VDIN_PAD[0]\: outbuf port map (
+d => VDIN_C(0),
+pad => vdin(0));
+\VDIN_PAD[1]\: outbuf port map (
+d => VDIN_C(1),
+pad => vdin(1));
+\VDIN_PAD[2]\: outbuf port map (
+d => VDIN_C(2),
+pad => vdin(2));
+\VDIN_PAD[3]\: outbuf port map (
+d => VDIN_C(3),
+pad => vdin(3));
+\VDIN_PAD[4]\: outbuf port map (
+d => VDIN_C(4),
+pad => vdin(4));
+\VDIN_PAD[5]\: outbuf port map (
+d => VDIN_C(5),
+pad => vdin(5));
+\VDIN_PAD[6]\: outbuf port map (
+d => VDIN_C(6),
+pad => vdin(6));
+\VDIN_PAD[7]\: outbuf port map (
+d => VDIN_C(7),
+pad => vdin(7));
+\VDIN_PAD[8]\: outbuf port map (
+d => VDIN_C(8),
+pad => vdin(8));
+\VDIN_PAD[9]\: outbuf port map (
+d => VDIN_C(9),
+pad => vdin(9));
+\VDIN_PAD[10]\: outbuf port map (
+d => VDIN_C(10),
+pad => vdin(10));
+\VDIN_PAD[11]\: outbuf port map (
+d => VDIN_C(11),
+pad => vdin(11));
+\VDIN_PAD[12]\: outbuf port map (
+d => VDIN_C(12),
+pad => vdin(12));
+\VDIN_PAD[13]\: outbuf port map (
+d => VDIN_C(13),
+pad => vdin(13));
+\VDIN_PAD[14]\: outbuf port map (
+d => VDIN_C(14),
+pad => vdin(14));
+\VDIN_PAD[15]\: outbuf port map (
+d => VDIN_C(15),
+pad => vdin(15));
+\VDOUT_PAD[0]\: inbuf port map (
+pad => vdout(0),
+y => VDOUT_C(0));
+\VDOUT_PAD[1]\: inbuf port map (
+pad => vdout(1),
+y => VDOUT_C(1));
+\VDOUT_PAD[2]\: inbuf port map (
+pad => vdout(2),
+y => VDOUT_C(2));
+\VDOUT_PAD[3]\: inbuf port map (
+pad => vdout(3),
+y => VDOUT_C(3));
+\VDOUT_PAD[4]\: inbuf port map (
+pad => vdout(4),
+y => VDOUT_C(4));
+\VDOUT_PAD[5]\: inbuf port map (
+pad => vdout(5),
+y => VDOUT_C(5));
+\VDOUT_PAD[6]\: inbuf port map (
+pad => vdout(6),
+y => VDOUT_C(6));
+\VDOUT_PAD[7]\: inbuf port map (
+pad => vdout(7),
+y => VDOUT_C(7));
+\VDOUT_PAD[8]\: inbuf port map (
+pad => vdout(8),
+y => VDOUT_C(8));
+\VDOUT_PAD[9]\: inbuf port map (
+pad => vdout(9),
+y => VDOUT_C(9));
+\VDOUT_PAD[10]\: inbuf port map (
+pad => vdout(10),
+y => VDOUT_C(10));
+\VDOUT_PAD[11]\: inbuf port map (
+pad => vdout(11),
+y => VDOUT_C(11));
+\VDOUT_PAD[12]\: inbuf port map (
+pad => vdout(12),
+y => VDOUT_C(12));
+\VDOUT_PAD[13]\: inbuf port map (
+pad => vdout(13),
+y => VDOUT_C(13));
+\VDOUT_PAD[14]\: inbuf port map (
+pad => vdout(14),
+y => VDOUT_C(14));
+\VDOUT_PAD[15]\: inbuf port map (
+pad => vdout(15),
+y => VDOUT_C(15));
+VWRITE_PAD: outbuf port map (
+d => VWRITE_C,
+pad => vwrite);
+end beh;
+

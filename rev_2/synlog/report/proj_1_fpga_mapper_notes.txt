@@ -1,0 +1,13 @@
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled 
+@N: MT206 |Auto Constrain mode is enabled
+@N: BN362 :"h:\desktop\github\vhdl\vhdl project\hardware_files\ram_fsm.vhd":11:25:11:28|Removing sequential instance ram_state_machine.done of view:PrimLib.dff(prim) in hierarchy view:work.rcb(rtl1) because there are no references to its outputs 
+@N: FA100 :|Instance "px_cache.pxcache_store_buf_0_1_0__g0_i_0" with "32" loads has been replicated "1" time(s) due to hard fanout limit of "30" 
+@N: BW103 |Synopsys Constraint File time units using default value of 1ns 
+@N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
+@N: MT535 |Writing timing correlation to file H:\Desktop\GitHub\VHDL\rev_2\proj_1_ctd.txt 
+@N: MT320 |Timing report estimates place and route data. Please look at the place and route timing report for final timing.
+@N: MT322 |Clock constraints cover only FF-to-FF paths associated with the clock.
+@N: MT320 |Timing report estimates place and route data. Please look at the place and route timing report for final timing.
+@N: MT322 |Clock constraints cover only FF-to-FF paths associated with the clock.
+@N: FA174 |The following device usage report estimates place and route data. Please look at the place and route report for final resource usage.

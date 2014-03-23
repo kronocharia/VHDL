@@ -1,0 +1,87 @@
+----------------------------------------------------------------------
+Report for cell rcb.rtl1
+                                          Cell usage:
+                               cell       count     area    count*area
+                               and2         2       0.0        0.0
+                              and2a         3       0.0        0.0
+                              and2b         1       0.0        0.0
+                              and4b         2       0.0        0.0
+                               buff         3       0.0        0.0
+                             clkbuf         1       0.0        0.0
+                               cm8a       111       0.0        0.0
+                                df1        69       0.0        0.0
+                                gnd         1       0.0        0.0
+                              inbuf        33       0.0        0.0
+                              nand4         1       0.0        0.0
+                               or4a         2       0.0        0.0
+                             outbuf        28       0.0        0.0
+                   pix_word_cache_1         1       0.0        0.0
+                          ram_fsm_1         1       0.0        0.0
+            rcb_cell_state_0_4__h_1         1       0.0        0.0
+                                vcc         1       0.0        0.0
+                              xnor2         3       0.0        0.0
+                               xor2         3       0.0        0.0
+                            
+                         TOTAL            267                  0.0
+----------------------------------------------------------------------
+Report for cell rcb_cell_state_0_4__h_1.netlist
+  Original Cell name rcb_cell_state_0_4__h
+     Instance path:  state_h
+                                          Cell usage:
+                               cell       count     area    count*area
+                               and2         4       0.0        0.0
+                              and2a         2       0.0        0.0
+                              and2b         2       0.0        0.0
+                               and3         1       0.0        0.0
+                              and3a         1       0.0        0.0
+                              and3b         1       0.0        0.0
+                              and4b         2       0.0        0.0
+                               cm8a         3       0.0        0.0
+                                df1         5       0.0        0.0
+                               or2a         2       0.0        0.0
+                               or2b         1       0.0        0.0
+                               or3b         1       0.0        0.0
+                            
+                         TOTAL             25                  0.0
+----------------------------------------------------------------------
+Report for cell ram_fsm_1.netlist
+  Original Cell name ram_fsm
+     Instance path:  ram_state_machine
+                                          Cell usage:
+                               cell       count     area    count*area
+                                df1        17       0.0        0.0
+                               df1b        24       0.0        0.0
+          ram_fsm_cell_state_0_3__h_1         1       0.0        0.0
+                            
+                         TOTAL             42                  0.0
+----------------------------------------------------------------------
+Report for cell ram_fsm_cell_state_0_3__h_1.netlist
+  Original Cell name ram_fsm_cell_state_0_3__h
+     Instance path:  ram_state_machine.state_h
+                                          Cell usage:
+                               cell       count     area    count*area
+                               and2         5       0.0        0.0
+                              and2a         1       0.0        0.0
+                              and2b         1       0.0        0.0
+                              and3a         1       0.0        0.0
+                               cm8a        10       0.0        0.0
+                                df1         2       0.0        0.0
+                                or2         1       0.0        0.0
+                               or2a         1       0.0        0.0
+                            
+                         TOTAL             22                  0.0
+----------------------------------------------------------------------
+Report for cell pix_word_cache_1.netlist
+  Original Cell name pix_word_cache
+     Instance path:  px_cache
+                                          Cell usage:
+                               cell       count     area    count*area
+                               and2        36       0.0        0.0
+                              and2a         3       0.0        0.0
+                              and2b         1       0.0        0.0
+                              and3a         6       0.0        0.0
+                               cm8a        37       0.0        0.0
+                                df1        32       0.0        0.0
+                                or2         5       0.0        0.0
+                            
+                         TOTAL            120                  0.0

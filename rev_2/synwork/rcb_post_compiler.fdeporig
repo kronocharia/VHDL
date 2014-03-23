@@ -1,0 +1,52 @@
+%%% protect protected_file
+#defaultlanguage:vhdl
+#OPTIONS:"|-top|rcb|-prodtype|synplify_pro|-verification_mode|0|-infer_seqShift|-primux|-fixsmult|-dspmac|-nram|-divnmod|-encrypt|-pro|-lite|-ll|2000|-ui|-fid2|-ram|-sharing|on|-autosm|-ignore_undefined_lib|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work"
+#CUR:"C:\\synopsys\\fpga_G201209SP1\\bin64\\c_vhdl.exe":1354049230
+#CUR:"C:\\synopsys\\fpga_G201209SP1\\lib\\vhd\\location.map":1354024772
+#CUR:"C:\\synopsys\\fpga_G201209SP1\\lib\\vhd\\std.vhd":1353965844
+#CUR:"C:\\synopsys\\fpga_G201209SP1\\lib\\vhd\\snps_haps_pkg.vhd":1353965844
+#CUR:"C:\\synopsys\\fpga_G201209SP1\\lib\\vhd\\std1164.vhd":1353965844
+#CUR:"C:\\synopsys\\fpga_G201209SP1\\lib\\vhd\\numeric.vhd":1353965842
+#CUR:"C:\\synopsys\\fpga_G201209SP1\\lib\\vhd\\umr_capim.vhd":1353965846
+#CUR:"C:\\synopsys\\fpga_G201209SP1\\lib\\vhd\\arith.vhd":1353965842
+#CUR:"C:\\synopsys\\fpga_G201209SP1\\lib\\vhd\\unsigned.vhd":1353965846
+#CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\helper_funcs.vhd":1394386377
+#CUR:"H:\\Desktop\\GitHub\\VHDL\\ex4\\pix_cache_pak.vhd":1393776924
+#CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\rcb.vhd":1395514813
+#CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\ram_fsm.vhd":1395505921
+#CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\project_pack.vhd":1394291220
+#CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\pix_word_cache.vhd":1394287466
+#CUR:"H:\\Desktop\\GitHub\\VHDL\\VHDL Project\\hardware_files\\config_pack.vhd":1393700766
+0 "H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\helper_funcs.vhd" vhdl
+1 "H:\Desktop\GitHub\VHDL\ex4\pix_cache_pak.vhd" vhdl
+2 "H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd" vhdl
+3 "H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd" vhdl
+4 "H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\project_pack.vhd" vhdl
+5 "H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\pix_word_cache.vhd" vhdl
+6 "H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\config_pack.vhd" vhdl
+
+# Dependency Lists (Uses list)
+0 4 1 6 
+1 -1
+2 3 5 4 1 0 
+3 1 
+4 6 
+5 1 
+6 -1
+
+# Dependency Lists (Users Of)
+0 2 
+1 5 3 2 0 
+2 -1
+3 2 
+4 2 0 
+5 2 
+6 4 0 
+
+# Design Unit to File Association
+arch work rcb rtl1 2
+module work rcb 2
+arch work ram_fsm synth 3
+module work ram_fsm 3
+arch work pix_word_cache pwc 5
+module work pix_word_cache 5

@@ -1,12 +1,6 @@
-@W: CD434 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":115:78:115:92|Signal fetch_draw_flag in the sensitivity list is not used in the process
-@W: CD638 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":63:11:63:18|Signal ram_data is undriven 
-@W: CL169 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":76:8:76:17|Pruning register dbb_busReg.startcmd  
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":97:8:97:17|All reachable assignments to one_vector(0) assign '1'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":97:8:97:17|All reachable assignments to one_vector(1) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":97:8:97:17|All reachable assignments to one_vector(2) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":97:8:97:17|All reachable assignments to one_vector(3) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":97:8:97:17|All reachable assignments to one_vector(4) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":97:8:97:17|All reachable assignments to one_vector(5) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":97:8:97:17|All reachable assignments to one_vector(6) assign '0'; register removed by optimization
-@W: CL111 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":97:8:97:17|All reachable assignments to one_vector(7) assign '0'; register removed by optimization
+@W: CD604 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":232:20:232:33|OTHERS clause is not synthesized 
+@W: CL169 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":90:11:90:22|Pruning register prev_dbb_bus.rcb_cmd(2 downto 0)  
+@W: CL169 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":90:11:90:22|Pruning register prev_dbb_bus.startcmd  
+@W: CL271 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":90:11:90:22|Pruning bits 1 to 0 of prev_dbb_bus.X(5 downto 0) -- not in use ... 
+@W: CL271 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":90:11:90:22|Pruning bits 1 to 0 of prev_dbb_bus.Y(5 downto 0) -- not in use ... 
 

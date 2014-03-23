@@ -1,0 +1,290 @@
+#Build: Synplify Pro G-2012.09-SP1 , Build 168R, Nov 26 2012
+#install: C:\synopsys\fpga_G201209SP1
+#OS: Windows 7 6.1
+#Hostname: EEWS506A-046
+
+#Implementation: rev_2
+
+$ Start of Compile
+#Sat Mar 22 10:45:21 2014
+
+Synopsys VHDL Compiler, version comp201209rcp1, Build 124R, built Nov 27 2012
+@N|Running in 64-bit mode
+Copyright (C) 1994-2012 Synopsys, Inc. This software the associated documentation are confidential and proprietary to Synopsys, Inc. Your use or disclosure of this software subject to the terms and conditions of a written license agreement between you, or your company, and Synopsys, Inc.
+
+@N: CD720 :"C:\synopsys\fpga_G201209SP1\lib\vhd\std.vhd":123:18:123:21|Setting time resolution to ns
+@N:"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":12:7:12:9|Top entity is set to rcb.
+@W: CD643 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":8:25:8:25|Ignoring use clause - helper_funcs not found ...
+VHDL syntax check successful!
+@N: CD630 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":12:7:12:9|Synthesizing work.rcb.rtl1 
+@N: CD231 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":94:20:94:21|Using onehot encoding for type state_type (s_error="10000")
+@W: CD604 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":242:20:242:33|OTHERS clause is not synthesized 
+@W: CD604 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":265:20:265:33|OTHERS clause is not synthesized 
+@W: CD604 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":312:12:312:25|OTHERS clause is not synthesized 
+@N: CD630 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\pix_word_cache.vhd":9:7:9:20|Synthesizing work.pix_word_cache.pwc 
+Post processing for work.pix_word_cache.pwc
+@N: CD630 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":7:7:7:13|Synthesizing work.ram_fsm.synth 
+@N: CD233 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":21:17:21:18|Using sequential encoding for type state_t
+Post processing for work.ram_fsm.synth
+Post processing for work.rcb.rtl1
+@W: CL169 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":91:11:91:22|Pruning register prev_dbb_bus.rcb_cmd(2 downto 0)  
+@W: CL169 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":91:11:91:22|Pruning register prev_dbb_bus.startcmd  
+@W: CL271 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":91:11:91:22|Pruning bits 1 to 0 of prev_dbb_bus.X(5 downto 0) -- not in use ... 
+@W: CL271 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":91:11:91:22|Pruning bits 1 to 0 of prev_dbb_bus.Y(5 downto 0) -- not in use ... 
+@N: CL201 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":22:9:22:13|Trying to extract state machine for register state
+Extracted state machine for register state
+State machine has 4 reachable states with original encodings of:
+   00
+   01
+   10
+   11
+@N: CL201 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":95:11:95:15|Trying to extract state machine for register state
+Extracted state machine for register state
+State machine has 5 reachable states with original encodings of:
+   00001
+   00010
+   00100
+   01000
+   10000
+@END
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sat Mar 22 10:45:22 2014
+
+###########################################################]
+Map & Optimize Report
+
+Synopsys Microsemi Technology Mapper, Version maprc, Build 1351R, Built Nov 26 2012 21:46:09
+Copyright (C) 1994-2012, Synopsys, Inc. This software the associated documentation are confidential and proprietary to Synopsys, Inc. Your use or disclosure of this software subject to the terms and conditions of a written license agreement between you, or your company, and Synopsys, Inc.
+Product Version G-2012.09-SP1 
+@W: FF137 |Setting fanout limit to 16 
+@N: MF248 |Running in 64-bit mode.
+List of partitions to map:
+   view:work.rcb(rtl1)
+@N:"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":108:11:108:22|Found counter in view:work.rcb(rtl1) inst idle_counter[7:0]
+Encoding state machine state_h.state[0:4] (view:work.rcb(rtl1))
+original code -> new code
+   00001 -> 00000
+   00010 -> 00011
+   00100 -> 00101
+   01000 -> 01001
+   10000 -> 10001
+Encoding state machine state_h.state[0:3] (view:work.ram_fsm(synth))
+original code -> new code
+   00 -> 00
+   01 -> 01
+   10 -> 10
+   11 -> 11
+
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 105MB peak: 105MB)
+
+
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 105MB peak: 105MB)
+
+
+High Fanout Net Report
+**********************
+
+Driver Instance / Pin Name                                     Fanout, notes
+----------------------------------------------------------------------------
+state_h.state[0] / q                                           19           
+ram_state_machine.state_h.pxcache_store_buf_0_1_sqmuxa / y     32           
+px_cache.store_ram_0_1_sqmuxa_2_i_o3 / y                       51           
+reset_pad / y                                                  41           
+============================================================================
+
+Replicating Combinational Instance px_cache.store_ram_0_1_sqmuxa_2_i_o3, fanout 47 segments 3
+Replicating Combinational Instance ram_state_machine.state_h.pxcache_store_buf_0_1_sqmuxa, fanout 32 segments 2
+Replicating Sequential Instance state_h.state[0], fanout 18 segments 2
+Buffering reset_c, fanout 45 segments 3
+Buffering reset_c, fanout 17 segments 2
+
+Added 3 Buffers
+Added 4 Cells via replication
+	Added 1 Sequential Cells via replication
+	Added 3 Combinational Cells via replication
+---------------------------------------
+Synthesized design as a chip
+Resource Usage Report of rcb 
+
+Target Part: a3265dx-2
+Combinational Cells:    119 of 475 (25%)
+Sequential Cells:    151 of 510 (30%)
+Total Cells:         270 of 985 (28%)
+DSP Blocks:          0
+Clock Buffers:       1
+IO Cells:            62
+
+Details:
+   and2:           18	comb:1
+   and2a:          6	comb:1
+   and2b:          1	comb:1
+   and3:           2	comb:1
+   and3a:          6	comb:1
+   and3b:          2	comb:1
+   and3c:          2	comb:1
+   and4:           1	comb:1
+   and4a:          1	comb:1
+   buff:           3	comb:1
+   cm8:            62	comb:1
+   nand4:          1	comb:2
+   or2a:           6	comb:1
+   or3b:           1	comb:1
+   xnor2:          5	comb:1
+   xor2:           1	comb:1
+
+   df1:            12	seq:1
+   df1b:           24	seq:1
+   dfe1b:          40	seq:1
+   dfm7a:          75	seq:1
+
+   clkbuf:         1	clock buffer
+   inbuf:          33	
+   outbuf:         28	
+
+   false:          1	
+   true:           1	
+@W: MT420 |Found inferred clock rcb|clk with period 1000.00ns. Please declare a user-defined clock on object "p:clk"
+
+
+
+##### START OF TIMING REPORT #####[
+# Timing Report written on Sat Mar 22 10:45:27 2014
+#
+
+
+Top view:               rcb
+Requested Frequency:    1.0 MHz
+Wire load mode:         top
+Paths requested:        5
+Constraint File(s):    
+@N: MT320 |Timing report estimates place and route data. Please look at the place and route timing report for final timing.
+
+@N: MT322 |Clock constraints cover only FF-to-FF paths associated with the clock.
+
+
+
+Performance Summary 
+*******************
+
+
+Worst slack in design: 495.950
+
+                   Requested     Estimated     Requested     Estimated                 Clock        Clock              
+Starting Clock     Frequency     Frequency     Period        Period        Slack       Type         Group              
+-----------------------------------------------------------------------------------------------------------------------
+rcb|clk            1.0 MHz       17.3 MHz      1000.000      57.825        495.950     inferred     Inferred_clkgroup_0
+=======================================================================================================================
+
+
+
+
+
+Clock Relationships
+*******************
+
+Clocks             |    rise  to  rise     |    fall  to  fall   |    rise  to  fall     |    fall  to  rise 
+-------------------------------------------------------------------------------------------------------------
+Starting  Ending   |  constraint  slack    |  constraint  slack  |  constraint  slack    |  constraint  slack
+-------------------------------------------------------------------------------------------------------------
+rcb|clk   rcb|clk  |  1000.000    942.175  |  No paths    -      |  500.000     495.950  |  No paths    -    
+=============================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+
+Interface Information 
+*********************
+
+No IO constraint found
+
+
+
+====================================
+Detailed Report for Clock: rcb|clk
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+                                     Starting                                                             Arrival            
+Instance                             Reference     Type      Pin     Net                                  Time        Slack  
+                                     Clock                                                                                   
+-----------------------------------------------------------------------------------------------------------------------------
+prev_vram_word[0]                    rcb|clk       dfe1b     q       prev_vram_word[0]                    3.675       495.950
+prev_vram_word[1]                    rcb|clk       dfe1b     q       prev_vram_word[1]                    3.675       495.950
+prev_vram_word[2]                    rcb|clk       dfe1b     q       prev_vram_word[2]                    3.675       495.950
+prev_vram_word[3]                    rcb|clk       dfe1b     q       prev_vram_word[3]                    3.675       495.950
+prev_vram_word[4]                    rcb|clk       dfe1b     q       prev_vram_word[4]                    3.675       495.950
+prev_vram_word[5]                    rcb|clk       dfe1b     q       prev_vram_word[5]                    3.675       495.950
+prev_vram_word[6]                    rcb|clk       dfe1b     q       prev_vram_word[6]                    3.675       495.950
+prev_vram_word[7]                    rcb|clk       dfe1b     q       prev_vram_word[7]                    3.675       495.950
+ram_state_machine.data_merged[0]     rcb|clk       dfm7a     q       ram_state_machine.data_merged[0]     3.675       495.950
+ram_state_machine.data_merged[1]     rcb|clk       dfm7a     q       ram_state_machine.data_merged[1]     3.675       495.950
+=============================================================================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+                                  Starting                                                            Required            
+Instance                          Reference     Type     Pin     Net                                  Time         Slack  
+                                  Clock                                                                                   
+--------------------------------------------------------------------------------------------------------------------------
+ram_state_machine.addr_del[0]     rcb|clk       df1b     d       prev_vram_word[0]                    499.625      495.950
+ram_state_machine.addr_del[1]     rcb|clk       df1b     d       prev_vram_word[1]                    499.625      495.950
+ram_state_machine.addr_del[2]     rcb|clk       df1b     d       prev_vram_word[2]                    499.625      495.950
+ram_state_machine.addr_del[3]     rcb|clk       df1b     d       prev_vram_word[3]                    499.625      495.950
+ram_state_machine.addr_del[4]     rcb|clk       df1b     d       prev_vram_word[4]                    499.625      495.950
+ram_state_machine.addr_del[5]     rcb|clk       df1b     d       prev_vram_word[5]                    499.625      495.950
+ram_state_machine.addr_del[6]     rcb|clk       df1b     d       prev_vram_word[6]                    499.625      495.950
+ram_state_machine.addr_del[7]     rcb|clk       df1b     d       prev_vram_word[7]                    499.625      495.950
+ram_state_machine.data_del[0]     rcb|clk       df1b     d       ram_state_machine.data_merged[0]     499.625      495.950
+ram_state_machine.data_del[1]     rcb|clk       df1b     d       ram_state_machine.data_merged[1]     499.625      495.950
+==========================================================================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+      Requested Period:                      500.000
+    - Setup time:                            0.375
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         499.625
+
+    - Propagation time:                      3.675
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (critical) :                     495.950
+
+    Number of logic level(s):                0
+    Starting point:                          prev_vram_word[0] / q
+    Ending point:                            ram_state_machine.addr_del[0] / d
+    The start point is clocked by            rcb|clk [rising] on pin clk
+    The end   point is clocked by            rcb|clk [falling] on pin clk
+
+Instance / Net                              Pin      Pin               Arrival     No. of    
+Name                              Type      Name     Dir     Delay     Time        Fan Out(s)
+---------------------------------------------------------------------------------------------
+prev_vram_word[0]                 dfe1b     q        Out     3.675     3.675       -         
+prev_vram_word[0]                 Net       -        -       -         -           1         
+ram_state_machine.addr_del[0]     df1b      d        In      0.000     3.675       -         
+=============================================================================================
+
+
+
+##### END OF TIMING REPORT #####]
+
+G-2012.09-SP1 
+Mapper successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:03s; CPU Time elapsed 0h:00m:02s; Memory used current: 41MB peak: 117MB)
+
+Process took 0h:00m:03s realtime, 0h:00m:02s cputime
+# Sat Mar 22 10:45:28 2014
+
+###########################################################]
