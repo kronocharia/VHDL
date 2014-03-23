@@ -21,7 +21,7 @@ ARCHITECTURE comb OF draw_octant IS
 
   SIGNAL done1                    : std_logic; -- internal done
   SIGNAL x1, y1                   : unsigned(vsize-1 DOWNTO 0); -- internal x,y
-  SIGNAL xincr, yincr, xnew, ynew : unsigned(vsize-1 DOWNTO 0);
+  SIGNAL xincr, yincr, xnew       : unsigned(vsize-1 DOWNTO 0);
   -- note on vector sizes. err1,err2 must be one bit larger to preserve signed error info
   -- error is always adjusted to minimise absolute value of signed error and therefore 
   -- can never be larger than vsize bits even though also signed, 12 bits is enough
@@ -84,14 +84,12 @@ BEGIN
       xincr <= (OTHERS => '0');
       yincr <= (OTHERS => '0');
       xnew  <= unsigned(xin);
-      ynew  <= unsigned(yin);
       error <= (OTHERS => '0');
       
     ELSIF draw = '1' THEN
       xincr <= unsigned(xin) - x1;
       yincr <= unsigned(yin) - y1;
       xnew  <= unsigned(xin);
-      ynew  <= unsigned(yin);
       
     ELSIF done1 = '1' THEN
       NULL; -- do nothing more once line has finished until next resetx
@@ -117,4 +115,3 @@ BEGIN
   END PROCESS R1;
 
 END ARCHITECTURE comb;
-
