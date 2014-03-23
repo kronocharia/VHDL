@@ -309,7 +309,7 @@ BEGIN
         IF reset = '1' THEN
             rcb_finish <='0';
 
-        ELSIF (state = s_idle AND vram_really_done = '1') THEN
+        ELSIF (state = s_idle AND vram_really_done = '1' AND dbb_bus.startcmd = '0') THEN
             rcb_finish <= pxcache_is_same;
             --rcb_finish <= '1';
         ELSE 
