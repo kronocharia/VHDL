@@ -24,7 +24,7 @@ Available hyper_sources - for debug and ip models
 
 Finished RTL optimizations (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 105MB peak: 107MB)
 
-@N:"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":107:11:107:22|Found counter in view:work.rcb(rtl1) inst idle_counter[7:0]
+@N:"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":104:11:104:22|Found counter in view:work.rcb(rtl1) inst idle_counter[7:0]
 Encoding state machine state[0:3] (view:work.rcb(rtl1))
 original code -> new code
    00 -> 00
@@ -55,13 +55,13 @@ Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:01
 Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 107MB peak: 110MB)
 
 
-Starting Early Timing Optimization (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 108MB peak: 110MB)
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 108MB peak: 110MB)
 
 
-Finished Early Timing Optimization (Real Time elapsed 0h:00m:03s; CPU Time elapsed 0h:00m:02s; Memory used current: 108MB peak: 110MB)
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 108MB peak: 110MB)
 
 
-Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:03s; CPU Time elapsed 0h:00m:02s; Memory used current: 108MB peak: 110MB)
+Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 108MB peak: 110MB)
 
 
 Starting Early Timing Optimization (Real Time elapsed 0h:00m:03s; CPU Time elapsed 0h:00m:02s; Memory used current: 108MB peak: 110MB)
@@ -73,24 +73,24 @@ Finished Early Timing Optimization (Real Time elapsed 0h:00m:04s; CPU Time elaps
 Finished preparing to map (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:03s; Memory used current: 109MB peak: 110MB)
 
 
-Finished technology mapping (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:05s; Memory used current: 124MB peak: 130MB)
+Finished technology mapping (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:04s; Memory used current: 124MB peak: 130MB)
 
 @N: FA100 :|Instance "px_cache.store_ram_2_0_269_0" with "8" loads has been replicated "1" time(s) due to hard fanout limit of "5" 
 @N: FA100 :|Instance "px_cache.store_ram_2_0_0_0" with "8" loads has been replicated "1" time(s) due to hard fanout limit of "5" 
 @N: FA100 :|Instance "px_cache.store_ram_0_0_156_0" with "8" loads has been replicated "1" time(s) due to hard fanout limit of "5" 
 @N: FA100 :|Instance "px_cache.store_ram_0_0_0_0" with "8" loads has been replicated "1" time(s) due to hard fanout limit of "5" 
-@N: FA100 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":147:8:147:11|Instance "px_cache.pxcache_pixnum_i_o4_2[0]" with "10" loads has been replicated "1" time(s) due to hard fanout limit of "5" 
+@N: FA100 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":142:8:142:11|Instance "px_cache.pxcache_pixnum_i_o4_2[0]" with "10" loads has been replicated "1" time(s) due to hard fanout limit of "5" 
 @N: FA100 :"h:\desktop\github\vhdl\vhdl project\hardware_files\pix_word_cache.vhd":78:12:78:13|Instance "px_cache.store_ram_0_0_sqmuxa_i_a4_a1" with "14" loads has been replicated "2" time(s) due to hard fanout limit of "5" 
-@N: FA100 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":147:8:147:11|Instance "px_cache.pxcache_pixnum_i_x[3]" with "17" loads has been replicated "3" time(s) due to hard fanout limit of "5" 
-@N: FA100 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":147:8:147:11|Instance "px_cache.pxcache_pixnum_i_x[2]" with "9" loads has been replicated "1" time(s) due to hard fanout limit of "5" 
-@N: FA100 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":94:11:94:15|Instance "state[1]" with "11" loads has been replicated "2" time(s) due to hard fanout limit of "5" 
-@N: FA100 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":147:8:147:11|Instance "px_cache.pxcache_pixnum_i_o4_2[0]" with "9" loads has been replicated "1" time(s) due to hard fanout limit of "5" 
+@N: FA100 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":142:8:142:11|Instance "px_cache.pxcache_pixnum_i_x[3]" with "17" loads has been replicated "3" time(s) due to hard fanout limit of "5" 
+@N: FA100 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":142:8:142:11|Instance "px_cache.pxcache_pixnum_i_x[2]" with "9" loads has been replicated "1" time(s) due to hard fanout limit of "5" 
+@N: FA100 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":91:11:91:15|Instance "state[1]" with "11" loads has been replicated "2" time(s) due to hard fanout limit of "5" 
+@N: FA100 :"h:\desktop\github\vhdl\vhdl project\hardware_files\rcb.vhd":142:8:142:11|Instance "px_cache.pxcache_pixnum_i_o4_2[0]" with "9" loads has been replicated "1" time(s) due to hard fanout limit of "5" 
 @N: FA100 :"h:\desktop\github\vhdl\vhdl project\hardware_files\pix_word_cache.vhd":78:12:78:13|Instance "px_cache.store_ram_0_0_sqmuxa_i_a4_a1" with "9" loads has been replicated "1" time(s) due to hard fanout limit of "5" 
 
-Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:06s; Memory used current: 126MB peak: 130MB)
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:05s; Memory used current: 126MB peak: 130MB)
 
 
-Finished restoring hierarchy (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:06s; Memory used current: 127MB peak: 130MB)
+Finished restoring hierarchy (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:05s; Memory used current: 127MB peak: 130MB)
 
 
 
@@ -116,17 +116,17 @@ Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample I
 
 Writing Analyst data base H:\Desktop\GitHub\VHDL\rev_2\proj_1.srm
 
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:07s; Memory used current: 125MB peak: 130MB)
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:05s; Memory used current: 125MB peak: 130MB)
 
 Writing Verilog Netlist and constraint files
 Writing .vqm output for Quartus
 
-Writing scf file... (Real Time elapsed 0h:00m:08s; CPU Time elapsed 0h:00m:07s; Memory used current: 127MB peak: 130MB)
+Writing scf file... (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:06s; Memory used current: 127MB peak: 130MB)
 
 @N: BW103 |Synopsys Constraint File time units using default value of 1ns 
 @N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
 
-Finished Writing Verilog Netlist and constraint files (Real Time elapsed 0h:00m:08s; CPU Time elapsed 0h:00m:07s; Memory used current: 125MB peak: 130MB)
+Finished Writing Verilog Netlist and constraint files (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:06s; Memory used current: 125MB peak: 130MB)
 
 @W: MT420 |Found inferred clock rcb|clk with period 5.14ns. Please declare a user-defined clock on object "p:clk"
 
@@ -136,7 +136,7 @@ Finished Writing Verilog Netlist and constraint files (Real Time elapsed 0h:00m:
 
 
 ##### START OF TIMING REPORT #####[
-# Timing Report written on Sun Mar 23 18:17:45 2014
+# Timing Report written on Sun Mar 23 18:33:19 2014
 #
 
 
@@ -545,9 +545,9 @@ Total ESB:      0 bits
 
 Mapper successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:08s; CPU Time elapsed 0h:00m:07s; Memory used current: 35MB peak: 130MB)
+At Mapper Exit (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:06s; Memory used current: 35MB peak: 130MB)
 
-Process took 0h:00m:08s realtime, 0h:00m:07s cputime
-# Sun Mar 23 18:17:46 2014
+Process took 0h:00m:07s realtime, 0h:00m:06s cputime
+# Sun Mar 23 18:33:19 2014
 
 ###########################################################]

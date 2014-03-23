@@ -2,10 +2,10 @@
 @N: CD720 :"C:\synopsys\fpga_G201209SP1\lib\vhd\std.vhd":123:18:123:21|Setting time resolution to ns
 @N:"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":11:7:11:9|Top entity is set to rcb.
 @N: CD630 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":11:7:11:9|Synthesizing work.rcb.rtl1 
-@N: CD233 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":93:20:93:21|Using sequential encoding for type state_type
+@N: CD233 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":90:20:90:21|Using sequential encoding for type state_type
 @N: CD630 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\pix_word_cache.vhd":9:7:9:20|Synthesizing work.pix_word_cache.pwc 
 @N: CD630 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":7:7:7:13|Synthesizing work.ram_fsm.synth 
 @N: CD233 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":21:17:21:18|Using sequential encoding for type state_t
 @N: CL201 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\ram_fsm.vhd":22:9:22:13|Trying to extract state machine for register state
-@N: CL201 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":94:11:94:15|Trying to extract state machine for register state
+@N: CL201 :"H:\Desktop\GitHub\VHDL\VHDL Project\hardware_files\rcb.vhd":91:11:91:15|Trying to extract state machine for register state
 
