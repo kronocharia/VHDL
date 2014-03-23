@@ -30,12 +30,11 @@ architecture rtl of db is
   signal dao_draw, dao_xbias, dao_done, dao_swap, dao_negx, dao_negy, dao_disable, dao_reset : std_logic;
   signal dao_xin, dao_yin, dao_xout, dao_yout: std_logic_vector(vsize-1 downto 0);
   signal penx, peny: std_logic_vector(vsize-1 downto 0);
-  --signal previous_command : std_logic_vector(2*vsize+3 downto 0);
   
   signal cs_reset, cs_disable, cs_done, cs_draw: std_logic;
   signal cs_xout, cs_yout: std_logic_vector(vsize-1 downto 0);
   
-  type state_t is (draw_reset, draw_start, draw_line, idle, clear_start, draw_clear);
+  type state_t is (draw_reset, draw_start, draw_line, idle, clear_start, clear_end, draw_clear);
   signal state, nstate : state_t;
   
   type opcode_t is array (1 downto 0) of std_logic;
@@ -150,7 +149,6 @@ begin
     variable dx: signed(vsize downto 0);
     variable dy: signed(vsize downto 0);
     variable v_swapxy, v_negx, v_negy: std_logic;
-    --variable zero : std_logic_vector(vsize-1 downto 0) := (others =>'0');
   begin
     dx := signed(resize(unsigned(command.x), vsize+1)) - signed(resize(unsigned(penx), vsize+1));
     dy := signed(resize(unsigned(command.y), vsize+1)) - signed(resize(unsigned(peny), vsize+1));
@@ -207,7 +205,7 @@ begin
     if reset = '1' then state <= idle; end if;
   end process db_fsm_clocked;
   
-  db_fsm_comb: process(state, command_in, dav, dao_done, cs_done, dbb_delaycmd) -- drives nstate
+  db_fsm_comb: process(state, command_in, dav, dao_done, cs_done, dbb_delaycmd, dbb_rcbclear) -- drives nstate
   begin
     case state is
       when idle =>
@@ -235,8 +233,11 @@ begin
         end if;
         
       when clear_start =>
-        --if dbb_delaycmd = '0' then nstate <= clear_end; end if;
-        nstate <= draw_clear;
+        if dbb_rcbclear = '1' then
+          if dbb_delaycmd = '0' then nstate <= clear_end; end if;
+        else
+          nstate <= draw_clear;
+        end if;
         
       when draw_clear =>
         if cs_done = '0' or dbb_delaycmd = '1' then
@@ -245,8 +246,8 @@ begin
           nstate <= idle;
         end if;
         
-      --when clear_end =>
-      --  if dbb_delaycmd = '0' then nstate <= idle; end if;
+      when clear_end =>
+        if dbb_delaycmd = '0' then nstate <= idle; end if;
     end case;
   end process db_fsm_comb;
 
@@ -280,10 +281,10 @@ begin
           dbb_bus.X <= penx;
           dbb_bus.Y <= peny;
           dbb_bus.startcmd <= '1';
-        --when clear_end =>
-        --  dbb_bus.X <= command.x;
-        --  dbb_bus.Y <= command.y;
-        --  dbb_bus.startcmd <= '1';
+        when clear_end =>
+          dbb_bus.X <= command.x;
+          dbb_bus.Y <= command.y;
+          dbb_bus.startcmd <= '1';
         when draw_clear =>
           dbb_bus.X <= cs_xout;
           dbb_bus.Y <= cs_yout;
