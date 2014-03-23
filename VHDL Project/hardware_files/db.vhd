@@ -209,13 +209,14 @@ begin
   begin
     case state is
       when idle =>
+      	nstate <= idle;
         if dav = '1' then
           --read command and decide which state to go to.
           case command_in.op is
             when movepen_op => null;
             when drawline_op => nstate <= draw_reset;
             when clearscreen_op => nstate <= clear_start;
-            when others => nstate <= idle; --invalid command---do nothing
+            when others => null; --invalid command---do nothing
           end case;
         end if;
         
@@ -233,11 +234,11 @@ begin
         end if;
         
       when clear_start =>
-        if dbb_rcbclear = '1' then
-          if dbb_delaycmd = '0' then nstate <= clear_end; end if;
-        else
-          nstate <= draw_clear;
-        end if;
+          if dbb_rcbclear = '1' then
+          	nstate <= clear_end;
+          else
+          	nstate <= draw_clear;
+          end if;
         
       when draw_clear =>
         if cs_done = '0' or dbb_delaycmd = '1' then
@@ -247,7 +248,7 @@ begin
         end if;
         
       when clear_end =>
-        if dbb_delaycmd = '0' then nstate <= idle; end if;
+        nstate <= idle;
     end case;
   end process db_fsm_comb;
 
