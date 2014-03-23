@@ -59,7 +59,7 @@ BEGIN
   y    <= std_logic_vector(y1);
   done <= done1;
 
-  C1 : PROCESS(error, xincr, yincr, x1, y1, xnew, ynew, resetx, draw)
+  C1 : PROCESS(error, xincr, yincr, x1, xnew, resetx, draw)
     
   BEGIN
 
@@ -67,7 +67,7 @@ BEGIN
     err2 <= unsigned(abs(resize(error, vsize+1) - signed(resize(unsigned(xincr - yincr),vsize+1))));
 
     done1 <= '0';
-    IF x1 = xnew and y1 = ynew and resetx = '0' and draw = '0' THEN
+    IF x1 = xnew and resetx = '0' and draw = '0' THEN -- can only go right or diagonal, so when x is at end, finish.
       done1 <= '1';
     END IF;
 

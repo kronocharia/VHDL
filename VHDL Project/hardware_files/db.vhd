@@ -209,7 +209,6 @@ begin
   
   db_fsm_comb: process(state, command_in, dav, dao_done, cs_done, dbb_delaycmd) -- drives nstate
   begin
-    nstate <= state; --default, stay in current state
     case state is
       when idle =>
         if dav = '1' then
@@ -218,7 +217,7 @@ begin
             when movepen_op => null;
             when drawline_op => nstate <= draw_reset;
             when clearscreen_op => nstate <= clear_start;
-            when others => null; --invalid command---do nothing
+            when others => nstate <= idle; --invalid command---do nothing
           end case;
         end if;
         
@@ -229,8 +228,10 @@ begin
         nstate <= draw_line;
         
       when draw_line =>
-        if dao_done = '0' or dbb_delaycmd = '1' then nstate <= draw_line;
-        else nstate <= idle;
+        if dao_done = '0' or dbb_delaycmd = '1' then
+          nstate <= draw_line;
+        else
+          nstate <= idle;
         end if;
         
       when clear_start =>
@@ -246,8 +247,6 @@ begin
         
       --when clear_end =>
       --  if dbb_delaycmd = '0' then nstate <= idle; end if;
-        
-      --when others => nstate <= idle; -- reset undefined states to idle state
     end case;
   end process db_fsm_comb;
 
